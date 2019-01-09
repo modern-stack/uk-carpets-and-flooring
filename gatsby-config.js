@@ -9,6 +9,14 @@ module.exports = {
     `gatsby-plugin-compression`,
     'gatsby-plugin-stripe-checkout',
     {
+      resolve: `gatsby-source-stripe`,
+      options: {
+        objects: ['Product', 'Sku'],
+        secretKey: 'sk_test_L8nrpi6m2KzwGolKsCN86pqJ',
+        downloadFiles: true,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
