@@ -12,7 +12,7 @@ module.exports = {
       resolve: `gatsby-source-stripe`,
       options: {
         objects: ['Product', 'Sku'],
-        secretKey: 'sk_test_L8nrpi6m2KzwGolKsCN86pqJ',
+        secretKey: '',
         downloadFiles: true,
       },
     },
