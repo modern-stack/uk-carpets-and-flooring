@@ -23,13 +23,6 @@ exports.createPages = ({ graphql, actions }) => {
     }
   `).then(result => {
     const { allStripeSku } = result.data
-    createPage({
-      path: `products`,
-      component: path.resolve(`./src/templates/products.js`),
-      context: {
-        products: allStripeSku.edges,
-      },
-    })
 
     allStripeSku.edges.map($ => {
       createPage({

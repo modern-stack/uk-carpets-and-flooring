@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -12,7 +14,7 @@ module.exports = {
       resolve: `gatsby-source-stripe`,
       options: {
         objects: ['Product', 'Sku'],
-        secretKey: '',
+        secretKey: process.env.STRIPE_API_KEY,
         downloadFiles: true,
       },
     },
