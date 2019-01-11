@@ -10,12 +10,6 @@ exports.createPages = ({ graphql, actions }) => {
             product {
               id
               name
-              skus {
-                object
-                has_more
-                total_count
-                url
-              }
             }
           }
         }
@@ -29,8 +23,9 @@ exports.createPages = ({ graphql, actions }) => {
         path: `products/${$.node.product.name}`,
         component: path.resolve(`./src/templates/product.js`),
         context: {
-          name: $.node.product.name,
-          skus: $.node.product.name.skus,
+          id: $.node.product.id,
+          // name: $.node.product.name,
+          // skus: $.node.product.name.skus,
         },
       })
     })
