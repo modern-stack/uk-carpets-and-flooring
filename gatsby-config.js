@@ -11,6 +11,13 @@ module.exports = {
     `gatsby-plugin-compression`,
     'gatsby-plugin-stripe-checkout',
     {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: 'r5glwopythaj',
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
+    {
       resolve: `gatsby-source-stripe`,
       options: {
         objects: ['Product', 'Sku'],

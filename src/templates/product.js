@@ -1,26 +1,27 @@
 import React, { useState, useEffect, useReducer } from 'react'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import Image from 'gatsby-image'
 
 export default ({ data }) => {
+  const { contentfulProduct } = data
   return (
     <Layout>
       <SEO title="Products" />
-      <div>{JSON.stringify(data)}</div>
+      <div>{contentfulProduct.name}</div>
     </Layout>
   )
 }
 
 export const pageQuery = graphql`
   query Product($id: String!) {
-    stripeProduct(id: { eq: $id }) {
+    contentfulProduct(id: { eq: $id }) {
       id
       name
-      skus {
-        object
-        has_more
-        total_count
-        url
+      featuredImage {
+        file {
+          url
+        }
       }
     }
   }

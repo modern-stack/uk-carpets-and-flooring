@@ -9,28 +9,21 @@ export default ({ data }) => (
   <Layout>
     <SEO title="Products" />
     <h1>Products</h1>
+    {console.log(JSON.stringify(data))}
 
-    {data.allStripeSku.edges.map($ => (
-      <Link to={`/products/${$.node.product.name}`}>{$.node.product.name}</Link>
+    {data.allContentfulProduct.edges.map($ => (
+      <Link to={`/products/${$.node.name}`}>{$.node.name}</Link>
     ))}
   </Layout>
 )
 
 export const query = graphql`
   query {
-    allStripeSku {
+    allContentfulProduct {
       edges {
         node {
-          product {
-            id
-            name
-            skus {
-              object
-              has_more
-              total_count
-              url
-            }
-          }
+          id
+          name
         }
       }
     }

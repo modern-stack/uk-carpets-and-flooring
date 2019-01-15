@@ -4,28 +4,25 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   return graphql(`
     {
-      allStripeSku {
+      allContentfulProduct {
         edges {
           node {
-            product {
-              id
-              name
-            }
+            id
+            name
           }
         }
       }
     }
   `).then(result => {
-    const { allStripeSku } = result.data
+    const { allContentfulProduct } = result.data
 
-    allStripeSku.edges.map($ => {
+    allContentfulProduct.edges.map($ => {
+      console.log($)
       createPage({
-        path: `products/${$.node.product.name}`,
+        path: `products/${$.node.name}`,
         component: path.resolve(`./src/templates/product.js`),
         context: {
-          id: $.node.product.id,
-          // name: $.node.product.name,
-          // skus: $.node.product.name.skus,
+          id: $.node.id,
         },
       })
     })
