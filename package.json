@@ -7,6 +7,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-plugin-styled-components": "^1.10.0",
+    "firebase": "^5.7.3",
     "gatsby": "^2.0.85",
     "gatsby-image": "^2.0.20",
     "gatsby-plugin-compression": "0.0.1",
@@ -17,6 +18,7 @@
     "gatsby-plugin-sharp": "^2.0.17",
     "gatsby-plugin-stripe-checkout": "^1.1.2",
     "gatsby-plugin-styled-components": "^3.0.4",
+    "gatsby-source-contentful": "^2.0.26",
     "gatsby-source-filesystem": "^2.0.8",
     "gatsby-source-stripe": "^2.1.2",
     "gatsby-transformer-sharp": "^2.1.10",

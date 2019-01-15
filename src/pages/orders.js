@@ -1,11 +1,16 @@
-import React, { useState, useEffect, useReducer } from 'react'
+import React, { useState, useEffect } from 'react'
+import WithAuthorization from './../components/Firebase/Auth'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-export default () => {
+function Orders() {
   const [loading, toggleLoading] = useToggle(true)
   const [orders, setOrders] = useState([])
+
+  const user = WithAuthorization()
+
+  console.log('User >>>>', user)
 
   useEffect(async () => {
     const response = await fetch('http://localhost:3000/orders/list')
@@ -29,3 +34,5 @@ function useToggle(initialState = false) {
 
   return [state, () => setState(!state)]
 }
+
+export default Orders
