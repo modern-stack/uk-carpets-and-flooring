@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import WithAuthorization from './../components/Firebase/Auth'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-function Orders() {
+function Orders(props) {
+  console.log('props >>>', props)
   const [loading, toggleLoading] = useToggle(true)
   const [orders, setOrders] = useState([])
-
-  const user = WithAuthorization()
-
-  console.log('User >>>>', user)
 
   useEffect(async () => {
     const response = await fetch('http://localhost:3000/orders/list')

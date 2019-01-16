@@ -2,6 +2,10 @@ import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
 
+import firebase from 'firebase'
+
+firebase.auth().onAuthStateChanged($ => setUser($), null)
+
 const Header = ({ siteTitle }) => (
   <div
     style={{
