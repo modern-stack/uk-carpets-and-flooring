@@ -2,9 +2,9 @@ import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import firebase from 'firebase'
+import firebase from '../services/firebase'
 
-firebase.auth().onAuthStateChanged($ => setUser($), null)
+firebase.auth.onAuthStateChanged($ => console.log('Hawow!!'))
 
 const Header = ({ siteTitle }) => (
   <div
