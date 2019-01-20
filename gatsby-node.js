@@ -9,6 +9,12 @@ exports.createPages = ({ graphql, actions }) => {
           node {
             id
             name
+            featuredImage {
+              fixed {
+                width
+                height
+              }
+            }
           }
         }
       }

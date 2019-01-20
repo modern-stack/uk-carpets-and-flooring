@@ -3,6 +3,8 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 
 export default ({ data }) => {
+  console.log('Data >>>>>>')
+
   const { contentfulProduct } = data
   return (
     <Layout>
@@ -18,8 +20,19 @@ export const pageQuery = graphql`
       id
       name
       featuredImage {
-        file {
-          url
+        id
+        title
+      }
+    }
+    allContentfulAsset {
+      edges {
+        node {
+          title
+          resize(width: 100) {
+            src
+            width
+            height
+          }
         }
       }
     }

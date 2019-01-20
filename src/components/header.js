@@ -1,39 +1,62 @@
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import firebase from '../services/firebase'
 
-firebase.auth.onAuthStateChanged($ => console.log('Hawow!!'))
+const Header = ({ siteTitle }) => {
+  const [user, setUser] = useState([])
 
-const Header = ({ siteTitle }) => (
-  <div
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
+  useEffect(async () => {
+    firebase.auth.onAuthStateChanged($ => setUser($))
+  }, [])
+
+  return (
     <div
       style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
+        background: `rebeccapurple`,
+        marginBottom: `1.45rem`,
       }}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
+      <div
+        style={{
+          margin: `0 auto`,
+          maxWidth: 960,
+          padding: `1.45rem 1.0875rem`,
+        }}
+      >
+        <h1 style={{ margin: 0 }}>
+          <Link
+            to="/"
+            style={{
+              color: `white`,
+              textDecoration: `none`,
+            }}
+          >
+            {siteTitle}
+          </Link>
+        </h1>
+
+        <div>
+          {user ? (
+            <div onClick={() => firebase.auth.signOut()}>SignOut</div>
+          ) : (
+            <div
+              onClick={() =>
+                firebase.auth.signInWithEmailAndPassword(
+                  'test@test.com',
+                  'testpassword'
+                )
+              }
+            >
+              SignIn
+            </div>
+          )}
+        </div>
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,

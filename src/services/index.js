@@ -1,5 +1,5 @@
 import firebase from './firebase'
 
-module.exports = {
+export default {
   firebase,
 }

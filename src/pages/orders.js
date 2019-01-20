@@ -1,26 +1,51 @@
 import React, { useState, useEffect } from 'react'
+import firebase from '../services/firebase'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-function Orders(props) {
-  console.log('props >>>', props)
+import Authentication from '../components/Authentication'
+
+function Orders() {
   const [loading, toggleLoading] = useToggle(true)
   const [orders, setOrders] = useState([])
+  const [user, setUser] = useState({ email: '' })
+
+  console.log('user >>>', user)
 
   useEffect(async () => {
-    const response = await fetch('http://localhost:3000/orders/list')
-    setOrders(await response.json())
+    firebase.auth.onAuthStateChanged(async $ => {
+      if (!$) {
+        toggleLoading()
+      }
 
-    toggleLoading()
+      if ($) {
+        const currentUser = await firebase.db.ref(
+          `server/saving-data/fireblog/posts/${$.uid}`
+        )
+
+        if (currentUser.stripeId) {
+          const response = await fetch(
+            `http://localhost:3000/orders/list?email=${$.email}`
+          )
+          setOrders(await response.json())
+        }
+        setUser($)
+      }
+    })
+
+    console.log('User >>>>', user)
   }, [])
 
   return (
     <Layout>
       <SEO title="Products" />
-      <h1>Orders</h1>
-      {loading && <div>Loading...</div>}
-      {!loading && orders.map(($, i) => <div>{i}</div>)}
+      <Authentication>
+        <h1>Orders</h1>
+        {loading && <div>Loading...</div>}
+        {!orders.length && <div>No Orders Available</div>}
+        {!loading && orders.length && orders.map(($, i) => <div>{i}</div>)}
+      </Authentication>
     </Layout>
   )
 }
