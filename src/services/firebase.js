@@ -1,7 +1,11 @@
-import firebase from 'firebase'
+import firebase from 'firebase/'
 
 class Firebase {
   constructor() {
+    if (typeof window !== 'undefined') {
+      return null
+    }
+
     if (!firebase.apps.length) {
       firebase.initializeApp({
         apiKey: 'AIzaSyDfvd_dw-ZOx6WMhjLb42I-cVjtH0EMoXs',
