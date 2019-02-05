@@ -8,7 +8,6 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-compression`,
     'gatsby-plugin-styled-components',
     'gatsby-plugin-stripe-checkout',
     {
