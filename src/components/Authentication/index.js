@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import firebase from '../../services/firebase'
+import { auth, db } from '../../services/firebase'
 
 export default ({ children }) => {
   const [user, setUser] = useState([])
@@ -11,12 +11,13 @@ export default ({ children }) => {
   }
 
   useEffect(async () => {
-    firebase.auth.onAuthStateChanged($ => setUser($))
+    console.log('Firebae >>>>>>', auth, db)
+    auth.onAuthStateChanged($ => setUser($))
   }, [])
 
   const CreateUser = async () => {
     const { forename, surname, email, password } = values
-    const fbUser = await firebase.auth
+    const fbUser = await auth
       .createUserWithEmailAndPassword(email, password)
       .catch($ => {
         console.log('error >>>>', $)
@@ -24,7 +25,7 @@ export default ({ children }) => {
       })
 
     if (fbUser) {
-      firebase.db.ref(`user/${fbUser.user.uid}`).set({
+      db.ref(`user/${fbUser.user.uid}`).set({
         forename,
         surname,
         stripeId: null,

@@ -14,6 +14,7 @@ function Orders() {
   console.log('user >>>', user)
 
   useEffect(async () => {
+    console.log('Firebae >>>>>>', firebase)
     firebase.auth.onAuthStateChanged(async $ => {
       if (!$) {
         toggleLoading()

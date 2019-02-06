@@ -8,6 +8,7 @@ const Header = ({ siteTitle }) => {
   const [user, setUser] = useState([])
 
   useEffect(async () => {
+    console.log('Firebae >>>>>>', firebase)
     firebase.auth.onAuthStateChanged($ => setUser($))
   }, [])
 

@@ -2,9 +2,9 @@ import firebase from 'firebase'
 
 class Firebase {
   constructor() {
-    if (typeof window !== 'undefined') {
-      return null
-    }
+    // if (typeof window !== 'undefined') {
+    //   return null
+    // }
 
     if (!firebase.apps.length) {
       firebase.initializeApp({
