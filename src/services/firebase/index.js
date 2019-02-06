@@ -11,10 +11,12 @@ const config = {
 
 class Firebase {
   constructor() {
-    firebase.initializeApp(config)
-    this.store = firebase.firestore
-    this.auth = firebase.auth()
-    this.db = firebase.database()
+    if (typeof window !== 'undefined') {
+      firebase.initializeApp(config)
+      this.store = firebase.firestore
+      this.auth = firebase.auth()
+      this.db = firebase.database()
+    }
   }
 }
 
