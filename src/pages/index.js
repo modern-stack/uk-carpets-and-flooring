@@ -4,19 +4,74 @@ import { Link } from 'gatsby'
 import Layout from '../components/layout'
 import Image from '../components/image'
 import SEO from '../components/seo'
-import Checkout from '../components/checkout'
+import ContentfulComponents from '../components/contentful'
 
-const IndexPage = () => (
+const IndexPage = ({ data }) => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Checkout />
+    <React.Fragment>
+      {data.contentfulPage.content.map($ => {
+        const Component = ContentfulComponents[$.__typename]
+        return Component ? <Component {...$} /> : null
+      })}
+    </React.Fragment>
   </Layout>
 )
 
 export default IndexPage
+
+export const query = graphql`
+  query {
+    contentfulPage(id: { eq: "06bfa36e-e597-56a6-bbd4-d536b5e56083" }) {
+      id
+      title
+      content {
+        ... on ContentfulCarousel {
+          id
+          name
+          slides {
+            title {
+              id
+            }
+            content {
+              id
+            }
+            image {
+              fluid(maxWidth: 1200, maxHeight: 900) {
+                base64
+                tracedSVG
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
+            }
+          }
+        }
+        ... on ContentfulBanner {
+          title
+          h1text
+          h2text
+          h3text
+          ctatext
+          link
+          backgroundImage {
+            id
+            fluid {
+              base64
+              tracedSVG
+              aspectRatio
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+              sizes
+            }
+          }
+        }
+      }
+    }
+  }
+`

@@ -1,12 +1,11 @@
-// ./src/services/firebase.js
 import firebase from 'firebase'
 import 'firebase/firestore'
 
 const config = {
-  apiKey: 'AIzaSyDfvd_dw-ZOx6WMhjLb42I-cVjtH0EMoXs',
-  authDomain: 'carpets-at-home-1490007435412.firebaseapp.com',
-  databaseURL: 'https://carpets-at-home-1490007435412.firebaseio.com',
-  projectId: 'carpets-at-home-1490007435412',
+  apiKey: process.env.GATSBY_FIREBASE_API_KEY,
+  authDomain: process.env.GATSBY_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.GATSBY_FIREBASE_DATABSE_URL,
+  projectId: process.env.GATSBY_FIREBASE_PROJECT_ID,
 }
 
 class Firebase {
@@ -16,6 +15,14 @@ class Firebase {
       this.store = firebase.firestore
       this.auth = firebase.auth()
       this.db = firebase.database()
+
+      this.SignIn = () => {
+        console.log(config)
+
+        firebase
+          .auth()
+          .signInWithPopup(new firebase.auth.FacebookAuthProvider())
+      }
     }
   }
 }
