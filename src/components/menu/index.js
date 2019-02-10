@@ -3,7 +3,9 @@ import { Menu, MenuItem } from './styled'
 
 export default () => (
   <Menu>
-    <MenuItem>Home</MenuItem>
+    <MenuItem>
+      <span>Home</span>
+    </MenuItem>
     <MenuItem>Carpets</MenuItem>
     <MenuItem>Laminates</MenuItem>
     <MenuItem>Vinyls</MenuItem>

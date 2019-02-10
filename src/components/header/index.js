@@ -56,7 +56,9 @@ export default () => {
             {user ? renderProfile(user) : renderSignIn()}
             <WishList>
               <FaHeart size={12} />
-              <label>My Wish List</label>
+              <label>
+                My Wish list (<Total>2</Total>)
+              </label>
             </WishList>
             <ShoppingCart>
               <FaShoppingCart size={12} />

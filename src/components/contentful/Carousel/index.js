@@ -2,14 +2,11 @@ import React, { useState } from 'react'
 import Image from 'gatsby-image'
 import { CarouselContainer, Slide, Wrapper } from './styled'
 
-function setPosition(setPosition, position) {}
-
 export default ({ slides }) => {
   const [position, setPosition] = useState(0)
 
   return (
     <div>
-      {console.log('props >>>', slides)}
       <Wrapper>
         <CarouselContainer>
           {slides.map((slide, index) => (
