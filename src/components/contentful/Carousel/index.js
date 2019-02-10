@@ -11,10 +11,7 @@ export default ({ slides }) => {
         <CarouselContainer>
           {slides.map((slide, index) => (
             <Slide key={index} visible={index === position}>
-              <Image
-                fluid={slide.image.fluid}
-                style={{ position: 'initial', objectFit: 'cover' }}
-              />
+              <Image style={{ width: '100%' }} fluid={slide.image.fluid} />
             </Slide>
           ))}
         </CarouselContainer>

@@ -12,9 +12,9 @@ import {
   CompanyName,
   Profile,
   ProfileImage,
-  WishList,
   Total,
-  ShoppingCart,
+  MenuItem,
+  SubMenu,
 } from './styled'
 
 const renderProfile = user => (
@@ -54,18 +54,26 @@ export default () => {
           </Logo>
           <UserInfo>
             {user ? renderProfile(user) : renderSignIn()}
-            <WishList>
+            <MenuItem>
               <FaHeart size={12} />
               <label>
                 My Wish list (<Total>2</Total>)
               </label>
-            </WishList>
-            <ShoppingCart>
+            </MenuItem>
+            <MenuItem>
               <FaShoppingCart size={12} />
               <label>
                 My Cart (<Total>2</Total>)
               </label>
-            </ShoppingCart>
+              <SubMenu>
+                <div>Summary</div>
+                <hr />
+                <div>this is a test and shiiiiii</div>
+                <div>hawow</div>
+                <div>hawow</div>
+                <div>hawow</div>
+              </SubMenu>
+            </MenuItem>
           </UserInfo>
         </Header>
       )}

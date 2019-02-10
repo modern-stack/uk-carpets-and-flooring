@@ -11,6 +11,21 @@ const Menu = styled.div`
   background-color: rgb(255, 255, 255, 0.4);
 `
 
+const SubMenu = styled.div`
+  position: absolute;
+  opacity: 0;
+  top: 42px;
+  background-color: rgb(199, 0, 43, 1);
+  color: white;
+  padding: 20px;
+  text-align: left;
+  z-index: 999;
+  overflow: auto;
+  white-space: nowrap;
+  right: 0;
+  left: 0;
+`
+
 const MenuItem = styled.div`
   position: relative;
   display: flex;
@@ -25,7 +40,11 @@ const MenuItem = styled.div`
     background-color: rgb(199, 0, 43, 1);
     cursor: pointer;
     color: white;
+
+    ${SubMenu} {
+      opacity: 100;
+    }
   }
 `
 
-export { Menu, MenuItem }
+export { Menu, MenuItem, SubMenu }

@@ -3,8 +3,9 @@ import styled from 'styled-components'
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 20px 40px;
-  text-transform: uppercase;
+  padding: 10px 10px 0px 10px;
+  0px10pxtext-transform: uppercase;
+  align-items: center;
 `
 
 const CompanyName = styled.div`
@@ -17,6 +18,7 @@ const CompanyName = styled.div`
 
 const Logo = styled.div`
   display: flex;
+  padding: 0px 20px;
 `
 
 const UserInfo = styled.div`
@@ -30,7 +32,7 @@ const UserInfo = styled.div`
     right: -2px;
     top: 25%;
     width: 1px;
-    height: 40%;
+    height: 20%;
     background-color: grey;
   }
 `
@@ -38,22 +40,11 @@ const UserInfo = styled.div`
 const Profile = styled.div`
   display: flex;
   align-items: center;
-  height: 100%;
+  margin: 0px 12px;
+  height: 80px;
 
   & > label {
-    padding: 0 10px;
-  }
-`
-
-const WishList = styled.div`
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 0px 5px;
-  color: grey;
-
-  & > label {
-    padding: 0 10px;
+    margin: 0 12px;
   }
 `
 
@@ -67,15 +58,38 @@ const Total = styled.label`
   color: red;
 `
 
-const ShoppingCart = styled.div`
+const SubMenu = styled.div`
+  position: absolute;
+  opacity: 0;
+  top: 80px;
+  background-color: #ebeeef;
+  padding: 20px;
+  text-align: left;
+  z-index: 999;
+  overflow: auto;
+  white-space: nowrap;
+  right: 0;
+`
+
+const MenuItem = styled.div`
   display: flex;
+  position: relative;
   align-items: center;
-  height: 100%;
-  padding: 0px 5px;
+  height: 80px;
+  padding: 0px 10px;
   color: grey;
+  position: relative;
 
   & > label {
-    padding: 0 10px;
+    margin: 0 12px;
+  }
+
+  &:hover {
+    background-color: #ebeeef;
+
+    ${SubMenu} {
+      opacity: 100;
+    }
   }
 `
 
@@ -86,7 +100,7 @@ export {
   UserInfo,
   Profile,
   ProfileImage,
-  WishList,
   Total,
-  ShoppingCart,
+  MenuItem,
+  SubMenu,
 }
