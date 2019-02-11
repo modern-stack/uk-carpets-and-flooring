@@ -30,12 +30,9 @@ export const query = graphql`
           id
           name
           slides {
-            title {
-              id
-            }
-            content {
-              id
-            }
+            title
+            content
+            cta
             image {
               fluid(quality: 100, maxWidth: 1240) {
                 base64

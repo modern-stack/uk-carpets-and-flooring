@@ -5,6 +5,10 @@ import {
   Slide,
   SlideSelection,
   SlideSelector,
+  Content,
+  Title,
+  SubContent,
+  Button,
 } from './styled'
 
 const incrementCarousel = (position, setPosition, slideCount) => {
@@ -30,13 +34,12 @@ export default ({ slides }) => {
         {slides.map((slide, index) => (
           <Slide key={index} visible={index === position}>
             <Image style={{ width: '100%' }} fluid={slide.image.fluid} />
-            <h1>We Provide Ultimate Flooring</h1>
-            <h2>
-              We make it a priority to offer flexible servuce to accomodate your
-              needs.
-            </h2>
-
-            <button />
+            <Content>
+              {console.log('slide >>>>', slide)}
+              <Title>{slide.title}</Title>
+              <SubContent>{slide.content}</SubContent>
+              <Button>{slide.cta}</Button>
+            </Content>
           </Slide>
         ))}
 
