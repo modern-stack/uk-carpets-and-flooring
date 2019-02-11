@@ -37,7 +37,7 @@ export const query = graphql`
               id
             }
             image {
-              fluid(maxWidth: 300, maxHeight: 400) {
+              fluid(quality: 100, maxWidth: 1240) {
                 base64
                 tracedSVG
                 aspectRatio
@@ -59,7 +59,7 @@ export const query = graphql`
           link
           backgroundImage {
             id
-            fluid {
+            fluid(quality: 100) {
               base64
               tracedSVG
               aspectRatio

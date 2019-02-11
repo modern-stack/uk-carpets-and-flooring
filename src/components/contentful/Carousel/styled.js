@@ -4,10 +4,6 @@ const CarouselContainer = styled.div`
   max-width: 100%;
 `
 
-const Wrapper = styled.div`
-  height: 100%;
-`
-
 const Selectors = styled.div`
   display: flex;
   justify-content: space-between;
@@ -22,4 +18,4 @@ const Slide = styled.div`
   transition: opacity 1s ease-in-out;
 `
 
-export { CarouselContainer, Slide, Wrapper, Selectors }
+export { CarouselContainer, Slide, Selectors }
