@@ -47,25 +47,26 @@ export const query = graphql`
             }
           }
         }
-        ... on ContentfulBanner {
-          title
-          h1text
-          h2text
-          h3text
-          ctatext
-          link
-          backgroundImage {
+        ... on ContentfulBanners {
+          banners {
             id
-            fluid(quality: 100) {
-              base64
-              tracedSVG
-              aspectRatio
-              src
-              srcSet
-              srcWebp
-              srcSetWebp
-              sizes
+            title
+            subtext
+            subtitle
+            cta
+            image {
+              fluid {
+                base64
+                tracedSVG
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
             }
+            link
           }
         }
       }

@@ -35,7 +35,6 @@ export default ({ slides }) => {
           <Slide key={index} visible={index === position}>
             <Image style={{ width: '100%' }} fluid={slide.image.fluid} />
             <Content>
-              {console.log('slide >>>>', slide)}
               <Title>{slide.title}</Title>
               <SubContent>{slide.content}</SubContent>
               <Button>{slide.cta}</Button>
