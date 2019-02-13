@@ -1,11 +1,8 @@
 import styled from 'styled-components'
 
 const Banner = styled.div`
-  display: flex;
-  posiion: relative;
-  height: 100%;
-  border: 1px solid red;
-  flex: 1;
+  position: relative;
+  width: 100%;
 `
 
 const Content = styled.div`
@@ -17,12 +14,12 @@ const Content = styled.div`
   transform: translate(-50%, -50%);
   color: white;
   z-index: 1000;
-  width: 30%;
+  width: 4em;
 `
 
 const Title = styled.h1`
   color: white;
-  font-size: 48px;
+  font-size: 2em;
 `
 
 const SubContent = styled.h2`
@@ -31,8 +28,8 @@ const SubContent = styled.h2`
 
 const Button = styled.button`
   border 2px solid white;
-  width: 30%;
-  height: 40px;
+  width: 100%;
+  height: 3em;
   margin: 18px 0;
 
    &:hover {

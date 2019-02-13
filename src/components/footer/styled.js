@@ -1,25 +1,53 @@
 import styled from 'styled-components'
 
 const Footer = styled.div`
-  padding: 5% 10%;
-  background: ${props => props.theme.branding.darkshade};
+  font-size: 12px;
+  background-color: #3e3e3e;
+  color: white;
   display: flex;
-  color: ${props => props.theme.branding.lightshade};
-  justify-content: space-around;
+  flex: space-between;
+  padding: 5% 2%;
+  position: relative;
+  height: 100%;
+  justify-content: center;
 
-  @media only screen and (max-width: 600px) {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
-
-  & > div {
-    max-width: 20%;
-
-    @media only screen and (max-width: 600px) {
-      max-width: 100%;
-    }
+  a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
   }
 `
 
-export { Footer }
+const Content = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: ${$ => $.flexdirection || 'row'};
+  position: relative;
+  align-content: center;
+  &:not(:last-child) {
+    border-right: 1px solid #ccc;
+  }
+  padding: 0 2%;
+  float: left;
+  justify-content: center;
+`
+
+const Links = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0 6%;
+
+  & > a {
+    display: flex;
+    flex: 1;
+  }
+`
+
+const Title = styled.div`
+  font-size: 26px;
+  margin-bottom: 4px;
+`
+
+export { Footer, Content, Links, Title }
