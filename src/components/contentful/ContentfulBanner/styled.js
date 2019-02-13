@@ -15,9 +15,13 @@ const Overlay = styled.div`
 
 const Content = styled.div`
   display: flex;
+  width: 100%
   justify-content: space-between;
   flex-direction: column;
-  margin: 10%;
+
+  &:first-child {
+    grid-row: span 2;
+  }
 `
 
 export { Container, Content, Overlay }

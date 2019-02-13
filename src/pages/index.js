@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import Layout from '../components/layout'
-import Image from '../components/image'
+import Testimonials from '../components/testimonials'
 import SEO from '../components/seo'
 import ContentfulComponents from '../components/contentful'
 
@@ -14,6 +14,7 @@ const IndexPage = ({ data }) => (
         const Component = ContentfulComponents[$.__typename]
         return Component ? <Component {...$} /> : null
       })}
+      <Testimonials />
     </React.Fragment>
   </Layout>
 )
@@ -55,7 +56,7 @@ export const query = graphql`
             subtitle
             cta
             image {
-              fluid {
+              fluid(quality: 100, maxWidth: 1240) {
                 base64
                 tracedSVG
                 aspectRatio

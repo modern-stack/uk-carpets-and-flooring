@@ -4,7 +4,6 @@ import Image from 'gatsby-image'
 import { Container, Content, Overlay } from './styled'
 
 function Banner({ backgroundImage, h1text, h2text, h3text, ctatext }) {
-  console.log('>>>>>> ', h1text, h2text, h3text, ctatext)
   return (
     <Container style={{ padding: 0, border: 0 }}>
       <Overlay>

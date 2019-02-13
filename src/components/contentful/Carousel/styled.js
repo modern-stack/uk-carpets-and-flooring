@@ -11,6 +11,18 @@ const Slide = styled.div`
   height: ${props => (props.visible ? '80vh' : 0)};
   opacity: ${props => (props.visible ? 1 : 0)};
   transition: opacity 1s ease-in;
+
+  &:after {
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
 `
 
 const SlideSelection = styled.div`
@@ -29,7 +41,7 @@ const SlideSelector = styled.div`
     props.selected ? 'rgb(199, 0, 43, 1)' : 'white'};
 
   cursor: ${$ => ($.selected ? 'cursor' : 'pointer')};
-
+  z-index: 1;
   transition: color 1s ease-in;
 `
 
