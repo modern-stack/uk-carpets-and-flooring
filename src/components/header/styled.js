@@ -93,8 +93,57 @@ const MenuItem = styled.div`
   }
 `
 
+const DesktopOptions = styled.div`
+  display: block;
+
+  @media (max-width: 700px) {
+    display: none;
+  }
+`
+
+const MobileOptions = styled.div`
+  display: none;
+  margin: 8px 0;
+
+  & > div {
+    margin: 0 0.6em;
+  }
+
+  @media (max-width: 700px) {
+    display: flex;
+  }
+`
+
+const Icon = styled.div`
+  posiition: relative;
+  border-radius: 50%;
+  color: gray;
+  background: #ebebeb;
+  height: 35px;
+  width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  :after {
+    content: '2';
+    position: absolute;
+    font-size: 12px;
+    background-color: #c5002c;
+    width: 14px;
+    height: 14px;
+    color: #fff;
+    top: 14px;
+    right: 70px;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+  }
+`
+
 export {
   Header,
+  Icon,
   Logo,
   CompanyName,
   UserInfo,
@@ -103,4 +152,6 @@ export {
   Total,
   MenuItem,
   SubMenu,
+  DesktopOptions,
+  MobileOptions,
 }

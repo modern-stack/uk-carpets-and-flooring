@@ -7,6 +7,7 @@ import firebase from '../../services/firebase'
 
 import {
   Header,
+  Icon,
   Logo,
   UserInfo,
   CompanyName,
@@ -15,6 +16,8 @@ import {
   Total,
   MenuItem,
   SubMenu,
+  DesktopOptions,
+  MobileOptions,
 } from './styled'
 
 const renderProfile = user => (
@@ -52,29 +55,41 @@ export default () => {
             <Img fixed={data.logo.childImageSharp.fixed} />
             <CompanyName>UK Carpets & Flooring</CompanyName>
           </Logo>
-          <UserInfo>
-            {user ? renderProfile(user) : renderSignIn()}
-            <MenuItem>
-              <FaHeart size={12} />
-              <label>
-                My Wish list (<Total>2</Total>)
-              </label>
-            </MenuItem>
-            <MenuItem>
+
+          <DesktopOptions>
+            <UserInfo>
+              {user ? renderProfile(user) : renderSignIn()}
+              <MenuItem>
+                <FaHeart size={12} />
+                <label>
+                  My Wish list (<Total>2</Total>)
+                </label>
+              </MenuItem>
+              <MenuItem>
+                <FaShoppingCart size={12} />
+                <label>
+                  My Cart (<Total>2</Total>)
+                </label>
+                <SubMenu>
+                  <div>Summary</div>
+                  <hr />
+                  <div>this is a test and shiiiiii</div>
+                  <div>hawow</div>
+                  <div>hawow</div>
+                  <div>hawow</div>
+                </SubMenu>
+              </MenuItem>
+            </UserInfo>
+          </DesktopOptions>
+
+          <MobileOptions>
+            <Icon>
               <FaShoppingCart size={12} />
-              <label>
-                My Cart (<Total>2</Total>)
-              </label>
-              <SubMenu>
-                <div>Summary</div>
-                <hr />
-                <div>this is a test and shiiiiii</div>
-                <div>hawow</div>
-                <div>hawow</div>
-                <div>hawow</div>
-              </SubMenu>
-            </MenuItem>
-          </UserInfo>
+            </Icon>
+            <div>
+              {user ? <ProfileImage src={user.photoURL} /> : renderSignIn()}
+            </div>
+          </MobileOptions>
         </Header>
       )}
     />
