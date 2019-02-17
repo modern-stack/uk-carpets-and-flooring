@@ -5,6 +5,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import Header from '../header'
 import Menu from '../menu'
 import Footer from '../../components/footer'
+import Copyright from '../../components/copyright'
 
 import { Content } from './styled'
 import { ThemeProvider } from 'styled-components'
@@ -30,6 +31,7 @@ const Layout = ({ children }) => (
           <Menu />
           <Content>{children}</Content>
           <Footer />
+          <Copyright />
         </>
       )}
     />

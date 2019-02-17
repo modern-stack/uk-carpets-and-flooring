@@ -1,7 +1,9 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
-import { Footer, Content, Links, Title } from './styled'
+import { FaInstagram, FaFacebook, FaTwitter, FaHeart } from 'react-icons/fa'
+
+import { Footer, Content, Links, Title, Social, BuiltBy } from './styled'
 
 export default () => (
   <Footer>
@@ -37,20 +39,19 @@ export default () => (
     <Content>
       <div>
         <Title>Connect with us</Title>
-        <div>69 Pinfold Drive</div>
-        <div>Eccleston</div>
-        <div>St Helens</div>
-        <div>WA10 5BT</div>
+        <Social>
+          <FaInstagram style={{ height: '20px', width: '20px' }} />
+          <FaFacebook style={{ height: '20px', width: '20px' }} />
+          <FaTwitter style={{ height: '20px', width: '20px' }} />
+        </Social>
       </div>
     </Content>
-    <Content>
+    <BuiltBy>
       <div>
-        <Title>Contact Info</Title>
-        <div>69 Pinfold Drive</div>
-        <div>Eccleston</div>
-        <div>St Helens</div>
-        <div>WA10 5BT</div>
+        Built with <FaHeart style={{ color: 'red', padding: '0 8px' }} /> by
+        Modern Commerce
       </div>
-    </Content>
+      <div>Hire us!</div>
+    </BuiltBy>
   </Footer>
 )

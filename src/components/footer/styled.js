@@ -18,6 +18,36 @@ const Footer = styled.div`
   }
 `
 
+const Social = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+`
+
+const BuiltBy = styled.div`
+  display: flex;
+  flex: 1;
+  position: relative;
+  align-items: center;
+  font-size: 1rem;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  & > div {
+    align-content: center;
+    display: flex;
+
+    :last-child {
+      margin-bottom: 1em;
+      border-bottom: 1px solid white;
+      color: white;
+    }
+  }
+`
+
+const Copyright = styled.div`
+  display: flex;
+`
+
 const Content = styled.div`
   display: flex;
   flex: 1;
@@ -25,7 +55,7 @@ const Content = styled.div`
   position: relative;
   align-content: center;
   &:not(:last-child) {
-    border-right: 1px solid #ccc;
+    border-right: 0.5px solid #ccc;
   }
   padding: 0 2%;
   float: left;
@@ -50,4 +80,4 @@ const Title = styled.div`
   margin-bottom: 4px;
 `
 
-export { Footer, Content, Links, Title }
+export { Footer, Content, Links, Title, Social, BuiltBy, Copyright }

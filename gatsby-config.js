@@ -10,6 +10,8 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     'gatsby-plugin-styled-components',
     'gatsby-plugin-stripe-checkout',
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-contentful`,
       options: {
@@ -30,6 +32,12 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-instagram-all`,
+      options: {
+        access_token: process.env.INSTAGRAM_API_KEY,
       },
     },
     `gatsby-transformer-sharp`,

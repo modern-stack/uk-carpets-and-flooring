@@ -5,6 +5,7 @@ import Layout from '../components/layout'
 import Testimonials from '../components/testimonials'
 import SEO from '../components/seo'
 import ContentfulComponents from '../components/contentful'
+import InstagramFeed from '../components/instagram'
 
 const IndexPage = ({ data }) => (
   <Layout>
@@ -15,6 +16,7 @@ const IndexPage = ({ data }) => (
         return Component ? <Component {...$} /> : null
       })}
       <Testimonials />
+      <InstagramFeed feed={data.allInstagramContent} />
     </React.Fragment>
   </Layout>
 )
@@ -68,6 +70,33 @@ export const query = graphql`
               }
             }
             link
+          }
+        }
+      }
+    }
+    allInstagramContent {
+      edges {
+        node {
+          link
+          caption {
+            text
+          }
+          localImage {
+            childImageSharp {
+              fluid(maxHeight: 500, maxWidth: 500, quality: 50) {
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              }
+            }
+          }
+          images {
+            standard_resolution {
+              width
+              height
+              url
+            }
+            low_resolution {
+              url
+            }
           }
         }
       }

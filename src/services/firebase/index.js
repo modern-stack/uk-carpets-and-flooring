@@ -24,18 +24,21 @@ class Firebase {
           .signInWithPopup(new firebase.auth.FacebookAuthProvider())
       }
 
-      this.createTestimonial = testimonial =>
-        this.db.ref(`testimonials`).set(testimonial)
-      this.allTestimonials = async () => {
-        const ref = firebase
+      this.createTestimonial = testimonial => {
+        const id = firebase
+          .database()
+          .ref()
+          .child('testimonials')
+          .push().key
+        return this.db.ref(`testimonials/${id}`).set(testimonial)
+      }
+
+      this.allTestimonials = async () =>
+        firebase
           .database()
           .ref(`testimonials`)
           .once('value')
-
-        console.log('Ref >>>>')
-
-        return ref.then($ => $.val())
-      }
+          .then($ => [...Object.values($.val() || [])])
     }
   }
 }
