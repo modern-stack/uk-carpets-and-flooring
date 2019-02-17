@@ -37,7 +37,7 @@ export const query = graphql`
             content
             cta
             image {
-              fluid(quality: 100, maxWidth: 1240) {
+              fluid(quality: 100, maxHeight: 700, maxWidth: 1240) {
                 base64
                 tracedSVG
                 aspectRatio
