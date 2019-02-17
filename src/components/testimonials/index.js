@@ -42,8 +42,6 @@ export default () => {
     slides.push(testimonials.slice($, $ + 3))
   }
 
-  console.log('slides', slides)
-
   return (
     <TestimonialContainer>
       <Title>Client Testimonials</Title>

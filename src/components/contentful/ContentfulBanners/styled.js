@@ -20,6 +20,12 @@ const Banners = styled.div`
       grid-row: span 2;
     }
   }
+
+  @media (max-width: 700px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
 `
 
 const ContentfulBanners = styled.div`
@@ -28,6 +34,10 @@ const ContentfulBanners = styled.div`
   overflow: hidden;
   padding: 12px;
   height: 56vh;
+
+  @media (max-width: 700px) {
+    height: 100%;
+  }
 `
 
 export { ContentfulBanners, Banners }

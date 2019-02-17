@@ -17,7 +17,7 @@ import firebase from '../../services/firebase'
 
 export default () => {
   const [active, setActive] = useState(false)
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState()
 
   useEffect(async () => {
     firebase.auth.onAuthStateChanged($ => setUser($))
@@ -70,9 +70,7 @@ export default () => {
                 <FaShoppingBasket />
               </OptionContainer>
             </div>
-            <div>
-              <OptionImage src={user.photoURL} />
-            </div>
+            <div>{user && <OptionImage src={user.photoURL} />}</div>
           </Options>
         </MobileSubMenuContent>
       </MobileSubMenu>

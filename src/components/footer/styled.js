@@ -11,6 +11,10 @@ const Footer = styled.div`
   height: 100%;
   justify-content: center;
 
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
+
   a {
     color: white;
     text-decoration: none;
