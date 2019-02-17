@@ -11,7 +11,7 @@ export default ({ slides }) => {
     <Carousel>
       <ReactSwipe
         className="carousel"
-        swipeOptions={{ continuous: true }}
+        swipeOptions={{ continuous: true, callback: $ => setPosition($) }}
         ref={el => (reactSwipeEl = el)}
       >
         {slides.map($ => (
