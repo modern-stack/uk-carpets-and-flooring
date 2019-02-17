@@ -33,13 +33,13 @@ const Content = styled.div`
   left: 20%;
   transform: translate(-50%, -50%);
   color: white;
-  z-index: 1000;
+  z-index: 9998;
   width: 4em;
 `
 
 const Title = styled.h1`
   color: white;
-  font-size: 2em;
+  font-size: 0.5em;
 `
 
 const SubContent = styled.h2`

@@ -77,9 +77,6 @@ export default () => {
                           <div />
                         </Details>
                       </div>
-                      <div />
-                      <div />
-                      <div />
                     </Testimonial>
                   </Content>
                 ))}

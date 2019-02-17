@@ -11,7 +11,7 @@ const Title = styled.div`
   flex: 1;
   justify-content: center;
   text-transform: uppercase;
-  margin-bottom: 30px;
+  margin-top: 30px;
 `
 
 const Carousel = styled.div`
@@ -70,7 +70,7 @@ const Testimonial = styled.div`
   display: grid;
   flex: 1;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: minmax(100px, 1fr) auto;
 
   & > div {
     :first-child {
@@ -115,6 +115,7 @@ const Details = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
+  margin-top: 10px;
 `
 
 const Profile = styled.div`

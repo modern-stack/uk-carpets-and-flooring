@@ -7,7 +7,7 @@ import Menu from '../menu'
 import Footer from '../../components/footer'
 import Copyright from '../../components/copyright'
 
-import { Content } from './styled'
+import { Page, Content } from './styled'
 import { ThemeProvider } from 'styled-components'
 import theme from './theme'
 // import PageTransition from 'gatsby-plugin-page-transitions'
@@ -26,13 +26,13 @@ const Layout = ({ children }) => (
         }
       `}
       render={data => (
-        <>
+        <Page>
           <Header siteTitle={data.site.siteMetadata.title} />
           <Menu />
           <Content>{children}</Content>
           <Footer />
           <Copyright />
-        </>
+        </Page>
       )}
     />
     {/* </PageTransition> */}

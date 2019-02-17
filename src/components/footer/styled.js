@@ -68,6 +68,8 @@ const Links = styled.div`
   flex-direction: column;
   justify-content: space-around;
   padding: 0 6%;
+  font-size: 0.6vw;
+  font-weight: 900;
 
   & > a {
     display: flex;
