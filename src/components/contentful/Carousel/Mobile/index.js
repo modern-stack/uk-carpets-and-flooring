@@ -7,11 +7,16 @@ import { Carousel, Slide, SlideSelection, SlideSelector } from './styled'
 export default ({ slides }) => {
   let reactSwipeEl
   const [position, setPosition] = useState(0)
+
   return (
     <Carousel>
       <ReactSwipe
         className="carousel"
-        swipeOptions={{ continuous: true, callback: $ => setPosition($) }}
+        swipeOptions={{
+          startSlide: position,
+          continuous: true,
+          callback: $ => setPosition($),
+        }}
         ref={el => (reactSwipeEl = el)}
       >
         {slides.map($ => (
