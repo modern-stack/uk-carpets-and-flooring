@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'gatsby-image'
 import { FaInstagram } from 'react-icons/fa'
-import { Instagram, Gallery, Title, ImageContainer } from './styled'
+import { Instagram, Gallery, Title } from './styled'
 
 export default ({ feed }) => (
   <Instagram>
@@ -12,9 +12,7 @@ export default ({ feed }) => (
     <Gallery>
       {feed.edges.slice(0, 12).map((item, i) => {
         return item.node.localImage ? (
-          <ImageContainer>
-            <Image fluid={item.node.localImage.childImageSharp.fluid} key={i} />
-          </ImageContainer>
+          <Image fluid={item.node.localImage.childImageSharp.fluid} key={i} />
         ) : (
           <div />
         )
