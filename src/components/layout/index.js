@@ -13,6 +13,7 @@ import fonts from './fonts'
 // import PageTransition from 'gatsby-plugin-page-transitions'
 
 const GlobalStyle = createGlobalStyle`
+
   body {
 
   @font-face {
