@@ -1,5 +1,4 @@
 import firebase from 'firebase'
-import 'firebase/firestore'
 
 const config = {
   apiKey: process.env.GATSBY_FIREBASE_API_KEY,
@@ -12,7 +11,6 @@ class Firebase {
   constructor() {
     if (typeof window !== 'undefined') {
       firebase.initializeApp(config)
-      this.store = firebase.firestore
       this.auth = firebase.auth()
       this.db = firebase.database()
 
@@ -24,7 +22,7 @@ class Firebase {
           .signInWithPopup(new firebase.auth.FacebookAuthProvider())
       }
 
-      this.createTestimonial = testimonial => {
+      this.createTestimonial = async testimonial => {
         const id = firebase
           .database()
           .ref()
