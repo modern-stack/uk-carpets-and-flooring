@@ -83,7 +83,7 @@ export default () => {
           </DesktopOptions>
 
           <MobileOptions>
-            <Icon>
+            <Icon value={2}>
               <FaShoppingCart size={12} />
             </Icon>
             <div>

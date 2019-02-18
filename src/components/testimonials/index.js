@@ -15,6 +15,8 @@ import {
   TestimonialContainer,
   SlideSelection,
   SlideSelector,
+  DesktopContainer,
+  MobileContainer,
 } from './styled'
 
 const incrementCarousel = (position, setPosition, slideCount) => {

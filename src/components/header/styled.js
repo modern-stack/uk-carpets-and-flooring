@@ -126,7 +126,7 @@ const Icon = styled.div`
   align-items: center;
 
   :after {
-    content: '2';
+    content: '${$ => $.value}';
     position: absolute;
     font-size: 12px;
     background-color: #c5002c;

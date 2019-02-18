@@ -134,6 +134,24 @@ const Profile = styled.div`
   }
 `
 
+const DesktopContainer = styled.div`
+  display: none;
+  flex-direction: column;
+
+  @media (max-width: 700px) {
+    flex-direction: flex;
+  }
+`
+
+const MobileContainer = styled.div`
+  display: none;
+  flex-direction: column;
+
+  @media (max-width: 700px) {
+    flex-direction: flex;
+  }
+`
+
 export {
   Testimonials,
   Title,
@@ -147,4 +165,6 @@ export {
   Details,
   Profile,
   TestimonialContainer,
+  DesktopContainer,
+  MobileContainer,
 }
