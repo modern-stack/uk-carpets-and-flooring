@@ -18,9 +18,15 @@ const Gallery = styled.div`
   }
 `
 
+const ImageContainer = styled.figure`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
 const Title = styled.div`
   display: flex;
   justify-content: center;
 `
 
-export { Instagram, Gallery, Title }
+export { Instagram, Gallery, Title, ImageContainer }

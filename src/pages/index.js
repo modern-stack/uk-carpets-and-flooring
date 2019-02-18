@@ -37,7 +37,7 @@ export const query = graphql`
             content
             cta
             image {
-              fluid(quality: 100, maxHeight: 700, maxWidth: 1240) {
+              fluid(quality: 50, maxHeight: 700, maxWidth: 1240) {
                 base64
                 tracedSVG
                 aspectRatio
@@ -58,7 +58,7 @@ export const query = graphql`
             subtitle
             cta
             image {
-              fluid(quality: 100, maxWidth: 1240) {
+              fluid(quality: 50, maxWidth: 1240) {
                 base64
                 tracedSVG
                 aspectRatio
@@ -83,7 +83,7 @@ export const query = graphql`
           }
           localImage {
             childImageSharp {
-              fluid(maxWidth: 100, quality: 100) {
+              fluid(maxWidth: 100, quality: 50) {
                 ...GatsbyImageSharpFluid_withWebp_tracedSVG
               }
             }
