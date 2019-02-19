@@ -9,5 +9,6 @@ export default () => (
       <div>Privacy Policy</div>
       <div>Terms and conditions</div>
     </Policies>
+    <div />
   </Copyright>
 )

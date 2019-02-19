@@ -21,7 +21,7 @@ const Footer = styled.div`
       padding: 50px 0;
 
       &:not(:last-child) {
-        border-bottom: 1px solid white;
+        border-bottom: 0.1px solid white;
       }
     }
   }
@@ -69,10 +69,6 @@ const BuiltBy = styled.div`
   }
 `
 
-const Copyright = styled.div`
-  display: flex;
-`
-
 const Content = styled.div`
   display: flex;
   flex: 1;
@@ -105,6 +101,7 @@ const Links = styled.div`
   font-size: 0.6vw;
   font-weight: 900;
   column-row-gap: 4px;
+  grid-column-gap: 25px;
 
   & > div {
     display: flex;
@@ -126,4 +123,4 @@ const Title = styled.div`
   margin-bottom: 4px;
 `
 
-export { Footer, Content, Links, Title, Social, BuiltBy, Copyright }
+export { Footer, Content, Links, Title, Social, BuiltBy }

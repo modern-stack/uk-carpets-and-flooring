@@ -5,6 +5,18 @@ const Copyright = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 20px 6%;
+  position: relative;
+
+  @media (max-width: 700px) {
+      flex-direction: column;
+      text-align: center;
+
+    & > div {
+        margin-bottom: 30px;
+        :last-child{
+            min-height: 1px;
+        }
+    }
 `
 
 const Policies = styled.div`
