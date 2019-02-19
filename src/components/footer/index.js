@@ -13,14 +13,10 @@ export default () => (
         <Link>Laminates</Link>
         <Link>Vinyls</Link>
         <Link>Accessories</Link>
-      </Links>
-      <Links>
         <Link>Home</Link>
         <Link>About</Link>
         <Link>Blog</Link>
         <Link>Contact</Link>
-      </Links>
-      <Links>
         <Link>My Wishlist</Link>
         <Link>Shipping</Link>
         <Link>How to order</Link>
