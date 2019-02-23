@@ -11,7 +11,7 @@ const Title = styled.div`
   flex: 1;
   justify-content: center;
   text-transform: uppercase;
-  margin-top: 30px;
+  margin: 30px 0;
 `
 
 const Carousel = styled.div`
@@ -116,11 +116,17 @@ const Details = styled.div`
   align-items: center;
   width: 100%;
   margin-top: 10px;
+
+  @media (max-width: 700px) {
+    display: flex;
+    margin-bottom: 20px;
+    flex-direction: column;
+  }
 `
 
 const Profile = styled.div`
   display: flex;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   border-right: 1px solid #ccc;
   flex-direction: column;
@@ -130,16 +136,42 @@ const Profile = styled.div`
   justify-content: center;
 
   & > div {
+    :first-child{
+      grid-columnL span 2;
+    }
     flex: 1;
+  }
+
+  @media (max-width: 700px) {
+    flex-direction: row;
+    margin: 10px 0 35px 0;
+    border: none;
+  }
+`
+
+const ProfileDetails = styled.div`
+  display: flex;
+  white-space: nowrap;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    margin: 0px 8px;
+  }
+`
+
+const Review = styled.div`
+  @media (max-width: 700px) {
+    text-align: center;
   }
 `
 
 const DesktopContainer = styled.div`
-  display: none;
+  display: flex;
   flex-direction: column;
 
   @media (max-width: 700px) {
-    flex-direction: flex;
+    display: none;
+    flex-direction: none;
   }
 `
 
@@ -148,6 +180,7 @@ const MobileContainer = styled.div`
   flex-direction: column;
 
   @media (max-width: 700px) {
+    display: flex;
     flex-direction: flex;
   }
 `
@@ -163,7 +196,9 @@ export {
   Image,
   Content,
   Details,
+  Review,
   Profile,
+  ProfileDetails,
   TestimonialContainer,
   DesktopContainer,
   MobileContainer,
