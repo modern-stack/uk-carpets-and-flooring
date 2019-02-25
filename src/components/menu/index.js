@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Link from 'gatsby-link'
 import { FaBars, FaTimes, FaHeart, FaShoppingBasket } from 'react-icons/fa'
 import {
   Menu,
@@ -26,25 +27,27 @@ export default () => {
   return (
     <React.Fragment>
       <Menu>
-        <MenuItem>
+        <MenuItem to="/">
           <span>Home</span>
         </MenuItem>
-        <MenuItem>
+        <MenuItem to="/carpets">
           Carpets
           <SubMenu>
             <div>stuff</div>
             <div>more stuff</div>
           </SubMenu>
         </MenuItem>
-        <MenuItem>Laminates</MenuItem>
-        <MenuItem>Vinyls</MenuItem>
-        <MenuItem>Accessories</MenuItem>
+        <MenuItem to="/laminates">
+          <Link>Laminates</Link>
+        </MenuItem>
+        <MenuItem to="/vinyls">Vinyls</MenuItem>
+        <MenuItem to="/accessories">Accessories</MenuItem>
       </Menu>
       <MobileMenu>
         <Container>
-          <MenuItem>Carpets</MenuItem>
-          <MenuItem>Laminates</MenuItem>
-          <MenuItem>Vinyls</MenuItem>
+          <MenuItem to="/carpets">Carpets</MenuItem>
+          <MenuItem to="/laminates">Laminates</MenuItem>
+          <MenuItem to="/vinyls">Vinyls</MenuItem>
         </Container>
         <Container>
           <MenuItem onClick={() => setActive(!active)}>
@@ -54,11 +57,21 @@ export default () => {
       </MobileMenu>
       <MobileSubMenu active={active}>
         <MobileSubMenuContent>
-          <MenuItem inverted>Home</MenuItem>
-          <MenuItem inverted>Carpets</MenuItem>
-          <MenuItem inverted>Laminates</MenuItem>
-          <MenuItem inverted>Flooring</MenuItem>
-          <MenuItem inverted>Accessories</MenuItem>
+          <MenuItem inverted to="/home">
+            Carpets>Home
+          </MenuItem>
+          <MenuItem inverted to="/carpets">
+            Carpets>Carpets
+          </MenuItem>
+          <MenuItem inverted to="/laminates">
+            Carpets>Laminates
+          </MenuItem>
+          <MenuItem inverted to="/flooring">
+            Carpets>Flooring
+          </MenuItem>
+          <MenuItem inverted to="/accessories">
+            Carpets>Accessories
+          </MenuItem>
           <Options>
             <div>
               <OptionContainer>

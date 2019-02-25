@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { FaFileExcel } from 'react-icons/fa'
 
+import Link from 'gatsby-link'
+
 const Menu = styled.div`
   display: flex;
   flex: space-between;
@@ -31,7 +33,7 @@ const SubMenu = styled.div`
   left: 0;
 `
 
-const MenuItem = styled.div`
+const MenuItem = styled(Link)`
   position: relative;
   display: flex;
   padding: 12px 0px;
@@ -40,10 +42,20 @@ const MenuItem = styled.div`
   width: 100%;
   justify-content: center;
 
+  a:link {
+    color: black;
+    text-decoration: none;
+  }
+
   &:hover {
     background-color: rgb(199, 0, 43, 1);
     cursor: pointer;
     color: white;
+
+    a:link {
+      color: white;
+      text-decoration: none;
+    }
 
     ${SubMenu} {
       opacity: 100;
