@@ -11,7 +11,7 @@ import {
 } from './styled'
 
 export default ({ banner }) => (
-  <Banner>
+  <Banner maxHeight={banner.maxHeight}>
     <ImageContainer>
       {banner.image && (
         <Image style={{ position: 'initial' }} fluid={banner.image.fluid} />
@@ -20,7 +20,7 @@ export default ({ banner }) => (
     <Content>
       <Title>{banner.title}</Title>
       <SubContent>{banner.content}</SubContent>
-      <Button>{banner.cta}</Button>
+      {banner.cta && <Button>{banner.cta}</Button>}
     </Content>
   </Banner>
 )
