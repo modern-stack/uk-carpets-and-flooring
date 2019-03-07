@@ -38,6 +38,7 @@
     "build": "gatsby build",
     "serve": "gatsby build && gatsby serve",
     "develop": "gatsby develop",
+    "debug": "ndb",
     "start": "npm run develop",
     "format": "prettier --write \"src/**/*.js\"",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
@@ -46,7 +47,7 @@
     "faker": "^4.1.0",
     "fetch": "^1.1.0",
     "fetch-node": "0.0.1",
-    "ndb": "^1.0.42",
+    "ndb": "^1.0.43",
     "prettier": "^1.15.2"
   },
   "repository": {
