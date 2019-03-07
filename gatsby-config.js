@@ -9,7 +9,12 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     'gatsby-plugin-styled-components',
-    'gatsby-plugin-stripe-checkout',
+    {
+      resolve: `gatsby-plugin-stripe-checkout`,
+      options: {
+        async: true,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -24,14 +29,6 @@ module.exports = {
       options: {
         spaceId: 'r5glwopythaj',
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-      },
-    },
-    {
-      resolve: `gatsby-source-stripe`,
-      options: {
-        objects: ['Product', 'Sku'],
-        secretKey: process.env.STRIPE_API_KEY,
-        downloadFiles: false,
       },
     },
     {

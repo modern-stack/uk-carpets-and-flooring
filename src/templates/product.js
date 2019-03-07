@@ -13,28 +13,3 @@ export default ({ data }) => {
     </Layout>
   )
 }
-
-export const pageQuery = graphql`
-  query Product($id: String!) {
-    contentfulProduct(id: { eq: $id }) {
-      id
-      name
-      featuredImage {
-        id
-        title
-      }
-    }
-    allContentfulAsset {
-      edges {
-        node {
-          title
-          resize(width: 100) {
-            src
-            width
-            height
-          }
-        }
-      }
-    }
-  }
-`
