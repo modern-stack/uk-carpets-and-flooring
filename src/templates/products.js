@@ -1,47 +1,43 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import Img from 'gatsby-image'
 
 import Layout from '../components/layout'
-import Testimonials from '../components/testimonials'
-import ProductList from '../components/productlist'
 import SEO from '../components/seo'
-import ContentfulComponents from '../components/contentful'
-import InstagramFeed from '../components/instagram'
-import InnerContent from '../components/layout/innercontent'
-import ProductContainer from '../components/layout/productcontainer'
 
-const renderContentfulComponents = contentfulPage => {
-  if (!contentfulPage) return null
+import { Gallery, GalleryItem } from '../components/styled/Gallery.js'
+import { Preview, PreviewItem } from '../components/styled/PreviewGallery'
 
-  return contentfulPage.content.map($ => {
-    console.log('rendering >>>>', $.__typename, $)
-    const Component = ContentfulComponents[$.__typename]
-    return Component ? <Component {...$} /> : null
-  })
+function renderSkus(skus) {
+  console.log(skus)
+  return (
+    <Preview>
+      {skus.map($ => (
+        <PreviewItem>
+          {$.featuredImage && <Img fixed={$.featuredImage.fixed} />}
+        </PreviewItem>
+      ))}
+    </Preview>
+  )
 }
 
-export default ({ data }) => {
-  console.log('>>>>>>', data)
-  const { allInstagramContent, contentfulPage, allContentfulProduct } = data
-
-  console.log('products >>>>', allContentfulProduct)
-
+export default ({ pageContext }) => {
+  const { skus } = pageContext
   return (
     <Layout>
-      <SEO title="Carpets" keywords={[`gatsby`, `application`, `react`]} />
-      <React.Fragment>
-        {renderContentfulComponents(contentfulPage)}
+      <SEO title="Products" />
+      <h1>Products</h1>
 
-        <InnerContent>
-          <ProductContainer>
-            <div>This is the search</div>
-            <ProductList products={allContentfulProduct.edges} />
-          </ProductContainer>
-        </InnerContent>
-
-        <Testimonials />
-        <InstagramFeed feed={allInstagramContent} />
-      </React.Fragment>
+      <Gallery>
+        {skus.map($ => (
+          <GalleryItem>
+            <Link to={`/products/${$.name}`}>
+              {$.featuredImage && <Img fixed={$.featuredImage.fixed} />}
+              {/* {renderSkus(skus)} */}
+            </Link>
+          </GalleryItem>
+        ))}
+      </Gallery>
     </Layout>
   )
 }
