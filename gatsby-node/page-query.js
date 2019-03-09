@@ -1,5 +1,4 @@
 module.exports = ({ graphql, id }) => {
-  console.log('Query >>>>>>', graphql, id)
   return graphql(`
     {
       contentfulPage(id: { eq: "${id}" }) {

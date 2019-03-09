@@ -1,23 +1,27 @@
 import React from 'react'
 import Image from 'gatsby-image'
-import { List, Product, ImageContainer } from './styled'
+import { List, Product, ImageContainer, Buttons } from './styled'
 
 export default ({ products }) => {
-  console.log('>>>>', products)
+  console.log('>>>>>', products)
   return (
     <List>
       {products.map($ => (
         <Product>
           <ImageContainer>
-            {$.node.featuredImage && (
-              <Image fluid={$.node.featuredImage.fluid} />
-            )}
+            {$.featuredImage && <Image fluid={$.featuredImage.fluid} />}
+
+            <Buttons>
+              <div>View Details</div>
+              <div>Add to wishlist</div>
+            </Buttons>
           </ImageContainer>
-          <div>{$.node.name}</div>
-          <div>{$.node.subtitle}</div>
-          <div>{$.node.price}</div>
+
+          <div>{$.product.name}</div>
+          <div>{$.name}</div>
+          <div>{$.subtitle}</div>
+          <div>£{$.price}</div>
           <ul>
-            <li>Something 1</li>
             <li>Something 2</li>
             <li>Something 3</li>
           </ul>

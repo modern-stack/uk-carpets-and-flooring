@@ -1,11 +1,13 @@
 const templates = require(`./templates`)
 const allPages = require('./allPages')
 const pageQuery = require('./page-query')
+const allProducts = require('./allProducts')
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const { allContentfulPage } = await allPages(graphql)
+  const { allContentfulSku } = await allProducts(graphql)
 
   const pages = []
 
@@ -16,11 +18,13 @@ exports.createPages = async ({ graphql, actions }) => {
 
         const context = await pageQuery({ graphql, id })
 
+        console.log('Running >>>>', template)
+
         return resolve(
           templates[template]
             ? templates[template]({
                 node: $.node,
-                graphql,
+                products: allContentfulSku,
                 context,
                 createPage,
               })

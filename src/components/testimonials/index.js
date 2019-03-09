@@ -17,8 +17,6 @@ export default () => {
     setTestimonials(await fb.allTestimonials().then($ => $))
   }, [])
 
-  console.log('>>>>> ', testimonials)
-
   return (
     <React.Fragment>
       <Desktop

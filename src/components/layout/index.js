@@ -6,7 +6,6 @@ import Menu from '../menu'
 import Footer from '../../components/footer'
 import Copyright from '../../components/copyright'
 
-import Testimonials from '../../components/testimonials'
 import InstagramFeed from '../../components/instagram'
 
 import GlobalStyle from './globalstyle'
@@ -23,7 +22,6 @@ export default ({ children, data }) => {
         <Header siteTitle={'unknown'} />
         <Menu />
         <Content>{children}</Content>
-        <Testimonials />
         <InstagramFeed />
         <Footer />
         <Copyright />

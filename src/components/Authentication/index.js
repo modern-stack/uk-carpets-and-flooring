@@ -10,8 +10,6 @@ export default ({ children }) => {
     setValues({ ...values, [name]: value.target.value })
   }
 
-  useEffect(async () => {
-    console.log('Firebae >>>>>>', auth, db)
     auth.onAuthStateChanged($ => setUser($))
   }, [])
 
@@ -20,7 +18,6 @@ export default ({ children }) => {
     const fbUser = await auth
       .createUserWithEmailAndPassword(email, password)
       .catch($ => {
-        console.log('error >>>>', $)
         setError($.message)
       })
 

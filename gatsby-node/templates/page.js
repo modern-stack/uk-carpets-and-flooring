@@ -3,6 +3,8 @@ const path = require(`path`)
 module.exports = (node, context, createPage) => {
   const { slug, template } = node
 
+  console.log('Building page template >>>>>', slug)
+
   return new Promise(resolve => {
     createPage({
       path: `${slug}`,
@@ -12,6 +14,8 @@ module.exports = (node, context, createPage) => {
         ...context,
       },
     })
+
+    console.log('resolving page template >>>>>', slug)
 
     return resolve()
   })

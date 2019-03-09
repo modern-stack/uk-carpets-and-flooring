@@ -3,8 +3,9 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import ContentfulComponents from '../components/contentful'
 
+import Testimonials from '../components/testimonials'
+
 export default ({ pageContext }) => {
-  console.log('Data >>>>>>', pageContext)
   return (
     <Layout page={pageContext}>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
@@ -15,6 +16,7 @@ export default ({ pageContext }) => {
             const Component = ContentfulComponents[$.internal.type]
             return Component ? <Component {...$} /> : null
           })}
+        <Testimonials />
       </React.Fragment>
     </Layout>
   )

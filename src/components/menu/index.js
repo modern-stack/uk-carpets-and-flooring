@@ -37,9 +37,7 @@ export default () => {
             <div>more stuff</div>
           </SubMenu>
         </MenuItem>
-        <MenuItem to="/laminates">
-          <Link>Laminates</Link>
-        </MenuItem>
+        <MenuItem to="/laminates">Laminates</MenuItem>
         <MenuItem to="/vinyls">Vinyls</MenuItem>
         <MenuItem to="/accessories">Accessories</MenuItem>
       </Menu>

@@ -1,65 +1,43 @@
 const path = require(`path`)
 
-module.exports = async ({ createPage, graphql, node, context }) => {
-  return graphql(`
-    {
-      allContentfulSku {
-        edges {
-          node {
-            id
-            name
-            featuredImage {
-              id
-              fixed {
-                base64
-                tracedSVG
-                aspectRatio
-                width
-                height
-                src
-                srcSet
-                srcWebp
-                srcSetWebp
-              }
-            }
-            product {
-              id
-              productType {
-                id
-                name
-              }
-            }
-          }
-        }
-      }
-    }
-  `).then(result => {
-    const { allContentfulSku } = result.data
+module.exports = async ({ createPage, products, node, context }) => {
+  console.log('Building product template >>>>>', products)
 
-    const skus = allContentfulSku.edges
+  return new Promise(resolve => {
+    const skus = products.edges
       .filter($ => {
         return (
           $.node.product &&
-          $.node.product.length &&
           $.node.product[0].productType &&
-          node.slug.includes($.node.product[0].productType.name)
+          node.slug.includes($.node.product[0].productType.name.toLowerCase())
         )
       })
       .map($ => {
         return { ...$.node, product: $.node.product[0] }
       })
 
-    console.log('skus >>>>>', skus)
+    skus.map($ =>
+      createPage({
+        path: `${node.slug}/${$.name}`,
+        component: path.resolve(`./src/templates/product.js`),
+        context: {
+          ...context,
+          ...$,
+        },
+      })
+    )
 
-    // createPage({
-    //   path: `${slug}`,
-    //   component: path.resolve(`./src/templates/products.js`),
-    //   context: {
-    //     ...context,
-    //     skus,
-    //   },
-    // })
+    createPage({
+      path: `${node.slug}`,
+      component: path.resolve(`./src/templates/products/index.js`),
+      context: {
+        ...context,
+        skus,
+      },
+    })
 
-    return Promise.resolve()
+    console.log('resolving product template >>>>>', node.slug)
+
+    return resolve()
   })
 }
