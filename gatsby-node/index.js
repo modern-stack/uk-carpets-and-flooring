@@ -18,11 +18,10 @@ exports.createPages = async ({ graphql, actions }) => {
 
         const context = await pageQuery({ graphql, id })
 
-        console.log('Running >>>>', template)
-
         return resolve(
           templates[template]
             ? templates[template]({
+                graphql,
                 node: $.node,
                 products: allContentfulSku,
                 context,

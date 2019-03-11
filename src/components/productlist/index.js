@@ -1,6 +1,8 @@
 import React from 'react'
 import Image from 'gatsby-image'
-import { List, Product, ImageContainer, Buttons } from './styled'
+import { List, Product, ImageContainer, Buttons, Button } from './styled'
+import { navigate } from '@reach/router'
+import Link from 'gatsby-link'
 
 export default ({ products }) => {
   console.log('>>>>>', products)
@@ -12,8 +14,14 @@ export default ({ products }) => {
             {$.featuredImage && <Image fluid={$.featuredImage.fluid} />}
 
             <Buttons>
-              <div>View Details</div>
-              <div>Add to wishlist</div>
+              <Link
+                to={`/${$.product.productType.name.toLowerCase()}/${
+                  $.product.name
+                }`}
+              >
+                <Button>View Details</Button>
+              </Link>
+              <Button>Add to wishlist</Button>
             </Buttons>
           </ImageContainer>
 
