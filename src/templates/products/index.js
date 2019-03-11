@@ -4,6 +4,7 @@ import Layout from '../../components/layout'
 import SEO from '../../components/seo'
 import ContentfulComponents from '../../components/contentful'
 import ProductList from '../../components/productlist'
+import ProductFilter from '../../components/ProductFilter'
 
 import { ProductsContainer } from './styled'
 
@@ -21,7 +22,7 @@ export default ({ pageContext }) => {
         })}
 
       <ProductsContainer>
-        <div>Search section </div>
+        <ProductFilter />
         <ProductList products={skus} />
       </ProductsContainer>
     </Layout>
