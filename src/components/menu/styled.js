@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { FaFileExcel } from 'react-icons/fa'
 
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 
 const Menu = styled.div`
   display: flex;
