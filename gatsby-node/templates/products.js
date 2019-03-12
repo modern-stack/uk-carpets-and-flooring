@@ -2,7 +2,6 @@ const path = require(`path`)
 
 module.exports = async ({ graphql, createPage, products, node, context }) => {
   const formatted = node.slug.replace('/', '')
-
   const productType = formatted.charAt(0).toUpperCase() + formatted.slice(1)
 
   const { allContentfulProduct } = await graphql(`
@@ -45,8 +44,6 @@ module.exports = async ({ graphql, createPage, products, node, context }) => {
         })
       })
     }
-
-    console.log('Skus >>>>>', skus)
 
     createPage({
       path: `${node.slug}`,

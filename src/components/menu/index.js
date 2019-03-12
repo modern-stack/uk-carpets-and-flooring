@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import { FaBars, FaTimes, FaHeart, FaShoppingBasket } from 'react-icons/fa'
 import {
   Menu,
@@ -20,13 +20,13 @@ export default () => {
   const [active, setActive] = useState(false)
   const [user, setUser] = useState()
 
-  useEffect(async () => {
-    firebase.auth.onAuthStateChanged($ => setUser($))
+  useEffect(() => {
+    //firebase.auth.onAuthStateChanged($ => setUser($))
   }, [])
 
   return (
     <React.Fragment>
-      <Menu>
+      {/* <Menu>
         <MenuItem to="/">
           <span>Home</span>
         </MenuItem>
@@ -84,7 +84,8 @@ export default () => {
             <div>{user && <OptionImage src={user.photoURL} />}</div>
           </Options>
         </MobileSubMenuContent>
-      </MobileSubMenu>
+      </MobileSubMenu> */}
+      <Link to={'/carpets'}>Clicky</Link>
     </React.Fragment>
   )
 }
