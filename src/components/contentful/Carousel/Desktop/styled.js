@@ -54,7 +54,7 @@ const Content = styled.div`
   transform: translate(-25%, -50%);
   color: white;
   z-index: 9998;
-  width: 1.5em;
+  width: 50%;
 `
 
 const Title = styled.h1`
@@ -67,7 +67,7 @@ const SubContent = styled.h2`
 `
 
 const Button = styled.button`
-  width: 50%;
+  width: 25%;
   height: 40px;
   color: white;
   background-color: rgb(199, 0, 43, 0.9);

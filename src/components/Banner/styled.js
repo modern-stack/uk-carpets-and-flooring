@@ -35,7 +35,7 @@ const Content = styled.div`
   transform: translate(-50%, -50%);
   color: white;
   z-index: 9998;
-  width: 4em;
+  width: 50%;
 `
 
 const Title = styled.h1`

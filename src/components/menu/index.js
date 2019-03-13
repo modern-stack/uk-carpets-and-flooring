@@ -85,7 +85,6 @@ export default () => {
           </Options>
         </MobileSubMenuContent>
       </MobileSubMenu>
-      <Link to={'/carpets'}>Clicky</Link>
     </React.Fragment>
   )
 }
