@@ -18,13 +18,13 @@ export default ({ children, data }) => {
   return (
     <ThemeProvider theme={{ fontFamily: 'Gotham' }}>
       <Page>
-        {/* <GlobalStyle />
-        <Header siteTitle={'unknown'} /> */}
+        <GlobalStyle />
+        <Header siteTitle={'unknown'} />
         <Menu />
-        {/* <Content>{children}</Content>
+        <Content>{children}</Content>
         <InstagramFeed />
         <Footer />
-        <Copyright /> */}
+        <Copyright />
       </Page>
     </ThemeProvider>
   )

@@ -32,7 +32,7 @@ const renderSignIn = () => <div onClick={() => firebase.SignIn()}>Sign In </div>
 export default () => {
   const [user, setUser] = useState()
 
-  useEffect(async () => {
+  useEffect(() => {
     firebase.auth.onAuthStateChanged($ => setUser($))
   }, [])
 

@@ -26,7 +26,7 @@ export default () => {
 
   return (
     <React.Fragment>
-      {/* <Menu>
+      <Menu>
         <MenuItem to="/">
           <span>Home</span>
         </MenuItem>
@@ -84,7 +84,7 @@ export default () => {
             <div>{user && <OptionImage src={user.photoURL} />}</div>
           </Options>
         </MobileSubMenuContent>
-      </MobileSubMenu> */}
+      </MobileSubMenu>
       <Link to={'/carpets'}>Clicky</Link>
     </React.Fragment>
   )

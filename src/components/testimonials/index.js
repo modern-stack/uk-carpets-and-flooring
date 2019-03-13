@@ -9,12 +9,18 @@ function formatDate(timestamp) {
   return `${date.getDay()}.${date.getMonth()}.${date.getFullYear()}`
 }
 
+const setContent = setTestimonials => {
+  fb.allTestimonials()
+    .then($ => $)
+    .then($ => setTestimonials($))
+}
+
 export default () => {
   const [testimonials, setTestimonials] = useState([])
   const [position, setPosition] = useState(0)
 
-  useEffect(async $ => {
-    setTestimonials(await fb.allTestimonials().then($ => $))
+  useEffect($ => {
+    setContent(setTestimonials)
   }, [])
 
   return (
