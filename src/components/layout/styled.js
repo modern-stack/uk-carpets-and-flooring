@@ -6,7 +6,7 @@ const Page = styled.div`
 
 const Content = styled.div`
   position: relative;
-  margin-top: -60px;
+  margin-top: -47px;
 
   @media (max-width: 700px) {
     margin-top: 0px;
