@@ -22,5 +22,8 @@ const Title = styled.div`
   display: flex;
   justify-content: center;
 `
+const GalleryItem = styled.div`
+  display: contents;
+`
 
-export { Instagram, Gallery, Title }
+export { Instagram, Gallery, Title, GalleryItem }

@@ -30,9 +30,9 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 20%;
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%); */
   color: white;
   z-index: 9998;
   width: 50%;
@@ -48,7 +48,7 @@ const SubContent = styled.h2`
 `
 
 const Button = styled.button`
-  border 2px solid white;
+  border: 2px solid white;
   width: 12em;
   height: 3em;
   margin: 18px 0;
@@ -58,7 +58,7 @@ const Button = styled.button`
   text-align: center;
   color: white;
 
-   &:hover {
+  &:hover {
     background-color: rgb(199, 0, 43, 1);
     color: white;
     border: 1px solid rgb(199, 0, 43, 1);

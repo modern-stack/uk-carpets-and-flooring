@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'gatsby-image'
 import { FaInstagram } from 'react-icons/fa'
-import { Instagram, Gallery, Title } from './styled'
+import { Instagram, Gallery, Title, GalleryItem } from './styled'
 
 import { StaticQuery, graphql } from 'gatsby'
 
@@ -19,8 +19,8 @@ export default ({ feed }) => {
                 }
                 localImage {
                   childImageSharp {
-                    fluid(maxWidth: 100, quality: 50) {
-                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                    fixed(height: 150, quality: 100) {
+                      ...GatsbyImageSharpFixed_withWebp_tracedSVG
                     }
                   }
                 }
@@ -46,16 +46,15 @@ export default ({ feed }) => {
             Follow us on Instagram
           </Title>
           <Gallery>
-            {allInstagramContent.edges.slice(0, 12).map((item, i) => {
-              return item.node.localImage ? (
+            {allInstagramContent.edges.slice(0, 12).map((item, i) => (
+              <GalleryItem>
                 <Image
-                  fluid={item.node.localImage.childImageSharp.fluid}
+                  style={{ width: '100%' }}
+                  fixed={item.node.localImage.childImageSharp.fixed}
                   key={i}
                 />
-              ) : (
-                <div />
-              )
-            })}
+              </GalleryItem>
+            ))}
           </Gallery>
         </Instagram>
       )}
