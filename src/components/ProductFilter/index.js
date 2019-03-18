@@ -9,12 +9,25 @@ import {
   OptionHeader,
 } from './styled'
 
+function update(setSelected, selected, name, $) {
+  isSelected(selected, name, $)
+    ? setSelected({
+        ...selected,
+        [name]: selected[name].filter($$ => $$ !== $),
+      })
+    : setSelected({ ...selected, [name]: [...selected[name], $] })
+}
+
+function isSelected(selected, name, $) {
+  return selected[name].includes($)
+}
+
 export default ({ filters, selected, setSelected }) => (
   <ProductFilter>
-    {console.log(selected)}
     <Title>Filter By</Title>
     {Object.entries(filters).map(([name, options]) => (
       <Selection>
+        {console.log(selected, name)}
         <OptionHeader>
           <div>{name}</div>
           <div>Dash</div>
@@ -22,12 +35,8 @@ export default ({ filters, selected, setSelected }) => (
         {options.map(($, i) => (
           <Option>
             <Selected
-              selected={selected.includes(i)}
-              onClick={() =>
-                selected.includes($)
-                  ? setSelected(selected.filter($$ => $$ !== i))
-                  : setSelected({selected, { [name]: [...selected[name], i] }})
-              }
+              selected={isSelected(selected, name, $.name)}
+              onClick={() => update(setSelected, selected, name, $.name)}
             />
             {`${$.name} (${$.count})`}
           </Option>

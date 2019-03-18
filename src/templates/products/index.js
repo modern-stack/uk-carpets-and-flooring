@@ -12,8 +12,10 @@ export default ({ pageContext }) => {
   const { skus, filters } = pageContext
 
   const [selected, setSelected] = useState({
-    colors: [],
+    colours: [],
   })
+
+  const filtered = skus.filter($ => selected.colours.includes($.colour))
 
   return (
     <Layout>
@@ -32,7 +34,7 @@ export default ({ pageContext }) => {
           selected={selected}
           setSelected={setSelected}
         />
-        <ProductList products={skus} />
+        <ProductList products={filtered} />
       </ProductsContainer>
     </Layout>
   )
