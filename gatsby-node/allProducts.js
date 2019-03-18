@@ -10,7 +10,7 @@ module.exports = graphql =>
             colour
             featuredImage {
               id
-              fluid(quality: 50, maxHeight: 800) {
+              fluid(quality: 50, maxWidth: 600, maxHeight: 600) {
                 base64
                 tracedSVG
                 aspectRatio

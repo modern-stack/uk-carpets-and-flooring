@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { FaFileExcel } from 'react-icons/fa'
 
 import { Link } from 'gatsby'
 

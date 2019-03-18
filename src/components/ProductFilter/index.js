@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+
+import { FaPlus, FaMinus } from 'react-icons/fa'
+
 import {
   ProductFilter,
   Title,
@@ -22,27 +25,36 @@ function isSelected(selected, name, $) {
   return selected[name].includes($)
 }
 
-export default ({ filters, selected, setSelected }) => (
-  <ProductFilter>
-    <Title>Filter By</Title>
-    {Object.entries(filters).map(([name, options]) => (
-      <Selection>
-        {console.log(selected, name)}
-        <OptionHeader>
-          <div>{name}</div>
-          <div>Dash</div>
-        </OptionHeader>
-        {console.log('options >>>>', filters)}
-        {options.map(($, i) => (
-          <Option>
-            <Selected
-              selected={isSelected(selected, name, $.name)}
-              onClick={() => update(setSelected, selected, name, $.name)}
-            />
-            {`${$.name} (${$.count})`}
-          </Option>
-        ))}
-      </Selection>
-    ))}
-  </ProductFilter>
-)
+export default ({ filters, selected, setSelected }) => {
+  const [toggle, setToggle] = useState(false)
+
+  return (
+    <ProductFilter>
+      <Title>Filter By</Title>
+      {Object.entries(filters).map(([name, options]) => (
+        <Selection>
+          {console.log(selected, name)}
+          <OptionHeader>
+            <div>{name}</div>
+            <div>
+              {toggle ? (
+                <FaPlus onClick={() => setToggle(!toggle)} />
+              ) : (
+                <FaMinus onClick={() => setToggle(!toggle)} />
+              )}
+            </div>
+          </OptionHeader>
+          {options.map(($, i) => (
+            <Option>
+              <Selected
+                selected={isSelected(selected, name, $.name)}
+                onClick={() => update(setSelected, selected, name, $.name)}
+              />
+              {`${$.name} (${$.count})`}
+            </Option>
+          ))}
+        </Selection>
+      ))}
+    </ProductFilter>
+  )
+}
