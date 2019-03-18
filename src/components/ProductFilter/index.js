@@ -9,56 +9,30 @@ import {
   OptionHeader,
 } from './styled'
 
-export default () => (
+export default ({ filters, selected, setSelected }) => (
   <ProductFilter>
+    {console.log(selected)}
     <Title>Filter By</Title>
-    <Selection>
-      <OptionHeader>
-        <div>Color</div>
-        <div>Dash</div>
-      </OptionHeader>
-      <Option>
-        <Selected selected /> Light(17)
-      </Option>
-      <Option>
-        <Selected /> Light(17)
-      </Option>
-      <Option>
-        <Selected /> Light(17)
-      </Option>
-      <Option>
-        <Selected /> Light(17)
-      </Option>
-      <Option>
-        <Selected /> Light(17)
-      </Option>
-    </Selection>
-    <Selection>
-      <Option>
-        <Selected />
-      </Option>
-    </Selection>
-
-    <Selection>
-      <OptionHeader>
-        <div>traditional Woods</div>
-        <div>Dash</div>
-      </OptionHeader>
-      <Option>
-        <Selected /> Light(17)
-      </Option>
-      <Option>
-        <Selected /> Light(17)
-      </Option>
-      <Option>
-        <Selected /> Light(17)
-      </Option>
-      <Option>
-        <Selected /> Light(17)
-      </Option>
-      <Option>
-        <Selected /> Light(17)
-      </Option>
-    </Selection>
+    {Object.entries(filters).map(([name, options]) => (
+      <Selection>
+        <OptionHeader>
+          <div>{name}</div>
+          <div>Dash</div>
+        </OptionHeader>
+        {options.map(($, i) => (
+          <Option>
+            <Selected
+              selected={selected.includes(i)}
+              onClick={() =>
+                selected.includes($)
+                  ? setSelected(selected.filter($$ => $$ !== i))
+                  : setSelected({selected, { [name]: [...selected[name], i] }})
+              }
+            />
+            {`${$.name} (${$.count})`}
+          </Option>
+        ))}
+      </Selection>
+    ))}
   </ProductFilter>
 )

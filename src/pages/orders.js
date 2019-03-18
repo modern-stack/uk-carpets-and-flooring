@@ -9,10 +9,7 @@ function Orders() {
   const [orders, setOrders] = useState([])
   const [user, setUser] = useState({ email: '' })
 
-  console.log('user >>>', user)
-
   useEffect(() => {
-    console.log('Firebae >>>>>>', firebase)
     firebase.auth.onAuthStateChanged(async $ => {
       if (!$) {
         toggleLoading()
@@ -32,8 +29,6 @@ function Orders() {
         setUser($)
       }
     })
-
-    console.log('User >>>>', user)
   }, [])
 
   return (

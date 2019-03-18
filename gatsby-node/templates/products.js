@@ -30,6 +30,24 @@ module.exports = async ({ graphql, createPage, products, node, context }) => {
         return { ...$.node, product: $.node.product[0] }
       })
 
+    const filters = {
+      colours: Array.from(
+        new Set(
+          skus
+            .filter(
+              $ =>
+                $.product.productType.name.includes(productType) && !!$.colour
+            )
+            .map($ => {
+              return {
+                name: $.colour,
+                count: skus.filter($$ => $$.colour === $.colour).length,
+              }
+            })
+        )
+      ),
+    }
+
     if (allContentfulProduct) {
       allContentfulProduct.edges.map(product => {
         createPage({
@@ -40,6 +58,7 @@ module.exports = async ({ graphql, createPage, products, node, context }) => {
             skus: skus.filter($ =>
               product.node.productType.name.includes(productType)
             ),
+            filters,
           },
         })
       })
@@ -53,6 +72,7 @@ module.exports = async ({ graphql, createPage, products, node, context }) => {
         skus: skus.filter($ =>
           node.slug.includes($.product.productType.name.toLowerCase())
         ),
+        filters,
       },
     })
 

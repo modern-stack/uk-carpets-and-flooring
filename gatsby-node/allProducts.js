@@ -7,6 +7,7 @@ module.exports = graphql =>
             id
             name
             price
+            colour
             featuredImage {
               id
               fluid(quality: 100, maxHeight: 800) {

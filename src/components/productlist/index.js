@@ -5,7 +5,6 @@ import { navigate } from '@reach/router'
 import Link from 'gatsby-link'
 
 export default ({ products }) => {
-  console.log('>>>>>', products)
   return (
     <List>
       {products.map($ => (

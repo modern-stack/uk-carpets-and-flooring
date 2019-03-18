@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Layout from '../../components/layout'
 import SEO from '../../components/seo'
@@ -9,7 +9,12 @@ import ProductFilter from '../../components/ProductFilter'
 import { ProductsContainer } from './styled'
 
 export default ({ pageContext }) => {
-  const { skus } = pageContext
+  const { skus, filters } = pageContext
+
+  const [selected, setSelected] = useState({
+    colors: [],
+  })
+
   return (
     <Layout>
       <SEO title="Products" />
@@ -22,7 +27,11 @@ export default ({ pageContext }) => {
         })}
 
       <ProductsContainer>
-        <ProductFilter />
+        <ProductFilter
+          filters={filters}
+          selected={selected}
+          setSelected={setSelected}
+        />
         <ProductList products={skus} />
       </ProductsContainer>
     </Layout>
