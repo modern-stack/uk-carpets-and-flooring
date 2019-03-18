@@ -12,10 +12,17 @@ export default ({ pageContext }) => {
   const { skus, filters } = pageContext
 
   const [selected, setSelected] = useState({
-    colours: [],
+    colours: Array.from(
+      new Set(skus.filter($ => !!$.colour).map($ => $.colour))
+    ),
+    collection: Array.from(new Set(skus.map($ => $.product.name))),
   })
 
-  const filtered = skus.filter($ => selected.colours.includes($.colour))
+  const filtered = skus.filter(
+    $ =>
+      selected.colours.includes($.colour) ||
+      selected.collection.includes($.product.name)
+  )
 
   return (
     <Layout>

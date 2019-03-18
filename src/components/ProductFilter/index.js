@@ -32,6 +32,7 @@ export default ({ filters, selected, setSelected }) => (
           <div>{name}</div>
           <div>Dash</div>
         </OptionHeader>
+        {console.log('options >>>>', filters)}
         {options.map(($, i) => (
           <Option>
             <Selected

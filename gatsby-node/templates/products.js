@@ -46,6 +46,19 @@ module.exports = async ({ graphql, createPage, products, node, context }) => {
             })
         )
       ),
+
+      collection: Array.from(
+        new Set(
+          skus
+            .filter($ => $.product.productType.name.includes(productType))
+            .map($ => $.product.name)
+        )
+      ).map($ => {
+        return {
+          name: $,
+          count: skus.filter($$ => $$.product.name === $).length,
+        }
+      }),
     }
 
     if (allContentfulProduct) {
