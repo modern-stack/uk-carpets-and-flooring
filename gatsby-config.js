@@ -29,6 +29,7 @@ module.exports = {
       options: {
         spaceId: 'r5glwopythaj',
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        downloadLocal: true,
       },
     },
     {
