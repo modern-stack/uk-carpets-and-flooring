@@ -11,11 +11,25 @@ module.exports = async ({ graphql, createPage, products, node, context }) => {
         node {
           id
           name
-          productType {
+          featuredImage {
+            id
+            fluid(quality: 50, maxHeight: 300, maxWidth: 300) {
+              base64
+              tracedSVG
+              aspectRatio
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+              sizes
+            }
+          }
+          skus {
             id
             name
+            title
           }
-        }
+        } 
       }
     }
   }
@@ -65,13 +79,10 @@ module.exports = async ({ graphql, createPage, products, node, context }) => {
       allContentfulProduct.edges.map(product => {
         createPage({
           path: `${node.slug.toLowerCase()}/${product.node.name}`,
-          component: path.resolve(`./src/templates/product.js`),
+          component: path.resolve(`./src/templates/product/index.js`),
           context: {
             ...context,
-            skus: skus.filter($ =>
-              product.node.productType.name.includes(productType)
-            ),
-            filters,
+            ...product,
           },
         })
       })
