@@ -15,6 +15,11 @@ const Product = styled.div`
   max-height: 500px;
   width: 100%;
 
+  @media (max-width: 700px) {
+    flex-direction: column;
+    padding: 0px 0px;
+  }
+
   & > div {
     :nth-child(2) {
       flex: 60px;
@@ -23,7 +28,10 @@ const Product = styled.div`
 
     flex: 1;
     flex-grow: 1;
-    margin: 0px 4%;
+
+    @media (max-width: 700px) {
+      margin: 0;
+    }
   }
 `
 const Slider = styled.div`
@@ -52,6 +60,13 @@ const Slide = styled.div`
   position: relative;
   margin: 2px 0px;
   height: 60px;
+  border: ${$ => ($.selected ? '2px solid red' : '')};
+  opacity: ${$ => ($.selected ? '1' : '0.3')};
+
+  @media (max-width: 700px) {
+    height: 100%;
+    margin: 0px 2px;
+  }
 `
 
 export {

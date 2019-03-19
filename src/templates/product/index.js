@@ -4,6 +4,8 @@ import SwipeableViews from 'react-swipeable-views'
 import Layout from '../../components/layout'
 import SEO from '../../components/seo'
 
+import { isMobile } from 'react-device-detect'
+
 import Img from 'gatsby-image'
 
 import {
@@ -23,7 +25,6 @@ export default ({ pageContext }) => {
   const [sku, setSku] = useState(node.skus[0])
   const [slideIndex, setSlideIndex] = useState(0)
 
-  console.log('>>>>', slideIndex)
   return (
     <Layout>
       <SEO title="Products" />
@@ -42,12 +43,15 @@ export default ({ pageContext }) => {
 
             <SwipeableViews
               index={slideIndex}
-              axis={'y'}
-              containerStyle={{ height: '300px' }}
+              axis={isMobile ? 'x' : 'y'}
+              containerStyle={{
+                height: isMobile ? '100px' : '300px',
+                width: isMobile ? '20%' : '100%',
+              }}
               style={{ padding: '5px 0' }}
             >
               {node.skus.map($ => (
-                <Slide>
+                <Slide onClick={() => setSku($)} selected={sku.id === $.id}>
                   <SliderImage>
                     {$.featuredImage && (
                       <Img
