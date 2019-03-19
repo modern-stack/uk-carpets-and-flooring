@@ -31,7 +31,7 @@ export default ({ pageContext }) => {
       <MainContent>
         <Product>
           <ImageContainer>
-            <Img fluid={sku.featuredImage.fluid} />
+            {sku.featuredImage && <Img fluid={sku.featuredImage.fluid} />}
           </ImageContainer>
           <Slider>
             <FaAngleUp
