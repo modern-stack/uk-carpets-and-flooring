@@ -10,8 +10,26 @@ const MainContent = styled.div`
 
 const Product = styled.div`
   display: flex;
-  flex: 1fr 300px 1fr;
-  padding: 30px;
+  padding: 60px 60px;
+  max-height: 500px;
+  width: 100%;
+
+  & > div {
+    flex: 1;
+  }
+`
+const Slider = styled.div`
+  margin: 10px 20px;
 `
 
-export { Header, MainContent, Product }
+const ImageContainer = styled.div`
+  width: 600px;
+  height: 800px;
+`
+
+const Details = styled.div`
+  background: white;
+  padding: 20px;
+`
+
+export { Header, MainContent, Product, Details, Slider, ImageContainer }

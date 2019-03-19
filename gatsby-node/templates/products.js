@@ -11,23 +11,25 @@ module.exports = async ({ graphql, createPage, products, node, context }) => {
         node {
           id
           name
-          featuredImage {
-            id
-            fluid(quality: 50, maxHeight: 300, maxWidth: 300) {
-              base64
-              tracedSVG
-              aspectRatio
-              src
-              srcSet
-              srcWebp
-              srcSetWebp
-              sizes
-            }
-          }
           skus {
             id
             name
             title
+            featuredImage {
+              id
+              fluid {
+                base64
+                tracedSVG
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
+            }
+            size
+            price
           }
         } 
       }
