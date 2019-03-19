@@ -24,6 +24,11 @@ const Product = styled.div`
     :nth-child(2) {
       flex: 60px;
       flex-grow: 0;
+
+      @media (max-width: 700px) {
+        margin: 10px;
+        flex: 0;
+      }
     }
 
     flex: 1;
@@ -36,6 +41,18 @@ const Product = styled.div`
 `
 const Slider = styled.div`
   text-align: center;
+
+  @media (max-width: 700px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    > div {
+      flex-grow: 100px;
+      :nth-child(2) {
+        flex-grow: 1;
+      }
+    }
+  }
 `
 
 const ImageContainer = styled.div`
@@ -64,7 +81,6 @@ const Slide = styled.div`
   opacity: ${$ => ($.selected ? '1' : '0.3')};
 
   @media (max-width: 700px) {
-    height: 100%;
     margin: 0px 2px;
   }
 `

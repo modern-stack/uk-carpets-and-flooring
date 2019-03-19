@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
-import { FaAngleUp, FaAngleDown } from 'react-icons/fa'
+import {
+  FaAngleUp,
+  FaAngleDown,
+  FaAngleLeft,
+  FaAngleRight,
+} from 'react-icons/fa'
 import SwipeableViews from 'react-swipeable-views'
 import Layout from '../../components/layout'
 import SEO from '../../components/seo'
@@ -35,17 +40,31 @@ export default ({ pageContext }) => {
             {sku.featuredImage && <Img fluid={sku.featuredImage.fluid} />}
           </ImageContainer>
           <Slider>
-            <FaAngleUp
-              onClick={() =>
-                setSlideIndex(slideIndex - 1 < 0 ? slideIndex : slideIndex - 1)
-              }
-            />
+            <div>
+              {isMobile ? (
+                <FaAngleLeft
+                  onClick={() =>
+                    setSlideIndex(
+                      slideIndex - 1 < 0 ? slideIndex : slideIndex - 1
+                    )
+                  }
+                />
+              ) : (
+                <FaAngleUp
+                  onClick={() =>
+                    setSlideIndex(
+                      slideIndex - 1 < 0 ? slideIndex : slideIndex - 1
+                    )
+                  }
+                />
+              )}
+            </div>
 
             <SwipeableViews
               index={slideIndex}
               axis={isMobile ? 'x' : 'y'}
               containerStyle={{
-                height: isMobile ? '100px' : '300px',
+                height: isMobile ? '100%' : '300px',
                 width: isMobile ? '20%' : '100%',
               }}
               style={{ padding: '5px 0' }}
@@ -64,15 +83,29 @@ export default ({ pageContext }) => {
               ))}
             </SwipeableViews>
 
-            <FaAngleDown
-              onClick={() =>
-                setSlideIndex(
-                  slideIndex + 1 > node.skus.length
-                    ? slideIndex
-                    : slideIndex + 1
-                )
-              }
-            />
+            <div>
+              {isMobile ? (
+                <FaAngleRight
+                  onClick={() =>
+                    setSlideIndex(
+                      slideIndex + 1 > node.skus.length
+                        ? slideIndex
+                        : slideIndex + 1
+                    )
+                  }
+                />
+              ) : (
+                <FaAngleDown
+                  onClick={() =>
+                    setSlideIndex(
+                      slideIndex + 1 > node.skus.length
+                        ? slideIndex
+                        : slideIndex + 1
+                    )
+                  }
+                />
+              )}
+            </div>
           </Slider>
           <Details>
             <h2>{node.name}</h2>
