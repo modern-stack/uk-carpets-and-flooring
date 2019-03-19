@@ -49,10 +49,12 @@ export default ({ pageContext }) => {
               {node.skus.map($ => (
                 <Slide>
                   <SliderImage>
-                    <Img
-                      fluid={$.featuredImage.fluid}
-                      style={{ position: 'unset' }}
-                    />
+                    {$.featuredImage && (
+                      <Img
+                        fluid={$.featuredImage.fluid}
+                        style={{ position: 'unset' }}
+                      />
+                    )}
                   </SliderImage>
                 </Slide>
               ))}
