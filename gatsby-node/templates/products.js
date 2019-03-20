@@ -17,7 +17,7 @@ module.exports = async ({ graphql, createPage, products, node, context }) => {
             title
             featuredImage {
               id
-              fluid(maxHeight: 400) {
+              fluid(maxHeight: 800, maxWidth: 800) {
                 base64
                 tracedSVG
                 aspectRatio

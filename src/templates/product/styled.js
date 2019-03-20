@@ -9,11 +9,11 @@ const MainContent = styled.div`
 `
 
 const Product = styled.div`
-  display: flex;
+  display: inline-flex;
   padding: 60px 0px;
-
   max-height: 500px;
   width: 100%;
+  align-items: center;
 
   @media (max-width: 700px) {
     flex-direction: column;
@@ -21,7 +21,12 @@ const Product = styled.div`
   }
 
   & > div {
+    margin: 0 8%;
+    flex: 1;
+    flex-grow: 1;
+
     :nth-child(2) {
+      margin: 0%;
       flex: 60px;
       flex-grow: 0;
 
@@ -30,9 +35,6 @@ const Product = styled.div`
         flex: 0;
       }
     }
-
-    flex: 1;
-    flex-grow: 1;
 
     @media (max-width: 700px) {
       margin: 0;
@@ -47,7 +49,7 @@ const Slider = styled.div`
     justify-content: center;
     align-items: center;
     > div {
-      flex-grow: 100px;
+      flex-grow: 60px;
       :nth-child(2) {
         flex-grow: 1;
       }
@@ -85,6 +87,11 @@ const Slide = styled.div`
   }
 `
 
+const Review = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
 export {
   Header,
   MainContent,
@@ -94,4 +101,5 @@ export {
   ImageContainer,
   Slide,
   SliderImage,
+  Review,
 }

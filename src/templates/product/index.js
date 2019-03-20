@@ -4,10 +4,13 @@ import {
   FaAngleDown,
   FaAngleLeft,
   FaAngleRight,
+  FaStar,
 } from 'react-icons/fa'
 import SwipeableViews from 'react-swipeable-views'
 import Layout from '../../components/layout'
 import SEO from '../../components/seo'
+
+import Rating from 'react-rating'
 
 import { isMobile } from 'react-device-detect'
 
@@ -22,6 +25,7 @@ import {
   ImageContainer,
   Slide,
   SliderImage,
+  Review,
 } from './styled'
 
 export default ({ pageContext }) => {
@@ -64,7 +68,7 @@ export default ({ pageContext }) => {
               index={slideIndex}
               axis={isMobile ? 'x' : 'y'}
               containerStyle={{
-                height: isMobile ? '100%' : '300px',
+                height: isMobile ? '100%' : '350px',
                 width: isMobile ? '20%' : '100%',
               }}
               style={{ padding: '5px 0' }}
@@ -110,6 +114,21 @@ export default ({ pageContext }) => {
           <Details>
             <h2>{node.name}</h2>
             <h1>{sku.name}</h1>
+
+            <Review>
+              <Rating
+                emptySymbol={
+                  <FaStar
+                    style={{
+                      color: 'black',
+                    }}
+                  />
+                }
+                fullSymbol={<FaStar style={{ color: 'gold' }} />}
+              />
+              <div>Write a Review</div>
+              <div>Add to Wishlist</div>
+            </Review>
           </Details>
         </Product>
       </MainContent>
