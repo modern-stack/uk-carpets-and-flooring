@@ -68,7 +68,7 @@ export default ({ pageContext }) => {
               index={slideIndex}
               axis={isMobile ? 'x' : 'y'}
               containerStyle={{
-                height: isMobile ? '100%' : '350px',
+                height: isMobile ? '100%' : '300px',
                 width: isMobile ? '20%' : '100%',
               }}
               style={{ padding: '5px 0' }}
