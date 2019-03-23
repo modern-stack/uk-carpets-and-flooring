@@ -48,6 +48,8 @@ const Slider = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+
     > div {
       flex-grow: 60px;
       :nth-child(2) {
