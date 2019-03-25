@@ -11,7 +11,6 @@ const MainContent = styled.div`
 const Product = styled.div`
   display: inline-flex;
   padding: 60px 0px;
-  max-height: 500px;
   width: 100%;
   align-items: center;
 

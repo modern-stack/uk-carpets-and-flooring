@@ -12,7 +12,7 @@ import SEO from '../../components/seo'
 
 import Rating from 'react-rating'
 
-import { isMobile } from 'react-device-detect'
+import { isMobile, isTablet } from 'react-device-detect'
 
 import Img from 'gatsby-image'
 
@@ -33,6 +33,8 @@ export default ({ pageContext }) => {
 
   const [sku, setSku] = useState(node.skus[0])
   const [slideIndex, setSlideIndex] = useState(0)
+
+  console.log('Is moble >>>', isMobile, isTablet)
 
   return (
     <Layout>
@@ -66,10 +68,10 @@ export default ({ pageContext }) => {
 
             <SwipeableViews
               index={slideIndex}
-              axis={isMobile ? 'x' : 'y'}
+              axis={isMobile && !isTablet ? 'x' : 'y'}
               containerStyle={{
-                height: isMobile ? '100%' : '300px',
-                width: isMobile ? '20%' : '100%',
+                height: isMobile && !isTablet ? '100%' : '300px',
+                width: isMobile && !isTablet ? '20%' : '100%',
               }}
               style={{ padding: '5px 0' }}
             >
