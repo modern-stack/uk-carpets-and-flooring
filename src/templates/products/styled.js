@@ -4,6 +4,10 @@ const ProductsContainer = styled.div`
   display: flex;
   margin: 0 20px;
 
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
+
   & > div {
     flex: 1;
     &:first-child {

@@ -95,6 +95,7 @@ const Slide = styled.div`
 
   @media (max-width: 700px) {
     margin: 0px 2px;
+    height: 80px;
   }
 `
 

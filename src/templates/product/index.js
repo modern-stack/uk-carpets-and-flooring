@@ -71,7 +71,7 @@ export default ({ pageContext }) => {
               axis={isMobile && !isTablet ? 'x' : 'y'}
               containerStyle={{
                 height: isMobile && !isTablet ? '100%' : '300px',
-                width: isMobile && !isTablet ? '20%' : '100%',
+                width: isMobile && !isTablet ? '25%' : '100%',
               }}
               style={{ padding: '5px 0' }}
             >

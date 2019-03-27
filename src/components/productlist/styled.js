@@ -23,7 +23,7 @@ const Buttons = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  text-align: center;
   z-index: 99;
   display: none;
 `
@@ -32,6 +32,10 @@ const ImageContainer = styled.div`
   width: 100%;
   margin: 12px 12px;
   position: relative;
+
+  @media (max-width: 700px) {
+    margin: 12px 0px;
+  }
 
   &:hover {
     ${Buttons} {
@@ -52,8 +56,8 @@ const ImageContainer = styled.div`
 `
 
 const Button = styled.button`
-  border 2px solid white;
-  width: 12em;
+  border: 2px solid white;
+  width: 80%;
   height: 3em;
   margin: 12px 0;
   padding: 0px;
@@ -63,7 +67,7 @@ const Button = styled.button`
   color: white;
   z-index: 99;
 
-   &:hover {
+  &:hover {
     background-color: rgb(199, 0, 43, 1);
     color: white;
     border: 1px solid rgb(199, 0, 43, 1);

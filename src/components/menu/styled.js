@@ -111,6 +111,14 @@ const MobileSubMenuContent = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  a {
+    text-decoration: none;
+
+    :active {
+      background-color: red;
+    }
+  }
 `
 
 const Container = styled.div`
