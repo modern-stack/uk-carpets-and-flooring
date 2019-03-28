@@ -4,9 +4,9 @@ const ProductFilter = styled.div`
   padding: 0px 20px;
   margin-right: 20px;
 
-  /* @media (max-width: 700px) {
+  @media (max-width: 700px) {
     position: fixed;
-    height: 80%;
+    height: ${$ => ($.open ? '80%' : 0)};
     background: lightgray;
 
     bottom: 40px;
@@ -17,9 +17,9 @@ const ProductFilter = styled.div`
     overflow-y: scroll;
 
     body:not(&) {
-      position: fixed;
+      position: ${$ => ($.open ? 'fixed' : 'inherit')};
     }
-  } */
+  }
 `
 
 const Title = styled.div``

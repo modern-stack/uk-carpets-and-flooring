@@ -21,6 +21,8 @@ export default ({ pageContext }) => {
 
   const [showFilter, toggleShowFilter] = useState(false)
 
+  console.log('Filter >>>>', showFilter)
+
   const filtered = skus.filter(
     $ =>
       selected.colours.includes($.colour) ||
@@ -40,6 +42,7 @@ export default ({ pageContext }) => {
 
       <ProductsContainer>
         <ProductFilter
+          open={showFilter}
           filters={filters}
           selected={selected}
           setSelected={setSelected}
@@ -48,7 +51,7 @@ export default ({ pageContext }) => {
         <ProductList products={filtered} />
 
         <FilterToggle>
-          <Swipeable onSwiped={() => console.log('Swiped up!')}>
+          <Swipeable onSwiped={() => toggleShowFilter(!showFilter)}>
             Filter
           </Swipeable>
         </FilterToggle>

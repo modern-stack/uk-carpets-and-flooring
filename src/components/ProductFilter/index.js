@@ -5,13 +5,11 @@ import { FaPlus, FaMinus } from 'react-icons/fa'
 import {
   ProductFilter,
   Title,
-  SubTitle,
   Selection,
   Selected,
   Option,
   OptionHeader,
 } from './styled'
-import { Button } from '../contentful/Carousel/Desktop/styled'
 
 function update(setSelected, selected, name, $) {
   isSelected(selected, name, $)
@@ -26,15 +24,14 @@ function isSelected(selected, name, $) {
   return selected[name].includes($)
 }
 
-export default ({ filters, selected, setSelected }) => {
+export default ({ filters, selected, setSelected, open }) => {
   const [toggle, setToggle] = useState(false)
 
   return (
-    <ProductFilter>
+    <ProductFilter open={open}>
       <Title>Filter By</Title>
       {Object.entries(filters).map(([name, options]) => (
         <Selection>
-          {console.log(selected, name)}
           <OptionHeader>
             <div>{name}</div>
             <div>
