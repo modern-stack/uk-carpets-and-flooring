@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useSwipeable, Swipeable } from 'react-swipeable'
 
 import Layout from '../../components/layout'
 import SEO from '../../components/seo'
@@ -6,7 +7,7 @@ import ContentfulComponents from '../../components/contentful'
 import ProductList from '../../components/productlist'
 import ProductFilter from '../../components/ProductFilter'
 
-import { ProductsContainer } from './styled'
+import { ProductsContainer, FilterToggle } from './styled'
 
 export default ({ pageContext }) => {
   const { skus, filters } = pageContext
@@ -17,6 +18,8 @@ export default ({ pageContext }) => {
     ),
     collection: Array.from(new Set(skus.map($ => $.product.name))),
   })
+
+  const [showFilter, toggleShowFilter] = useState(false)
 
   const filtered = skus.filter(
     $ =>
@@ -40,8 +43,15 @@ export default ({ pageContext }) => {
           filters={filters}
           selected={selected}
           setSelected={setSelected}
+          visible={showFilter}
         />
         <ProductList products={filtered} />
+
+        <FilterToggle>
+          <Swipeable onSwiped={() => console.log('Swiped up!')}>
+            Filter
+          </Swipeable>
+        </FilterToggle>
       </ProductsContainer>
     </Layout>
   )

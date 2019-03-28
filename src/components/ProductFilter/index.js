@@ -11,6 +11,7 @@ import {
   Option,
   OptionHeader,
 } from './styled'
+import { Button } from '../contentful/Carousel/Desktop/styled'
 
 function update(setSelected, selected, name, $) {
   isSelected(selected, name, $)
