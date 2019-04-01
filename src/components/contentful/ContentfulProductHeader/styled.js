@@ -28,6 +28,13 @@ const SubTitle = styled.div`
 
   div {
     flex: 1;
+
+    @media (max-width: 700px) {
+      :first-child,
+      :last-child {
+        display: none;
+      }
+    }
   }
 `
 

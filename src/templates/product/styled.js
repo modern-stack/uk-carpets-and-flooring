@@ -6,6 +6,10 @@ const Header = styled.div`
 
 const MainContent = styled.div`
   background: #f0f0f0;
+
+  @media (max-width: 700px) {
+    padding: 10px;
+  }
 `
 
 const Product = styled.div`
@@ -50,6 +54,7 @@ const Slider = styled.div`
     width: 100%;
 
     > div {
+      height: 100%;
       flex-grow: 60px;
       :nth-child(2) {
         flex-grow: 1;
@@ -61,6 +66,10 @@ const Slider = styled.div`
 const ImageContainer = styled.div`
   width: 100%;
   height: 100%;
+
+  @media (max-width: 700px) {
+    margin: 6px;
+  }
 `
 
 const SliderImage = styled.div`
@@ -73,7 +82,8 @@ const SliderImage = styled.div`
 
 const Details = styled.div`
   background: white;
-  padding: 0 20px;
+  width: 100%;
+  /* padding: 0 20px; */
 `
 
 const Slide = styled.div`
@@ -85,6 +95,7 @@ const Slide = styled.div`
 
   @media (max-width: 700px) {
     margin: 0px 2px;
+    height: 80px;
   }
 `
 

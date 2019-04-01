@@ -3,6 +3,23 @@ import styled from 'styled-components'
 const ProductFilter = styled.div`
   padding: 0px 20px;
   margin-right: 20px;
+
+  @media (max-width: 700px) {
+    position: fixed;
+    height: ${$ => ($.open ? '80%' : 0)};
+    background: lightgray;
+
+    bottom: 40px;
+    right: 0;
+    left: 0;
+    margin: 0px 16px;
+    z-index: 9999;
+    overflow-y: scroll;
+
+    body:not(&) {
+      position: ${$ => ($.open ? 'fixed' : 'inherit')};
+    }
+  }
 `
 
 const Title = styled.div``

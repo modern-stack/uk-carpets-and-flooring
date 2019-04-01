@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'gatsby'
 import { FaBars, FaTimes, FaHeart, FaShoppingBasket } from 'react-icons/fa'
 import {
   Menu,
@@ -21,7 +20,7 @@ export default () => {
   const [user, setUser] = useState()
 
   useEffect(() => {
-    //firebase.auth.onAuthStateChanged($ => setUser($))
+    firebase.auth.onAuthStateChanged($ => setUser($))
   }, [])
 
   return (
@@ -48,27 +47,27 @@ export default () => {
           <MenuItem to="/vinyls">Vinyls</MenuItem>
         </Container>
         <Container>
-          <MenuItem onClick={() => setActive(!active)}>
+          <MenuItem to="" onClick={() => setActive(!active)}>
             {active ? <FaTimes /> : <FaBars />}
           </MenuItem>
         </Container>
       </MobileMenu>
       <MobileSubMenu active={active}>
         <MobileSubMenuContent>
-          <MenuItem inverted to="/home">
-            Carpets>Home
+          <MenuItem inverted to="/" onClick={() => setActive(!active)}>
+            Home
           </MenuItem>
           <MenuItem inverted to="/carpets">
-            Carpets>Carpets
+            Carpets
           </MenuItem>
           <MenuItem inverted to="/laminates">
-            Carpets>Laminates
+            Laminates
           </MenuItem>
-          <MenuItem inverted to="/flooring">
-            Carpets>Flooring
+          <MenuItem inverted to="/vinyls">
+            Vinyls
           </MenuItem>
           <MenuItem inverted to="/accessories">
-            Carpets>Accessories
+            Accessories
           </MenuItem>
           <Options>
             <div>

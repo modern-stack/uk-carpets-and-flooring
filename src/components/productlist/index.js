@@ -20,7 +20,10 @@ export default ({ products }) => {
               >
                 <Button>View Details</Button>
               </Link>
-              <Button>Add to wishlist</Button>
+
+              <div>
+                <Button>Add to wishlist</Button>
+              </div>
             </Buttons>
           </ImageContainer>
 
