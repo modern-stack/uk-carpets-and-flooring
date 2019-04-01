@@ -11,10 +11,10 @@ import Layout from '../../components/layout'
 import SEO from '../../components/seo'
 
 import Rating from 'react-rating'
-
 import { isMobile } from 'react-device-detect'
-
 import Img from 'gatsby-image'
+import PriceCalculator from '../../components/PriceCalculator'
+import { Primary } from '../../components/Button'
 
 import {
   Header,
@@ -32,7 +32,10 @@ export default ({ pageContext }) => {
   const { node } = pageContext
 
   const [sku, setSku] = useState(node.skus[0])
+  const [total, setTotal] = useState(0)
   const [slideIndex, setSlideIndex] = useState(0)
+
+  console.log('>>>>', total)
 
   return (
     <Layout>
@@ -116,19 +119,27 @@ export default ({ pageContext }) => {
             <h1>{sku.name}</h1>
 
             <Review>
-              <Rating
-                emptySymbol={
-                  <FaStar
-                    style={{
-                      color: 'black',
-                    }}
-                  />
-                }
-                fullSymbol={<FaStar style={{ color: 'gold' }} />}
-              />
+              <div>
+                <Rating
+                  emptySymbol={
+                    <FaStar
+                      style={{
+                        color: 'black',
+                      }}
+                    />
+                  }
+                  fullSymbol={<FaStar style={{ color: 'gold' }} />}
+                />
+              </div>
               <div>Write a Review</div>
               <div>Add to Wishlist</div>
             </Review>
+
+            <div>£{(sku.price * total).toFixed(2)}</div>
+
+            <PriceCalculator type={'metres'} setTotal={setTotal} />
+
+            <Primary>Add to cart</Primary>
           </Details>
         </Product>
       </MainContent>

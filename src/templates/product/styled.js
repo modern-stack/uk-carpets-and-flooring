@@ -11,7 +11,6 @@ const MainContent = styled.div`
 const Product = styled.div`
   display: inline-flex;
   padding: 60px 0px;
-  max-height: 500px;
   width: 100%;
   align-items: center;
 
@@ -25,6 +24,10 @@ const Product = styled.div`
     flex: 1;
     flex-grow: 1;
 
+    @media (max-width: 700px) {
+      margin: 10px 0;
+    }
+
     :nth-child(2) {
       margin: 0%;
       flex: 60px;
@@ -34,10 +37,6 @@ const Product = styled.div`
         margin: 10px;
         flex: 0;
       }
-    }
-
-    @media (max-width: 700px) {
-      margin: 0;
     }
   }
 `
@@ -92,6 +91,17 @@ const Slide = styled.div`
 const Review = styled.div`
   display: flex;
   justify-content: space-between;
+
+  & > div {
+    padding: 0 8px;
+    flex-wrap: wrap;
+    display: flex;
+    text-align: center;
+
+    &:not(:last-child) {
+      border-right: 0.5px solid #ccc;
+    }
+  }
 `
 
 export {

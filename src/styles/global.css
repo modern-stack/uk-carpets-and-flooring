@@ -6,3 +6,11 @@ body {
   width: 100%;
   overflow-x: hidden;
 }
+
+/* input[type='number']::-webkit-inner-spin-button::before {
+  top: 7px;
+}
+input[type='number']::-webkit-inner-spin-button::after {
+  bottom: 7px;
+  transform: rotate(180deg);
+} */
