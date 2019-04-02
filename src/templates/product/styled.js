@@ -32,11 +32,19 @@ const Product = styled.div`
     flex: 1;
     flex-grow: 1;
 
+    :first-child {
+      display: none;
+
+      @media (max-width: 700px) {
+        display: flex;
+      }
+    }
+
     @media (max-width: 700px) {
       margin: 10px 0;
     }
 
-    :nth-child(2) {
+    :nth-child(3) {
       margin: 0%;
       flex: 60px;
       flex-grow: 0;
