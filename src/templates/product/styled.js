@@ -2,6 +2,10 @@ import styled from 'styled-components'
 
 const Header = styled.div`
   min-height: 100px;
+
+  @media (max-width: 700px) {
+    min-height: 10px;
+  }
 `
 
 const MainContent = styled.div`

@@ -13,6 +13,8 @@ import Slider from './Slider'
 import Review from './Review'
 import Social from '../../components/Social'
 
+import Breadcrumb from '../../components/Breadcrumb'
+
 import {
   Header,
   MainContent,
@@ -36,14 +38,16 @@ export default ({ pageContext }) => {
     return !basket.filter($ => $ === sku.id).length
   }
 
+  console.log(node)
+
   return (
     <Layout>
       <SEO title="Products" />
-
       <Header />
 
       <MainContent>
         <Product>
+          <Breadcrumb crumbs={['Home', node.productType.name, sku.name]} />
           <ImageContainer>
             {sku.featuredImage && <Img fluid={sku.featuredImage.fluid} />}
           </ImageContainer>

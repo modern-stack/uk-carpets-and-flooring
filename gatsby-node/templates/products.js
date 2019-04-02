@@ -12,6 +12,7 @@ module.exports = async ({ graphql, createPage, products, node, context }) => {
           id
           name
           productType {
+            name
             priceCalculator {
               name
             }
