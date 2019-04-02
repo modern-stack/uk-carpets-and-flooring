@@ -114,36 +114,8 @@ const MobileOptions = styled.div`
   }
 `
 
-const Icon = styled.div`
-  posiition: relative;
-  border-radius: 50%;
-  color: gray;
-  background: #ebebeb;
-  height: 35px;
-  width: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  :after {
-    content: '${$ => $.value}';
-    position: absolute;
-    font-size: 12px;
-    background-color: #c5002c;
-    width: 14px;
-    height: 14px;
-    color: #fff;
-    top: 14px;
-    right: 70px;
-    display: flex;
-    justify-content: center;
-    border-radius: 50%;
-  }
-`
-
 export {
   Header,
-  Icon,
   Logo,
   CompanyName,
   UserInfo,

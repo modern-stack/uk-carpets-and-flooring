@@ -1,9 +1,9 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import { FaHeart } from 'react-icons/fa'
 
-import { FaInstagram, FaFacebook, FaTwitter, FaHeart } from 'react-icons/fa'
-
-import { Footer, Content, Links, Title, Social, BuiltBy } from './styled'
+import Social from '../Social'
+import { Footer, Content, Links, Title, BuiltBy } from './styled'
 
 export default () => (
   <Footer>
@@ -35,11 +35,7 @@ export default () => (
     <Content>
       <div>
         <Title>Connect with us</Title>
-        <Social>
-          <FaInstagram style={{ height: '20px', width: '20px' }} />
-          <FaFacebook style={{ height: '20px', width: '20px' }} />
-          <FaTwitter style={{ height: '20px', width: '20px' }} />
-        </Social>
+        <Social />
       </div>
     </Content>
     <BuiltBy>

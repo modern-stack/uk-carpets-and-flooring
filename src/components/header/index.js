@@ -4,10 +4,10 @@ import Img from 'gatsby-image'
 import { StaticQuery, graphql } from 'gatsby'
 
 import firebase from '../../services/firebase'
+import Cart from '../Cart'
 
 import {
   Header,
-  Icon,
   Logo,
   UserInfo,
   CompanyName,
@@ -66,10 +66,7 @@ export default () => {
                 </label>
               </MenuItem>
               <MenuItem>
-                <FaShoppingCart size={12} />
-                <label>
-                  My Cart (<Total>2</Total>)
-                </label>
+                <Cart />
                 <SubMenu>
                   <div>Summary</div>
                   <hr />
@@ -83,9 +80,7 @@ export default () => {
           </DesktopOptions>
 
           <MobileOptions>
-            <Icon value={2}>
-              <FaShoppingCart size={12} />
-            </Icon>
+            <Cart />
             <div>
               {user ? <ProfileImage src={user.photoURL} /> : renderSignIn()}
             </div>

@@ -57,7 +57,48 @@ const ImageContainer = styled.div`
 const Details = styled.div`
   background: white;
   width: 100%;
-  /* padding: 0 20px; */
 `
 
-export { Header, MainContent, Product, Details, ImageContainer }
+const Container = styled.div`
+  @media (max-width: 700px) {
+    margin: 28px 12px;
+  }
+`
+
+const Price = styled.div`
+  display: flex;
+  margin: 4px;
+  font-weight: 600;
+  font-size: 1.5em;
+`
+
+const Overview = styled.div`
+  text-transform: uppercase;
+  margin: 16px 0;
+`
+
+const Share = styled.div`
+  display: flex;
+  align-items: center;
+
+  & > div {
+    margin: 0px 10px;
+  }
+`
+
+const Link = styled.div`
+  margin: 0px 10px;
+`
+
+export {
+  Header,
+  MainContent,
+  Product,
+  Details,
+  ImageContainer,
+  Container,
+  Price,
+  Overview,
+  Share,
+  Link,
+}

@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
-const Primary = styled.button`
-  background: ${$ => ($.selected ? 'green' : '#c7002b')};
+const Button = styled.button`
   color: white;
   display: flex;
   justify-content: center;
@@ -22,5 +21,12 @@ const Primary = styled.button`
     border: none;
   }
 `
+const Primary = styled(Button)`
+  background: #c7002b;
+`
 
-export { Primary }
+const Secondary = styled(Button)`
+  background: black;
+`
+
+export { Primary, Secondary }

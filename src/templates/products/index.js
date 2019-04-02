@@ -21,8 +21,6 @@ export default ({ pageContext }) => {
 
   const [showFilter, toggleShowFilter] = useState(false)
 
-  console.log('Filter >>>>', showFilter)
-
   const filtered = skus.filter(
     $ =>
       selected.colours.includes($.colour) ||
