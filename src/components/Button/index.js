@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Primary = styled.button`
-  background: #c7002b;
+  background: ${$ => ($.selected ? 'green' : '#c7002b')};
   color: white;
   display: flex;
   justify-content: center;

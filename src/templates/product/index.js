@@ -18,6 +18,8 @@ import Img from 'gatsby-image'
 import PriceCalculator from '../../components/PriceCalculator'
 import { Primary } from '../../components/Button'
 
+import BasketContext, { BasketConsumer } from '../../components/Context/Basket'
+
 import {
   Header,
   MainContent,
@@ -37,115 +39,124 @@ export default ({ pageContext }) => {
   const [total, setTotal] = useState(0)
   const [slideIndex, setSlideIndex] = useState(0)
 
-  console.log('>>>>', total)
-  console.log('Is moble >>>', isMobile, isTablet)
+  console.log(BasketContext)
 
   return (
     <Layout>
       <SEO title="Products" />
       <Header />
-      <MainContent>
-        <Product>
-          <ImageContainer>
-            {sku.featuredImage && <Img fluid={sku.featuredImage.fluid} />}
-          </ImageContainer>
-          <Slider>
-            <div>
-              {isMobile ? (
-                <FaAngleLeft
-                  onClick={() =>
-                    setSlideIndex(
-                      slideIndex - 1 < 0 ? slideIndex : slideIndex - 1
-                    )
-                  }
-                />
-              ) : (
-                <FaAngleUp
-                  onClick={() =>
-                    setSlideIndex(
-                      slideIndex - 1 < 0 ? slideIndex : slideIndex - 1
-                    )
-                  }
-                />
-              )}
-            </div>
-
-            <SwipeableViews
-              index={slideIndex}
-              axis={isMobile && !isTablet ? 'x' : 'y'}
-              containerStyle={{
-                height: isMobile && !isTablet ? '100%' : '300px',
-                width: isMobile && !isTablet ? '25%' : '100%',
-              }}
-              style={{ padding: '5px 0' }}
-            >
-              {node.skus.map($ => (
-                <Slide onClick={() => setSku($)} selected={sku.id === $.id}>
-                  <SliderImage>
-                    {$.featuredImage && (
-                      <Img
-                        fluid={$.featuredImage.fluid}
-                        style={{ position: 'unset' }}
-                      />
-                    )}
-                  </SliderImage>
-                </Slide>
-              ))}
-            </SwipeableViews>
-
-            <div>
-              {isMobile ? (
-                <FaAngleRight
-                  onClick={() =>
-                    setSlideIndex(
-                      slideIndex + 1 > node.skus.length
-                        ? slideIndex
-                        : slideIndex + 1
-                    )
-                  }
-                />
-              ) : (
-                <FaAngleDown
-                  onClick={() =>
-                    setSlideIndex(
-                      slideIndex + 1 > node.skus.length
-                        ? slideIndex
-                        : slideIndex + 1
-                    )
-                  }
-                />
-              )}
-            </div>
-          </Slider>
-          <Details>
-            <h2>{node.name}</h2>
-            <h1>{sku.name}</h1>
-
-            <Review>
+      <BasketContext>
+        <MainContent>
+          <Product>
+            <ImageContainer>
+              {sku.featuredImage && <Img fluid={sku.featuredImage.fluid} />}
+            </ImageContainer>
+            <Slider>
               <div>
-                <Rating
-                  emptySymbol={
-                    <FaStar
-                      style={{
-                        color: 'black',
-                      }}
-                    />
-                  }
-                  fullSymbol={<FaStar style={{ color: 'gold' }} />}
-                />
+                {isMobile ? (
+                  <FaAngleLeft
+                    onClick={() =>
+                      setSlideIndex(
+                        slideIndex - 1 < 0 ? slideIndex : slideIndex - 1
+                      )
+                    }
+                  />
+                ) : (
+                  <FaAngleUp
+                    onClick={() =>
+                      setSlideIndex(
+                        slideIndex - 1 < 0 ? slideIndex : slideIndex - 1
+                      )
+                    }
+                  />
+                )}
               </div>
-              <div>Write a Review</div>
-              <div>Add to Wishlist</div>
-            </Review>
 
-            <div>£{(sku.price * total).toFixed(2)}</div>
+              <SwipeableViews
+                index={slideIndex}
+                axis={isMobile && !isTablet ? 'x' : 'y'}
+                containerStyle={{
+                  height: isMobile && !isTablet ? '100%' : '300px',
+                  width: isMobile && !isTablet ? '25%' : '100%',
+                }}
+                style={{ padding: '5px 0' }}
+              >
+                {node.skus.map($ => (
+                  <Slide onClick={() => setSku($)} selected={sku.id === $.id}>
+                    <SliderImage>
+                      {$.featuredImage && (
+                        <Img
+                          fluid={$.featuredImage.fluid}
+                          style={{ position: 'unset' }}
+                        />
+                      )}
+                    </SliderImage>
+                  </Slide>
+                ))}
+              </SwipeableViews>
 
-            <PriceCalculator type={'metres'} setTotal={setTotal} />
-
-            <Primary>Add to cart</Primary>
-          </Details>
-        </Product>
-      </MainContent>
+              <div>
+                {isMobile ? (
+                  <FaAngleRight
+                    onClick={() =>
+                      setSlideIndex(
+                        slideIndex + 1 > node.skus.length
+                          ? slideIndex
+                          : slideIndex + 1
+                      )
+                    }
+                  />
+                ) : (
+                  <FaAngleDown
+                    onClick={() =>
+                      setSlideIndex(
+                        slideIndex + 1 > node.skus.length
+                          ? slideIndex
+                          : slideIndex + 1
+                      )
+                    }
+                  />
+                )}
+              </div>
+            </Slider>
+            <Details>
+              <h2>{node.name}</h2>
+              <h1>{sku.name}</h1>
+              <Review>
+                <div>
+                  <Rating
+                    emptySymbol={
+                      <FaStar
+                        style={{
+                          color: 'black',
+                        }}
+                      />
+                    }
+                    fullSymbol={<FaStar style={{ color: 'gold' }} />}
+                  />
+                </div>
+                <div>Write a Review</div>
+                <div>Add to Wishlist</div>
+              </Review>
+              <div>£{(sku.price * total).toFixed(2)}</div>
+              <PriceCalculator type={'metres'} setTotal={setTotal} />
+              <BasketConsumer>
+                {({ basket, setBasket }) => (
+                  <div>
+                    {console.log(basket)}
+                    <Primary
+                      selected={!!basket.map($ => $ === sku.id)}
+                      onClick={() => setBasket([...basket, sku.id])}
+                    >
+                      <label>Add to cart {basket.length}</label>
+                    </Primary>
+                  </div>
+                )}
+              </BasketConsumer>
+            </Details>
+          </Product>
+        </MainContent>
+      </BasketContext>
     </Layout>
   )
 }
