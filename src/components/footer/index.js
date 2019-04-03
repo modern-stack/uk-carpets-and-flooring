@@ -9,18 +9,18 @@ export default () => (
   <Footer>
     <Content>
       <Links>
-        <Link>Carpets</Link>
-        <Link>Laminates</Link>
-        <Link>Vinyls</Link>
-        <Link>Accessories</Link>
-        <Link>Home</Link>
-        <Link>About</Link>
-        <Link>Blog</Link>
-        <Link>Contact</Link>
-        <Link>My Wishlist</Link>
-        <Link>Shipping</Link>
-        <Link>How to order</Link>
-        <Link>Faqs</Link>
+        <Link to="/carpets">Carpets</Link>
+        <Link to="/laminates">Laminates</Link>
+        <Link to="/vinyls">Vinyls</Link>
+        <Link to="/accessories">Accessories</Link>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/blog">Blog</Link>
+        <Link to="/contact">Contact</Link>
+        <Link to="/wishlist">My Wishlist</Link>
+        <Link to="/shipping">Shipping</Link>
+        <Link to="/how-to-order">How to order</Link>
+        <Link to="/faqs">Faqs</Link>
       </Links>
     </Content>
     <Content>
@@ -43,7 +43,8 @@ export default () => (
         Built with <FaHeart style={{ color: 'red', padding: '0 8px' }} /> by
         Modern Commerce
       </div>
-      <div>Hire us!</div>
+      <br />
+      <a href={'https://hardcore-morse-1a0115.netlify.com/'}>Hire us!</a>
     </BuiltBy>
   </Footer>
 )
