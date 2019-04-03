@@ -1,10 +1,13 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import { Breadcrumb } from './styled'
 
 export default ({ crumbs = [] }) => (
   <Breadcrumb>
     {crumbs.map($ => (
-      <div>{$}</div>
+      <li>
+        <Link to={$.link}>{$.title}</Link>
+      </li>
     ))}
   </Breadcrumb>
 )

@@ -47,7 +47,16 @@ export default ({ pageContext }) => {
 
       <MainContent>
         <Product>
-          <Breadcrumb crumbs={['Home', node.productType.name, sku.name]} />
+          <Breadcrumb
+            crumbs={[
+              { title: 'Home', link: '/' },
+              {
+                title: node.productType.name,
+                link: `${node.productType.name.toLowerCase()}`,
+              },
+              { title: node.name, link: '' },
+            ]}
+          />
           <ImageContainer>
             {sku.featuredImage && <Img fluid={sku.featuredImage.fluid} />}
           </ImageContainer>

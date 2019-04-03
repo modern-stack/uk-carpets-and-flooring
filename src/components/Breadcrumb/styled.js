@@ -1,12 +1,24 @@
 import styled from 'styled-components'
 
-const Breadcrumb = styled.div`
+const Breadcrumb = styled.ul`
   display: flex;
-  width: 80%;
-  justify-content: space-between;
+  width: 90%;
+  justify-content: space-evenly;
+  padding: 0;
 
-  & > div {
+  li {
+    list-style: none;
+
     position: relative;
+    color: gray;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    width: 100%;
+    text-align: center;
+    flex-grow: 1;
+    float: left;
+    text-align: center;
 
     :not(:last-child):after {
       content: '';
@@ -18,14 +30,17 @@ const Breadcrumb = styled.div`
       border-right: 0.5vmin solid gray;
       box-shadow: 0 0 0 gray;
       transition: all 200ms ease;
-      right: -50%;
+      margin: 0 16px;
+
       top: 50%;
 
       transform: translate3d(0, -50%, 0) rotate(45deg);
     }
 
     :last-child {
-      color: red;
+      a {
+        color: red;
+      }
     }
   }
 `
