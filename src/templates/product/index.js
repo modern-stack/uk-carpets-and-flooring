@@ -6,14 +6,16 @@ import SEO from '../../components/seo'
 import Img from 'gatsby-image'
 import PriceCalculator from '../../components/PriceCalculator'
 import { Primary, Secondary } from '../../components/Button'
+import Slider from '../../components/Slider'
 
 import { SiteConsumer } from '../../components/Context/Site'
 
-import Slider from './Slider'
+// import Slider from './Slider'
 import Review from './Review'
 import Social from '../../components/Social'
 import Specification from './Specification'
 import Reviews from './Reviews'
+import RelatedProducts from './RelatedProducts'
 
 import Breadcrumb from '../../components/Breadcrumb'
 
@@ -62,7 +64,7 @@ export default ({ pageContext }) => {
           <ImageContainer>
             {sku.featuredImage && <Img fluid={sku.featuredImage.fluid} />}
           </ImageContainer>
-          <Slider node={node} sku={sku} setSku={setSku} />
+          {/* <Slider node={node} sku={sku} setSku={setSku} /> */}
           <Details>
             <Container>
               <div>
@@ -108,6 +110,8 @@ export default ({ pageContext }) => {
             <Container>
               <Specification sku={sku} />
               <Reviews />
+              <RelatedProducts relatedProducts={sku.relatedProducts} />
+              <Slider />
             </Container>
           </Details>
         </Product>
