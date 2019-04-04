@@ -9,13 +9,14 @@ export default ({ relatedProducts = [] }) => (
   <RelatedProducts>
     <Title title={'Related Products'} />
 
-    <Slider>
-      {relatedProducts.length &&
-        relatedProducts.map($ => (
+    {relatedProducts.length && (
+      <Slider>
+        {relatedProducts.map($ => (
           <Product>
             {$.featuredImage && <Img fluid={$.featuredImage.fluid} />}
           </Product>
         ))}
-    </Slider>
+      </Slider>
+    )}
   </RelatedProducts>
 )
