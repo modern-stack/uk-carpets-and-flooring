@@ -12,6 +12,8 @@ import { SiteConsumer } from '../../components/Context/Site'
 import Slider from './Slider'
 import Review from './Review'
 import Social from '../../components/Social'
+import Specification from './Specification'
+import Reviews from './Reviews'
 
 import Breadcrumb from '../../components/Breadcrumb'
 
@@ -100,6 +102,12 @@ export default ({ pageContext }) => {
                 <Link>Share</Link>
                 <Social />
               </Share>
+            </Container>
+          </Details>
+          <Details>
+            <Container>
+              <Specification sku={sku} />
+              <Reviews />
             </Container>
           </Details>
         </Product>

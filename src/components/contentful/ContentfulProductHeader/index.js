@@ -1,19 +1,7 @@
 import React from 'react'
 
-import { ProductHeader, Title, SubTitle } from './styled'
-import InnerContent from '../../layout/innercontent'
+import Title from '../../Title'
 
 export default ({ title, subTitle }) => (
-  <InnerContent>
-    <ProductHeader>
-      <Title>
-        <span>{title}</span>
-      </Title>
-      <SubTitle>
-        <div />
-        <div>{subTitle}</div>
-        <div />
-      </SubTitle>
-    </ProductHeader>
-  </InnerContent>
+  <Title title={title} subTitle={subTitle} />
 )
