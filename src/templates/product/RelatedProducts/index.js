@@ -9,7 +9,7 @@ export default ({ relatedProducts = [] }) => (
   <RelatedProducts>
     <Title title={'Related Products'} />
 
-    {relatedProducts.length && (
+    {relatedProducts && relatedProducts.length && (
       <Slider>
         {relatedProducts.map($ => (
           <Product>
