@@ -79,7 +79,7 @@ const Container = styled.div`
 
 const Price = styled.div`
   display: flex;
-  margin: 4px;
+  margin: 12px 4px;
   font-weight: 600;
   font-size: 1.5em;
 `

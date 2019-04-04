@@ -52,6 +52,9 @@ module.exports = async ({ graphql, createPage, products, node, context }) => {
                   sizes
                 }
               }
+              product{
+                name
+              }
             }
             size
             price

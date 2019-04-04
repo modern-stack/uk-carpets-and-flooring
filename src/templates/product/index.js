@@ -10,7 +10,7 @@ import Slider from '../../components/Slider'
 
 import { SiteConsumer } from '../../components/Context/Site'
 
-// import Slider from './Slider'
+import OldSlider from './Slider'
 import Review from './Review'
 import Social from '../../components/Social'
 import Specification from './Specification'
@@ -42,8 +42,6 @@ export default ({ pageContext }) => {
     return !basket.filter($ => $ === sku.id).length
   }
 
-  console.log(node)
-
   return (
     <Layout>
       <SEO title="Products" />
@@ -64,7 +62,7 @@ export default ({ pageContext }) => {
           <ImageContainer>
             {sku.featuredImage && <Img fluid={sku.featuredImage.fluid} />}
           </ImageContainer>
-          {/* <Slider node={node} sku={sku} setSku={setSku} /> */}
+          <OldSlider node={node} sku={sku} setSku={setSku} />
           <Details>
             <Container>
               <div>
@@ -111,7 +109,6 @@ export default ({ pageContext }) => {
               <Specification sku={sku} />
               <Reviews />
               <RelatedProducts relatedProducts={sku.relatedProducts} />
-              <Slider />
             </Container>
           </Details>
         </Product>
