@@ -7,7 +7,6 @@ import Slider from '../../../components/Slider'
 
 export default ({ relatedProducts }) => (
   <RelatedProducts>
-    {console.log('>>>>', relatedProducts)}
     <Title title={'Related Products'} />
 
     <Slider>
