@@ -5,7 +5,7 @@ import { RelatedProducts, Product } from './styled'
 import Title from '../../../components/Title'
 import Slider from '../../../components/Slider'
 
-export default ({ relatedProducts }) => (
+export default ({ relatedProducts = [] }) => (
   <RelatedProducts>
     <Title title={'Related Products'} />
 
