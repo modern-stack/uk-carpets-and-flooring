@@ -32,7 +32,9 @@ export default ({ products }) => {
           <div>{$.subtitle}</div>
           <div>£{$.price}</div>
           <ul>
-            <li>Something 2</li>
+            <li>{`${$.width} inch. wide  x ${$.length} inc. Long x ${
+              $.thickness
+            } mm thick`}</li>
             <li>Something 3</li>
           </ul>
         </Product>

@@ -21,6 +21,9 @@ module.exports = async ({ graphql, createPage, products, node, context }) => {
             id
             name
             title
+            width
+            length
+            thickness
             featuredImage {
               id
               fluid(maxHeight: 800, maxWidth: 800) {
@@ -39,6 +42,9 @@ module.exports = async ({ graphql, createPage, products, node, context }) => {
               name
               price
               colour
+              width
+              length
+              thickness
               featuredImage {
                 id
                 fluid(quality: 50, maxWidth: 150, maxHeight: 150) {

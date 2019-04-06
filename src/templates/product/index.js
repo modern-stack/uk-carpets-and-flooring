@@ -69,7 +69,9 @@ export default ({ pageContext }) => {
                 <h2>{node.name}</h2>
                 <h1>{sku.name}</h1>
                 <Overview>
-                  7.19 Inch. WIDE x 4.765. Long X 12 Meres Thick, Low Glosss
+                  {`${sku.width} inch. wide  x ${sku.length} inc. Long x ${
+                    sku.thickness
+                  } mm thick`}
                 </Overview>
               </div>
               <Review />
