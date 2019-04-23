@@ -14,6 +14,10 @@ const ListItem = styled.div`
     :first-child {
       font-weight: 600;
     }
+
+    @media (min-width: 700px) {
+      width: 100%;
+    }
   }
 `
 

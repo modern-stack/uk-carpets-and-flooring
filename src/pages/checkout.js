@@ -1,8 +1,8 @@
 import React from 'react'
-import Payment from '../components/Payment'
+import Checkout from '../components/checkout'
 
 export default () => (
   <div>
-    <Payment />
+    <Checkout />
   </div>
 )

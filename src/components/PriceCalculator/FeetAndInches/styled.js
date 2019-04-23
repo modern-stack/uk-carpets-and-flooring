@@ -23,7 +23,7 @@ const Form = styled.div`
 
 const Length = styled.input`
   background: #ebeeef;
-  min-height: 40px;
+  min-height: 30px;
   margin: 0 2px;
   border-width: 1px;
   border-style: groove;
@@ -40,7 +40,7 @@ const Length = styled.input`
 const Width = styled.select`
   height: 100%;
   background: #ebeeef;
-  min-height: 40px;
+  min-height: 30px;
   margin: 0 2px;
   border-width: 1px;
   border-style: groove;

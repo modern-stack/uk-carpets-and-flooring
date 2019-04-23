@@ -10,7 +10,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     'gatsby-plugin-styled-components',
     {
-      resolve: `gatsby-plugin-stripe-checkout`,
+      resolve: `gatsby-plugin-stripe`,
       options: {
         async: true,
       },

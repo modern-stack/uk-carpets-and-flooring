@@ -1,12 +1,20 @@
 import React, { useState } from 'react'
+import Api from '../../Api'
 
 const SiteContext = React.createContext()
 
 export default ({ children }) => {
-  const [basket, setBasket] = useState([])
+  const [order, setOrder] = useState({
+    items: [],
+  })
+
+  const updateOrder = $ => {
+    console.log('Stripe >>>', Api)
+    return Api.stripe('orders', 'upsert', $).then($ => setOrder($))
+  }
 
   return (
-    <SiteContext.Provider value={{ basket, setBasket }}>
+    <SiteContext.Provider value={{ order, updateOrder }}>
       {children}
     </SiteContext.Provider>
   )

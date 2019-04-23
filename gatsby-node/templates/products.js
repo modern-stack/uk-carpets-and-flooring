@@ -1,89 +1,38 @@
 const path = require(`path`)
 
-module.exports = async ({ graphql, createPage, products, node, context }) => {
+module.exports = async ({ graphql, createPage, skus, node, context }) => {
   const formatted = node.slug.replace('/', '')
   const productType = formatted.charAt(0).toUpperCase() + formatted.slice(1)
 
+  const { byProductType } = skus
+  const filteredSkus = byProductType[productType] || []
+
   const { allContentfulProduct } = await graphql(`
-  { 
-    allContentfulProduct(filter: {productType: {name: {eq: "${productType}"}}}) {
-      edges {
-        node {
-          id
-          name
-          productType {
-            name
-            priceCalculator {
-              name
-            }
-          }
-          skus {
+    {
+      allContentfulProduct(
+        filter: { productType: { name: { eq: "${productType}" } } }
+      ) {
+        edges {
+          node {
             id
             name
-            title
-            width
-            length
-            thickness
-            featuredImage {
-              id
-              fluid(maxHeight: 800, maxWidth: 800) {
-                base64
-                tracedSVG
-                aspectRatio
-                src
-                srcSet
-                srcWebp
-                srcSetWebp
-                sizes
-              }
-            }
-            relatedProducts {
-              id
+            productType {
               name
-              price
-              colour
-              width
-              length
-              thickness
-              featuredImage {
-                id
-                fluid(quality: 50, maxWidth: 150, maxHeight: 150) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
-                }
-              }
-              product{
+              priceCalculator {
                 name
               }
             }
-            size
-            price
           }
-        } 
+        }
       }
     }
-  }
   `).then($ => $.data)
 
   return new Promise(resolve => {
-    const skus = products.edges
-      .filter($ => {
-        return $.node.product && $.node.product[0].productType
-      })
-      .map($ => {
-        return { ...$.node, product: $.node.product[0] }
-      })
-
     const filters = {
       colours: Array.from(
         new Set(
-          skus
+          filteredSkus
             .filter(
               $ =>
                 $.product.productType.name.includes(productType) && !!$.colour
@@ -91,34 +40,32 @@ module.exports = async ({ graphql, createPage, products, node, context }) => {
             .map($ => {
               return {
                 name: $.colour,
-                count: skus.filter($$ => $$.colour === $.colour).length,
+                count: filteredSkus.filter($$ => $$.colour === $.colour).length,
               }
             })
         )
       ),
 
       collection: Array.from(
-        new Set(
-          skus
-            .filter($ => $.product.productType.name.includes(productType))
-            .map($ => $.product.name)
-        )
+        new Set(filteredSkus.map($ => $.product.name))
       ).map($ => {
         return {
           name: $,
-          count: skus.filter($$ => $$.product.name === $).length,
+          count: filteredSkus.filter($$ => $$.product.name === $).length,
         }
       }),
     }
 
     if (allContentfulProduct) {
-      allContentfulProduct.edges.map(product => {
+      allContentfulProduct.edges.map($ => {
+        console.log('product >>>>', $)
         createPage({
-          path: `${node.slug.toLowerCase()}/${product.node.name}`,
+          path: `${node.slug.toLowerCase()}/${$.node.name}`,
           component: path.resolve(`./src/templates/product/index.js`),
           context: {
             ...context,
-            ...product,
+            ...$,
+            skus: filteredSkus,
           },
         })
       })
@@ -129,9 +76,7 @@ module.exports = async ({ graphql, createPage, products, node, context }) => {
       component: path.resolve(`./src/templates/products/index.js`),
       context: {
         ...context,
-        skus: skus.filter($ =>
-          node.slug.includes($.product.productType.name.toLowerCase())
-        ),
+        skus: filteredSkus,
         filters,
       },
     })

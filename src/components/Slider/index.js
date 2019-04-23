@@ -1,4 +1,12 @@
 import React from 'react'
-import { Slider } from './styled'
+import { FaAngleUp, FaAngleDown } from 'react-icons/fa'
 
-export default ({ children }) => <Slider>{children}</Slider>
+import { Conatainer, Slider } from './styled'
+
+export default ({ children, oritentation = 'row', hasArrows }) => (
+  <Conatainer>
+    <FaAngleUp style={{ width: '60px', fontSize: '35px' }} />
+    <Slider oritentation={oritentation}>{children}</Slider>
+    <FaAngleDown style={{ width: '60px', fontSize: '35px' }} />
+  </Conatainer>
+)

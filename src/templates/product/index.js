@@ -10,7 +10,6 @@ import Slider from '../../components/Slider'
 
 import { SiteConsumer } from '../../components/Context/Site'
 
-import OldSlider from './Slider'
 import Review from './Review'
 import Social from '../../components/Social'
 import Specification from './Specification'
@@ -21,7 +20,7 @@ import Breadcrumb from '../../components/Breadcrumb'
 
 import {
   Header,
-  MainContent,
+  FeaturedImage,
   Product,
   Details,
   ImageContainer,
@@ -30,25 +29,25 @@ import {
   Overview,
   Share,
   Link,
+  Skus,
+  Title,
+  SubTitle,
+  DescriptionSection,
 } from './styled'
 
 export default ({ pageContext }) => {
-  const { node } = pageContext
+  const { node, skus } = pageContext
 
-  const [sku, setSku] = useState(node.skus[0])
+  const [sku, setSku] = useState(skus[0])
   const [total, setTotal] = useState(0)
-
-  const addedToBasket = (basket, sku) => {
-    return !basket.filter($ => $ === sku.id).length
-  }
 
   return (
     <Layout>
       <SEO title="Products" />
       <Header />
 
-      <MainContent>
-        <Product>
+      <Product>
+        <div>
           <Breadcrumb
             crumbs={[
               { title: 'Home', link: '/' },
@@ -59,62 +58,78 @@ export default ({ pageContext }) => {
               { title: node.name, link: '' },
             ]}
           />
-          <ImageContainer>
-            {sku.featuredImage && <Img fluid={sku.featuredImage.fluid} />}
-          </ImageContainer>
-          <OldSlider node={node} sku={sku} setSku={setSku} />
-          <Details>
-            <Container>
+        </div>
+        <div />
+        <div />
+        <div />
+        <div />
+
+        <FeaturedImage>
+          {sku.featuredImage && <Img fluid={sku.featuredImage.fluid} />}
+        </FeaturedImage>
+
+        <Skus>
+          <Slider>
+            {skus.map($ => (
+              <ImageContainer
+                selected={sku.id === $.id}
+                onClick={() => setSku($)}
+              >
+                {$.featuredImage && <Img fluid={$.featuredImage.fluid} />}
+              </ImageContainer>
+            ))}
+          </Slider>
+        </Skus>
+        <Details>
+          <Container>
+            <div>
+              <SubTitle>{node.name}</SubTitle>
+              <Title>{sku.name}</Title>
+              <Overview>
+                {`${sku.width} inch. wide  x ${sku.length} inc. Long x ${
+                  sku.thickness
+                } mm thick`}
+              </Overview>
+            </div>
+            <br />
+            <Review />
+            <Price>£{(sku.price * total).toFixed(2)}</Price>
+            <PriceCalculator type={'metres'} setTotal={setTotal} />
+            <SiteConsumer>
+              {({ order, updateOrder }) => (
+                <Primary
+                  onClick={() =>
+                    updateOrder({ ...order, items: [...order.items, sku] })
+                  }
+                >
+                  <label>Add to cart</label>
+                </Primary>
+              )}
+            </SiteConsumer>
+            <DescriptionSection>
+              <SubTitle>Description</SubTitle>
               <div>
-                <h2>{node.name}</h2>
-                <h1>{sku.name}</h1>
-                <Overview>
-                  {`${sku.width} inch. wide  x ${sku.length} inc. Long x ${
-                    sku.thickness
-                  } mm thick`}
-                </Overview>
-              </div>
-              <Review />
-              <Price>£{(sku.price * total).toFixed(2)}</Price>
-              <PriceCalculator type={'metres'} setTotal={setTotal} />
-              <SiteConsumer>
-                {({ basket, setBasket }) =>
-                  addedToBasket(basket, sku) ? (
-                    <Primary onClick={() => setBasket([...basket, sku.id])}>
-                      <label>Add to cart</label>
-                    </Primary>
-                  ) : (
-                    <Secondary onClick={() => setBasket([...basket, sku.id])}>
-                      <label>View Basket</label>
-                    </Secondary>
-                  )
-                }
-              </SiteConsumer>
-              <h2>Description</h2>
-              <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-              <Share>
-                <Link>Share</Link>
-                <Social />
-              </Share>
-            </Container>
-          </Details>
-          <Details>
-            <Container>
-              <Specification sku={sku} />
-              <Reviews />
-              <RelatedProducts relatedProducts={sku.relatedProducts} />
-            </Container>
-          </Details>
-        </Product>
-      </MainContent>
+              </div>
+            </DescriptionSection>
+            <Share>
+              <Link>Share</Link>
+              <Social />
+            </Share>
+          </Container>
+        </Details>
+        <div />
+        <div />
+      </Product>
+      <Details>
+        <Container>
+          <Specification sku={sku} />
+          <Reviews />
+          <RelatedProducts relatedProducts={sku.relatedProducts} />
+        </Container>
+      </Details>
     </Layout>
   )
 }

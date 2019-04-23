@@ -7,7 +7,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const { allContentfulPage } = await allPages(graphql)
-  const { allContentfulSku } = await allProducts(graphql)
+  const skus = await allProducts(graphql)
 
   const pages = []
 
@@ -23,7 +23,7 @@ exports.createPages = async ({ graphql, actions }) => {
             ? templates[template]({
                 graphql,
                 node: $.node,
-                products: allContentfulSku,
+                skus,
                 context,
                 createPage,
               })
