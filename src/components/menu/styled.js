@@ -20,12 +20,13 @@ const Menu = styled.div`
 const SubMenu = styled.div`
   position: absolute;
   opacity: 0;
+  display: none;
   top: 42px;
   background-color: rgb(199, 0, 43, 1);
   color: white;
   padding: 20px;
   text-align: left;
-  z-index: 999;
+
   overflow: auto;
   white-space: nowrap;
   right: 0;
@@ -57,6 +58,7 @@ const MenuItem = styled(Link)`
     }
 
     ${SubMenu} {
+      display: block;
       opacity: 100;
     }
   }
