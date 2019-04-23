@@ -41,6 +41,8 @@ export default ({ pageContext }) => {
   const [sku, setSku] = useState(skus[0])
   const [total, setTotal] = useState(0)
 
+  if (!sku) return <div>No Skus available</div>
+
   return (
     <Layout>
       <SEO title="Products" />
