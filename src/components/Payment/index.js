@@ -8,7 +8,7 @@ export default () => (
   <Payment>
     <StripeProvider apiKey="pk_test_j8D2dhgBhWY1ToEZm9NsrF48">
       <div className="example">
-        <h1>React Stripe Elements Example</h1>
+        <h1>React Stripe Elements Examples</h1>
         <Elements>
           <CheckoutForm />
         </Elements>
