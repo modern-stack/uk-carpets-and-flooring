@@ -14,7 +14,8 @@ const Products = styled.div`
   grid-column-gap: 6px;
 
   @media (max-width: 700px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2 auto-fit, 1fr);
+    grid-auto-flow: column;
   }
 `
 

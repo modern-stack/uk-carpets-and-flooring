@@ -10,7 +10,7 @@ module.exports = graphql =>
             price
             featuredImage {
               id
-              fluid(quality: 100, maxWidth: 500, maxHeight: 500) {
+              fluid(quality: 100, maxWidth: 450, maxHeight: 450) {
                 base64
                 tracedSVG
                 aspectRatio

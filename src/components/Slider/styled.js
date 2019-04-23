@@ -14,6 +14,7 @@ const Slider = styled.div`
 
   @media (max-width: 700px) {
     grid-auto-flow: column;
+    overflow: auto;
   }
 `
 

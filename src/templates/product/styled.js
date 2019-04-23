@@ -45,7 +45,7 @@ const ImageContainer = styled.div`
 
   @media (max-width: 700px) {
     width: 60px;
-    margin: 6px;
+    margin: 0.5em 1em;
   }
 `
 
