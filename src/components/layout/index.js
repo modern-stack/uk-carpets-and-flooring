@@ -8,10 +8,12 @@ import Copyright from '../../components/copyright'
 import InstagramFeed from '../../components/instagram'
 
 import GlobalStyle from './globalstyle'
-import SiteContext from '../Context/Site'
 
 import { Page, Content } from './styled'
 import { ThemeProvider } from 'styled-components'
+
+import { Context } from '../../Context'
+
 // import PageTransition from 'gatsby-plugin-page-transitions'
 
 export default ({ children, data }) => {
@@ -19,14 +21,14 @@ export default ({ children, data }) => {
     <ThemeProvider theme={{ fontFamily: 'Gotham' }}>
       <Page>
         <GlobalStyle />
-        <SiteContext>
+        <Context>
           <Header siteTitle={'unknown'} />
           <Menu />
           <Content>{children}</Content>
           <InstagramFeed />
           <Footer />
           <Copyright />
-        </SiteContext>
+        </Context>
       </Page>
     </ThemeProvider>
   )

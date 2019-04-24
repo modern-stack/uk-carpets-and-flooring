@@ -1,12 +1,11 @@
 import React from 'react'
 import { FaShoppingCart } from 'react-icons/fa'
 
-import { SiteConsumer } from '../Context/Site'
 import { Cart, Total, Icon } from './styled'
 
 export default () => (
   <div>
-    <SiteConsumer>
+    {/* <SiteConsumer>
       {({ order }) => (
         <Icon value={order.items.length}>
           <Cart>
@@ -17,6 +16,6 @@ export default () => (
           </Cart>
         </Icon>
       )}
-    </SiteConsumer>
+    </SiteConsumer> */}
   </div>
 )

@@ -8,8 +8,6 @@ import PriceCalculator from '../../components/PriceCalculator'
 import { Primary, Secondary } from '../../components/Button'
 import Slider from '../../components/Slider'
 
-import { SiteConsumer } from '../../components/Context/Site'
-
 import Review from './Review'
 import Social from '../../components/Social'
 import Specification from './Specification'
@@ -35,7 +33,14 @@ import {
   DescriptionSection,
 } from './styled'
 
+import { useStateValue } from '../../Context'
+
 export default ({ pageContext }) => {
+  const [props, dispatch] = useStateValue()
+  console.log(props, dispatch)
+
+  // console.log(props, dispatch)
+
   const { node, skus } = pageContext
 
   const [sku, setSku] = useState(skus[0])
@@ -99,17 +104,9 @@ export default ({ pageContext }) => {
             <Review />
             <Price>£{(sku.price * total).toFixed(2)}</Price>
             <PriceCalculator type={'metres'} setTotal={setTotal} />
-            <SiteConsumer>
-              {({ order, updateOrder }) => (
-                <Primary
-                  onClick={() =>
-                    updateOrder({ ...order, items: [...order.items, sku] })
-                  }
-                >
-                  <label>Add to cart</label>
-                </Primary>
-              )}
-            </SiteConsumer>
+            <Primary>
+              <label>Add to cart</label>
+            </Primary>
             <DescriptionSection>
               <SubTitle>Description</SubTitle>
               <div>

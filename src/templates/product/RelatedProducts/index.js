@@ -1,15 +1,15 @@
 import React from 'react'
-import Img from 'gatsby-image'
+
 import {
   RelatedProducts,
   Product,
   Products,
   Collection,
   SubTitle,
+  ImageContainer,
 } from './styled'
 
 import Title from '../../../components/Title'
-import Slider from '../../../components/Slider'
 
 export default ({ relatedProducts = [] }) => (
   <RelatedProducts>
@@ -21,7 +21,9 @@ export default ({ relatedProducts = [] }) => (
           if (!$.product) return null
           return (
             <Product>
-              {$.featuredImage && <Img fluid={$.featuredImage.fluid} />}
+              {$.featuredImage && (
+                <ImageContainer fluid={$.featuredImage.fluid} />
+              )}
               <Collection>{$.product.name}</Collection>
               <SubTitle>{$.name}</SubTitle>
               <p>£{$.price}</p>
