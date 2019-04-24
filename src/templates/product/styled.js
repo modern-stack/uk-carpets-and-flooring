@@ -27,10 +27,6 @@ const Product = styled.div`
   }
 
   & > div {
-    :first-child {
-      grid-column: span 2;
-    }
-
     :last-child {
       grid-column: span 5;
     }

@@ -23,11 +23,11 @@ const Breadcrumb = styled.ul`
     :not(:last-child):after {
       content: '';
       position: absolute;
-      width: 1.5vmin;
-      height: 1.5vmin;
+      width: 1vmin;
+      height: 1vmin;
       background: transparent;
-      border-top: 0.5vmin solid gray;
-      border-right: 0.5vmin solid gray;
+      border-top: 0.2em solid gray;
+      border-right: 0.2em solid gray;
       box-shadow: 0 0 0 gray;
       transition: all 200ms ease;
       margin: 0 16px;
