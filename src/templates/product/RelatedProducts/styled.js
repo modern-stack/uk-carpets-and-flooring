@@ -1,17 +1,22 @@
+import Img from 'gatsby-image'
 import styled from 'styled-components'
 
 const RelatedProducts = styled.div`
-  position: relative;
+  display: block;
 `
 
-const Product = styled.div`
-  width: 100%;
+const Product = styled.div``
+
+const ImageContainer = styled(Img)`
+  height: 200px;
 `
 
 const Products = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
+  grid-template-rows: 100px;
   grid-column-gap: 6px;
+  min-height: 320px;
 
   @media (max-width: 700px) {
     grid-template-columns: repeat(2 auto-fit, 1fr);
@@ -29,4 +34,11 @@ const SubTitle = styled.div`
   margin: 6px 0;
 `
 
-export { RelatedProducts, Product, Products, Collection, SubTitle }
+export {
+  RelatedProducts,
+  Product,
+  Products,
+  Collection,
+  ImageContainer,
+  SubTitle,
+}
