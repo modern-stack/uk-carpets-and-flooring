@@ -1,9 +1,9 @@
 export default (state, action) => {
+  console.log('Running >>>', action)
   switch (action.type) {
-    case 'changeTheme':
+    case 'Add':
       return {
-        ...state,
-        theme: action.newTheme,
+        ...action.payload,
       }
 
     default:

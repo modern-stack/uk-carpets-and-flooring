@@ -36,10 +36,9 @@ import {
 import { useStateValue } from '../../Context'
 
 export default ({ pageContext }) => {
-  const [props, dispatch] = useStateValue()
-  console.log(props, dispatch)
+  const [{ basket }, dispatch] = useStateValue()
 
-  // console.log(props, dispatch)
+  console.log('>>>>', basket, dispatch)
 
   const { node, skus } = pageContext
 
@@ -73,7 +72,9 @@ export default ({ pageContext }) => {
         <div />
         <div />
 
-        <FeaturedImage>
+        <FeaturedImage
+          onClick={() => dispatch({ type: 'Add', payload: { foo: 'bar' } })}
+        >
           {sku.featuredImage && <Img fluid={sku.featuredImage.fluid} />}
         </FeaturedImage>
 

@@ -12,23 +12,22 @@ import GlobalStyle from './globalstyle'
 import { Page, Content } from './styled'
 import { ThemeProvider } from 'styled-components'
 
-import { Context } from '../../Context'
-
 // import PageTransition from 'gatsby-plugin-page-transitions'
 
-export default ({ children, data }) => {
+export default ({ children, data }, context) => {
+  console.log('context >>>>', context)
+
   return (
     <ThemeProvider theme={{ fontFamily: 'Gotham' }}>
       <Page>
         <GlobalStyle />
-        <Context>
-          <Header siteTitle={'unknown'} />
-          <Menu />
-          <Content>{children}</Content>
-          <InstagramFeed />
-          <Footer />
-          <Copyright />
-        </Context>
+
+        <Header siteTitle={'unknown'} />
+        <Menu />
+        <Content>{children}</Content>
+        <InstagramFeed />
+        <Footer />
+        <Copyright />
       </Page>
     </ThemeProvider>
   )
