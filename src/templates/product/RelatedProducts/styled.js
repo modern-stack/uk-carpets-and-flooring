@@ -9,6 +9,10 @@ const Product = styled.div``
 
 const ImageContainer = styled(Img)`
   height: 200px;
+
+  @media (max-width: 700px) {
+    height: 65px;
+  }
 `
 
 const Products = styled.div`
@@ -16,7 +20,7 @@ const Products = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
   grid-template-rows: 100px;
   grid-column-gap: 6px;
-  min-height: 320px;
+  min-height: 150px;
 
   @media (max-width: 700px) {
     grid-template-columns: repeat(2 auto-fit, 1fr);
