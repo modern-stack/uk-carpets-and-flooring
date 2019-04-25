@@ -36,9 +36,9 @@ import {
 import { useStateValue } from '../../Context'
 
 export default ({ pageContext }) => {
-  const [{ basket }, dispatch] = useStateValue()
+  const [reducers, dispatch] = useStateValue()
 
-  console.log('>>>>', basket, dispatch)
+  console.log('>>>>', reducers, dispatch)
 
   const { node, skus } = pageContext
 
@@ -72,9 +72,7 @@ export default ({ pageContext }) => {
         <div />
         <div />
 
-        <FeaturedImage
-          onClick={() => dispatch({ type: 'Add', payload: { foo: 'bar' } })}
-        >
+        <FeaturedImage>
           {sku.featuredImage && <Img fluid={sku.featuredImage.fluid} />}
         </FeaturedImage>
 
@@ -105,7 +103,9 @@ export default ({ pageContext }) => {
             <Review />
             <Price>£{(sku.price * total).toFixed(2)}</Price>
             <PriceCalculator type={'metres'} setTotal={setTotal} />
-            <Primary>
+            <Primary
+              onClick={() => dispatch({ type: 'Basket:Add', payload: sku })}
+            >
               <label>Add to cart</label>
             </Primary>
             <DescriptionSection>

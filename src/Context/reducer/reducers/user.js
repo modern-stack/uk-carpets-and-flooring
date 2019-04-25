@@ -1,10 +1,7 @@
 export default (state, action) => {
   switch (action.type) {
-    case 'changeTheme':
-      return {
-        ...state,
-        theme: action.newTheme,
-      }
+    case 'User:Add':
+      return [...state, { user: state.length + 1 }]
 
     default:
       return state

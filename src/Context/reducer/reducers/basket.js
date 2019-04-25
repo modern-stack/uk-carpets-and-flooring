@@ -1,12 +1,12 @@
 export default (state, action) => {
-  console.log('Running >>>', action)
   switch (action.type) {
-    case 'Add':
-      return {
-        ...action.payload,
-      }
+    case 'Basket:Add':
+      return [...state, { ...action.payload }]
+
+    case 'Basket:Remove':
+      return state.filter($ => $.id !== action.payload.id)
 
     default:
-      return state
+      return {}
   }
 }
