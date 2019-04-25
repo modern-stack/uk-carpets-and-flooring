@@ -16,6 +16,8 @@ import RelatedProducts from './RelatedProducts'
 
 import Breadcrumb from '../../components/Breadcrumb'
 
+import { Stripe } from '../../Api'
+
 import {
   Header,
   FeaturedImage,
@@ -104,9 +106,12 @@ export default ({ pageContext }) => {
             <Price>£{(sku.price * total).toFixed(2)}</Price>
             <PriceCalculator type={'metres'} setTotal={setTotal} />
             <Primary
-              onClick={() => dispatch({ type: 'Basket:Add', payload: sku })}
+              onClick={async () => {
+                await Stripe()
+                dispatch({ type: 'Basket:Add', payload: sku })
+              }}
             >
-              <label>Add to cart</label>
+              <label>Add to Order</label>
             </Primary>
             <DescriptionSection>
               <SubTitle>Description</SubTitle>
