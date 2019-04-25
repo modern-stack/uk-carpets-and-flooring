@@ -6,7 +6,7 @@ import { Cart, Total, Icon } from './styled'
 import { useStateValue } from '../../Context'
 
 export default () => {
-  const [{ basket }, dispatch] = useStateValue()
+  const [{ basket }] = useStateValue()
   return (
     <div>
       <Icon value={basket.length}>
