@@ -1,16 +1,18 @@
-// import React from 'react'
-// import { Context } from './src/Context'
+import React from 'react'
+const { renderToString } = require('react-dom/server')
 
-// export const replaceRenderer = ({
-//   bodyComponent,
-//   replaceBodyHTMLString,
-//   setHeadComponents,
-// }) => {
-//   const App = () => {
-//     return <Context>{bodyComponent}</Context>
-//   }
+import { Context } from './src/Context'
 
-//   const body = renderToString(<App />)
+export const replaceRenderer = ({
+  bodyComponent,
+  replaceBodyHTMLString,
+  setHeadComponents,
+}) => {
+  const App = () => {
+    return <Context>{bodyComponent}</Context>
+  }
 
-//   replaceBodyHTMLString(body)
-// }
+  const body = renderToString(<App />)
+
+  replaceBodyHTMLString(body)
+}
