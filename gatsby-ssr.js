@@ -1,4 +1,5 @@
 import React from 'react'
+import { ApolloProvider } from 'react-apollo'
 const { renderToString } = require('react-dom/server')
 
 import { Context } from './src/Context'
