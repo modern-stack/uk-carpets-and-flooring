@@ -14,8 +14,6 @@ class Firebase {
       this.auth = auth()
       this.db = database()
 
-      console.log('firebae >>>>', auth, database, initializeApp)
-
       this.SignIn = () => {
         this.auth.signInWithPopup(new auth.FacebookAuthProvider())
       }
