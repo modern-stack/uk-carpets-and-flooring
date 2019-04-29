@@ -20,7 +20,6 @@ export default ({ children, data }, context) => {
   return (
     <ThemeProvider theme={{ fontFamily: 'Gotham' }}>
       <Page>
-        hawow
         <GlobalStyle />
         <Header siteTitle={'unknown'} />
         <Menu />
