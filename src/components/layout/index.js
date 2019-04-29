@@ -1,13 +1,13 @@
 import React from 'react'
 
-import Header from '../header'
-import Menu from '../menu'
-import Footer from '../footer'
-import Copyright from '../copyright'
+// import Header from '../header'
+// import Menu from '../menu'
+// import Footer from '../footer'
+// import Copyright from '../copyright'
 
-import InstagramFeed from '../instagram'
+// import InstagramFeed from '../instagram'
 
-import GlobalStyle from './globalstyle'
+// import GlobalStyle from './globalstyle'
 
 import { Page, Content } from './styled'
 import { ThemeProvider } from 'styled-components'
@@ -20,14 +20,15 @@ export default ({ children, data }, context) => {
   return (
     <ThemeProvider theme={{ fontFamily: 'Gotham' }}>
       <Page>
-        <GlobalStyle />
+        hawow
+        {/* <GlobalStyle />
 
         <Header siteTitle={'unknown'} />
         <Menu />
         <Content>{children}</Content>
         <InstagramFeed />
         <Footer />
-        <Copyright />
+        <Copyright /> */}
       </Page>
     </ThemeProvider>
   )
