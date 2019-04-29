@@ -38,9 +38,7 @@ import {
 import { useStateValue } from '../../Context'
 
 export default ({ pageContext }) => {
-  const [reducers, dispatch] = useStateValue()
-
-  console.log('>>>>', reducers, dispatch)
+  const [{ basket }, dispatch] = useStateValue()
 
   const { node, skus } = pageContext
 
@@ -48,6 +46,8 @@ export default ({ pageContext }) => {
   const [total, setTotal] = useState(0)
 
   if (!sku) return <div>No Skus available</div>
+
+  console.log('Sku >>>', sku)
 
   return (
     <Layout>
@@ -106,13 +106,16 @@ export default ({ pageContext }) => {
             <Price>£{(sku.price * total).toFixed(2)}</Price>
             <PriceCalculator type={'metres'} setTotal={setTotal} />
             <Primary
-              onClick={async () => {
-                await Stripe()
-                dispatch({ type: 'Basket:Add', payload: sku })
-              }}
+              onClick={async () =>
+                dispatch({
+                  type: 'Basket:Add',
+                  payload: { id: sku.id, quantity: 1 },
+                })
+              }
             >
               <label>Add to Order</label>
             </Primary>
+
             <DescriptionSection>
               <SubTitle>Description</SubTitle>
               <div>

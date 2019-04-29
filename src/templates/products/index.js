@@ -13,9 +13,7 @@ export default ({ pageContext }) => {
   const { skus, filters } = pageContext
 
   const [selected, setSelected] = useState({
-    colours: Array.from(
-      new Set(skus.filter($ => !!$.colour).map($ => $.colour))
-    ),
+    colors: Array.from(new Set(skus.filter($ => !!$.color).map($ => $.color))),
     collection: Array.from(new Set(skus.map($ => $.product.name))),
   })
 
@@ -23,7 +21,7 @@ export default ({ pageContext }) => {
 
   const filtered = skus.filter(
     $ =>
-      selected.colours.includes($.colour) ||
+      selected.colors.includes($.color) ||
       selected.collection.includes($.product.name)
   )
 

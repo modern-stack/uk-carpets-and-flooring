@@ -1,3 +1,6 @@
+import ApolloClient from 'apollo-boost'
+import fetch from 'isomorphic-fetch'
+
 export default {
   Stripe: (type, func, $, method = 'POST') => {
     return fetch(`http://localhost:3001/${type}/${func}`, {
@@ -10,3 +13,8 @@ export default {
     })
   },
 }
+
+export const client = new ApolloClient({
+  uri: process.env.GATSBY_GRAPHQLCLIENT,
+  fetch,
+})

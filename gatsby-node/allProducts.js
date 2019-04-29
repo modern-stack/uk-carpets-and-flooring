@@ -4,13 +4,13 @@ module.exports = graphql =>
       allContentfulSku {
         edges {
           node {
-            id
+            id: contentful_id
             name
-            colour
+            color
             price
             featuredImage {
               id
-              fluid(quality: 100, maxWidth: 450, maxHeight: 450) {
+              fluid(quality: 100, maxWidth: 50, maxHeight: 50) {
                 base64
                 tracedSVG
                 aspectRatio
@@ -32,7 +32,7 @@ module.exports = graphql =>
               id
               name
               price
-              colour
+              color
               featuredImage {
                 id
                 fluid(quality: 50, maxWidth: 150, maxHeight: 150) {

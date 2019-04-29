@@ -2,10 +2,10 @@ import React from 'react'
 
 import Header from '../header'
 import Menu from '../menu'
-import Footer from '../../components/footer'
-import Copyright from '../../components/copyright'
+import Footer from '../footer'
+import Copyright from '../copyright'
 
-import InstagramFeed from '../../components/instagram'
+import InstagramFeed from '../instagram'
 
 import GlobalStyle from './globalstyle'
 

@@ -1,7 +1,18 @@
 import React, { createContext, useContext, useReducer } from 'react'
-
 import reducer from './reducer'
-const initialState = { basket: [], user: [] }
+
+const getFromLocalStorage = (key, defaultValue) => {
+  if (typeof window !== 'undefined') {
+    console.log('Window >>>>', window)
+    return JSON.parse(window.localStorage.getItem(key)) || defaultValue
+  }
+  return defaultValue
+}
+
+const initialState = {
+  basket: getFromLocalStorage('Basket', []),
+  user: [],
+}
 
 export const StateContext = createContext({})
 

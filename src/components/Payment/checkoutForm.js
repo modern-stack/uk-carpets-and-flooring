@@ -4,32 +4,49 @@ import { CardElement, injectStripe } from 'react-stripe-elements'
 import { Checkout } from './styled'
 import { Primary } from '../Button'
 
-const CheckoutForm = ({ stripe }) => {
-  async function submit(e, setResponse) {
+import { useStateValue } from '../../Context'
+
+const CheckoutForm = ({ stripe, onComplete }) => {
+  async function submit(e, setResponse, onComplete) {
     let { error, token } = await stripe.createToken({ name: 'Name' })
 
     let response = {}
+    console.log('token >>>', token, error)
 
     if (!error) {
-      await fetch('http://localhost:3001/charges/create', {
+      await fetch('http://localhost:3001/orders/create', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          amount: 2000,
           currency: 'gbp',
-          source: token.id,
-          description: 'Charge for rachel@example.com',
+          items: basket.map($ => {
+            return {
+              type: 'sku',
+              parent: $.id,
+            }
+          }),
+          shipping: {
+            name: 'Jenny Rosen',
+            address: {
+              line1: '1234 Main Street',
+              city: 'San Francisco',
+              state: 'CA',
+              country: 'US',
+              postal_code: '94111',
+            },
+          },
+          email: 'jenny.rosen@example.com',
         }),
       })
 
-      console.log('reponse >>>>', response)
+      onComplete()
     }
-
-    setResponse({ error, status: !response.statusCode === 200 })
   }
+
+  const [{ basket }] = useStateValue()
 
   const [{ error, status }, setResponse] = useState({
     error: null,
@@ -40,8 +57,6 @@ const CheckoutForm = ({ stripe }) => {
 
   return (
     <Checkout>
-      <input placeholder={'name'} />
-      <input placeholder={'surname'} />
       <CardElement
         style={{
           base: {
@@ -55,7 +70,9 @@ const CheckoutForm = ({ stripe }) => {
           },
         }}
       />
-      <Primary onClick={e => submit(e, setResponse)}>Make Payment</Primary>
+      <Primary onClick={e => submit(e, setResponse, onComplete)}>
+        Make Payment
+      </Primary>
 
       {error && <div>{error.message}</div>}
     </Checkout>

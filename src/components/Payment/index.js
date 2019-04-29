@@ -1,19 +1,20 @@
 import React from 'react'
-import { Payment } from './styled'
+import { Payment, PaymentDetails } from './styled'
 
 import { Elements, StripeProvider } from 'react-stripe-elements'
 import CheckoutForm from './checkoutForm'
 
-export default () => (
+import Title from '../Title'
+
+export default ({ onComplete }) => (
   <Payment>
-    <div>Payment form</div>
-    {/* <StripeProvider apiKey="pk_test_j8D2dhgBhWY1ToEZm9NsrF48">
-      <div className="example">
-        <h1>React Stripe Elements Examples</h1>
+    <StripeProvider apiKey="pk_test_j8D2dhgBhWY1ToEZm9NsrF48">
+      <PaymentDetails>
+        <Title title={'Enter Payment'} />
         <Elements>
-          <CheckoutForm />
+          <CheckoutForm onComplete={onComplete} />
         </Elements>
-      </div>
-    </StripeProvider> */}
+      </PaymentDetails>
+    </StripeProvider>
   </Payment>
 )

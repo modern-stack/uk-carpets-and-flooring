@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Counter from './../../../components/Counter'
+import Counter from '../../Counter'
 import { Metres } from './styled'
 
 export default () => {

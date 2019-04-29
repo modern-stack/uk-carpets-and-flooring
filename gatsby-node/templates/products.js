@@ -30,17 +30,16 @@ module.exports = async ({ graphql, createPage, skus, node, context }) => {
 
   return new Promise(resolve => {
     const filters = {
-      colours: Array.from(
+      colors: Array.from(
         new Set(
           filteredSkus
             .filter(
-              $ =>
-                $.product.productType.name.includes(productType) && !!$.colour
+              $ => $.product.productType.name.includes(productType) && !!$.color
             )
             .map($ => {
               return {
-                name: $.colour,
-                count: filteredSkus.filter($$ => $$.colour === $.colour).length,
+                name: $.color,
+                count: filteredSkus.filter($$ => $$.color === $.color).length,
               }
             })
         )
