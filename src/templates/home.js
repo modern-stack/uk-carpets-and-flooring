@@ -10,6 +10,7 @@ export default ({ pageContext }) => {
     // <Layout page={pageContext}>
     // <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <React.Fragment>
+      <div><hi!/div>
       {/* {pageContext.contentfulPage.content
           .filter($ => $.internal)
           .map($ => {
