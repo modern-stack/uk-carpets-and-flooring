@@ -4,7 +4,7 @@ import { FaCheckCircle, FaShoppingBasket, FaCreditCard } from 'react-icons/fa'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-import Steps from '../components/steps'
+import Steps from '../components/Steps'
 import Order from '../components/Order'
 import Payment from '../components/Payment'
 import OrderConfirmation from '../components/Confirmation'
