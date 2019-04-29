@@ -16,7 +16,7 @@ export default ({ pageContext }) => {
             const Component = ContentfulComponents[$.internal.type]
             return Component ? <Component {...$} /> : null
           })} */}
-        <Testimonials />
+        {/* <Testimonials /> */}
       </React.Fragment>
     </Layout>
   )
