@@ -57,7 +57,6 @@ module.exports = async ({ graphql, createPage, skus, node, context }) => {
 
     if (allContentfulProduct) {
       allContentfulProduct.edges.map($ => {
-        console.log('product >>>>', $)
         createPage({
           path: `${node.slug.toLowerCase()}/${$.node.name}`,
           component: path.resolve(`./src/templates/product/index.js`),

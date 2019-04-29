@@ -3,7 +3,6 @@ import reducer from './reducer'
 
 const getFromLocalStorage = (key, defaultValue) => {
   if (typeof window !== 'undefined') {
-    console.log('Window >>>>', window)
     return JSON.parse(window.localStorage.getItem(key)) || defaultValue
   }
   return defaultValue
