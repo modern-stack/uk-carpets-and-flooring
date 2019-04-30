@@ -39,7 +39,7 @@ module.exports = ({ graphql, id }) => {
               type
             }
             image {
-              fluid(quality: 50, maxHeight: 700, maxWidth: 1240) {
+              fluid(quality: 50, maxHeight: 600, maxWidth: 1140) {
                 base64
                 tracedSVG
                 aspectRatio
