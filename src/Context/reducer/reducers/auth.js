@@ -1,17 +1,9 @@
-// const auth0 = new auth0.WebAuth({
-//   domain: AUTH_CONFIG.domain,
-//   clientID: AUTH_CONFIG.clientId,
-//   redirectUri: AUTH_CONFIG.callbackUrl,
-//   responseType: 'token id_token',
-//   scope: 'openid',
-// })
-
-import auth from '../../../services/Auth'
+import { auth, login } from '../../../services/Auth'
 
 export default (state, action) => {
   switch (action.type) {
     case 'Auth:Login': {
-      //   this.auth0.authorize()
+      auth.authorize()
       return {}
     }
 
