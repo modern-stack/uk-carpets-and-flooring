@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react'
 import reducer from './reducer'
-// import Firebase from '../services/firebase'
+import Firebase from '../services/firebase'
 
 const getFromLocalStorage = (key, defaultValue) => {
   if (typeof window !== 'undefined') {
