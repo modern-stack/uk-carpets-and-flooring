@@ -13,14 +13,14 @@ import {
   OptionImage,
 } from './styled'
 
-import firebase from '../../services/firebase'
+// import firebase from '../../services/firebase'
 
 export default () => {
   const [active, setActive] = useState(false)
   const [user, setUser] = useState()
 
   useEffect(() => {
-    firebase.auth.onAuthStateChanged($ => setUser($))
+    // firebase.auth.onAuthStateChanged($ => setUser($))
   }, [])
 
   return (
