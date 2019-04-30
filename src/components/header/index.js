@@ -3,7 +3,6 @@ import { FaHeart, FaShoppingCart } from 'react-icons/fa'
 import Img from 'gatsby-image'
 import { StaticQuery, graphql } from 'gatsby'
 
-import firebase from '../../services/firebase'
 import Cart from '../Cart'
 
 import {
@@ -27,13 +26,13 @@ const renderProfile = user => (
   </Profile>
 )
 
-const renderSignIn = () => <div onClick={() => firebase.SignIn()}>Sign In </div>
+// const renderSignIn = () => <div onClick={() => firebase.SignIn()}>Sign In </div>
 
 export default () => {
   const [user, setUser] = useState()
 
   useEffect(() => {
-    firebase.auth.onAuthStateChanged($ => setUser($))
+    // firebase.auth.onAuthStateChanged($ => setUser($))
   }, [])
 
   return (
@@ -58,7 +57,7 @@ export default () => {
 
           <DesktopOptions>
             <UserInfo>
-              {user ? renderProfile(user) : renderSignIn()}
+              {/* {user ? renderProfile(user) : renderSignIn()} */}
               <MenuItem>
                 <FaHeart size={12} />
                 <label>
@@ -82,7 +81,7 @@ export default () => {
           <MobileOptions>
             <Cart />
             <div>
-              {user ? <ProfileImage src={user.photoURL} /> : renderSignIn()}
+              {/* {user ? <ProfileImage src={user.photoURL} /> : renderSignIn()} */}
             </div>
           </MobileOptions>
         </Header>

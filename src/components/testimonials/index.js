@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import fb from '../../services/firebase'
 
 import Desktop from './Desktop'
 import Mobile from './Mobile'
