@@ -62,7 +62,7 @@ export default () => {
 
           <DesktopOptions>
             <UserInfo>
-              {/* {user ? renderProfile(user) : renderSignIn()} */}
+              {user ? renderProfile(user) : renderSignIn(auth)}
               <MenuItem>
                 <FaHeart size={12} />
                 <label>
