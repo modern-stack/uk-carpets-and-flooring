@@ -1,4 +1,4 @@
-import { initializeApp, auth, database } from 'firebase'
+import { initializeApp, auth } from 'firebase'
 
 const config = {
   apiKey: process.env.GATSBY_FIREBASE_API_KEY,
@@ -12,25 +12,10 @@ class Firebase {
     if (typeof window !== 'undefined') {
       initializeApp(config)
       this.auth = auth()
-      this.db = database()
 
       this.SignIn = () => {
         this.auth.signInWithPopup(new auth.FacebookAuthProvider())
       }
-
-      this.createTestimonial = async testimonial => {
-        const id = this.db
-          .ref()
-          .child('testimonials')
-          .push().key
-        return this.db.ref(`testimonials/${id}`).set(testimonial)
-      }
-
-      this.allTestimonials = async () =>
-        this.db
-          .ref(`testimonials`)
-          .once('value')
-          .then($ => [...Object.values($.val() || [])])
     }
   }
 }
