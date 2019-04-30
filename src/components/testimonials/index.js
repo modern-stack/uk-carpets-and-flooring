@@ -10,9 +10,9 @@ function formatDate(timestamp) {
 }
 
 const setContent = setTestimonials => {
-  fb.allTestimonials()
-    .then($ => $)
-    .then($ => setTestimonials($))
+  // fb.allTestimonials()
+  //   .then($ => $)
+  //   .then($ => setTestimonials($))
 }
 
 export default () => {
