@@ -8,7 +8,7 @@ const auth = new auth0.WebAuth({
   redirectUri: 'http://localhost:8000/callback',
   audience: `https://${process.env.GATSBY_AUTH0_DOMAIN}/api/v2/`,
   responseType: 'token id_token',
-  scope: 'openid profile email',
+  scope: 'openid profile email app_metadata',
 })
 
 export default {
