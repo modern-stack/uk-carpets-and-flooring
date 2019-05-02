@@ -1,7 +1,9 @@
 export default (state, action) => {
   switch (action.type) {
-    case 'User:Add':
-      return [...state, { user: state.length + 1 }]
+    case 'User:Login': {
+      debugger
+      return { ...state, currentUser: action.payload }
+    }
 
     default:
       return state

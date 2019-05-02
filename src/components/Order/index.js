@@ -16,7 +16,7 @@ import {
   OrderContainer,
 } from './styled'
 
-async function CompleteOrder({ basket, onComplete }) {
+async function CreateOrder({ basket, onComplete }) {
   await fetch('http://localhost:3001/orders/create', {
     method: 'POST',
     headers: {
@@ -38,7 +38,7 @@ async function CompleteOrder({ basket, onComplete }) {
 }
 
 export default ({ onComplete }) => {
-  const [{ basket }, dispatch] = useStateValue()
+  const [{ basket }] = useStateValue()
 
   const APOLLO_QUERY = gql`
     {
@@ -115,7 +115,7 @@ export default ({ onComplete }) => {
                 </Price>
               </Total>
 
-              <Primary onClick={() => CompleteOrder({ basket, onComplete })}>
+              <Primary onClick={() => CreateOrder({ basket, onComplete })}>
                 Proceeed to Payment
               </Primary>
             </Order>
