@@ -38,7 +38,7 @@ async function CreateOrder({ basket, onComplete }) {
 }
 
 export default ({ onComplete }) => {
-  const [{ basket }] = useStateValue()
+  const [{ basket }, dispatch] = useStateValue()
 
   const APOLLO_QUERY = gql`
     {
@@ -76,7 +76,10 @@ export default ({ onComplete }) => {
     <OrderContainer>
       <Query query={APOLLO_QUERY}>
         {({ data, loading, error }) => {
+          console.log('response >>>>>', data, loading, error)
           if (loading) return <p>Loading pupper...</p>
+
+          if (!data) return <div>No Data found!</div>
 
           const { allContentfulSku } = data
 

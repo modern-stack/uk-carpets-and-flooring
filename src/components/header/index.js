@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { FaHeart, FaShoppingCart } from 'react-icons/fa'
 import Img from 'gatsby-image'
 import { StaticQuery, graphql } from 'gatsby'
@@ -21,10 +21,10 @@ import {
   MobileOptions,
 } from './styled'
 
-const renderProfile = user => (
+const renderProfile = auth => (
   <Profile>
-    <ProfileImage src={user.photoURL} />
-    <label>{user.displayName}</label>
+    <ProfileImage src={auth.photoURL} />
+    <label>{auth.displayName}</label>
   </Profile>
 )
 
@@ -35,10 +35,6 @@ export default () => {
   const [{ auth }, dispatch] = useStateValue()
 
   console.log('auth >>>>', auth)
-
-  useEffect(() => {
-    // firebase.auth.onAuthStateChanged($ => setUser($))
-  }, [])
 
   return (
     <StaticQuery
@@ -62,7 +58,7 @@ export default () => {
 
           <DesktopOptions>
             <UserInfo>
-              {user ? renderProfile(user) : renderSignIn(auth)}
+              {user ? renderProfile(auth.getUser()) : renderSignIn(auth)}
               <MenuItem>
                 <FaHeart size={12} />
                 <label>

@@ -1,7 +1,7 @@
 export default (state, action) => {
+  console.log('stuff >>>', state, action)
   switch (action.type) {
     case 'User:Login': {
-      debugger
       return { ...state, currentUser: action.payload }
     }
 
