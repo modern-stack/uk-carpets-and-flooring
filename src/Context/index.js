@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useReducer } from 'react'
 import reducer from './reducer'
 
+import auth from '../services/Auth'
+
 const getFromLocalStorage = (key, defaultValue) => {
   if (typeof window !== 'undefined') {
     return JSON.parse(window.localStorage.getItem(key)) || defaultValue
@@ -11,6 +13,7 @@ const getFromLocalStorage = (key, defaultValue) => {
 const initialState = {
   basket: getFromLocalStorage('Basket', []),
   user: [],
+  auth,
 }
 
 export const StateContext = createContext({})
