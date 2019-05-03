@@ -9,13 +9,14 @@ export default () => {
   const [{ basket }, dispatch] = useStateValue()
   return (
     <div>
+      <Cart>
+        <FaShoppingCart size={12} />
+        <label>
+          My Cart (<Total>{basket.length}</Total>)
+        </label>
+      </Cart>
       <Icon value={basket.length}>
-        <Cart>
-          <FaShoppingCart size={12} />
-          <label>
-            My Cart (<Total>{basket.length}</Total>)
-          </label>
-        </Cart>
+        <FaShoppingCart size={12} />
       </Icon>
     </div>
   )

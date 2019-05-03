@@ -17,10 +17,6 @@ export default () => {
   const [active, setActive] = useState(false)
   const [user, setUser] = useState()
 
-  useEffect(() => {
-    // firebase.auth.onAuthStateChanged($ => setUser($))
-  }, [])
-
   return (
     <React.Fragment>
       <Menu>

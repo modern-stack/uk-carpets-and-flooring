@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { FaHeart, FaShoppingCart } from 'react-icons/fa'
 import Img from 'gatsby-image'
 import { StaticQuery, graphql } from 'gatsby'
@@ -21,20 +21,22 @@ import {
   MobileOptions,
 } from './styled'
 
-const renderProfile = auth => (
-  <Profile>
-    <ProfileImage src={auth.photoURL} />
-    <label>{auth.displayName}</label>
-  </Profile>
-)
+const renderProfile = user => {
+  return (
+    <Profile>
+      <ProfileImage src={user.picture} />
+
+      <label>{user.name}</label>
+    </Profile>
+  )
+}
 
 const renderSignIn = auth => <div onClick={() => auth.login()}>Sign In </div>
 
 export default () => {
-  const [user, setUser] = useState()
-  const [{ auth }, dispatch] = useStateValue()
+  const [{ user, auth }, dispatch] = useStateValue()
 
-  console.log('auth >>>>', auth)
+  console.log('User >>>', user)
 
   return (
     <StaticQuery
@@ -58,7 +60,7 @@ export default () => {
 
           <DesktopOptions>
             <UserInfo>
-              {user ? renderProfile(auth.getUser()) : renderSignIn(auth)}
+              {user ? renderProfile(user) : renderSignIn(auth)}
               <MenuItem>
                 <FaHeart size={12} />
                 <label>
@@ -82,7 +84,7 @@ export default () => {
           <MobileOptions>
             <Cart />
             <div>
-              {user ? <ProfileImage src={user.photoURL} /> : renderSignIn(auth)}
+              {user ? <ProfileImage src={user.picture} /> : renderSignIn(auth)}
             </div>
           </MobileOptions>
         </Header>

@@ -12,6 +12,10 @@ const Cart = styled.div`
       display: none;
     }
   }
+
+  @media (max-width: 700px) {
+    display: none;
+  }
 `
 
 const Total = styled.label`
@@ -42,6 +46,10 @@ const Icon = styled.div`
     display: flex;
     justify-content: center;
     border-radius: 50%;
+  }
+
+  @media (min-width: 700px) {
+    display: none;
   }
 `
 

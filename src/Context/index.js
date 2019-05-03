@@ -12,7 +12,7 @@ const getFromLocalStorage = (key, defaultValue) => {
 
 const initialState = {
   basket: getFromLocalStorage('Basket', []),
-  user: [],
+  user: auth.getUser(),
   auth,
 }
 
