@@ -1,5 +1,5 @@
 import auth0 from 'auth0-js'
-import { navigateTo } from 'gatsby-link'
+import { resolve } from 'path'
 
 const auth = new auth0.WebAuth({
   domain: process.env.GATSBY_AUTH0_DOMAIN,
@@ -21,20 +21,16 @@ function login() {
   return auth.authorize()
 }
 
-function handleAuthentication() {
-  if (typeof window !== 'undefined') {
-    auth.parseHash((err, authResult) => {
-      console.log('result >>>', authResult)
-      if (authResult && authResult.accessToken && authResult.idToken) {
-        setSession(authResult)
-      } else if (err) {
-        console.log(err)
-      }
+async function handleAuthentication() {
+  return new Promise(resolve => {
+    if (typeof window !== 'undefined') {
+      return auth.parseHash((err, authResult) => {
+        return resolve({ err, authResult })
+      })
+    }
 
-      // Return to the homepage after authentication.
-      navigateTo('/')
-    })
-  }
+    return resolve({ err: 'No SSR' })
+  })
 }
 
 function isAuthenticated() {
@@ -42,16 +38,19 @@ function isAuthenticated() {
   return new Date().getTime() < expiresAt
 }
 
-function setSession(authResult) {
-  const expiresAt = JSON.stringify(
-    authResult.expiresIn * 1000 + new Date().getTime()
-  )
-  localStorage.setItem('access_token', authResult.accessToken)
-  localStorage.setItem('id_token', authResult.idToken)
-  localStorage.setItem('expires_at', expiresAt)
+async function setSession(authResult) {
+  return new Promise(resolve => {
+    const expiresAt = JSON.stringify(
+      authResult.expiresIn * 1000 + new Date().getTime()
+    )
+    localStorage.setItem('access_token', authResult.accessToken)
+    localStorage.setItem('id_token', authResult.idToken)
+    localStorage.setItem('expires_at', expiresAt)
 
-  auth.client.userInfo(authResult.accessToken, (err, user) => {
-    localStorage.setItem('user', JSON.stringify(user))
+    auth.client.userInfo(authResult.accessToken, (err, user) => {
+      localStorage.setItem('user', JSON.stringify(user))
+      resolve(true)
+    })
   })
 }
 

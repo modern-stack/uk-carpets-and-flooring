@@ -1,9 +1,9 @@
 import userReducer from './reducers/user'
-import basketReducer from './reducers/basket'
+import orderReducer from './reducers/order'
 import authReducer from './reducers/auth'
 
-export default () => ({ user, basket, auth }, action) => ({
+export default () => ({ user, order, auth }, action) => ({
   user: userReducer(user, action),
-  basket: basketReducer(basket, action),
+  order: orderReducer(order, action),
   auth: authReducer(auth, action),
 })

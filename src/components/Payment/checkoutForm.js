@@ -1,62 +1,68 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { CardElement, injectStripe } from 'react-stripe-elements'
+
+import Api from '../../Api'
+
+import Address from './Address'
 
 import { Checkout } from './styled'
 import { Primary } from '../Button'
+import Title from '../Title'
+import PersonalDetails from './PersonalDetails'
 
 import { useStateValue } from '../../Context'
 
-const CheckoutForm = ({ stripe, onComplete }) => {
-  async function submit(e, setResponse, onComplete) {
-    let { error, token } = await stripe.createToken({ name: 'Name' })
-
-    let response = {}
-    console.log('token >>>', token, error)
-
-    if (!error) {
-      await fetch('http://localhost:3001/orders/create', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          currency: 'gbp',
-          items: basket.map($ => {
-            return {
-              type: 'sku',
-              parent: $.id,
-            }
-          }),
-          shipping: {
-            name: 'Jenny Rosen',
-            address: {
-              line1: '1234 Main Street',
-              city: 'San Francisco',
-              state: 'CA',
-              country: 'US',
-              postal_code: '94111',
-            },
-          },
-          email: 'jenny.rosen@example.com',
+const CheckoutForm = ({ onComplete }) => {
+  async function CreateOrder({ order, onComplete, dispatch }) {
+    const newOrder = await fetch('http://localhost:3001/orders/create', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        currency: 'gbp',
+        items: order.items.map($ => {
+          return {
+            type: 'sku',
+            parent: $.id,
+          }
         }),
-      })
+        shipping: order.shipping,
+        email: order.email,
+      }),
+    })
 
-      onComplete()
-    }
+    dispatch({ type: 'Order:Update', payload: { id: newOrder.id } })
+
+    onComplete()
   }
 
-  const [{ basket }] = useStateValue()
+  const [{ order, user }, dispatch] = useStateValue()
 
-  const [{ error, status }, setResponse] = useState({
-    error: null,
-    token: null,
-  })
+  const [cards, setCards] = useState()
 
-  if (!error && status) return <h1>Purchase Complete</h1>
+  const findCards = (user, setcards) => {
+    Api.Stripe({
+      type: 'customers',
+      func: 'listCards',
+      id: user.stripeId,
+    }).then($ => setcards($.data))
+  }
+
+  useEffect(() => {
+    user && findCards(user, setCards)
+  }, [])
 
   return (
     <Checkout>
+      <Title title={'Personal Details'} />
+      <PersonalDetails />
+
+      <Title title={'Shipping Details'} />
+      <Address />
+
+      <Title title={'Enter Payment'} />
       <CardElement
         style={{
           base: {
@@ -70,11 +76,11 @@ const CheckoutForm = ({ stripe, onComplete }) => {
           },
         }}
       />
-      <Primary onClick={e => submit(e, setResponse, onComplete)}>
+      <Primary
+        onClick={() => CreateOrder({ user, order, onComplete, dispatch })}
+      >
         Make Payment
       </Primary>
-
-      {error && <div>{error.message}</div>}
     </Checkout>
   )
 }

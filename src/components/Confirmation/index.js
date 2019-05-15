@@ -5,7 +5,7 @@ import { Primary } from '../Button'
 
 import { useStateValue } from '../../Context'
 
-async function CompleteOrder({ onComplete, basket }) {
+async function CompleteOrder({ onComplete, order }) {
   await fetch('http://localhost:3001/orders/create', {
     method: 'POST',
     headers: {
@@ -14,7 +14,7 @@ async function CompleteOrder({ onComplete, basket }) {
     },
     body: JSON.stringify({
       currency: 'gbp',
-      items: basket.map($ => {
+      items: order.items.map($ => {
         return {
           type: 'sku',
           parent: $.id,

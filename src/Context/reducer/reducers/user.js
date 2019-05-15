@@ -1,8 +1,11 @@
 export default (state, action) => {
-  console.log('stuff >>>', state, action)
   switch (action.type) {
-    case 'User:Login': {
-      return { ...state, currentUser: action.payload }
+    case 'User:Update': {
+      console.log('Updating User >>>>', state, action)
+
+      const user = { ...state, ...action.payload }
+      console.log('new user >>>', user)
+      return user
     }
 
     default:

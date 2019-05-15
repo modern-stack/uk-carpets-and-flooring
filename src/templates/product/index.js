@@ -38,7 +38,7 @@ import {
 import { useStateValue } from '../../Context'
 
 export default ({ pageContext }) => {
-  const [{ basket }, dispatch] = useStateValue()
+  const [{ order }, dispatch] = useStateValue()
 
   const { node, skus } = pageContext
 
@@ -46,6 +46,8 @@ export default ({ pageContext }) => {
   const [total, setTotal] = useState(0)
 
   if (!sku) return <div>No Skus available</div>
+
+  console.log('rendering >>>>')
 
   return (
     <Layout>
@@ -104,12 +106,12 @@ export default ({ pageContext }) => {
             <Price>£{(sku.price * total).toFixed(2)}</Price>
             <PriceCalculator type={'metres'} setTotal={setTotal} />
             <Primary
-              onClick={async () =>
+              onClick={() => {
                 dispatch({
-                  type: 'Basket:Add',
+                  type: 'Order:AddItem',
                   payload: { id: sku.id, quantity: 1 },
                 })
-              }
+              }}
             >
               <label>Add to Order</label>
             </Primary>

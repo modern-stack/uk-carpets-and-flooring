@@ -7,6 +7,7 @@ const Button = styled.button`
   text-transform: uppercase;
   padding: 0.5rem 1rem;
   border: none;
+  width: 100%;
 
   :hover {
     cursor: pointer;

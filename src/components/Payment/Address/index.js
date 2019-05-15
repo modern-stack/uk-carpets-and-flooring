@@ -1,22 +1,43 @@
-import React, { useState } from 'react;'
-import Address from './styled'
+import React from 'react'
+import { Address, AddressDetails } from './styled'
 
-async function searchAddress(number, postcode, setAddressDetails) {
-  await fetch(
-    `https://maps.googleapis.com/maps/api/geocode/json?address=${number}+${postcode}&key=${
-      process.env.GATSBY_GOOGLE_PLACES_API_KEY
-    }`
-  )
-
-  const payload = $
-}
+import EditAddress from './Edit'
+import { Secondary } from '../../Button'
+import { useStateValue } from '../../../Context'
 
 export default () => {
-  const [addressDetails, setAddressDetails] = useState({})
+  const [{ order }, dispatch] = useStateValue()
+
+  console.log('Order >>>>', order)
 
   return (
     <Address>
-      <input type="text" placeholder={'Enter Postcode'} />
+      {order.shipping && order.shipping.address && (
+        <AddressDetails>
+          <div>
+            {order.shipping.address.line1} {order.shipping.address.line2}
+          </div>
+
+          <div>{order.shipping.address.state}</div>
+          <div>{order.shipping.address.city}</div>
+          <div>{order.shipping.address.country}</div>
+          <div>{order.shipping.address.post_code}</div>
+
+          <br />
+          <Secondary
+            onClick={() =>
+              dispatch({
+                type: 'Order:ClearShipping',
+                payload: null,
+              })
+            }
+          >
+            Edit Address
+          </Secondary>
+        </AddressDetails>
+      )}
+
+      {(!order.shipping || !order.shipping.address) && <EditAddress />}
     </Address>
   )
 }

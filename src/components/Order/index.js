@@ -16,33 +16,12 @@ import {
   OrderContainer,
 } from './styled'
 
-async function CreateOrder({ basket, onComplete }) {
-  await fetch('http://localhost:3001/orders/create', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      currency: 'gbp',
-      items: basket.map($ => {
-        return {
-          type: 'sku',
-          parent: $.id,
-        }
-      }),
-    }),
-  })
-
-  onComplete()
-}
-
 export default ({ onComplete }) => {
-  const [{ basket }, dispatch] = useStateValue()
+  const [{ order }, dispatch] = useStateValue()
 
   const APOLLO_QUERY = gql`
     {
-      allContentfulSku(filter: { contentful_id: { in: [${basket.map(
+      allContentfulSku(filter: { contentful_id: { in: [${order.items.map(
         $ => `"${$.id}"`
       )}] } }) {
         edges {
@@ -76,7 +55,6 @@ export default ({ onComplete }) => {
     <OrderContainer>
       <Query query={APOLLO_QUERY}>
         {({ data, loading, error }) => {
-          console.log('response >>>>>', data, loading, error)
           if (loading) return <p>Loading pupper...</p>
 
           if (!data) return <div>No Data found!</div>
@@ -118,7 +96,7 @@ export default ({ onComplete }) => {
                 </Price>
               </Total>
 
-              <Primary onClick={() => CreateOrder({ basket, onComplete })}>
+              <Primary onClick={() => onComplete()}>
                 Proceeed to Payment
               </Primary>
             </Order>
