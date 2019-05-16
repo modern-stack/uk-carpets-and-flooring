@@ -23,7 +23,6 @@
     "gatsby-plugin-webpack-bundle-analyzer": "^1.0.4",
     "gatsby-source-contentful": "^2.0.26",
     "gatsby-source-filesystem": "^2.0.16",
-    "gatsby-source-graphql": "^2.0.18",
     "gatsby-source-instagram-all": "^2.0.3",
     "gatsby-transformer-sharp": "^2.1.13",
     "prop-types": "^15.6.2",
