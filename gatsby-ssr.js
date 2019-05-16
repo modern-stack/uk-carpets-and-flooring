@@ -5,6 +5,14 @@ const { renderToString } = require('react-dom/server')
 import { Context } from './src/Context'
 import { client } from './src/Api'
 
+const initialState = {
+  order: {
+    items: [],
+  },
+  user: null,
+  auth: null,
+}
+
 export const replaceRenderer = ({
   bodyComponent,
   replaceBodyHTMLString,
@@ -13,7 +21,7 @@ export const replaceRenderer = ({
   const App = () => {
     return (
       <ApolloProvider client={client}>
-        <Context>{bodyComponent}</Context>
+        <Context initialState={initialState}>{bodyComponent}</Context>
       </ApolloProvider>
     )
   }
