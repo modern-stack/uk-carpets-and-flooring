@@ -6,6 +6,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import { useStateValue } from '../../Context'
 
 import Cart from '../Cart'
+import Order from '../Order'
 
 import {
   Header,
@@ -34,7 +35,7 @@ const renderProfile = user => {
 const renderSignIn = auth => <div onClick={() => auth.login()}>Sign In </div>
 
 export default () => {
-  const [{ user, auth }, dispatch] = useStateValue()
+  const [{ user, basket, auth }, dispatch] = useStateValue()
 
   console.log('User >>>', user)
 
@@ -70,12 +71,7 @@ export default () => {
               <MenuItem>
                 <Cart />
                 <SubMenu>
-                  <div>Summary</div>
-                  <hr />
-                  <div>this is a test and shiiiiii</div>
-                  <div>hawow</div>
-                  <div>hawow</div>
-                  <div>hawow</div>
+                  <Order onComplete />
                 </SubMenu>
               </MenuItem>
             </UserInfo>

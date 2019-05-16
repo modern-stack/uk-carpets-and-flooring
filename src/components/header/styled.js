@@ -3,9 +3,13 @@ import styled from 'styled-components'
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 10px 10px 0px 10px;
+  padding: 0px 10px 0px 10px;
   0px10pxtext-transform: uppercase;
   align-items: center;
+
+  @media (max-width: 700px) {
+    padding: 10px 10px 0px 10px;
+  }
 `
 
 const CompanyName = styled.div`

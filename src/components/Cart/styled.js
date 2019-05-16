@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 const Cart = styled.div`
   display: flex;
@@ -42,7 +43,7 @@ const Icon = styled.div`
     height: 14px;
     color: #fff;
     top: 14px;
-    right: 70px;
+    right: 60px;
     display: flex;
     justify-content: center;
     border-radius: 50%;
@@ -53,4 +54,10 @@ const Icon = styled.div`
   }
 `
 
-export { Cart, Total, Icon }
+const Navigation = styled(Link)`
+  cursor: pointer;
+  color: gray;
+  text-decoration: none;
+`
+
+export { Cart, Total, Icon, Navigation }

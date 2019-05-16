@@ -1,23 +1,25 @@
 import React from 'react'
 import { FaShoppingCart } from 'react-icons/fa'
 
-import { Cart, Total, Icon } from './styled'
+import { Cart, Total, Icon, Navigation } from './styled'
 
 import { useStateValue } from '../../Context'
 
 export default () => {
-  const [{ basket }, dispatch] = useStateValue()
+  const [{ order }, dispatch] = useStateValue()
+
+  console.log('order >>>>', order)
   return (
-    <div>
+    <Navigation to={'/checkout'}>
       <Cart>
         <FaShoppingCart size={12} />
         <label>
-          My Cart (<Total>{basket.length}</Total>)
+          My Cart (<Total>{order.items.length}</Total>)
         </label>
       </Cart>
-      <Icon value={basket.length}>
+      <Icon value={order.items.length}>
         <FaShoppingCart size={12} />
       </Icon>
-    </div>
+    </Navigation>
   )
 }
