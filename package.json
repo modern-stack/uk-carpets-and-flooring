@@ -23,6 +23,7 @@
     "gatsby-plugin-webpack-bundle-analyzer": "^1.0.4",
     "gatsby-source-contentful": "^2.0.26",
     "gatsby-source-filesystem": "^2.0.16",
+    "gatsby-source-instagram": "^0.5.0",
     "gatsby-source-instagram-all": "^2.0.3",
     "gatsby-transformer-sharp": "^2.1.13",
     "prop-types": "^15.6.2",
@@ -57,6 +58,7 @@
     "faker": "^4.1.0",
     "fetch": "^1.1.0",
     "fetch-node": "0.0.1",
+    "gatsby-source-prismic": "^2.3.0-alpha.3",
     "ndb": "^1.0.43",
     "prettier": "^1.15.2"
   },

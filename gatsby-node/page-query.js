@@ -1,107 +1,97 @@
 module.exports = ({ graphql, id }) => {
   return graphql(`
     {
-      contentfulPage(id: { eq: "${id}" }) {
+      prismicPage(id: { eq: "Prismic__Page__XN6q5xAAAOk6prku" }) {
         id
-        title
-        slug
-        template
-        content {
-          ... on ContentfulCarousel {
-            id
-            name
-            internal {
-              type
-            }
-            slides {
-              title
-              content
-              cta
-              image {
-                fluid(quality: 50, maxHeight: 600, maxWidth: 1140) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
+        slugs
+        data {
+          name {
+            html
+            text
+          }
+          slug {
+            text
+          }
+          template
+          body {
+            ... on PrismicPageBodyImageGallery {
+              id
+              slice_type
+              items {
+                title {
+                  html
+                  text
                 }
-              }
-            }
-          }
-          ... on ContentfulBanner {
-            id
-            title
-            subtext
-            internal {
-              type
-            }
-            image {
-              fluid(quality: 50, maxHeight: 600, maxWidth: 1140) {
-                base64
-                tracedSVG
-                aspectRatio
-                src
-                srcSet
-                srcWebp
-                srcSetWebp
-                sizes
-              }
-            }
-          }
-          ... on ContentfulBanners {
-            id
-            name
-            internal {
-              type
-              contentDigest
-              owner
-            }
-            banners {
-                id
-                title
-                subtext
-                subtitle
-                content
-                cta
-                image {
-                  id
-                  fluid {
-                    base64
-                    tracedSVG
-                    aspectRatio
-                    src
-                    srcSet
-                    srcWebp
-                    srcSetWebp
-                    sizes
+                description {
+                  html
+                }
+                gallery_image {
+                  localFile {
+                    childImageSharp {
+                      fluid(quality: 100, maxHeight: 1280, maxWidth: 1920) {
+                        base64
+                        tracedSVG
+                        aspectRatio
+                        src
+                        srcSet
+                        srcWebp
+                        srcSetWebp
+                        sizes
+                      }
+                    }
                   }
                 }
-                link
-                internal {
-                  type
+              }
+            }
+            ... on PrismicPageBodyBannerGallery {
+              id
+              slice_type
+              items {
+                title {
+                  html
+                  text
+                }
+                subcontent {
+                  html
+                  text
+                }
+                content {
+                  html
+                  text
+                }
+                cta {
+                  html
+                  text
+                }
+                link {
+                  link_type
+                  url
+                  target
+                }
+                image {
+                  localFile {
+                    childImageSharp {
+                      fluid(quality: 100, maxHeight: 720, maxWidth: 1280) {
+                        base64
+                        tracedSVG
+                        aspectRatio
+                        src
+                        srcSet
+                        srcWebp
+                        srcSetWebp
+                        sizes
+                      }
+                    }
+                  }
                 }
               }
-          }
-          ... on ContentfulProductHeader {
-            id
-            title
-            subTitle
-            internal {
-              type
-            }
-          }
-          ... on ContentfulProductList {
-            id
-            type
-            internal {
-              type
             }
           }
         }
       }
     }
-  `).then($ => $.data)
+  `).then($ => {
+    console.log('>>>>', $)
+    return $.data
+  })
 }

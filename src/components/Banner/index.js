@@ -12,15 +12,19 @@ import {
 
 export default ({ banner }) => (
   <Banner maxHeight={banner.maxHeight}>
+    {console.log('banner >>>', banner)}
     <ImageContainer>
       {banner.image && (
-        <Image style={{ position: 'initial' }} fluid={banner.image.fluid} />
+        <Image
+          style={{ height: '100%' }}
+          fluid={banner.image.localFile.childImageSharp.fluid}
+        />
       )}
     </ImageContainer>
     <Content>
-      <Title>{banner.title}</Title>
-      <SubContent>{banner.content}</SubContent>
-      {banner.cta && <Button>{banner.cta}</Button>}
+      <Title>{banner.title.text}</Title>
+      <SubContent>{banner.content.text}</SubContent>
+      {banner.cta && <Button>{banner.cta.text}</Button>}
     </Content>
   </Banner>
 )

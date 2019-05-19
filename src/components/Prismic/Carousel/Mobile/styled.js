@@ -3,11 +3,12 @@ import styled from 'styled-components'
 const Carousel = styled.div`
   position: relative;
   display: block;
+  height: 100%;
 `
 
 const Slide = styled.div`
   display: block;
-  width: 100 vw;
+  height: 100%;
 `
 
 const SlideSelection = styled.div`

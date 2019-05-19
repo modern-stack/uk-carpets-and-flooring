@@ -1,4 +1,4 @@
 module.exports = {
-  page: require('./page'),
+  default: require('./default'),
   products: require('./products'),
 }

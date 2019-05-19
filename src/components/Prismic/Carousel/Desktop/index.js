@@ -33,11 +33,15 @@ export default ({ slides }) => {
       <CarouselContainer>
         {slides.map((slide, index) => (
           <Slide key={index} visible={index === position}>
-            <Image style={{ width: '100%' }} fluid={slide.image.fluid} />
+            {console.log('>>>>', slide.gallery_image.localFile)}
+            <Image
+              style={{ width: '100%' }}
+              fluid={slide.gallery_image.localFile.childImageSharp.fluid}
+            />
             <Content>
-              <Title>{slide.title}</Title>
-              <SubContent>{slide.content}</SubContent>
-              <Button>{slide.cta}</Button>
+              <Title>{slide.title.text}</Title>
+              {/* <SubContent>{slide.content}</SubContent> */}
+              {/* <Button>{slide.cta_text.text}</Button> */}
             </Content>
           </Slide>
         ))}

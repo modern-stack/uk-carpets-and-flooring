@@ -18,11 +18,23 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-source-contentful`,
+      resolve: 'gatsby-source-prismic',
       options: {
-        spaceId: 'r5glwopythaj',
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-        downloadLocal: true,
+        repositoryName: 'uk-carpets-and-flooring',
+        accessToken: process.env.GATSBY_PRISMIC_ACCESS_TOKEN,
+        linkResolver: ({ node, key, value }) => doc => {},
+        fetchLinks: [],
+
+        htmlSerializer: ({ node, key, value }) => (
+          type,
+          element,
+          content,
+          children
+        ) => {},
+
+        lang: '*',
+
+        shouldNormalizeImage: ({ node, key, value }) => true,
       },
     },
     {

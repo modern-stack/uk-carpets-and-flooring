@@ -4,14 +4,14 @@ import Mobile from './Mobile'
 
 import { Carousel, DesktopContainer, MobileContainer } from './styled'
 
-export default ({ slides }) => (
+export default ({ items }) => (
   <Carousel>
     <DesktopContainer>
-      <Desktop slides={slides} />
+      <Desktop slides={items} />
     </DesktopContainer>
 
     <MobileContainer>
-      <Mobile slides={slides} />
+      <Mobile slides={items} />
     </MobileContainer>
   </Carousel>
 )

@@ -1,16 +1,25 @@
 module.exports = graphql =>
   graphql(`
     {
-      allContentfulPage {
+      allPrismicPage {
         edges {
           node {
             id
-            title
-            meta
-            slug
-            template
+            data {
+              name {
+                html
+                text
+              }
+              slug {
+                text
+              }
+              template
+            }
           }
         }
       }
     }
-  `).then($ => $.data)
+  `).then($ => {
+    console.log('$ >>>', $)
+    return $.data
+  })

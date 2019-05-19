@@ -1,12 +1,12 @@
 import React from 'react'
 import { Banners, ContentfulBanners } from './styled'
 
-import Banner from '../../../components/Banner'
+import Banner from '../../Banner'
 
-export default ({ banners }) => (
+export default ({ items }) => (
   <ContentfulBanners>
     <Banners>
-      {banners.map($ => (
+      {items.map($ => (
         <Banner banner={$} />
       ))}
     </Banners>

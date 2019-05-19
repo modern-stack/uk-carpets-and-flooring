@@ -21,7 +21,10 @@ export default ({ slides }) => {
       >
         {slides.map($ => (
           <Slide>
-            <Image style={{ width: '100%' }} fluid={$.image.fluid} />
+            <Image
+              style={{ width: '100%' }}
+              fluid={$.gallery_image.localFile.childImageSharp.fluid}
+            />
           </Slide>
         ))}
       </ReactSwipe>
