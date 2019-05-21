@@ -8,8 +8,6 @@ import { useStateValue } from '../../../Context'
 export default () => {
   const [{ order }, dispatch] = useStateValue()
 
-  console.log('Order >>>>', order)
-
   return (
     <Address>
       {order.shipping && order.shipping.address && (

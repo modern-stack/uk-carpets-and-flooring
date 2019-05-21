@@ -37,8 +37,6 @@ const renderSignIn = auth => <div onClick={() => auth.login()}>Sign In </div>
 export default () => {
   const [{ user, basket, auth }, dispatch] = useStateValue()
 
-  console.log('User >>>', user)
-
   return (
     <StaticQuery
       query={graphql`

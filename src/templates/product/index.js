@@ -47,8 +47,6 @@ export default ({ pageContext }) => {
 
   if (!sku) return <div>No Skus available</div>
 
-  console.log('rendering >>>>')
-
   return (
     <Layout>
       <SEO title="Products" />

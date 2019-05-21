@@ -1,56 +1,92 @@
 module.exports = graphql =>
   graphql(`
     {
-      allContentfulSku {
+      allPrismicSku {
         edges {
           node {
-            id: contentful_id
-            name
-            color
-            price
-            featuredImage {
-              id
-              fluid(quality: 100, maxWidth: 50, maxHeight: 50) {
-                base64
-                tracedSVG
-                aspectRatio
-                src
-                srcSet
-                srcWebp
-                srcSetWebp
-                sizes
+            data {
+              name {
+                html
+                text
               }
-            }
-            product {
-              name
-              productType {
-                id
-                name
-              }
-            }
-            relatedProducts {
-              id
-              name
               price
-              color
-              featuredImage {
-                id
-                fluid(quality: 50, maxWidth: 150, maxHeight: 150) {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
+              featuredimage {
+                localFile {
+                  childImageSharp {
+                    fluid(quality: 100, maxHeight: 1280, maxWidth: 1920) {
+                      base64
+                      tracedSVG
+                      aspectRatio
+                      src
+                      srcSet
+                      srcWebp
+                      srcSetWebp
+                      sizes
+                    }
+                  }
+                }
+              }
+              body {
+                slice_type
+                items {
+                  product1 {
+                    document {
+                      data {
+                        name {
+                          html
+                          text
+                        }
+                        product_type
+                        featured_image {
+                          localFile {
+                            childImageSharp {
+                              fluid(
+                                quality: 100
+                                maxHeight: 1280
+                                maxWidth: 1920
+                              ) {
+                                base64
+                                tracedSVG
+                                aspectRatio
+                                src
+                                srcSet
+                                srcWebp
+                                srcSetWebp
+                                sizes
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
               product {
-                name
-                productType {
-                  id
-                  name
+                document {
+                  data {
+                    name {
+                      html
+                      text
+                    }
+                    product_type
+                    featured_image {
+                      localFile {
+                        childImageSharp {
+                          fluid(quality: 100, maxHeight: 1280, maxWidth: 1920) {
+                            base64
+                            tracedSVG
+                            aspectRatio
+                            src
+                            srcSet
+                            srcWebp
+                            srcSetWebp
+                            sizes
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -59,21 +95,23 @@ module.exports = graphql =>
       }
     }
   `).then($ => {
-    const { allContentfulSku } = $.data
+    const { allPrismicSku } = $.data
     let byProductType = []
 
-    for (let $ = 0; $ < allContentfulSku.edges.length; $++) {
-      const sku = allContentfulSku.edges[$].node
-      if (sku.product) {
-        if (!byProductType[sku.product.productType.name]) {
-          byProductType[sku.product.productType.name] = []
+    for (let $ = 0; $ < allPrismicSku.edges.length; $++) {
+      const sku = allPrismicSku.edges[$].node
+
+      console.log('sku >>>', sku.data.product.document[0].data.product_type)
+      if (sku.data.product) {
+        if (!byProductType[sku.data.product.document[0].data.product_type]) {
+          byProductType[sku.data.product.document[0].data.product_type] = []
         }
-        byProductType[sku.product.productType.name].push(sku)
+        byProductType[sku.data.product.document[0].data.product_type].push(sku)
       }
     }
 
     return {
-      allSkus: $.data.allContentfulSku,
+      allSkus: $.data.allPrismicSku,
       byProductType,
     }
   })

@@ -1,5 +1,4 @@
 export default (state, action) => {
-  console.log('adding item >>>>', action)
   switch (action.type) {
     case 'Order:AddItem': {
       const order = { ...state, items: [...state.items, action.payload] }

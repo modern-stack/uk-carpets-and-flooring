@@ -12,7 +12,6 @@ import {
 
 export default ({ banner }) => (
   <Banner maxHeight={banner.maxHeight}>
-    {console.log('banner >>>', banner)}
     <ImageContainer>
       {banner.image && (
         <Image

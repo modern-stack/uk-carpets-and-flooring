@@ -1,21 +1,21 @@
 const templates = require(`./templates`)
 const allPages = require('./allPages')
 const pageQuery = require('./page-query')
-// const allProducts = require('./allProducts')
+const allProducts = require('./allProducts')
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const { allPrismicPage } = await allPages(graphql)
 
-  // const skus = await allProducts(graphql)
+  const skus = await allProducts(graphql)
   const pages = []
   allPrismicPage.edges.map($ => {
     pages.push(
       new Promise(async resolve => {
-        const { id, template } = $.node
+        const { id, data } = $.node
         const context = await pageQuery({ graphql, id })
 
-        console.log('context >>>', context)
+        const template = data.template
 
         return resolve(
           templates[template]
