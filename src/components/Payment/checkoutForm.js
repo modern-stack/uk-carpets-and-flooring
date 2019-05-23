@@ -10,8 +10,6 @@ import { Primary } from '../Button'
 import Title from '../Title'
 import PersonalDetails from './PersonalDetails'
 
-import { useStateValue } from '../../Context'
-
 const CheckoutForm = ({ onComplete }) => {
   async function CreateOrder({ order, onComplete, dispatch }) {
     const newOrder = await fetch('http://localhost:3001/orders/create', {
@@ -38,7 +36,7 @@ const CheckoutForm = ({ onComplete }) => {
     onComplete()
   }
 
-  const [{ order, user }, dispatch] = useStateValue()
+  // const [{ order, user }, dispatch] = useStateValue()
 
   const [cards, setCards] = useState()
 
@@ -51,7 +49,7 @@ const CheckoutForm = ({ onComplete }) => {
   }
 
   useEffect(() => {
-    user && findCards(user, setCards)
+    // user && findCards(user, setCards)
   }, [])
 
   return (
@@ -77,7 +75,7 @@ const CheckoutForm = ({ onComplete }) => {
         }}
       />
       <Primary
-        onClick={() => CreateOrder({ user, order, onComplete, dispatch })}
+      // onClick={() => CreateOrder({ user, order, onComplete, dispatch })}
       >
         Make Payment
       </Primary>

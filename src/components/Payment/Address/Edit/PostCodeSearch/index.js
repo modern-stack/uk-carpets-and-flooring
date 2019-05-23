@@ -3,8 +3,6 @@ import Autocomplete from '../../../../Autocomplete'
 import Suggestions from './Suggestions'
 import { EditAddress, Search } from './styled'
 
-import { useStateValue } from '../../../../../Context'
-
 const filterAddress = ({
   line_1,
   line_2,
@@ -60,8 +58,8 @@ async function searchPostcode($, setLoading, setAddress) {
 }
 
 export default () => {
-  const [{ order }, dispatch] = useStateValue()
-  const [loading, setLoading] = useState(false)
+  // const [{ order }, dispatch] = useStateValue()
+  // const [loading, setLoading] = useState(false)
 
   const [{ addresses, message }, setAddress] = useState({
     addresses: null,
@@ -71,7 +69,7 @@ export default () => {
   return (
     <EditAddress>
       <Search>
-        <Autocomplete
+        {/* <Autocomplete
           loading={loading}
           onChange={async $ => await searchPostcode($, setLoading, setAddress)}
           Content={
@@ -86,7 +84,7 @@ export default () => {
               }
             />
           }
-        />
+        /> */}
       </Search>
     </EditAddress>
   )

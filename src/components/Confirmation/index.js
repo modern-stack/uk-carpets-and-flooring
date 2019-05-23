@@ -3,8 +3,6 @@ import { Confirmation } from './styled'
 
 import { Primary } from '../Button'
 
-import { useStateValue } from '../../Context'
-
 async function CompleteOrder({ onComplete, order }) {
   await fetch('http://localhost:3001/orders/create', {
     method: 'POST',

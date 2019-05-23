@@ -2,10 +2,8 @@ import React from 'react'
 import { FaMapMarkerAlt } from 'react-icons/fa'
 import { Suggestions, Suggestion, Title, Message } from './styled'
 
-import { useStateValue } from '../../../../../../Context'
-
 export default ({ previousAddresses, suggestions, onSelect, error }) => {
-  const [{ order }, dispatch] = useStateValue()
+  // const [{ order }, dispatch] = useStateValue()
 
   if (error) return <Message>{error}</Message>
 

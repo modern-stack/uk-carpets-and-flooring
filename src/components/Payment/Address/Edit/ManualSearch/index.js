@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import { Primary } from '../../../../Button'
 import { ManualSearch } from './styled'
 
-import { useStateValue } from '../../../../../Context'
-
 export default () => {
   const [address, setAddress] = useState({})
 
@@ -11,7 +9,7 @@ export default () => {
     setAddress({ ...address, [field]: value })
   }
 
-  const [{ order }, dispatch] = useStateValue()
+  // const [{ order }, dispatch] = useStateValue()
 
   return (
     <ManualSearch>
@@ -44,9 +42,9 @@ export default () => {
       />
       <hr />
       <Primary
-        onClick={() =>
-          dispatch({ type: 'Order:UpdateShipping', payload: { address } })
-        }
+      // onClick={() =>
+      //   dispatch({ type: 'Order:UpdateShipping', payload: { address } })
+      // }
       >
         Select Address
       </Primary>

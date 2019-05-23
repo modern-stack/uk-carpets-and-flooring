@@ -35,19 +35,13 @@ import {
   DescriptionSection,
 } from './styled'
 
-import { useStateValue } from '../../Context'
-
 export default ({ pageContext }) => {
-  const [{ order }, dispatch] = useStateValue()
-
   const { node, skus } = pageContext
 
   const [sku, setSku] = useState(skus[0])
   const [total, setTotal] = useState(0)
 
   if (!sku) return <div>No Skus available</div>
-
-  console.log('>>>>', sku)
 
   return (
     <Layout>
@@ -114,14 +108,7 @@ export default ({ pageContext }) => {
             <Review />
             <Price>£{(sku.data.price * total).toFixed(2)}</Price>
             <PriceCalculator type={'metres'} setTotal={setTotal} />
-            <Primary
-              onClick={() => {
-                dispatch({
-                  type: 'Order:AddItem',
-                  payload: { id: sku.id, quantity: 1 },
-                })
-              }}
-            >
+            <Primary onClick={() => {}}>
               <label>Add to Order</label>
             </Primary>
 

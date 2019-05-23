@@ -3,8 +3,6 @@ import { FaHeart, FaShoppingCart } from 'react-icons/fa'
 import Img from 'gatsby-image'
 import { StaticQuery, graphql } from 'gatsby'
 
-import { useStateValue } from '../../Context'
-
 import Cart from '../Cart'
 import Order from '../Order'
 
@@ -35,8 +33,6 @@ const renderProfile = user => {
 const renderSignIn = auth => <div onClick={() => auth.login()}>Sign In </div>
 
 export default () => {
-  const [{ user, basket, auth }, dispatch] = useStateValue()
-
   return (
     <StaticQuery
       query={graphql`
@@ -59,7 +55,7 @@ export default () => {
 
           <DesktopOptions>
             <UserInfo>
-              {user ? renderProfile(user) : renderSignIn(auth)}
+              {/* {user ? renderProfile(user) : renderSignIn(auth)} */}
               <MenuItem>
                 <FaHeart size={12} />
                 <label>
@@ -78,7 +74,7 @@ export default () => {
           <MobileOptions>
             <Cart />
             <div>
-              {user ? <ProfileImage src={user.picture} /> : renderSignIn(auth)}
+              {/* {user ? <ProfileImage src={user.picture} /> : renderSignIn(auth)} */}
             </div>
           </MobileOptions>
         </Header>

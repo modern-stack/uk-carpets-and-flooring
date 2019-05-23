@@ -1,5 +1,5 @@
 import auth0 from 'auth0-js'
-import { resolve } from 'path'
+// import { resolve } from 'path'
 
 const auth = new auth0.WebAuth({
   domain: process.env.GATSBY_AUTH0_DOMAIN,
@@ -11,10 +11,10 @@ const auth = new auth0.WebAuth({
 })
 
 function logout() {
-  localStorage.removeItem('access_token')
-  localStorage.removeItem('id_token')
-  localStorage.removeItem('expires_at')
-  localStorage.removeItem('user')
+  // localStorage.removeItem('access_token')
+  // localStorage.removeItem('id_token')
+  // localStorage.removeItem('expires_at')
+  // localStorage.removeItem('user')
 }
 
 function login() {
@@ -34,30 +34,29 @@ async function handleAuthentication() {
 }
 
 function isAuthenticated() {
-  const expiresAt = JSON.parse(localStorage.getItem('expires_at'))
-  return new Date().getTime() < expiresAt
+  // const expiresAt = JSON.parse(localStorage.getItem('expires_at'))
+  // return new Date().getTime() < expiresAt
 }
 
 async function setSession(authResult) {
   return new Promise(resolve => {
-    const expiresAt = JSON.stringify(
-      authResult.expiresIn * 1000 + new Date().getTime()
-    )
-    localStorage.setItem('access_token', authResult.accessToken)
-    localStorage.setItem('id_token', authResult.idToken)
-    localStorage.setItem('expires_at', expiresAt)
+    // const expiresAt = JSON.stringify(
+    //   authResult.expiresIn * 1000 + new Date().getTime()
+    // )
+    // localStorage.setItem('access_token', authResult.accessToken)
+    // localStorage.setItem('id_token', authResult.idToken)
+    // localStorage.setItem('expires_at', expiresAt)
 
     auth.client.userInfo(authResult.accessToken, (err, user) => {
-      localStorage.setItem('user', JSON.stringify(user))
-      resolve(true)
+      // resolve(true)
     })
   })
 }
 
 function getUser() {
-  if (localStorage.getItem('user')) {
-    return JSON.parse(localStorage.getItem('user'))
-  }
+  // if (localStorage.getItem('user')) {
+  // return JSON.parse(localStorage.getItem('user'))
+  // }
 }
 
 function getUserName() {

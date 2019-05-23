@@ -3,14 +3,13 @@ import { Address, AddressDetails } from './styled'
 
 import EditAddress from './Edit'
 import { Secondary } from '../../Button'
-import { useStateValue } from '../../../Context'
 
 export default () => {
-  const [{ order }, dispatch] = useStateValue()
+  // const [{ order }, dispatch] = useStateValue()
 
   return (
     <Address>
-      {order.shipping && order.shipping.address && (
+      {/* {order.shipping && order.shipping.address && (
         <AddressDetails>
           <div>
             {order.shipping.address.line1} {order.shipping.address.line2}
@@ -35,7 +34,7 @@ export default () => {
         </AddressDetails>
       )}
 
-      {(!order.shipping || !order.shipping.address) && <EditAddress />}
+      {(!order.shipping || !order.shipping.address) && <EditAddress />} */}
     </Address>
   )
 }
