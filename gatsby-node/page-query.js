@@ -1,7 +1,7 @@
 module.exports = ({ graphql, id }) => {
   return graphql(`
     {
-      prismicPage(id: { eq: "Prismic__Page__XN6q5xAAAOk6prku" }) {
+      prismicPage(id: { eq: "${id}" }) {
         id
         slugs
         data {
@@ -86,12 +86,53 @@ module.exports = ({ graphql, id }) => {
                 }
               }
             }
+            ... on PrismicPageBodySmallHero {
+              id
+              slice_type
+              primary {
+                title {
+                  html
+                  text
+                }
+                sub_title {
+                  html
+                  text
+                }
+                image {
+                  localFile {
+                    childImageSharp {
+                      fluid(quality: 100, maxHeight: 720, maxWidth: 1280) {
+                        base64
+                        tracedSVG
+                        aspectRatio
+                        src
+                        srcSet
+                        srcWebp
+                        srcSetWebp
+                        sizes
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            ... on PrismicPageBodyHeader {
+              id
+              slice_type
+              primary {
+                title {
+                  html
+                  text
+                }
+                subtitle {
+                  html
+                  text
+                }
+              }
+            }
           }
         }
       }
     }
-  `).then($ => {
-    console.log('>>>>', $)
-    return $.data
-  })
+  `).then($ => $.data)
 }

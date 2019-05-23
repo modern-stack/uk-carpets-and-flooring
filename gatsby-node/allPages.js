@@ -19,7 +19,4 @@ module.exports = graphql =>
         }
       }
     }
-  `).then($ => {
-    console.log('$ >>>', $)
-    return $.data
-  })
+  `).then($ => $.data)

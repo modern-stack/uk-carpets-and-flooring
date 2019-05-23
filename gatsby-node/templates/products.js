@@ -1,64 +1,50 @@
 const path = require(`path`)
 
 module.exports = async ({ graphql, createPage, skus, node, context }) => {
-  const formatted = node.slug.replace('/', '')
+  const formatted = node.data.slug.text.replace('/', '')
   const productType = formatted.charAt(0).toUpperCase() + formatted.slice(1)
 
   const { byProductType } = skus
   const filteredSkus = byProductType[productType] || []
 
-  const { allContentfulProduct } = await graphql(`
-    {
-      allContentfulProduct(
-        filter: { productType: { name: { eq: "${productType}" } } }
-      ) {
-        edges {
-          node {
-            id
-            name
-            productType {
-              name
-              priceCalculator {
-                name
+  const { allPrismicProduct } = await graphql(`
+  {
+    allPrismicProduct(filter: {data: {product_type: {eq: "${productType}"}}}) {
+      edges {
+        node {
+          id
+          data {
+            name 
+            product_type
+            featured_image {
+              localFile {
+                childImageSharp {
+                  fluid(quality: 100, maxHeight: 1280, maxWidth: 1920) {
+                    base64
+                    tracedSVG
+                    aspectRatio
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                    sizes
+                  }
+                }
               }
             }
           }
         }
       }
     }
+  }
+  
   `).then($ => $.data)
 
   return new Promise(resolve => {
-    const filters = {
-      colors: Array.from(
-        new Set(
-          filteredSkus
-            .filter(
-              $ => $.product.productType.name.includes(productType) && !!$.color
-            )
-            .map($ => {
-              return {
-                name: $.color,
-                count: filteredSkus.filter($$ => $$.color === $.color).length,
-              }
-            })
-        )
-      ),
-
-      collection: Array.from(
-        new Set(filteredSkus.map($ => $.product.name))
-      ).map($ => {
-        return {
-          name: $,
-          count: filteredSkus.filter($$ => $$.product.name === $).length,
-        }
-      }),
-    }
-
-    if (allContentfulProduct) {
-      allContentfulProduct.edges.map($ => {
+    if (allPrismicProduct) {
+      allPrismicProduct.edges.map($ => {
         createPage({
-          path: `${node.slug.toLowerCase()}/${$.node.name}`,
+          path: `${node.data.slug.text.toLowerCase()}/${$.node.data.name.toLowerCase()}`,
           component: path.resolve(`./src/templates/product/index.js`),
           context: {
             ...context,
@@ -70,12 +56,11 @@ module.exports = async ({ graphql, createPage, skus, node, context }) => {
     }
 
     createPage({
-      path: `${node.slug}`,
+      path: `${node.data.slug.text}`,
       component: path.resolve(`./src/templates/products/index.js`),
       context: {
         ...context,
         skus: filteredSkus,
-        filters,
       },
     })
 

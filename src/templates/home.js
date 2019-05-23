@@ -6,7 +6,6 @@ import PrismicComponents from '../components/Prismic'
 import Testimonials from '../components/testimonials'
 
 export default ({ pageContext }) => {
-  console.log('context >>>', pageContext)
   return (
     <Layout page={pageContext}>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />

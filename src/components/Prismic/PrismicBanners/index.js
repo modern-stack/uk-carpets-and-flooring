@@ -3,7 +3,7 @@ import { Banners, ContentfulBanners } from './styled'
 
 import Banner from '../../Banner'
 
-export default ({ items }) => (
+export default ({ items, primary }) => (
   <ContentfulBanners>
     <Banners>
       {items.map($ => (

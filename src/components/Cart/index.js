@@ -8,7 +8,6 @@ import { useStateValue } from '../../Context'
 export default () => {
   const [{ order }, dispatch] = useStateValue()
 
-  console.log('order >>>>', order)
   return (
     <Navigation to={'/checkout'}>
       <Cart>

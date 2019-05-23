@@ -7,8 +7,6 @@ import { useStateValue } from '../../../Context'
 export default () => {
   const [{ order, user }, dispatch] = useStateValue()
 
-  console.log('>>> user', user)
-
   return (
     <PersonalDetails>
       <div>

@@ -47,7 +47,7 @@ export default ({ pageContext }) => {
 
   if (!sku) return <div>No Skus available</div>
 
-  console.log('rendering >>>>')
+  console.log('>>>>', sku)
 
   return (
     <Layout>
@@ -61,10 +61,10 @@ export default ({ pageContext }) => {
             crumbs={[
               { title: 'Home', link: '/' },
               {
-                title: node.productType.name,
-                link: `${node.productType.name.toLowerCase()}`,
+                title: node.data.product_type,
+                link: `${node.data.product_type.toLowerCase()}`,
               },
-              { title: node.name, link: '' },
+              { title: node.data.name, link: '' },
             ]}
           />
         </div>
@@ -75,7 +75,11 @@ export default ({ pageContext }) => {
         <div />
 
         <FeaturedImage>
-          {sku.featuredImage && <Img fluid={sku.featuredImage.fluid} />}
+          {sku.data.featuredimage && (
+            <Img
+              fluid={sku.data.featuredimage.localFile.childImageSharp.fluid}
+            />
+          )}
         </FeaturedImage>
 
         <Skus>
@@ -85,7 +89,12 @@ export default ({ pageContext }) => {
                 selected={sku.id === $.id}
                 onClick={() => setSku($)}
               >
-                {$.featuredImage && <Img fluid={$.featuredImage.fluid} />}
+                {$.data.featuredimage && (
+                  <Img
+                    style={{ height: '100%' }}
+                    fluid={$.data.featuredimage.localFile.childImageSharp.fluid}
+                  />
+                )}
               </ImageContainer>
             ))}
           </Slider>
@@ -93,8 +102,8 @@ export default ({ pageContext }) => {
         <Details>
           <Container>
             <div>
-              <SubTitle>{node.name}</SubTitle>
-              <Title>{sku.name}</Title>
+              <SubTitle>{node.data.name.text}</SubTitle>
+              <Title>{sku.data.name.text}</Title>
               <Overview>
                 {`${sku.width} inch. wide  x ${sku.length} inc. Long x ${
                   sku.thickness
@@ -103,7 +112,7 @@ export default ({ pageContext }) => {
             </div>
             <br />
             <Review />
-            <Price>£{(sku.price * total).toFixed(2)}</Price>
+            <Price>£{(sku.data.price * total).toFixed(2)}</Price>
             <PriceCalculator type={'metres'} setTotal={setTotal} />
             <Primary
               onClick={() => {

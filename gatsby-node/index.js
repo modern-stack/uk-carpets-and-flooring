@@ -12,10 +12,10 @@ exports.createPages = async ({ graphql, actions }) => {
   allPrismicPage.edges.map($ => {
     pages.push(
       new Promise(async resolve => {
-        const { id, template } = $.node
+        const { id, data } = $.node
         const context = await pageQuery({ graphql, id })
 
-        console.log('context >>>', context)
+        const template = data.template
 
         return resolve(
           templates[template]

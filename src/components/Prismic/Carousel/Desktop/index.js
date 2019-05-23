@@ -33,7 +33,6 @@ export default ({ slides }) => {
       <CarouselContainer>
         {slides.map((slide, index) => (
           <Slide key={index} visible={index === position}>
-            {console.log('>>>>', slide.gallery_image.localFile)}
             <Image
               style={{ width: '100%' }}
               fluid={slide.gallery_image.localFile.childImageSharp.fluid}

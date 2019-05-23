@@ -3,8 +3,6 @@ const path = require(`path`)
 module.exports = (node, context, createPage) => {
   const { slug, template } = node.data || {}
 
-  console.log('Node >>>>', node)
-
   return new Promise(resolve => {
     createPage({
       path: `${slug.text}`,

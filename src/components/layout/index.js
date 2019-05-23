@@ -15,8 +15,6 @@ import { ThemeProvider } from 'styled-components'
 // import PageTransition from 'gatsby-plugin-page-transitions'
 
 export default ({ children, data }, context) => {
-  console.log('context >>>>', context)
-
   return (
     <ThemeProvider theme={{ fontFamily: 'Gotham' }}>
       <Page>

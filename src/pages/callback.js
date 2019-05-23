@@ -11,8 +11,6 @@ async function Login({ auth, user, order, dispatch }) {
 
     const currentUser = auth.getUser()
 
-    console.log('current user >>>>', currentUser)
-
     if (currentUser) {
       dispatch({
         type: 'User:Update',
