@@ -1,15 +1,10 @@
 import './src/styles/global.css'
 
 import React from 'react'
-import { ApolloProvider } from 'react-apollo'
+import { ApolloProvider } from 'react-apollo-hooks'
 
-import Page from './src/components/Page'
-import clients from await './src/services/Apollo'
-
-console.log('>>>', clients)
+import client from './src/services/Apollo'
 
 export const wrapRootElement = ({ element }) => (
-  <ApolloProvider client={clients.HasuraClient}>
-    <Page clients={clients}>{element}</Page>
-  </ApolloProvider>
+  <ApolloProvider client={client}>{element}</ApolloProvider>
 )

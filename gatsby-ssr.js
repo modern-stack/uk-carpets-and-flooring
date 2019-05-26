@@ -1,8 +1,8 @@
 import React from 'react'
-import { ApolloProvider } from 'react-apollo'
+import { ApolloProvider } from 'react-apollo-hooks'
 const { renderToString } = require('react-dom/server')
 
-import HasuraClient from './src/services/Apollo'
+import client from './src/services/Apollo'
 
 export const replaceRenderer = ({
   bodyComponent,
@@ -10,9 +10,7 @@ export const replaceRenderer = ({
   setHeadComponents,
 }) => {
   const App = () => {
-    return (
-      <ApolloProvider client={HasuraClient}>{bodyComponent}</ApolloProvider>
-    )
+    return <ApolloProvider client={client}>{bodyComponent}</ApolloProvider>
   }
 
   const body = renderToString(<App />)

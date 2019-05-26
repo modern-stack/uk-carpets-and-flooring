@@ -1,32 +1,21 @@
 import React from 'react'
-import gql from 'graphql-tag'
-import { Query } from 'react-apollo'
 
-import { HasuraClient } from '../services/Apollo'
+import { useQuery } from 'react-apollo-hooks'
+
+import { ALL_SKUS } from '../services/Apollo/Queries/skus'
 
 export default () => {
-  const APOLLO_QUERY = gql`
-    {
-      query {
-        Test {
-          Id
-          Name
-        }
-      }
-    }
-  `
+  const { data, error, loading } = useQuery(ALL_SKUS)
 
-  console.log('>>>', HasuraClient)
+  if (loading) return <div>Loading...</div>
+
+  console.log('>>>', data.allSkus)
 
   return (
     <div>
-      <Query query={APOLLO_QUERY} client={HasuraClient}>
-        {({ data, loading, error }) => {
-          console.log('response >>>>>', data, loading, error)
-
-          return <div>Heres</div>
-        }}
-      </Query>
+      {data.allSkus.edges.map($ => {
+        return <div>{$.node.name[0].text}</div>
+      })}
     </div>
   )
 }

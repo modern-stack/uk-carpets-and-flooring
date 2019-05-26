@@ -1,24 +1,13 @@
-import Setup from './setupClient'
+import ApolloClient from 'apollo-boost'
 import auth from '../../services/Auth'
+import fetch from 'isomorphic-fetch'
 
-export default (async () => {
-  const HasuraClient = await Setup({
-    uri: 'https://uk-carpets-and-flooring.herokuapp.com/v1/graphql',
-    defaults: {},
-  })
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+  fetch,
+})
 
-  const PrismicClient = await Setup({
-    uri: 'https://uk-carpets-and-flooring.prismic.io/graphql',
-    defaults: {},
-  })
-
-  console.log(HasuraClient, PrismicClient)
-
-  return {
-    HasuraClient,
-    PrismicClient,
-  }
-})()
+export default client
 
 // const User = {
 //   ...auth.getUser(),
