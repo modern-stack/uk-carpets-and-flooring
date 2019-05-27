@@ -1,27 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import { navigateTo } from 'gatsby-link'
 
-async function Login({ auth, user, order, dispatch }) {
+import auth from '../services/Auth'
+import { useMutation } from 'react-apollo-hooks'
+
+import { UPDATE_USER } from '../services/Apollo/Mutations/users'
+
+async function Login({ auth, setUser }) {
   const { err, authResult } = await auth.handleAuthentication()
 
   if (authResult && authResult.accessToken && authResult.idToken) {
     await auth.setSession(authResult)
 
-    const currentUser = auth.getUser()
-
-    if (currentUser) {
-    } else if (err) {
-      console.log(err)
-    }
+    setUser({ id: authResult.idToken })
 
     navigateTo('/')
   }
 }
 
 export default () => {
-  // useEffect(() => {
-  //   Login({ auth, user, order, dispatch })
-  // }, [])
+  const [user, setUser] = useState()
+
+  useEffect(() => {
+    Login({ auth, setUser })
+  }, [])
+
+  if (user) useMutation(UPDATE_USER)
 
   return <div>Loading...</div>
 }

@@ -2,6 +2,11 @@ import React from 'react'
 import { FaHeart, FaShoppingCart } from 'react-icons/fa'
 import Img from 'gatsby-image'
 import { StaticQuery, graphql } from 'gatsby'
+import { useSubscription } from 'react-apollo-hooks'
+
+import { SUBSCRIBE_USER } from '../../services/Apollo/Subscriptions/users'
+
+import Auth from '../../services/Auth'
 
 import Cart from '../Cart'
 import Order from '../Order'
@@ -20,6 +25,8 @@ import {
   MobileOptions,
 } from './styled'
 
+const user = Auth.getUser()
+
 const renderProfile = user => {
   return (
     <Profile>
@@ -30,9 +37,20 @@ const renderProfile = user => {
   )
 }
 
-const renderSignIn = auth => <div onClick={() => auth.login()}>Sign In </div>
+const renderSignIn = () => <div onClick={() => Auth.login()}>Sign In </div>
+
+console.log('>>>>', SUBSCRIBE_USER)
 
 export default () => {
+  const { data, error, loading } = useSubscription(SUBSCRIBE_USER, {
+    variables: {
+      id: user ? user.id : '',
+    },
+  })
+  console.log('Data >>>>>>', data, error, loading)
+
+  if (loading) return <div>loading...</div>
+
   return (
     <StaticQuery
       query={graphql`
@@ -55,7 +73,7 @@ export default () => {
 
           <DesktopOptions>
             <UserInfo>
-              {/* {user ? renderProfile(user) : renderSignIn(auth)} */}
+              {user ? renderProfile(user) : renderSignIn()}
               <MenuItem>
                 <FaHeart size={12} />
                 <label>
@@ -74,7 +92,7 @@ export default () => {
           <MobileOptions>
             <Cart />
             <div>
-              {/* {user ? <ProfileImage src={user.picture} /> : renderSignIn(auth)} */}
+              {user ? <ProfileImage src={user.picture} /> : renderSignIn()}
             </div>
           </MobileOptions>
         </Header>

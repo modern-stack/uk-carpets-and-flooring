@@ -9,8 +9,6 @@ export default () => {
 
   if (loading) return <div>Loading...</div>
 
-  console.log('>>>', data.allSkus)
-
   return (
     <div>
       {data.allSkus.edges.map($ => {
