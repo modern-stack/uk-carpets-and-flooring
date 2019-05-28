@@ -14,7 +14,12 @@ function Login({ auth, setUser }) {
     if (authResult && authResult.accessToken && authResult.idToken) {
       await auth.setSession(authResult)
 
-      const { given_name, family_name, email } = authResult.idTokenPayload
+      const {
+        given_name,
+        family_name,
+        email,
+        picture,
+      } = authResult.idTokenPayload
 
       console.log('>>>', authResult)
 
@@ -22,6 +27,7 @@ function Login({ auth, setUser }) {
         id: uuidv4(),
         given_name,
         family_name,
+        picture,
         email,
         stripe_id:
           authResult.idTokenPayload[
