@@ -4,22 +4,31 @@ import { Authentication } from './styled'
 import uuidv4 from 'uuid/v4'
 import auth from '../../services/Auth'
 
-import { useMutation } from 'react-apollo-hooks'
+import { useMutation, useQuery } from 'react-apollo-hooks'
 import { UPSERT_USER } from '../../services/Apollo/Mutations/users'
+import { GET_USER } from '../../services/Apollo/Queries/auth'
 
 export default ({ client, children }) => {
-  const currentUser = auth.getUser()
-  const id = currentUser ? currentUser.id : uuidv4()
+  for (var key in localStorage) {
+    console.log('storage >>>', key)
+  }
+
+  const id = JSON.parse(window.localStorage.getItem('apollo-cache-persist'))
+    .ROOT_QUERY.user_id
+
+  console.log('Found Id >>>>', id)
+
+  const newId = id || uuidv4()
 
   const { data, error, loading } = useMutation(UPSERT_USER, {
     variables: {
-      id,
+      id: newId,
     },
   })()
 
   client.cache.writeData({
     data: {
-      user_id: id,
+      user_id: newId,
     },
   })
 

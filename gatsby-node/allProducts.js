@@ -42,8 +42,8 @@ module.exports = graphql =>
                             childImageSharp {
                               fluid(
                                 quality: 100
-                                maxHeight: 1280
-                                maxWidth: 1920
+                                maxHeight: 960
+                                maxWidth: 1280
                               ) {
                                 base64
                                 tracedSVG

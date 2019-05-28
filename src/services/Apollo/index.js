@@ -9,6 +9,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import WebSocket from 'isomorphic-ws'
 import fetch from 'isomorphic-fetch'
 
+import { persistCache } from 'apollo-cache-persist'
+
 const httpLink = new HttpLink({
   uri: 'http://localhost:4000/graphql', // use https for secure endpoint
 })
@@ -34,11 +36,20 @@ const link = process.browser
     )
   : httpLink
 
+const cache = new InMemoryCache()
+
+if (typeof window !== 'undefined') {
+  persistCache({
+    cache,
+    storage: window.localStorage,
+  })
+}
+
 const client = new ApolloClient({
   initialState: {},
   link,
   fetch,
-  cache: new InMemoryCache(),
+  cache,
 })
 
 export default client

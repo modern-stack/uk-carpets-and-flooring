@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { useQuery } from 'react-apollo-hooks'
-
 import { ALL_SKUS } from '../services/Apollo/Queries/skus'
 
 export default () => {
