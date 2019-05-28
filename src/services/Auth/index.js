@@ -54,7 +54,7 @@ async function setSession(authResult) {
 }
 
 function getUser() {
-  if (!localStorage) return null
+  if (typeof window !== 'undefined') return null
   if (localStorage.getItem('user')) {
     return JSON.parse(localStorage.getItem('user'))
   }
