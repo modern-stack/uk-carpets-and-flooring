@@ -2,9 +2,9 @@ import React from 'react'
 import { FaHeart, FaShoppingCart } from 'react-icons/fa'
 import Img from 'gatsby-image'
 import { StaticQuery, graphql } from 'gatsby'
-import { useSubscription } from 'react-apollo-hooks'
+import { useSubscription, useQuery } from 'react-apollo-hooks'
 
-import { SUBSCRIBE_USER } from '../../services/Apollo/Subscriptions/users'
+import { GET_USER } from '../../services/Apollo/Queries/auth'
 
 import Auth from '../../services/Auth'
 
@@ -25,8 +25,6 @@ import {
   MobileOptions,
 } from './styled'
 
-const user = Auth.getUser()
-
 const renderProfile = user => {
   return (
     <Profile>
@@ -39,14 +37,15 @@ const renderProfile = user => {
 
 const renderSignIn = () => <div onClick={() => Auth.login()}>Sign In </div>
 
-console.log('>>>>', SUBSCRIBE_USER)
+console.log('>>>>', GET_USER)
 
 export default () => {
-  const { data, error, loading } = useSubscription(SUBSCRIBE_USER, {
-    variables: {
-      id: user ? user.id : '',
-    },
-  })
+  const { data, error, loading } = useQuery(GET_USER)
+
+  const user = Auth.getUser()
+
+  console.log('user >>>>', user)
+
   console.log('Data >>>>>>', data, error, loading)
 
   if (loading) return <div>loading...</div>
