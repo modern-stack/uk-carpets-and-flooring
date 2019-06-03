@@ -4,7 +4,7 @@ import Img from 'gatsby-image'
 import { StaticQuery, graphql } from 'gatsby'
 import { useSubscription, useQuery } from 'react-apollo-hooks'
 
-import { GET_USER } from '../../services/Apollo/Queries/auth'
+import { SUBSCRIBE_USER } from '../../services/Apollo/Subscriptions/user'
 
 import Auth from '../../services/Auth'
 
@@ -38,11 +38,11 @@ const renderProfile = user => {
 const renderSignIn = () => <div onClick={() => Auth.login()}>Sign In </div>
 
 export default () => {
-  const { data, error, loading } = useQuery(GET_USER)
+  const { data, error, loading } = useSubscription(SUBSCRIBE_USER)
 
   const user = data ? data.me : null
 
-  console.log('user >>>>', data.me)
+  console.log('user >>>>', data, error, loading)
 
   return (
     <StaticQuery

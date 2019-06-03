@@ -1,3 +1,3 @@
 export default {
-  users: require('./users'),
+  user: require('./user'),
 }

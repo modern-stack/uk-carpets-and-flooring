@@ -3,7 +3,6 @@ import { navigateTo } from 'gatsby-link'
 
 import { useMutation } from 'react-apollo-hooks'
 import { SIGNUP } from '../services/Apollo/Mutations/users'
-import { GET_USER } from '../services/Apollo/Queries/auth'
 
 export default () => {
   const [user, setUser] = useState({})
@@ -13,7 +12,6 @@ export default () => {
 
   useMutation(SIGNUP, {
     variables: { token },
-    refetchQueries: [GET_USER],
   })().then(({ data }) => {
     if (data) {
       navigateTo('/')
