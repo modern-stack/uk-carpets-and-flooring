@@ -13,6 +13,7 @@ import { persistCache } from 'apollo-cache-persist'
 
 const httpLink = new HttpLink({
   uri: 'http://localhost:4000/graphql', // use https for secure endpoint
+  credentials: 'include',
 })
 
 const wsLink = process.browser

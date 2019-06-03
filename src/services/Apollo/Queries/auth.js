@@ -1,8 +1,11 @@
 import gql from 'graphql-tag'
 
 const GET_USER = gql`
-  query findUser {
-    user_id @client
+  {
+    me {
+      username
+      picture
+    }
   }
 `
 

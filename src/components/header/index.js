@@ -37,18 +37,12 @@ const renderProfile = user => {
 
 const renderSignIn = () => <div onClick={() => Auth.login()}>Sign In </div>
 
-console.log('>>>>', GET_USER)
-
 export default () => {
   const { data, error, loading } = useQuery(GET_USER)
 
-  const user = Auth.getUser()
+  const user = data ? data.me : null
 
-  console.log('user >>>>', user)
-
-  console.log('Data >>>>>>', data, error, loading)
-
-  if (loading) return <div>loading...</div>
+  console.log('user >>>>', data.me)
 
   return (
     <StaticQuery
