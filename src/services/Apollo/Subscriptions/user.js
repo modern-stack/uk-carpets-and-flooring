@@ -1,10 +1,11 @@
 import gql from 'graphql-tag'
 
 const SUBSCRIBE_USER = gql`
-  {
-    me {
-      username
+  query {
+    CurrentUser {
+      given_name
       picture
+      isGuest
     }
   }
 `

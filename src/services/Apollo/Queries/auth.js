@@ -1,12 +1,13 @@
 import gql from 'graphql-tag'
 
-const GET_USER = gql`
-  {
-    me {
-      username
+const SUBSCRIBE_USER = gql`
+  query {
+    CurrentUser {
+      given_name
       picture
+      isGuest
     }
   }
 `
 
-export { GET_USER }
+export { SUBSCRIBE_USER }

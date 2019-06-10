@@ -12,6 +12,7 @@ import fetch from 'isomorphic-fetch'
 import { persistCache } from 'apollo-cache-persist'
 
 const httpLink = new HttpLink({
+  ssrMode: true,
   uri: 'http://localhost:4000/graphql', // use https for secure endpoint
   credentials: 'include',
 })
@@ -40,14 +41,13 @@ const link = process.browser
 const cache = new InMemoryCache()
 
 if (typeof window !== 'undefined') {
-  persistCache({
-    cache,
-    storage: window.localStorage,
-  })
+  //   persistCache({
+  //     cache,
+  //     storage: window.localStorage,
+  //   })
 }
 
 const client = new ApolloClient({
-  initialState: {},
   link,
   fetch,
   cache,

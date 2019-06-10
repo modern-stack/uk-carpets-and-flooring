@@ -12,6 +12,8 @@ import GlobalStyle from './globalstyle'
 import { Page, Content } from './styled'
 import { ThemeProvider } from 'styled-components'
 
+import Authentication from '../Authentication'
+
 // import PageTransition from 'gatsby-plugin-page-transitions'
 
 export default ({ children, data }, context) => {
@@ -20,11 +22,13 @@ export default ({ children, data }, context) => {
       <Page>
         <GlobalStyle />
         <Header siteTitle={'unknown'} />
-        <Menu />
-        <Content>{children}</Content>
-        <InstagramFeed />
-        <Footer />
-        <Copyright />
+        <Authentication>
+          <Menu />
+          <Content>{children}</Content>
+          <InstagramFeed />
+          <Footer />
+          <Copyright />
+        </Authentication>
       </Page>
     </ThemeProvider>
   )

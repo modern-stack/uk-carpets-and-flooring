@@ -41,23 +41,6 @@ const UserInfo = styled.div`
   }
 `
 
-const Profile = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 0px 12px;
-  height: 80px;
-
-  & > label {
-    margin: 0 12px;
-  }
-`
-
-const ProfileImage = styled.img`
-  border-radius: 50%;
-  height: 35px;
-  width: 35px;
-`
-
 const Total = styled.label`
   color: red;
 `
@@ -83,6 +66,7 @@ const MenuItem = styled.div`
   padding: 0px 10px;
   color: grey;
   position: relative;
+  white-space: nowrap;
 
   & > label {
     margin: 0 12px;
@@ -123,8 +107,6 @@ export {
   Logo,
   CompanyName,
   UserInfo,
-  Profile,
-  ProfileImage,
   Total,
   MenuItem,
   SubMenu,

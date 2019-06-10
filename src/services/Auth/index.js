@@ -9,18 +9,10 @@ const auth = new auth0.WebAuth({
   scope: 'openid profile email app_metadata',
 })
 
-function logout() {
-  // localStorage.removeItem('access_token')
-  // localStorage.removeItem('id_token')
-  // localStorage.removeItem('expires_at')
-  // localStorage.removeItem('user')
-}
-
 function login() {
   return auth.authorize()
 }
 
 export default {
-  logout,
   login,
 }

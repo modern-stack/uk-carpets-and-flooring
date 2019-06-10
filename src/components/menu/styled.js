@@ -41,6 +41,7 @@ const MenuItem = styled(Link)`
   color: black;
   width: 100%;
   justify-content: center;
+  white-space: nowrap;
 
   a:link {
     color: black;

@@ -1,27 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { Authentication } from './styled'
 
-import uuidv4 from 'uuid/v4'
-import auth from '../../services/Auth'
+import LoadingOverlay from '../LoadingOverlay'
+import { useMutation } from 'react-apollo-hooks'
+import { GUEST_SIGNUP } from '../..//services/Apollo/Mutations/users'
 
-import { useMutation, useQuery } from 'react-apollo-hooks'
-import { SIGNUP } from '../../services/Apollo/Mutations/users'
-// import { GET_USER } from '../../services/Apollo/Queries/auth'
+export default ({ children }) => {
+  const [user, setUser] = useState()
+  useEffect(() => {}, [user])
 
-export default ({ client, children }) => {
-  //   const { data, error, loading } = useMutation(UPSERT_USER, {
-  //     variables: {
-  //       //   id: newId,
-  //     },
-  //   })()
+  if (!user) {
+    useMutation(GUEST_SIGNUP)().then(({ data }) => setUser(data))
+  }
 
-  //   client.cache.writeData({
-  //     data: {
-  //       //   user_id: newId,
-  //     },
-  //   })
-
-  //   if (loading) return <div>Loading uuid...</div>
-
-  return <Authentication client={client}>{children}</Authentication>
+  return (
+    <div>
+      <LoadingOverlay isVisible={!user} />
+      <Authentication>{children}</Authentication>
+    </div>
+  )
 }

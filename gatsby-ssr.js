@@ -4,16 +4,12 @@ const { renderToString } = require('react-dom/server')
 
 import client from './src/services/Apollo'
 
-export const replaceRenderer = ({
-  bodyComponent,
-  replaceBodyHTMLString,
-  setHeadComponents,
-}) => {
-  const App = () => {
-    return <ApolloProvider client={client}>{bodyComponent}</ApolloProvider>
-  }
+export const replaceRenderer = ({ bodyComponent, replaceBodyHTMLString }) => {
+  const ConnectedBody = () => (
+    <ApolloProvider client={client}>
+      <Authentication client={client}>{bodyComponent}</Authentication>
+    </ApolloProvider>
+  )
 
-  const body = renderToString(<App />)
-
-  replaceBodyHTMLString(body)
+  replaceBodyHTMLString(renderToString(<ConnectedBody />))
 }
