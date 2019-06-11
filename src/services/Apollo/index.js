@@ -13,13 +13,13 @@ import { persistCache } from 'apollo-cache-persist'
 
 const httpLink = new HttpLink({
   ssrMode: true,
-  uri: 'http://localhost:4000/graphql', // use https for secure endpoint
+  uri: process.env.GATSBY_GRAPHQL_ENDPOINT, // use https for secure endpoint
   credentials: 'include',
 })
 
 const wsLink = process.browser
   ? new WebSocketLink({
-      uri: `ws://localhost:4000/graphql`,
+      uri: process.env.GATSBY_GRAPHQL_SUBSCRIPTION_ENDPOINT,
       options: {
         reconnect: true,
       },
