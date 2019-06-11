@@ -9,7 +9,11 @@ import { SIGNUP } from '../services/Apollo/Mutations/users'
 
 export default props => {
   console.log(props)
-  const token = props.location.hash.split('#access_token=')[1].split('&')[0]
+  const hash = props.location.hash.split('#access_token=')
+
+  if (hash.length < 2) return null
+
+  const token = hash[1].split('&')[0]
 
   useMutation(SIGNUP, {
     variables: { token },
