@@ -30,4 +30,11 @@ const Secondary = styled(Button)`
   background: black;
 `
 
-export { Primary, Secondary }
+const Tertiary = styled(Button)`
+  background: white;
+  border: 1px solid black;
+  color: black;
+  border-radius: 5px;
+`
+
+export { Primary, Secondary, Tertiary }

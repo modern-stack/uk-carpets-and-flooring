@@ -39,6 +39,8 @@ const UserInfo = styled.div`
     height: 20%;
     background-color: grey;
   }
+
+  width: ${$ => ($.loading ? '0' : '100%')};
 `
 
 const Total = styled.label`

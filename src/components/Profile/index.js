@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Profile, ProfileImage } from './styled'
-import { FaSpinner } from 'react-icons/fa'
+import { Spinner } from '../Loaders'
 
 import { useQuery } from 'react-apollo-hooks'
 import { SUBSCRIBE_USER } from '../../services/Apollo/Queries/auth'
@@ -11,7 +11,8 @@ export default () => {
   if (loading || !data || !data.CurrentUser)
     return (
       <Profile>
-        <FaSpinner />
+        <Spinner />
+        <label>Loading Profile</label>
       </Profile>
     )
 
@@ -19,14 +20,11 @@ export default () => {
 
   return (
     <Profile>
-      {!loading && (
-        <ProfileImage
-          src={
-            picture || 'http://aux.iconspalace.com/uploads/guest-icon-256.png'
-          }
-        />
-      )}
-      <label>{given_name}</label>
+      <ProfileImage
+        src={picture || 'http://aux.iconspalace.com/uploads/guest-icon-256.png'}
+      />
+
+      <label>Hi, {given_name}</label>
     </Profile>
   )
 }

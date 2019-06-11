@@ -2,12 +2,15 @@ import React from 'react'
 import { FaHeart, FaShoppingCart } from 'react-icons/fa'
 import Img from 'gatsby-image'
 import { StaticQuery, graphql } from 'gatsby'
+import { useQuery, useMutation } from 'react-apollo-hooks'
 
 import Profile from '../Profile'
 import Cart from '../Cart'
 import Order from '../Order'
 
 import SignUpButton from './SignUpButton'
+
+import { SUBSCRIBE_USER } from '../../services/Apollo/Queries/auth'
 
 import {
   Header,
@@ -22,6 +25,12 @@ import {
 } from './styled'
 
 export default () => {
+  const { loading, data } = useQuery(SUBSCRIBE_USER)
+
+  const isVisible = loading || !data
+
+  console.log('IsVisible >>>>', isVisible, loading)
+
   return (
     <StaticQuery
       query={graphql`
@@ -43,7 +52,7 @@ export default () => {
           </Logo>
 
           <DesktopOptions>
-            <UserInfo>
+            <UserInfo loading={isVisible}>
               <Profile />
               <MenuItem>
                 <FaHeart size={12} />

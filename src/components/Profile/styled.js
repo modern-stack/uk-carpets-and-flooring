@@ -12,6 +12,7 @@ const Profile = styled.div`
 
   & > label {
     margin: 0 12px;
+    white-space: nowrap;
 
     @media (max-width: 700px) {
       display: none;
