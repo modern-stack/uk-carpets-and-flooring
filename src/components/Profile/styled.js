@@ -6,8 +6,16 @@ const Profile = styled.div`
   margin: 0px 12px;
   height: 80px;
 
+  @media (max-width: 700px) {
+    height: 40px;
+  }
+
   & > label {
     margin: 0 12px;
+
+    @media (max-width: 700px) {
+      display: none;
+    }
   }
 `
 

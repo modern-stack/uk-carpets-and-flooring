@@ -64,6 +64,7 @@ export default () => {
           <MobileOptions>
             <Cart />
             <Profile />
+            <SignUpButton />
           </MobileOptions>
         </Header>
       )}

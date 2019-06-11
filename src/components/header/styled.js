@@ -92,6 +92,7 @@ const DesktopOptions = styled.div`
 const MobileOptions = styled.div`
   display: none;
   margin: 8px 0;
+  min-height: 40px;
 
   & > div {
     margin: 0 0.6em;

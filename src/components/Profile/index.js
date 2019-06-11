@@ -17,8 +17,6 @@ export default () => {
 
   const { given_name, picture } = data.CurrentUser
 
-  console.log('Profile user >>>>>', data.CurrentUser)
-
   return (
     <Profile>
       {!loading && (
