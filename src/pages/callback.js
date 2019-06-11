@@ -8,7 +8,9 @@ import { SUBSCRIBE_USER } from '../services/Apollo/Queries/auth'
 import { SIGNUP } from '../services/Apollo/Mutations/users'
 
 export default () => {
-  const token = window.location.hash.split('#access_token=')[1].split('&')[0]
+  const token = window
+    ? window.location.hash.split('#access_token=')[1].split('&')[0]
+    : null
 
   useMutation(SIGNUP, {
     variables: { token },
