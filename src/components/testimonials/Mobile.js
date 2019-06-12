@@ -37,17 +37,24 @@ export default ({ testimonials, formatDate, position, setPosition }) => {
           {slides.map($ => (
             <Testimonial>
               <div />
-              <Review>{$.review}</Review>
+              <Review>{$.Review}</Review>
               <div />
               <div>
                 <Details>
                   <Profile>
                     <div>
-                      <Image src={$.photoURL} />
+                      <Image
+                        src={
+                          $.User.Picture ||
+                          'http://aux.iconspalace.com/uploads/guest-icon-256.png'
+                        }
+                      />
                     </div>
                     <ProfileDetails>
-                      <div>{$.displayName}</div>
-                      <div>{formatDate($.date)}</div>
+                      <div>
+                        {$.User.Given_Name} {$.User.Family_Name || null}
+                      </div>
+                      <div>{formatDate($.CreatedAt)}</div>
                     </ProfileDetails>
                   </Profile>
                   <div>

@@ -1,26 +1,22 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { useQuery } from 'react-apollo-hooks'
+import { GET_TESTIMONIALS } from '../../services/Apollo/Queries/testimonial'
 
 import Desktop from './Desktop'
 import Mobile from './Mobile'
 
 function formatDate(timestamp) {
-  const date = new Date(timestamp)
-  return `${date.getDay()}.${date.getMonth()}.${date.getFullYear()}`
-}
-
-const setContent = setTestimonials => {
-  // fb.allTestimonials()
-  //   .then($ => $)
-  //   .then($ => setTestimonials($))
+  const date = new Date(`${timestamp}`)
+  return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
 }
 
 export default () => {
-  const [testimonials, setTestimonials] = useState([])
+  const { loading, data } = useQuery(GET_TESTIMONIALS)
   const [position, setPosition] = useState(0)
 
-  useEffect($ => {
-    setContent(setTestimonials)
-  }, [])
+  if (loading) return <div>Loading...</div>
+
+  console.log('Data >>>', data)
 
   return (
     <React.Fragment>
@@ -28,14 +24,14 @@ export default () => {
         formatDate={formatDate}
         position={position}
         setPosition={setPosition}
-        testimonials={testimonials}
+        testimonials={data.Testimonials_aggregate.nodes}
       />
 
       <Mobile
         formatDate={formatDate}
         position={position}
         setPosition={setPosition}
-        testimonials={testimonials}
+        testimonials={data.Testimonials_aggregate.nodes}
       />
     </React.Fragment>
   )

@@ -38,16 +38,23 @@ export default ({ testimonials, formatDate, position, setPosition }) => {
                     <Content>
                       <Testimonial>
                         <div />
-                        <div>{$.review}</div>
+                        <div>{$.Review}</div>
                         <div />
                         <div>
                           <Details>
                             <div>
-                              <Image src={$.photoURL} />
+                              <Image
+                                src={
+                                  $.User.Picture ||
+                                  'http://aux.iconspalace.com/uploads/guest-icon-256.png'
+                                }
+                              />
                             </div>
                             <Profile>
-                              <div>{$.displayName}</div>
-                              <div>{formatDate($.date)}</div>
+                              <div>
+                                {$.User.Given_Name} {$.User.Family_Name}
+                              </div>
+                              <div>{formatDate($.CreatedAt)}</div>
                             </Profile>
                             <div>
                               {Array.from(Array(5)).map($ => (
