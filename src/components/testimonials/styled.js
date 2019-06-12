@@ -3,21 +3,25 @@ import styled from 'styled-components'
 const Testimonials = styled.div`
   width: 100%;
   position: relative;
-  margin: 2% 0;
+  margin: 0% 0;
 `
 
-const Title = styled.div`
+const Title = styled.h3`
   display: flex;
   flex: 1;
   justify-content: center;
   text-transform: uppercase;
-  margin: 30px 0;
+  margin: 20px 0 0 0;
+
+  @media (max-width: 700px) {
+    margin: 20px 0 20px 0;
+  }
 `
 
 const Carousel = styled.div`
   min-height: 10vh;
   position: relative;
-  margin: 60px 0;
+  margin: 30px 0;
 `
 
 const TestimonialContainer = styled.div`
@@ -31,15 +35,12 @@ const Slide = styled.div`
   transition: opacity 0.2s ease-in;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
   justify-content: space-around;
   align-items: center;
   align-content: center;
   width: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+
   flex: space-between;
   flex-wrap: wrap;
 
