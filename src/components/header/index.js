@@ -29,7 +29,7 @@ export default () => {
 
   const isVisible = loading || !data
 
-  console.log('IsVisible >>>>', isVisible, loading)
+  console.log('IsVisible >>>>', isVisible, loading, data)
 
   return (
     <StaticQuery
