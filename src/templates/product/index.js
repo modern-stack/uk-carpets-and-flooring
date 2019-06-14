@@ -5,7 +5,7 @@ import SEO from '../../components/seo'
 
 import Img from 'gatsby-image'
 import PriceCalculator from '../../components/PriceCalculator'
-import { Primary, Secondary } from '../../components/Button'
+
 import Slider from '../../components/Slider'
 
 import Review from './Review'
@@ -13,6 +13,7 @@ import Social from '../../components/Social'
 import Specification from './Specification'
 import Reviews from './Reviews'
 import RelatedProducts from './RelatedProducts'
+import AddToOrder from './AddToOrder'
 
 import Breadcrumb from '../../components/Breadcrumb'
 
@@ -42,6 +43,8 @@ export default ({ pageContext }) => {
   const [total, setTotal] = useState(0)
 
   if (!sku) return <div>No Skus available</div>
+
+  console.log('Sku >>>>>', sku)
 
   return (
     <Layout>
@@ -108,9 +111,7 @@ export default ({ pageContext }) => {
             <Review />
             <Price>£{(sku.data.price * total).toFixed(2)}</Price>
             <PriceCalculator type={'metres'} setTotal={setTotal} />
-            <Primary onClick={() => {}}>
-              <label>Add to Order</label>
-            </Primary>
+            <AddToOrder Id={sku.id.split('Prismic__Sku__')[1]} />
 
             <DescriptionSection>
               <SubTitle>Description</SubTitle>

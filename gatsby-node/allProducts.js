@@ -4,6 +4,7 @@ module.exports = graphql =>
       allPrismicSku {
         edges {
           node {
+            id
             data {
               name {
                 html
