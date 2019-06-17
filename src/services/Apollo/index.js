@@ -1,15 +1,19 @@
 import ApolloClient from 'apollo-client'
 
-import { SubscriptionClient } from 'subscriptions-transport-ws'
+// import { SubscriptionClient } from 'subscriptions-transport-ws'
 import { WebSocketLink } from 'apollo-link-ws'
 import { HttpLink } from 'apollo-link-http'
 import { split } from 'apollo-link'
 import { getMainDefinition } from 'apollo-utilities'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-import WebSocket from 'isomorphic-ws'
+// import WebSocket from 'isomorphic-ws'
 import fetch from 'isomorphic-fetch'
+import { ApolloLink } from 'apollo-link'
+
+import { withClientState } from 'apollo-link-state'
 
 import { persistCache } from 'apollo-cache-persist'
+import typeDefs from './TypeDefs'
 
 const httpLink = new HttpLink({
   ssrMode: true,
@@ -41,14 +45,33 @@ const link = process.browser
 const cache = new InMemoryCache()
 
 if (typeof window !== 'undefined') {
-  //   persistCache({
-  //     cache,
-  //     storage: window.localStorage,
-  //   })
+  persistCache({
+    cache,
+    storage: window.localStorage,
+  })
 }
 
+const stateLink = withClientState({
+  cache,
+  typeDefs,
+  resolvers: {
+    Mutation: {
+      updateBasket: (_, { basket }, { cache }) => {
+        cache.writeData({ data: { basket } })
+        return null
+      },
+    },
+  },
+  defaults: {
+    networkStatus: {
+      __typename: 'NetworkStatus',
+      isConnected: true,
+    },
+  },
+})
+
 const client = new ApolloClient({
-  link,
+  link: ApolloLink.from([stateLink, link]),
   fetch,
   cache,
 })
