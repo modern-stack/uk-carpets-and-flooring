@@ -9,7 +9,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 // import WebSocket from 'isomorphic-ws'
 import fetch from 'isomorphic-fetch'
 
-import { resolvers, typeDefs } from './resolvers'
+import { resolvers, typeDefs } from './Resolvers'
 
 import { persistCache } from 'apollo-cache-persist'
 
