@@ -8,7 +8,7 @@ export const typeDefs = gql`
   }
 
   extend type Mutation {
-    addItem(Item: StripeItem! })
+    addItem(Item: StripeItem!): Order
   }
 `
 

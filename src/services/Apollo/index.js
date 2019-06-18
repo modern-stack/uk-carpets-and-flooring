@@ -50,12 +50,13 @@ if (typeof window !== 'undefined') {
 }
 
 const client = new ApolloClient({
-  link,
   fetch,
   cache,
   connectToDevTools: true,
-  typeDefs,
+  link,
   resolvers,
+  typeDefs,
+
 })
 
 cache.writeData({
