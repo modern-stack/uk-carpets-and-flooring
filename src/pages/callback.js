@@ -20,8 +20,7 @@ export default props => {
   useMutation(SIGNUP, {
     variables: { token },
     refetchQueries: [{ query: SUBSCRIBE_USER }],
-    update: (proxy, mutationResult) => updateLocalUser(),
-  })()
+  })().then($ => updateLocalUser())
 
   navigateTo('/')
 

@@ -8,6 +8,8 @@ import { Profile, ProfileImage } from './styled'
 export default () => {
   const { loading, error, data } = useQuery(SUBSCRIBE_USER)
 
+  if (!data || !data.CurrentUser) return null
+
   const { given_name, picture } = data.CurrentUser
 
   return (
