@@ -50,13 +50,14 @@ if (typeof window !== 'undefined') {
 }
 
 const defaults = {
-isLoggedIn: true,
-localOrder: {
-  __typename: 'Order',
-  Items: [],
-},
+  IsLoggedIn: false,
+  Order: {
+    __typename: 'Order',
+    Id: 'Random_ID',
+    Items: [],
+  },
 
-cartItems: [],
+  cartItems: [],
 }
 
 const client = new ApolloClient({
@@ -66,11 +67,11 @@ const client = new ApolloClient({
   link,
   resolvers,
   typeDefs,
-  defaults
+  defaults,
 })
 
 cache.writeData({
-  data: defaults
+  data: defaults,
 })
 
 export default client

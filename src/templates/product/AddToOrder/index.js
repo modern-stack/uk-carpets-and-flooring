@@ -1,26 +1,33 @@
 import React from 'react'
 import { Primary } from '../../../components/Button'
-import { useMutation } from 'react-apollo-hooks'
+import { useQuery, useMutation } from 'react-apollo-hooks'
 
 import { UPDATE_ORDER } from '../../../services/Apollo/Mutations/order'
 import { GET_ORDER } from '../../../services/Apollo/Queries/order'
 
 export default ({ Id }) => {
-  console.log('Id >>>>>', Id)
+  const { data, loading } = useQuery(GET_ORDER)
+
+  if (loading) return <div>Loading</div>
+
+  console.log('Loaded order >>>>', data.Order)
+
   const AddToOrder = useMutation(UPDATE_ORDER, {
-    variables: { parent: Id, currency: 'gbp' },
-    // refetchQueries: [{ query: GET_ORDER }],
+    variables: {
+      Order: data.Order,
+      Item: {
+        __typename: 'StripeItem',
+        id: Id,
+        parent: Id,
+        currency: 'gbp',
+        description: '',
+      },
+    },
+    refetchQueries: [{ query: GET_ORDER }],
   })
 
   return (
-    <Primary
-      onClick={() =>
-        AddToOrder().then(({ loading, data, error }) => {
-          console.log('heres >>>>', loading, data, error)
-          return data
-        })
-      }
-    >
+    <Primary onClick={() => AddToOrder()}>
       <label>Add to Order</label>
     </Primary>
   )

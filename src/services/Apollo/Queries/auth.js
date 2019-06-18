@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 
-const SUBSCRIBE_USER = gql`
+export const SUBSCRIBE_USER = gql`
   query {
     CurrentUser {
       given_name
@@ -10,4 +10,8 @@ const SUBSCRIBE_USER = gql`
   }
 `
 
-export { SUBSCRIBE_USER }
+export const IS_LOGGED_IN = gql`
+  query IsLoggedIn {
+    IsLoggedIn @client
+  }
+`

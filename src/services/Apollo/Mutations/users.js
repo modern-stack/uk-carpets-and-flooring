@@ -18,4 +18,10 @@ const SIGNUP = gql`
   }
 `
 
-export { SIGNUP, GUEST_SIGNUP, LOGOUT }
+const TOGGLE_LOGGED_IN = gql`
+  mutation ToggleLoggedIn($Status: Boolean!) {
+    ToggleLoggedIn(Status: $Status) @client
+  }
+`
+
+export { SIGNUP, GUEST_SIGNUP, LOGOUT, TOGGLE_LOGGED_IN }

@@ -5,10 +5,12 @@ import Layout from '../components/layout'
 
 import { useMutation } from 'react-apollo-hooks'
 import { SUBSCRIBE_USER } from '../services/Apollo/Queries/auth'
-import { SIGNUP } from '../services/Apollo/Mutations/users'
+import { SIGNUP, TOGGLE_LOGGED_IN } from '../services/Apollo/Mutations/users'
 
 export default props => {
-  console.log(props)
+  const updateLocalUser = useMutation(TOGGLE_LOGGED_IN, {
+    variables: { Status: true },
+  })
   const hash = props.location.hash.split('#access_token=')
 
   if (hash.length < 2) return null
@@ -18,6 +20,7 @@ export default props => {
   useMutation(SIGNUP, {
     variables: { token },
     refetchQueries: [{ query: SUBSCRIBE_USER }],
+    update: (proxy, mutationResult) => updateLocalUser(),
   })()
 
   navigateTo('/')

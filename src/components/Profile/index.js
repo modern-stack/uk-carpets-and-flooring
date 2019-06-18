@@ -1,30 +1,22 @@
-import React, { useEffect } from 'react'
-import { Profile, ProfileImage } from './styled'
+import React from 'react'
+
+import Profile from './profile'
 import { Spinner } from '../Loaders'
 
 import { useQuery } from 'react-apollo-hooks'
-import { SUBSCRIBE_USER } from '../../services/Apollo/Queries/auth'
+import { IS_LOGGED_IN } from '../../services/Apollo/Queries/auth'
 
 export default () => {
-  const { loading, error, data } = useQuery(SUBSCRIBE_USER)
+  const { loading, data } = useQuery(IS_LOGGED_IN)
 
-  if (loading || !data || !data.CurrentUser)
+  if (loading || !data || !data.IsLoggedIn) {
     return (
-      <Profile>
+      <div>
         <Spinner />
         <label>Loading Profile</label>
-      </Profile>
+      </div>
     )
+  }
 
-  const { given_name, picture } = data.CurrentUser
-
-  return (
-    <Profile>
-      <ProfileImage
-        src={picture || 'http://aux.iconspalace.com/uploads/guest-icon-256.png'}
-      />
-
-      <label>Hi, {given_name}</label>
-    </Profile>
-  )
+  return <Profile />
 }
