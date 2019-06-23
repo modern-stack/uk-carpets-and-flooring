@@ -9,17 +9,19 @@ import { Cart, Total, Icon, Navigation } from './styled'
 export default () => {
   const { loading, data, error } = useQuery(GET_ORDER)
 
-  if (loading) return <div>Loading...</div>
+  console.log(loading, data, error)
+
+  if (loading || !data.Order) return <div>Loading...</div>
 
   return (
     <Navigation to={'/checkout'}>
       <Cart>
         <FaShoppingCart size={12} />
         <label>
-          My Cart (<Total>{data.Order.Items.length}</Total>)
+          My Cart (<Total>{data.Order.items.length}</Total>)
         </label>
       </Cart>
-      <Icon value={data.Order.Items.length}>
+      <Icon value={data.Order.items.length}>
         <FaShoppingCart size={12} />
       </Icon>
     </Navigation>

@@ -16,8 +16,6 @@ export default () => {
 
   if (loading) return <div>Loading...</div>
 
-  console.log('Data >>>', data)
-
   return (
     <React.Fragment>
       <Desktop

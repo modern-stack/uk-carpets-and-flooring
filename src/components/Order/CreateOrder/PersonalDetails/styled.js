@@ -9,7 +9,7 @@ const PersonalDetails = styled.div`
   div {
     display: flex;
     align-items: center;
-    margin: 12px; 12px;
+    margin: 12px 0px;
   }
 `
 

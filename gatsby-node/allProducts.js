@@ -93,7 +93,6 @@ module.exports = graphql =>
       }
     }
   `).then($ => {
-    console.log('$ >>>', $)
     const { allPrismicSku } = $.data
     let byProductType = []
 

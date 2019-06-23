@@ -47,6 +47,10 @@ const Icon = styled.div`
     display: flex;
     justify-content: center;
     border-radius: 50%;
+
+    @media (max-width: 700px) {
+      right: 140px;
+    }
   }
 
   @media (min-width: 700px) {

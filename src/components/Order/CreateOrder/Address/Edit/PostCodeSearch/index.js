@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Autocomplete from '../../../../Autocomplete'
+import Autocomplete from '../../../../../Autocomplete'
 import Suggestions from './Suggestions'
 import { EditAddress, Search } from './styled'
 
@@ -58,8 +58,7 @@ async function searchPostcode($, setLoading, setAddress) {
 }
 
 export default () => {
-  // const [{ order }, dispatch] = useStateValue()
-  // const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const [{ addresses, message }, setAddress] = useState({
     addresses: null,
@@ -69,22 +68,11 @@ export default () => {
   return (
     <EditAddress>
       <Search>
-        {/* <Autocomplete
+        <Autocomplete
           loading={loading}
           onChange={async $ => await searchPostcode($, setLoading, setAddress)}
-          Content={
-            <Suggestions
-              suggestions={addresses}
-              error={message}
-              onSelect={$ =>
-                dispatch({
-                  type: 'Order:UpdateShipping',
-                  payload: { address: $ },
-                })
-              }
-            />
-          }
-        /> */}
+          Content={<Suggestions suggestions={addresses} error={message} />}
+        />
       </Search>
     </EditAddress>
   )

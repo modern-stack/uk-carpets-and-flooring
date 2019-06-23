@@ -10,7 +10,7 @@ export default ({ children }) => {
     <Steps>
       <StepsContainer>
         {children.map(($, i) => (
-          <Step isComplete={stage > i}>
+          <Step isComplete={stage === i}>
             {$.props.icon || <FaQuestionCircle />}
           </Step>
         ))}

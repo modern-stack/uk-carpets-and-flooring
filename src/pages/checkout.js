@@ -6,8 +6,8 @@ import SEO from '../components/seo'
 
 import Steps from '../components/Steps'
 import Order from '../components/Order'
-import Payment from '../components/Payment'
-import OrderConfirmation from '../components/Confirmation'
+import CreateOrder from '../components/Order/CreateOrder'
+import CompleteOrder from '../components/Order/CompleteOrder'
 
 export default () => {
   return (
@@ -16,8 +16,8 @@ export default () => {
 
       <Steps>
         <Order icon={<FaShoppingBasket />} />
-        <Payment icon={<FaCreditCard />} />
-        <OrderConfirmation icon={<FaCheckCircle />} />
+        <CreateOrder icon={<FaCreditCard />} />
+        <CompleteOrder icon={<FaCheckCircle />} />
       </Steps>
     </Layout>
   )
