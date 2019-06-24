@@ -31,6 +31,7 @@ export const resolvers = {
       return null
     },
     updateOrder: async (_, { Order, toUpdate }, { cache, getCacheKey }) => {
+      console.log('Updating Order >>>>', Order, toUpdate)
       await cache.writeData({
         data: {
           Order: {

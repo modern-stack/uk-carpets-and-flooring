@@ -9,7 +9,10 @@ import PersonalDetails from './PersonalDetails'
 import { Primary } from '../../Button'
 import Title from '../../../components/Title'
 
-import { CREATE_ORDER } from '../../../services/Apollo/Mutations/order'
+import {
+  CREATE_ORDER,
+  UPDATE_ORDER,
+} from '../../../services/Apollo/Mutations/order'
 
 import { GET_ORDER } from '../../../services/Apollo/Queries/order'
 
@@ -18,11 +21,30 @@ export default ({ onComplete }) => {
 
   if (loading) return <div>Loading...</div>
 
+  const { orderid, ...objectToSend } = data.Order
+
+  console.log('Sending >>>', objectToSend, data)
+
   const createOrder = useMutation(CREATE_ORDER, {
     variables: {
-      ...data,
+      Order: { ...objectToSend },
     },
-    update: () => onComplete(),
+    update: async (cache, { data: { CreateOrder } }) => {
+      const { Order } = cache.readQuery({ query: GET_ORDER })
+
+      console.log('Writing >>>>', Order, CreateOrder.id)
+
+      await cache.writeData({
+        data: {
+          Order: {
+            ...Order,
+            orderid: CreateOrder.id,
+            __typename: 'Order',
+          },
+        },
+      })
+      onComplete()
+    },
   })
   return (
     <PaymentDetails>

@@ -24,8 +24,10 @@ const CREATE_ORDER = gql`
 `
 
 const COMPLETE_ORDER = gql`
-  mutation updateAddress($Order: Order, $shipping: shipping!) {
-    updateOrder(Order: $Order, shipping: $shipping) @client
+  mutation CompleteOrder($orderid: String!, $source: String!) {
+    CompleteOrder(orderid: $orderid, source: $source) {
+      id
+    }
   }
 `
 

@@ -1,29 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { CardElement, injectStripe } from 'react-stripe-elements'
-
 import { useQuery, useMutation } from 'react-apollo-hooks'
 
-import { GET_ORDER } from '../../../services/Apollo/Queries/order'
 import { COMPLETE_ORDER } from '../../../services/Apollo/Mutations/order'
 
-import { Checkout } from './styled'
+import { PaymentForm } from './styled'
 import { Primary } from '../../Button'
-import { Title } from '../../Title'
 
-const CheckoutForm = ({ onComplete }) => {
-  const { data, loading } = useQuery(GET_ORDER)
-  const completeOrder = useMutation(COMPLETE_ORDER, {
-    variables: {
-      Order: data.Order,
-    },
-    // update: () => onComplete(),
-  })
+const CheckoutForm = ({ onComplete, stripe, orderid }) => {
+  const [source, setSource] = useState(null)
+
+  console.log('Source >>>', source, stripe, orderid)
+
+  if (source) {
+    console.log('Running Mutation >>>', {
+      orderid,
+      source: source.token.id,
+    })
+    useMutation(COMPLETE_ORDER, {
+      variables: {
+        orderid,
+        source: source.token.id,
+      },
+      update: () => onComplete(),
+    })()
+  }
 
   return (
-    <Checkout>
-      <div>here!</div>
-      {/* <Title title={'Personal Details'} /> */}
-      {/* <CardElement
+    <PaymentForm>
+      <CardElement
         style={{
           base: {
             iconColor: '#c4f0ff',
@@ -33,14 +38,17 @@ const CheckoutForm = ({ onComplete }) => {
             fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
             fontSize: '16px',
             fontSmoothing: 'antialiased',
+            width: '100%',
           },
         }}
-      /> */}
-      {/* <Primary onClick={() => completeOrder} /> */}
-    </Checkout>
+      />
+
+      <br />
+      <Primary onClick={() => stripe.createToken().then($ => setSource($))}>
+        Pay Order
+      </Primary>
+    </PaymentForm>
   )
 }
 
-// export default injectStripe(CheckoutForm)
-
-export default CheckoutForm
+export default injectStripe(CheckoutForm)

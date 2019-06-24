@@ -10,17 +10,17 @@ const PaymentDetails = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  div {
-    display: flex;
-    align-items: center;
-    margin: 12px 0px;
-  }
 `
 
 const Payment = styled.div`
   display: flex;
   width: 100%;
+
+  flex-direction: column;
 `
 
-export { Payment, PaymentDetails, Checkout }
+const PaymentForm = styled.div`
+  width: 100%;
+`
+
+export { Payment, PaymentDetails, Checkout, PaymentForm }

@@ -54,6 +54,7 @@ if (typeof window !== 'undefined') {
 const defaults = {
   IsLoggedIn: false,
   Order: {
+    orderid: '',
     __typename: 'Order',
     email: '',
     items: [],
