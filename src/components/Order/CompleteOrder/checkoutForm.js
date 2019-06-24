@@ -1,5 +1,5 @@
 import React from 'react'
-import { injectStripe } from 'react-stripe-elements'
+import { CardElement, injectStripe } from 'react-stripe-elements'
 
 import { useQuery, useMutation } from 'react-apollo-hooks'
 
@@ -8,6 +8,7 @@ import { COMPLETE_ORDER } from '../../../services/Apollo/Mutations/order'
 
 import { Checkout } from './styled'
 import { Primary } from '../../Button'
+import { Title } from '../../Title'
 
 const CheckoutForm = ({ onComplete }) => {
   const { data, loading } = useQuery(GET_ORDER)
@@ -15,20 +16,31 @@ const CheckoutForm = ({ onComplete }) => {
     variables: {
       Order: data.Order,
     },
-    onUpdate: () => onComplete(),
+    // update: () => onComplete(),
   })
 
   return (
     <Checkout>
-      {/* <Title title={'Personal Details'} />
-      <PersonalDetails />
-
-      <Title title={'Shipping Details'} />
-      <Address />
-
-      <Primary onClick={() => onComplete} /> */}
+      <div>here!</div>
+      {/* <Title title={'Personal Details'} /> */}
+      {/* <CardElement
+        style={{
+          base: {
+            iconColor: '#c4f0ff',
+            color: 'black',
+            border: '1px solid red',
+            fontWeight: 500,
+            fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
+            fontSize: '16px',
+            fontSmoothing: 'antialiased',
+          },
+        }}
+      /> */}
+      {/* <Primary onClick={() => completeOrder} /> */}
     </Checkout>
   )
 }
 
-export default injectStripe(CheckoutForm)
+// export default injectStripe(CheckoutForm)
+
+export default CheckoutForm

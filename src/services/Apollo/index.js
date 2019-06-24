@@ -54,12 +54,10 @@ if (typeof window !== 'undefined') {
 const defaults = {
   IsLoggedIn: false,
   Order: {
-    // id: 'Random_ID',
     __typename: 'Order',
     email: '',
     items: [],
     shipping: {
-      // id: 'Random_ID',
       __typename: 'shipping',
       name: 'example',
       address: {

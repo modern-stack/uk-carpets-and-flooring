@@ -6,9 +6,9 @@ const ADD_TO_ORDER = gql`
   }
 `
 
-const UPDATE_ADDRESS = gql`
-  mutation updateAddress($Order: Order, $address: StripeAddress!) {
-    updateAddress(Order: $Order, address: $address) @client
+const UPDATE_ORDER = gql`
+  mutation updateOrder($Order: Order, $toUpdate: Order!) {
+    updateOrder(Order: $Order, toUpdate: $toUpdate) @client
   }
 `
 
@@ -29,4 +29,4 @@ const COMPLETE_ORDER = gql`
   }
 `
 
-export { UPDATE_ADDRESS, ADD_TO_ORDER, CREATE_ORDER, COMPLETE_ORDER }
+export { UPDATE_ORDER, ADD_TO_ORDER, CREATE_ORDER, COMPLETE_ORDER }

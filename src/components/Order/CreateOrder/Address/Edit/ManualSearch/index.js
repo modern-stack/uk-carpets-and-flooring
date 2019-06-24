@@ -4,29 +4,32 @@ import { useMutation, useQuery } from 'react-apollo-hooks'
 import { Primary } from '../../../../../Button'
 import { ManualSearch } from './styled'
 
-import { UPDATE_ADDRESS } from '../../../../../../services/Apollo/Mutations/order'
+import { UPDATE_ORDER } from '../../../../../../services/Apollo/Mutations/order'
 import { GET_ORDER } from '../../../../../../services/Apollo/Queries/order'
 
 export default () => {
   const { data, loading } = useQuery(GET_ORDER)
 
-  const [address, setAddress] = useState(data.Order.shipping.address || {})
+  const [address, setAddress] = useState(
+    data.Order.shipping.address || { __typename: 'StripeAddress' }
+  )
 
-  console.log('Address >>>>', address)
-
-  const UpdatingAddress = useMutation(UPDATE_ADDRESS, {
+  const updateOrder = useMutation(UPDATE_ORDER, {
     variables: {
       Order: data.Order,
-      address,
+      toUpdate: {
+        shipping: {
+          ...data.Order.shipping,
+          address,
+        },
+      },
     },
     refetchQueries: [{ query: GET_ORDER }],
   })
 
   useEffect(() => {
-    UpdatingAddress()
+    updateOrder()
   })
-
-  console.log(UpdatingAddress)
 
   return (
     <ManualSearch>
@@ -36,38 +39,38 @@ export default () => {
         onChange={$ => {
           setAddress({ ...address, line1: $.target.value })
         }}
-        // defaultValue={address.line1}
+        defaultValue={address.line1}
       />
       <input
         type={'text'}
         placeholder={'Locality'}
         onChange={$ => setAddress({ ...address, line2: $.target.value })}
-        // defaultValue={address.line2}
+        defaultValue={address.line2}
       />
       <input
         type={'text'}
         placeholder={'Town or City'}
         onChange={$ => setAddress({ ...address, city: $.target.value })}
-        // defaultValue={address.city}
+        defaultValue={address.city}
       />
 
       <input
         type={'text'}
         placeholder={'State'}
         onChange={$ => setAddress({ ...address, state: $.target.value })}
-        // defaultValue={address.state}
+        defaultValue={address.state}
       />
       <input
         type={'text'}
         placeholder={'Country'}
         onChange={$ => setAddress({ ...address, country: $.target.value })}
-        // defaultValue={address.country}
+        defaultValue={address.country}
       />
       <input
         type={'text'}
         placeholder={'Postcode'}
         onChange={$ => setAddress({ ...address, postal_code: $.target.value })}
-        // defaultValue={address.postal_code}
+        defaultValue={address.postal_code}
       />
       <hr />
     </ManualSearch>

@@ -3,7 +3,7 @@ import { useMutation, useQuery } from 'react-apollo-hooks'
 import { FaUserAlt, FaEnvelope } from 'react-icons/fa'
 import { PersonalDetails, ProfileImage } from './styled'
 
-import { UPDATE_SHIPPING } from '../../../../services/Apollo/Mutations/order'
+import { UPDATE_ORDER } from '../../../../services/Apollo/Mutations/order'
 import { GET_ORDER } from '../../../../services/Apollo/Queries/order'
 
 import { SUBSCRIBE_USER } from '../../../../services/Apollo/Queries/auth'
@@ -21,19 +21,29 @@ export default () => {
     email: getOrder.data.Order.email || data.CurrentUser.email,
   })
 
-  // const updatePersonalDetails = useMutation(UPDATE_SHIPPING, {
-  //   variables: {
-  //     Order: data.Order,
-  //     Details: { name, email },
-  //   },
-  //   // refetchQueries: [{ query: GET_ORDER }],
-  // })
-
-  useEffect(() => {
-    updatePersonalDetails()
+  const updateEmail = useMutation(UPDATE_ORDER, {
+    variables: {
+      Order: data.Order,
+      toUpdate: { email },
+    },
   })
 
-  console.log('>>>>', data)
+  const updateShippingName = useMutation(UPDATE_ORDER, {
+    variables: {
+      Order: data.Order,
+      toUpdate: {
+        shipping: {
+          ...getOrder.data.Order.shipping,
+          name,
+        },
+      },
+    },
+  })
+
+  useEffect(() => {
+    updateEmail()
+    updateShippingName()
+  })
 
   return (
     <PersonalDetails>
@@ -51,12 +61,7 @@ export default () => {
           type={'text'}
           placeholder={'Name'}
           value={name}
-          // onChange={e =>
-          //   dispatch({
-          //     type: 'Order:UpdateShipping',
-          //     payload: { name: e.target.value },
-          //   })
-          // }
+          onChange={e => setPersonalDetails({ email, name: e.target.value })}
         />
       </div>
       <div>

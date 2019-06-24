@@ -6,6 +6,8 @@ import { FaQuestionCircle } from 'react-icons/fa'
 export default ({ children }) => {
   const [stage, setStage] = useState(0)
 
+  console.log(children, children[stage])
+
   return (
     <Steps>
       <StepsContainer>

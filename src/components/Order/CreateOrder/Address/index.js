@@ -7,11 +7,11 @@ import EditAddress from './Edit'
 import { Secondary } from '../../../Button'
 
 import { GET_ORDER } from '../../../../services/Apollo/Queries/order'
-import { UPDATE_ADDRESS } from '../../../../services/Apollo/Mutations/order'
+import { UPDATE_ORDER } from '../../../../services/Apollo/Mutations/order'
 
 export default () => {
   const { data, loading } = useQuery(GET_ORDER)
-  const resetAddress = useMutation(UPDATE_ADDRESS, {
+  const resetAddress = useMutation(UPDATE_ORDER, {
     variables: {
       Order: data.Order,
       address: null,

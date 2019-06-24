@@ -17,8 +17,6 @@ import AddToOrder from './AddToOrder'
 
 import Breadcrumb from '../../components/Breadcrumb'
 
-import { Stripe } from '../../Api'
-
 import {
   Header,
   FeaturedImage,

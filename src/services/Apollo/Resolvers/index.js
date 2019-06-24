@@ -30,35 +30,12 @@ export const resolvers = {
       console.log('data >>>', data)
       return null
     },
-    updateAddress: async (_, { Order, address }, { cache, getCacheKey }) => {
-      console.log('>>>>', Order, address)
-      const shipping = {
-        ...Order.shipping,
-        address: address ? { __typename: 'StripeAddress', ...address } : null,
-      }
-
+    updateOrder: async (_, { Order, toUpdate }, { cache, getCacheKey }) => {
       await cache.writeData({
         data: {
           Order: {
             ...Order,
-            shipping,
-            __typename: 'Order',
-          },
-        },
-      })
-      return null
-    },
-    updatePersonalDetails: async (_, { Order, ...props }, { cache }) => {
-      const shipping = {
-        ...Order.shipping,
-        props,
-      }
-
-      await cache.writeData({
-        data: {
-          Order: {
-            ...Order,
-            shipping,
+            ...toUpdate,
             __typename: 'Order',
           },
         },

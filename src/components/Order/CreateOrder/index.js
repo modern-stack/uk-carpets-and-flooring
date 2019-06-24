@@ -22,7 +22,7 @@ export default ({ onComplete }) => {
     variables: {
       ...data,
     },
-    onUpdate: () => onComplete(),
+    update: () => onComplete(),
   })
   return (
     <PaymentDetails>
