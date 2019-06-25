@@ -40,7 +40,9 @@ const UserInfo = styled.div`
     background-color: grey;
   }
 
-  width: ${$ => ($.loading ? '0' : '100%')};
+  width: 100%;
+
+  /* width: ${$ => ($.loading ? '0' : '100%')}; */
 `
 
 const Total = styled.label`
