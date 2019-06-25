@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const CarouselContainer = styled.div`
   position: relative;
-  height: 100%;
+  height: 80vh;
 `
 
 const Slide = styled.div`
