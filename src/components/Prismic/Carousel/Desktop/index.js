@@ -34,7 +34,7 @@ export default ({ slides }) => {
         {slides.map((slide, index) => (
           <Slide key={index} visible={index === position}>
             <Image
-              style={{ width: '100%' }}
+              style={{ width: '100%', position: 'unset' }}
               fluid={slide.gallery_image.localFile.childImageSharp.fluid}
             />
             <Content>

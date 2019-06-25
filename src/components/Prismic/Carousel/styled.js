@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const DesktopContainer = styled.div`
   display: block;
   position: relative;
-  height: 100%;
+  height: 80vh;
 
   @media (max-width: 700px) {
     display: none;

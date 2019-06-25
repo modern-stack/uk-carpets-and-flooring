@@ -28,7 +28,11 @@ module.exports = ({ graphql, id }) => {
                 gallery_image {
                   localFile {
                     childImageSharp {
+<<<<<<< Updated upstream
                       fluid(quality: 100, maxWidth: 1080) {
+=======
+                      fluid(quality: 100, maxHeight: 1080, maxWidth: 1920) {
+>>>>>>> Stashed changes
                         base64
                         tracedSVG
                         aspectRatio
