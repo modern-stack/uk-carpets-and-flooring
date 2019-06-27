@@ -33,7 +33,6 @@ const ContentfulBanners = styled.div`
   position: relative;
   overflow: hidden;
   padding: 12px;
-  height: 56vh;
 
   @media (max-width: 700px) {
     height: 100%;
