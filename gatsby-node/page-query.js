@@ -71,7 +71,7 @@ module.exports = ({ graphql, id }) => {
                 image {
                   localFile {
                     childImageSharp {
-                      fluid(quality: 100, maxHeight: 720, maxWidth: 1280) {
+                      fluid(quality: 100, maxHeight: 600, maxWidth: 800) {
                         base64
                         tracedSVG
                         aspectRatio
