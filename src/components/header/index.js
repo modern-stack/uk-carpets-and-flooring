@@ -50,7 +50,7 @@ export default () => {
           </Logo>
 
           <DesktopOptions>
-            <UserInfo loading={isVisible}>
+            <UserInfo>
               <Profile />
               <MenuItem>
                 <FaHeart size={12} />
