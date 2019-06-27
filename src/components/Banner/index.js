@@ -15,8 +15,10 @@ export default ({ banner }) => (
     <ImageContainer>
       {banner.image && (
         <Image
-          style={{ height: '100%' }}
-          fluid={banner.image.localFile.childImageSharp.fluid}
+          style={{ height: '100%', position: 'unset' }}
+          fixed={banner.image.localFile.childImageSharp.fixed}
+          objectFit="cover"
+          objectPosition="50% 50%"
         />
       )}
     </ImageContainer>
