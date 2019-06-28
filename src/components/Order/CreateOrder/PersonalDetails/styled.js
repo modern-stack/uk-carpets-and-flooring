@@ -13,10 +13,4 @@ const PersonalDetails = styled.div`
   }
 `
 
-const ProfileImage = styled.img`
-  height: 65px;
-  width: 65px;
-  border-radius: 50%;
-`
-
-export { PersonalDetails, ProfileImage }
+export { PersonalDetails }

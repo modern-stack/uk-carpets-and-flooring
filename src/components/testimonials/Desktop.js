@@ -1,6 +1,8 @@
 import React from 'react'
 import { FaStar } from 'react-icons/fa'
 
+import ProfileImage from '../ProfileImage'
+
 import {
   Testimonials,
   Title,
@@ -43,12 +45,7 @@ export default ({ testimonials, formatDate, position, setPosition }) => {
                         <div>
                           <Details>
                             <div>
-                              <Image
-                                src={
-                                  $.User.Picture ||
-                                  'http://aux.iconspalace.com/uploads/guest-icon-256.png'
-                                }
-                              />
+                              <ProfileImage />
                             </div>
                             <Profile>
                               <div>

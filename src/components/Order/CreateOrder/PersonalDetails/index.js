@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useMutation, useQuery } from 'react-apollo-hooks'
 import { FaUserAlt, FaEnvelope } from 'react-icons/fa'
-import { PersonalDetails, ProfileImage } from './styled'
+import { PersonalDetails } from './styled'
+
+import ProfileImage from '../../../ProfileImage'
 
 import { UPDATE_ORDER } from '../../../../services/Apollo/Mutations/order'
 import { GET_ORDER } from '../../../../services/Apollo/Queries/order'
@@ -48,12 +50,7 @@ export default () => {
   return (
     <PersonalDetails>
       <div>
-        <ProfileImage
-          src={
-            data.CurrentUser.picture ||
-            'http://aux.iconspalace.com/uploads/guest-icon-256.png'
-          }
-        />
+        <ProfileImage />
       </div>
       <div>
         <FaUserAlt size={24} />

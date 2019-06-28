@@ -2,6 +2,8 @@ import React from 'react'
 import ReactSwipe from 'react-swipe'
 import { FaStar } from 'react-icons/fa'
 
+import ProfileImage from '../ProfileImage'
+
 import {
   Title,
   SlideSelection,
@@ -43,12 +45,7 @@ export default ({ testimonials, formatDate, position, setPosition }) => {
                 <Details>
                   <Profile>
                     <div>
-                      <Image
-                        src={
-                          $.User.Picture ||
-                          'http://aux.iconspalace.com/uploads/guest-icon-256.png'
-                        }
-                      />
+                      <ProfileImage />
                     </div>
                     <ProfileDetails>
                       <div>
