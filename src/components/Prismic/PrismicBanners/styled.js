@@ -24,7 +24,17 @@ const Banners = styled.div`
   @media (max-width: 700px) {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: auto;
+
+    & > div {
+      :first-child {
+        grid-row: span 1;
+      }
+
+      :nth-child(3) {
+        grid-row: span 1;
+      }
+    }
   }
 `
 
@@ -33,10 +43,10 @@ const ContentfulBanners = styled.div`
   position: relative;
   overflow: hidden;
   padding: 12px;
-  height: 56vh;
+  height: 400px;
 
   @media (max-width: 700px) {
-    height: 100%;
+    height: 1200px;
   }
 `
 

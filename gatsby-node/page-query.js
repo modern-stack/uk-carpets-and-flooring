@@ -71,7 +71,7 @@ module.exports = ({ graphql, id }) => {
                 image {
                   localFile {
                     childImageSharp {
-                      fluid(quality: 100, maxHeight: 720, maxWidth: 1280) {
+                      fixed(quality: 100, width: 300) {
                         base64
                         tracedSVG
                         aspectRatio
@@ -79,7 +79,6 @@ module.exports = ({ graphql, id }) => {
                         srcSet
                         srcWebp
                         srcSetWebp
-                        sizes
                       }
                     }
                   }
