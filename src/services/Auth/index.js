@@ -1,6 +1,6 @@
-import auth0 from 'auth0-js'
+import { WebAuth } from 'auth0-js'
 
-const auth = new auth0.WebAuth({
+const auth = new WebAuth({
   domain: process.env.GATSBY_AUTH0_DOMAIN,
   clientID: process.env.GATSBY_AUTH0_CLIENT_ID,
   redirectUri: process.env.GATSBY_AUTH0_CALLBACK_URL,

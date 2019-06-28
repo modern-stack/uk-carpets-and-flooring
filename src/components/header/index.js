@@ -25,10 +25,6 @@ import {
 } from './styled'
 
 export default () => {
-  const { loading, data } = useQuery(SUBSCRIBE_USER)
-
-  const isVisible = loading || !data
-
   return (
     <StaticQuery
       query={graphql`
