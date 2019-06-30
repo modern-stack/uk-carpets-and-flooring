@@ -7,7 +7,7 @@ import Copyright from '../copyright'
 
 import InstagramFeed from '../instagram'
 
-import GlobalStyle from './globalstyle'
+// import GlobalStyle from './globalstyle'
 
 import { Page, Content } from './styled'
 // import { ThemeProvider } from 'styled-components'
@@ -20,7 +20,7 @@ export default ({ children, data }, context) => {
   return (
     // <ThemeProvider theme={{ fontFamily: 'Gotham' }}>
     <Page>
-      <GlobalStyle />
+      {/* <GlobalStyle /> */}
       <Header siteTitle={'unknown'} />
       <Authentication>
         <Menu />
