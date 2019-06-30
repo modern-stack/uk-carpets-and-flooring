@@ -22,13 +22,13 @@ export default ({ children, data }, context) => {
     <Page>
       {/* <GlobalStyle /> */}
       <Header siteTitle={'unknown'} />
-      <Authentication>
-        <Menu />
-        <Content>{children}</Content>
-        <InstagramFeed />
-        <Footer />
-        <Copyright />
-      </Authentication>
+      {/* <Authentication> */}
+      <Menu />
+      <Content>{children}</Content>
+      <InstagramFeed />
+      <Footer />
+      <Copyright />
+      {/* </Authentication> */}
     </Page>
     // </ThemeProvider>
   )
