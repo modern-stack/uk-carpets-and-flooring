@@ -28,6 +28,8 @@ export default ({ slides }) => {
     }
   })
 
+  console.log('Slide >>>>', slides)
+
   return (
     <div>
       <CarouselContainer>
@@ -39,8 +41,8 @@ export default ({ slides }) => {
             />
             <Content>
               <Title>{slide.title.text}</Title>
-              {/* <SubContent>{slide.content}</SubContent> */}
-              {/* <Button>{slide.cta_text.text}</Button> */}
+              <SubContent>{slide.description.text}</SubContent>
+              <Button>{'Click Here'}</Button>
             </Content>
           </Slide>
         ))}

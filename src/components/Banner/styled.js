@@ -26,30 +26,47 @@ const ImageContainer = styled.div`
   height: 100%;
 `
 
-const Content = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 30%;
-  left: 20%;
-  /* transform: translate(-50%, -50%); */
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  justify-content: ${$ => $.yAlign || 'center'};
+
+  align-items: ${$ => $.xAlign || 'flex-start'};
+  padding: 24px;
+
+  background-color: rgba(0, 0, 0, 0.2);
+
   color: white;
   z-index: 9998;
-  width: 50%;
+`
+
+const Content = styled.div`
+  text-align: ${$ => $.textalign || 'flex-start'};
+  width: 60%;
 `
 
 const Title = styled.h1`
   color: white;
-  font-size: 0.5em;
+  font-size: 12px;
+
+  :empty {
+    display: none;
+  }
 `
 
 const SubContent = styled.h2`
   color: white;
+  font-size: 28px;
 `
 
 const Button = styled.button`
   border: 2px solid white;
-  width: 12em;
+  width: 60%;
   height: 3em;
   margin: 18px 0;
   padding: 0px;
@@ -57,6 +74,13 @@ const Button = styled.button`
   background-color: Transparent;
   text-align: center;
   color: white;
+
+  @media (max-width: 700px) {
+    background-color: rgb(199, 0, 43, 1);
+    color: white;
+    border: 1px solid rgb(199, 0, 43, 1);
+    cursor: pointer;
+  }
 
   &:hover {
     background-color: rgb(199, 0, 43, 1);
@@ -66,4 +90,4 @@ const Button = styled.button`
   }
 `
 
-export { Banner, Content, Title, SubContent, Button, ImageContainer }
+export { Banner, Content, Title, SubContent, Button, Container, ImageContainer }

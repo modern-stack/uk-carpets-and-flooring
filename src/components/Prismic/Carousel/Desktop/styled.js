@@ -59,10 +59,12 @@ const Content = styled.div`
 
 const Title = styled.h1`
   color: white;
-  width: 1em;
+  font-size: 3em;
+  width: 70%;
 `
 
 const SubContent = styled.h2`
+  font-size: 1em;
   color: white;
 `
 

@@ -8,6 +8,7 @@ import {
   SubContent,
   Button,
   ImageContainer,
+  Container,
 } from './styled'
 
 export default ({ banner }) => (
@@ -22,10 +23,13 @@ export default ({ banner }) => (
         />
       )}
     </ImageContainer>
-    <Content>
-      <Title>{banner.title.text}</Title>
-      <SubContent>{banner.content.text}</SubContent>
-      {banner.cta && <Button>{banner.cta.text}</Button>}
-    </Content>
+    {console.log('Banners >>>>', banner)}
+    <Container yAlign={banner.contentaligny} xAlign={banner.contentalignx}>
+      <Content textalign={`${banner.textalign}`}>
+        <Title>{banner.title.text}</Title>
+        <SubContent>{banner.content.text}</SubContent>
+        {banner.cta && <Button>{banner.cta.text}</Button>}
+      </Content>
+    </Container>
   </Banner>
 )

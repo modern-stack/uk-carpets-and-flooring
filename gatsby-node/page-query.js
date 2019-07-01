@@ -24,6 +24,7 @@ module.exports = ({ graphql, id }) => {
                 }
                 description {
                   html
+                  text
                 }
                 gallery_image {
                   localFile {
@@ -68,6 +69,9 @@ module.exports = ({ graphql, id }) => {
                   url
                   target
                 }
+                textalign
+                contentalignx
+                contentaligny
                 image {
                   localFile {
                     childImageSharp {
