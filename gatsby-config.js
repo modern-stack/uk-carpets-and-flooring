@@ -9,12 +9,12 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     'gatsby-plugin-styled-components',
-    {
-      resolve: `gatsby-plugin-stripe`,
-      options: {
-        async: true,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-stripe`,
+    //   options: {
+    //     async: true,
+    //   },
+    // },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
