@@ -6,7 +6,7 @@ import { useQuery, useMutation } from 'react-apollo-hooks'
 
 import Profile from '../Profile'
 import Cart from '../Cart'
-import Order from '../Order'
+import { Summary } from '../Order/Summary'
 
 import SignUpButton from './SignUpButton'
 
@@ -57,7 +57,7 @@ export default () => {
               <MenuItem>
                 <Cart />
                 <SubMenu>
-                  <Order onComplete />
+                  <Summary onComplete />
                 </SubMenu>
               </MenuItem>
               <SignUpButton />

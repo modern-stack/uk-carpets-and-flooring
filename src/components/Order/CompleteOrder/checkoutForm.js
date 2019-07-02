@@ -13,10 +13,6 @@ const CheckoutForm = ({ onComplete, stripe, orderid }) => {
   console.log('Source >>>', source, stripe, orderid)
 
   if (source) {
-    console.log('Running Mutation >>>', {
-      orderid,
-      source: source.token.id,
-    })
     useMutation(COMPLETE_ORDER, {
       variables: {
         orderid,

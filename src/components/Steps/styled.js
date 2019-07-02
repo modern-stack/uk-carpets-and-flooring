@@ -1,9 +1,19 @@
 import styled from 'styled-components'
 
 const Steps = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  div:last-child {
+    grid-column: span 2;
+  }
+
   margin: 12px 18px;
+
+  @media (max-width: 700px) {
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 const Step = styled.div`
@@ -22,4 +32,8 @@ const Content = styled.div`
   width: 100%;
 `
 
-export { Steps, Step, Content, StepsContainer }
+const StepBar = styled.div`
+  background: green;
+`
+
+export { Steps, Step, Content, StepsContainer, StepBar }

@@ -4,19 +4,22 @@ import { FaCheckCircle, FaShoppingBasket, FaCreditCard } from 'react-icons/fa'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
+import Title from '../components/Title'
 import Steps from '../components/Steps'
-import Order from '../components/Order'
-import CreateOrder from '../components/Order/CreateOrder'
+import { Summary, SummaryCta } from '../components/Order/Summary'
+import { CreateOrder, CreateOrderCta } from '../components/Order/CreateOrder'
 import CompleteOrder from '../components/Order/CompleteOrder'
 
 export default () => {
   return (
     <Layout>
-      <SEO title="Products" />
+      <SEO title="checkout" />
+
+      <Title title={'Checkout'} />
 
       <Steps>
-        <Order icon={<FaShoppingBasket />} />
-        <CreateOrder icon={<FaCreditCard />} />
+        <Summary icon={<FaShoppingBasket />} cta={SummaryCta} />
+        <CreateOrder icon={<FaCreditCard />} cta={CreateOrderCta} />
         <CompleteOrder icon={<FaCheckCircle />} />
       </Steps>
     </Layout>

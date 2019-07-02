@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
-import { Steps, Step, Content, StepsContainer } from './styled'
+import { Steps, Step, Content, StepsContainer, StepBar } from './styled'
 
 import { FaQuestionCircle } from 'react-icons/fa'
 
 export default ({ children }) => {
   const [stage, setStage] = useState(0)
 
-  console.log(children, children[stage])
+  const Component = React.cloneElement(children[stage])
+
+  let Cta = null
+
+  if (Component.props.cta) Cta = Component.props.cta
 
   return (
     <Steps>
@@ -17,11 +21,9 @@ export default ({ children }) => {
           </Step>
         ))}
       </StepsContainer>
-      <Content>
-        {React.cloneElement(children[stage], {
-          onComplete: () => setStage(stage + 1),
-        })}
-      </Content>
+      <div />
+      <Content>{Component}</Content>
+      <StepBar>{Cta && <Cta onComplete={() => setStage(stage + 1)} />}</StepBar>
     </Steps>
   )
 }

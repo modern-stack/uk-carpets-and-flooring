@@ -1,10 +1,10 @@
 import React from 'react'
 import { useQuery } from 'react-apollo-hooks'
-import gql from 'graphql-tag'
-import Img from 'gatsby-image'
 
-import Title from '../Title'
-import { Primary } from '../Button'
+import SummaryCta from './Cta'
+
+import Title from '../../Title'
+
 import {
   Order,
   Sku,
@@ -15,9 +15,12 @@ import {
   OrderContainer,
 } from './styled'
 
-import { GET_ORDER, GET_ORDER_ITEMS } from '../../services/Apollo/Queries/order'
+import {
+  GET_ORDER,
+  GET_ORDER_ITEMS,
+} from '../../../services/Apollo/Queries/order'
 
-export default ({ onComplete }) => {
+const Summary = () => {
   const localOrder = useQuery(GET_ORDER)
   if (localOrder.loading || !localOrder.data || !localOrder.data.Order)
     return <div>Loading</div>
@@ -64,9 +67,9 @@ export default ({ onComplete }) => {
             }, 0)}
           </Price>
         </Total>
-
-        <Primary onClick={() => onComplete()}>Continue to Payment</Primary>
       </Order>
     </OrderContainer>
   )
 }
+
+export { Summary, SummaryCta }
