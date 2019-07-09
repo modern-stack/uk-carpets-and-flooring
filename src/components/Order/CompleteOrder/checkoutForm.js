@@ -10,8 +10,6 @@ import { Primary } from '../../Button'
 const CheckoutForm = ({ onComplete, stripe, orderid }) => {
   const [source, setSource] = useState(null)
 
-  console.log('Source >>>', source, stripe, orderid)
-
   if (source) {
     useMutation(COMPLETE_ORDER, {
       variables: {
