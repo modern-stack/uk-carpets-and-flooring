@@ -17,6 +17,12 @@ function SEO({ description, lang, meta, keywords, title }) {
             }}
             title={title}
             titleTemplate={`%s | ${data.site.siteMetadata.title}`}
+            link={[
+              {
+                rel: 'preconnect',
+                href: 'https://api.ukcarpetsandflooring.com',
+              },
+            ]}
             meta={[
               {
                 name: `description`,
