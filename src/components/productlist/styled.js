@@ -12,7 +12,28 @@ const List = styled.div`
   }
 `
 
-const Product = styled.div``
+const Product = styled.div`
+  position: relative;
+
+  h2 {
+    color: grey;
+    font-size: 0.6em;
+    margin: 0.2em 0;
+    text-transform: uppercase;
+  }
+
+  .title {
+    font-family: Gotham-Bold, ﻿AdobeInvisFont, ﻿MyriadPro-Regular;
+    font-weight: bold;
+    color: rgba(51, 51, 51, 255);
+    text-align: left;
+  }
+
+  .price {
+    font-family: Gotham-Bold;
+    margin: 12px 0 0 0;
+  }
+`
 
 const Buttons = styled.div`
   position: absolute;
@@ -30,8 +51,8 @@ const Buttons = styled.div`
 
 const ImageContainer = styled.div`
   width: 100%;
-  margin: 12px 12px;
   position: relative;
+  margin: 8px 0px;
 
   @media (max-width: 700px) {
     margin: 12px 0px;
@@ -55,7 +76,25 @@ const ImageContainer = styled.div`
   }
 `
 
+const AdditionaDetails = styled.ul`
+  padding-inline-start: 2px;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  list-style-type: none;
+  font-family: PlayfairDisplay-Regular;
+  color: rgba(102, 102, 102, 255);
+
+  li {
+    padding: 8px 0 0 0;
+  }
+
+  @media (max-width: 700px) {
+    display: none;
+  }
+`
+
 const Button = styled.button`
+  font-family: Gotham-Medium;
   border: 2px solid white;
   width: 80%;
   height: 3em;
@@ -75,4 +114,4 @@ const Button = styled.button`
   }
 `
 
-export { List, Product, ImageContainer, Buttons, Button }
+export { List, Product, AdditionaDetails, ImageContainer, Buttons, Button }

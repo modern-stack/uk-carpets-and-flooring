@@ -2,11 +2,12 @@ import React from 'react'
 import { FaHeart, FaShoppingCart } from 'react-icons/fa'
 import Img from 'gatsby-image'
 import { StaticQuery, graphql } from 'gatsby'
+import { navigateTo } from 'gatsby-link'
 import { useQuery, useMutation } from 'react-apollo-hooks'
 
 import Profile from '../Profile'
 import Cart from '../Cart'
-import { Summary } from '../Order/Summary'
+import { Summary, SummaryCta } from '../Order/Summary'
 
 import SignUpButton from './SignUpButton'
 
@@ -42,7 +43,9 @@ export default () => {
         <Header>
           <Logo>
             <Img fixed={data.logo.childImageSharp.fixed} />
-            <CompanyName>UK Carpets & Flooring</CompanyName>
+            <CompanyName>
+              <div>UK Carpets & Flooring</div>
+            </CompanyName>
           </Logo>
 
           <DesktopOptions>
@@ -57,7 +60,11 @@ export default () => {
               <MenuItem>
                 <Cart />
                 <SubMenu>
-                  <Summary onComplete />
+                  <Summary />
+                  <SummaryCta
+                    text={'Checkout'}
+                    onComplete={() => navigateTo('/checkout')}
+                  />
                 </SubMenu>
               </MenuItem>
               <SignUpButton />

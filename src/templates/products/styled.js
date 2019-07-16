@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const ProductsContainer = styled.div`
   display: flex;
-  margin: 0 20px;
+  margin: 20px 20px 0 20px;
   position: relative;
 
   @media (max-width: 700px) {
@@ -12,7 +12,7 @@ const ProductsContainer = styled.div`
   & > div {
     flex: 1;
     &:first-child {
-      flex: 0.3;
+      //flex: 0.3;
     }
   }
 `

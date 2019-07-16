@@ -1,5 +1,5 @@
 import GothamBold from './fontfiles/GothamBold.ttf'
-import GothamBoldItalic from './fontfiles/GothamBookItalic.ttf'
+import GothamBoldItalic from './fontfiles/GothamBoldItalic.ttf'
 import GothamBook from './fontfiles/GothamBook.ttf'
 import GothamBookItalic from './fontfiles/GothamBookItalic.ttf'
 import GothamLightItalic from './fontfiles/GothamLightItalic.ttf'
@@ -16,7 +16,6 @@ export default {
   GothamBoldItalic,
   GothamBook,
   GothamBookItalic,
-  GothamBoldItalic,
   GothamLightItalic,
   GothamMedium,
   PlayfairDisplayBlack,

@@ -21,7 +21,7 @@ export default ({ children }) => {
           </Step>
         ))}
       </StepsContainer>
-      <div />
+
       <Content>{Component}</Content>
       <StepBar>{Cta && <Cta onComplete={() => setStage(stage + 1)} />}</StepBar>
     </Steps>

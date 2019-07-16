@@ -23,6 +23,7 @@ const Title = styled.h2`
 `
 
 const SubTitle = styled.div`
+  font-family: Gotham-Book;
   text-align: center;
   display: flex;
 

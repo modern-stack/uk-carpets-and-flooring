@@ -35,19 +35,25 @@ const Container = styled.div`
   right: 0;
   left: 0;
   justify-content: ${$ => $.yAlign || 'center'};
-
   align-items: ${$ => $.xAlign || 'flex-start'};
   padding: 24px;
-
   background-color: rgba(0, 0, 0, 0.2);
-
   color: white;
   z-index: 9998;
+
+  @media (max-width: 700px) {
+    justify-content: center;
+    align-items: center;
+  }
 `
 
 const Content = styled.div`
   text-align: ${$ => $.textalign || 'flex-start'};
   width: 60%;
+
+  @media (max-width: 700px) {
+    text-align: center;
+  }
 `
 
 const Title = styled.h1`

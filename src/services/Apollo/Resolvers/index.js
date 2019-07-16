@@ -30,8 +30,8 @@ export const resolvers = {
       console.log('data >>>', data)
       return null
     },
-    updateOrder: async (_, { Order, toUpdate }, { cache, getCacheKey }) => {
-      console.log('Updating Order >>>>', Order, toUpdate)
+    updateOrder: async (_, { toUpdate }, { cache, getCacheKey }) => {
+      const Order = cache.readQuery({ query: GET_ORDER })
       await cache.writeData({
         data: {
           Order: {

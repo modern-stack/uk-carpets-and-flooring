@@ -6,6 +6,17 @@ export default createGlobalStyle`
   body {
 
   @font-face {
+    font-family: 'Gotham Bold';
+    font-style: normal;
+    font-weight: normal;
+    color: red;
+    flex-wrap: nowrap;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    src: local('Gotham Bold'), url('${fonts.GothamBold}') format('truetype');
+  }
+
+  @font-face {
     font-family: 'Gotham Bold Italic';
     font-style: normal;
     font-weight: normal;
@@ -13,22 +24,6 @@ export default createGlobalStyle`
       fonts.GothamBoldItalic
     }') format('truetype');
   } 
-
-  @font-face {
-    font-family: 'Gotham Bold';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Gotham Bold') url('${fonts.GothamBold}') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'Gotham Bold Italic';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Gotham Bold Italic'), url('${
-      fonts.GothamBoldItalic
-    }') format('truetype');
-  }
 
   @font-face {
     font-family: 'Gotham Book';

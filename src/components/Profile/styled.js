@@ -5,6 +5,7 @@ const Profile = styled.div`
   align-items: center;
   margin: 0px 12px;
   height: 80px;
+  color: gray;
 
   @media (max-width: 700px) {
     height: 40px;

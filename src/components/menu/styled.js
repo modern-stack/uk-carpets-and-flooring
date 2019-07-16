@@ -34,6 +34,7 @@ const SubMenu = styled.div`
 `
 
 const MenuItem = styled(Link)`
+  text-decoration: none;
   position: relative;
   display: flex;
   padding: 12px 0px;

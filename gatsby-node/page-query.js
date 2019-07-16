@@ -133,6 +133,28 @@ module.exports = ({ graphql, id }) => {
                 }
               }
             }
+            ... on PrismicPageBodyFullPageCover {
+              id
+              slice_type
+              primary {
+                image {
+                  localFile {
+                    childImageSharp {
+                      fluid(quality: 100, maxHeight: 720, maxWidth: 1280) {
+                        base64
+                        tracedSVG
+                        aspectRatio
+                        src
+                        srcSet
+                        srcWebp
+                        srcSetWebp
+                        sizes
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }

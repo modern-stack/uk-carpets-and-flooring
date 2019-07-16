@@ -25,20 +25,20 @@ export default ({ pageContext }) => {
           return Component ? <Component {...$} /> : null
         })}
       <ProductsContainer>
-        <ProductFilter
+        {/* <ProductFilter
           open={showFilter}
           filters={[]}
           selected={false}
           // setSelected={}
           visible={showFilter}
-        />
+        /> */}
         <ProductList products={skus} />
 
-        <FilterToggle>
+        {/* <FilterToggle>
           <Swipeable onSwiped={() => toggleShowFilter(!showFilter)}>
             Filter
           </Swipeable>
-        </FilterToggle>
+        </FilterToggle> */}
       </ProductsContainer>
     </Layout>
   )

@@ -16,23 +16,27 @@ export default () => {
 
   const getOrder = useQuery(GET_ORDER)
 
-  const [{ name, email }, setPersonalDetails] = useState({
+  console.log('Curent Order >>', getOrder.data.Order)
+
+  const [personalDetails, setPersonalDetails] = useState({
     name:
-      getOrder.data.Order.name ||
+      getOrder.data.Order.shipping.name ||
       `${data.CurrentUser.given_name} ${data.CurrentUser.family_name}`,
     email: getOrder.data.Order.email || data.CurrentUser.email,
   })
 
+  const { name, email } = personalDetails
+
+  console.log('>>>>>', name, email)
+
   const updateEmail = useMutation(UPDATE_ORDER, {
     variables: {
-      Order: data.Order,
       toUpdate: { email },
     },
   })
 
   const updateShippingName = useMutation(UPDATE_ORDER, {
     variables: {
-      Order: data.Order,
       toUpdate: {
         shipping: {
           ...getOrder.data.Order.shipping,
@@ -58,7 +62,10 @@ export default () => {
           type={'text'}
           placeholder={'Name'}
           value={name}
-          onChange={e => setPersonalDetails({ email, name: e.target.value })}
+          onChange={e =>
+            setPersonalDetails({ ...personalDetails, name: e.target.value })
+          }
+          defaultValue={name}
         />
       </div>
       <div>
@@ -67,7 +74,10 @@ export default () => {
           type={'text'}
           placeholder={'Please enter an Email address'}
           value={email}
-          onChange={e => setPersonalDetails({ name, email: e.target.value })}
+          onChange={e =>
+            setPersonalDetails({ ...personalDetails, email: e.target.value })
+          }
+          defaultValue={email}
         />
       </div>
     </PersonalDetails>

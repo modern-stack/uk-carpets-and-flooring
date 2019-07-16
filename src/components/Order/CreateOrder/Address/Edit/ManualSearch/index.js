@@ -8,7 +8,7 @@ import { UPDATE_ORDER } from '../../../../../../services/Apollo/Mutations/order'
 import { GET_ORDER } from '../../../../../../services/Apollo/Queries/order'
 
 export default () => {
-  const { data, loading } = useQuery(GET_ORDER)
+  const { data } = useQuery(GET_ORDER)
 
   const [address, setAddress] = useState(
     data.Order.shipping.address || { __typename: 'StripeAddress' }
@@ -16,7 +16,6 @@ export default () => {
 
   const updateOrder = useMutation(UPDATE_ORDER, {
     variables: {
-      Order: data.Order,
       toUpdate: {
         shipping: {
           ...data.Order.shipping,

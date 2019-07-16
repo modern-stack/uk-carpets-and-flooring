@@ -1,6 +1,13 @@
 import React from 'react'
 import Image from 'gatsby-image'
-import { List, Product, ImageContainer, Buttons, Button } from './styled'
+import {
+  List,
+  Product,
+  ImageContainer,
+  Buttons,
+  Button,
+  AdditionaDetails,
+} from './styled'
 import Link from 'gatsby-link'
 
 export default ({ products }) => {
@@ -32,16 +39,18 @@ export default ({ products }) => {
               </Buttons>
             </ImageContainer>
 
-            <div>{product.name}</div>
-            <div>{sku.name.text}</div>
-            <div>{sku.subtitle}</div>
-            <div>£{sku.price.toFixed(2)}</div>
-            <ul>
-              <li>{`${sku.width} inch. wide  x ${sku.length} inc. Long x ${
-                sku.thickness
-              } mm thick`}</li>
-              <li>Something 3</li>
-            </ul>
+            <h2>{product.name}</h2>
+            <div class="title">{sku.name.text}</div>
+
+            <div class="price">£{sku.price.toFixed(2)}</div>
+            <AdditionaDetails>
+              <li>{`${sku.width || 'unknown'} in. wide  x ${sku.length ||
+                'unknown'} in. Long x ${sku.thickness ||
+                'unknown'} mm thick`}</li>
+              {(sku.additional_information || '').split(',').map($ => (
+                <li>{$}</li>
+              ))}
+            </AdditionaDetails>
           </Product>
         )
       })}

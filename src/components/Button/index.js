@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const Button = styled.button`
+  font-family: Gotham-Medium;
   color: white;
   display: flex;
   justify-content: center;
@@ -23,14 +24,17 @@ const Button = styled.button`
   }
 `
 const Primary = styled(Button)`
+  font-family: Gotham-Medium;
   background: #c7002b;
 `
 
 const Secondary = styled(Button)`
+  font-family: Gotham-Medium;
   background: black;
 `
 
 const Tertiary = styled(Button)`
+  font-family: Gotham-Medium;
   background: white;
   border: 1px solid black;
   color: black;

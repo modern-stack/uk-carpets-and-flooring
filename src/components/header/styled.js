@@ -18,6 +18,9 @@ const CompanyName = styled.div`
   flex-wrap: nowrap;
   padding: 0px 5px;
   text-transform: uppercase;
+  font-family: Gotham-Bold, ﻿AdobeInvisFont, ﻿MyriadPro-Regular;
+  color: rgba(51, 51, 51, 255);
+  text-align: left;
 `
 
 const Logo = styled.div`
@@ -63,6 +66,8 @@ const SubMenu = styled.div`
 `
 
 const MenuItem = styled.div`
+  font-family: Gotham-Bold;
+  text-decoration: none;
   display: flex;
   position: relative;
   align-items: center;

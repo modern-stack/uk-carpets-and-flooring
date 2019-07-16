@@ -14,9 +14,10 @@ const Search = styled.div`
   input {
     text-align: center;
     width: 100%;
-    height: 30px;
     text-transform: uppercase;
-    border: 1px solid black;
+    border: 0 1px 0 0;
+    border-color: gray;
+    outline: none;
   }
 
   @keyframes spinner {

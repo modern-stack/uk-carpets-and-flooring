@@ -10,6 +10,10 @@ module.exports = graphql =>
                 html
                 text
               }
+              length
+              width
+              thickness
+              additional_information
               price
               featuredimage {
                 localFile {
