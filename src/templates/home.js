@@ -1,8 +1,9 @@
 import React from 'react'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import PrismicComponents from '../components/Prismic'
 
+import Carousel from '../components/Prismic/Carousel'
+import Banners from '../components/Prismic/PrismicBanners'
 import Testimonials from '../components/testimonials'
 
 export default ({ pageContext }) => {
@@ -10,10 +11,8 @@ export default ({ pageContext }) => {
     <Layout page={pageContext}>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
       <React.Fragment>
-        {pageContext.prismicPage.data.body.map($ => {
-          const Component = PrismicComponents[$.slice_type]
-          return Component ? <Component {...$} /> : null
-        })}
+        <Carousel items={pageContext.prismicPage.data.body[0].items} />
+        <Banners items={pageContext.prismicPage.data.body[1].items} />
         <Testimonials />
       </React.Fragment>
     </Layout>
