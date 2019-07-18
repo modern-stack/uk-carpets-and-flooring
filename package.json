@@ -13,10 +13,8 @@
     "apollo-link-ws": "^1.0.17",
     "apollo-utilities": "^1.3.0",
     "auth0-js": "^9.10.2",
-    "axios": "^0.18.0",
     "babel-plugin-styled-components": "^1.10.0",
     "dotenv": "^7.0.0",
-    "firebase": "^5.7.3",
     "gatsby": "^2.1.30",
     "gatsby-image": "^2.0.33",
     "gatsby-plugin-manifest": "^2.0.13",
@@ -53,7 +51,6 @@
     "react-swipeable-views": "^0.13.1",
     "styled-components": "^4.1.3",
     "subscriptions-transport-ws": "^0.9.16",
-    "uuid": "^3.3.2",
     "ws": "^7.0.0"
   },
   "keywords": [
