@@ -5,7 +5,6 @@ import { FaTruck, FaTasks } from 'react-icons/fa'
 import { Orders, Order } from './styled'
 
 function renderDelliveryStatus($) {
-  console.log($)
   return !!$.charge ? <FaTruck /> : <FaTasks />
 }
 

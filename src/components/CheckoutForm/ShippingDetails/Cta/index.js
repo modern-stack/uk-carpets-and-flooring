@@ -20,8 +20,6 @@ export default ({ onComplete }) => {
     update: async (cache, { data: { CreateOrder } }) => {
       const { Order } = cache.readQuery({ query: GET_ORDER })
 
-      console.log('Writing >>>>', Order, CreateOrder.id)
-
       await cache.writeData({
         data: {
           Order: {

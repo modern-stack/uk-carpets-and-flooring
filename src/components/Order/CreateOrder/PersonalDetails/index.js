@@ -16,8 +16,6 @@ export default () => {
 
   const getOrder = useQuery(GET_ORDER)
 
-  console.log('Curent Order >>', getOrder.data.Order)
-
   const [personalDetails, setPersonalDetails] = useState({
     name:
       getOrder.data.Order.shipping.name ||
@@ -26,8 +24,6 @@ export default () => {
   })
 
   const { name, email } = personalDetails
-
-  console.log('>>>>>', name, email)
 
   const updateEmail = useMutation(UPDATE_ORDER, {
     variables: {

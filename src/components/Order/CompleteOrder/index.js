@@ -25,8 +25,6 @@ export default ({ onComplete }) => {
 
   if (!stripeLoaded.successful) return <div>Loading</div>
 
-  console.log('Ready >>>', data)
-
   return (
     <StripeProvider apiKey={'pk_test_j8D2dhgBhWY1ToEZm9NsrF48'}>
       <Payment>

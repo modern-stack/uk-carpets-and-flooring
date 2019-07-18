@@ -23,7 +23,7 @@ export default ({ banner }) => (
         />
       )}
     </ImageContainer>
-    {console.log('Banners >>>>', banner)}
+
     <Container yAlign={banner.contentaligny} xAlign={banner.contentalignx}>
       <Content textalign={`${banner.textalign}`}>
         <Title>{banner.title.text}</Title>

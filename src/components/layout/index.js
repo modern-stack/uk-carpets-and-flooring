@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { StripeProvider } from 'react-stripe-elements'
 
 import Header from '../header'
 import Menu from '../menu'

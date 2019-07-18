@@ -16,8 +16,6 @@ export default () => {
 
   const { GetAllOrders } = data
 
-  console.log(GetAllOrders)
-
   return (
     <Layout>
       <SEO title="order" />

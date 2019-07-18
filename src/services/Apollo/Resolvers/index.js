@@ -27,7 +27,6 @@ export const resolvers = {
         },
       })
 
-      console.log('data >>>', data)
       return null
     },
     updateOrder: async (_, { toUpdate }, { cache, getCacheKey }) => {

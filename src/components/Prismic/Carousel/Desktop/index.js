@@ -28,8 +28,6 @@ export default ({ slides }) => {
     }
   })
 
-  console.log('Slide >>>>', slides)
-
   return (
     <div>
       <CarouselContainer>
