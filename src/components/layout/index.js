@@ -19,13 +19,13 @@ export default ({ children, data }, context) => {
     // <ThemeProvider theme={{ fontFamily: 'Gotham' }}>
     <Page>
       {/* <GlobalStyle /> */}
-      <Header siteTitle={'unknown'} />
+      {/* <Header siteTitle={'unknown'} /> */}
       {/* <Authentication> */}
-      <Menu />
+      {/* <Menu /> */}
       <Content>{children}</Content>
-      <InstagramFeed />
-      <Footer />
-      <Copyright />
+      {/* <InstagramFeed /> */}
+      {/* <Footer /> */}
+      {/* <Copyright /> */}
       {/* </Authentication> */}
     </Page>
     // </ThemeProvider>
