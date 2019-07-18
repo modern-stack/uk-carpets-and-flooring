@@ -10,16 +10,6 @@ const DesktopContainer = styled.div`
   }
 `
 
-const MobileContainer = styled.div`
-  display: none;
-
-  @media (max-width: 700px) {
-    display: block;
-    position: relative;
-    height: 100%;
-  }
-`
-
 const Carousel = styled.div`
   display: block;
 `
