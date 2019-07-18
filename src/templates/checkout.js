@@ -12,7 +12,7 @@ import CompleteOrder from '../components/Order/CompleteOrder'
 
 import CheckoutForm from '../components/CheckoutForm'
 
-import Modal from '../components/modal'
+import Modal from '../components/Modal'
 
 export default ({ pageContext }) => {
   return (
