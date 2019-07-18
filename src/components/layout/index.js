@@ -1,18 +1,6 @@
-import React, { useEffect, useState } from 'react'
-
-import Header from '../header'
-import Menu from '../menu'
-import Footer from '../footer'
-import Copyright from '../copyright'
-
-import InstagramFeed from '../instagram'
-
-import GlobalStyle from './globalstyle'
+import React from 'react'
 
 import { Page, Content } from './styled'
-import { ThemeProvider } from 'styled-components'
-
-import Authentication from '../Authentication'
 
 export default ({ children, data }, context) => {
   return (
