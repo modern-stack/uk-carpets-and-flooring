@@ -6,6 +6,7 @@ export default ({ pageContext }) => {
   return (
     <Layout page={pageContext}>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <div>hi!</div>
       {/* <React.Fragment>
         {pageContext.prismicPage.data.body.map($ => {
           const Component = PrismicComponents[$.slice_type]
