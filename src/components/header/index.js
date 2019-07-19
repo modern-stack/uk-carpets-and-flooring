@@ -1,17 +1,14 @@
 import React from 'react'
-import { FaHeart, FaShoppingCart } from 'react-icons/fa'
+import { FaHeart } from 'react-icons/fa'
 import Img from 'gatsby-image'
 import { StaticQuery, graphql } from 'gatsby'
 import { navigateTo } from 'gatsby-link'
-import { useQuery, useMutation } from 'react-apollo-hooks'
 
 import Profile from '../Profile'
 import Cart from '../Cart'
 import { Summary, SummaryCta } from '../Order/Summary'
 
 import SignUpButton from './SignUpButton'
-
-import { SUBSCRIBE_USER } from '../../services/Apollo/Queries/auth'
 
 import {
   Header,
