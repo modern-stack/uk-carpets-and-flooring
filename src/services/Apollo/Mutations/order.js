@@ -7,8 +7,8 @@ const ADD_TO_ORDER = gql`
 `
 
 const UPDATE_ORDER = gql`
-  mutation updateOrder($Order: Order, $toUpdate: Order!) {
-    updateOrder(Order: $Order, toUpdate: $toUpdate) @client
+  mutation updateOrder($toUpdate: Order!) {
+    updateOrder(toUpdate: $toUpdate) @client
   }
 `
 

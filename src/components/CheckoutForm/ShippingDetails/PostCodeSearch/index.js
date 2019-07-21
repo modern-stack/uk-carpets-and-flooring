@@ -57,7 +57,7 @@ async function searchPostcode($, setLoading, setAddress) {
   }
 }
 
-export default () => {
+export default ({ shipping, update, confirm }) => {
   const [loading, setLoading] = useState(false)
 
   const [{ addresses, message }, setAddress] = useState({
@@ -71,7 +71,25 @@ export default () => {
         <Autocomplete
           loading={loading}
           onChange={async $ => await searchPostcode($, setLoading, setAddress)}
-          Content={<Suggestions suggestions={addresses} error={message} />}
+          Content={
+            <Suggestions
+              suggestions={addresses}
+              error={message}
+              onSelect={$ => {
+                update({
+                  shipping: {
+                    ...shipping,
+                    address: {
+                      ...shipping.address,
+                      ...$,
+                      postal_code: $.post_code,
+                    },
+                  },
+                })
+                confirm(true)
+              }}
+            />
+          }
         />
       </Search>
     </EditAddress>

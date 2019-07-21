@@ -9,6 +9,7 @@ export const GET_ORDER = gql`
         parent
         currency
         description
+        quantity
       }
       shipping {
         name

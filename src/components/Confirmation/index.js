@@ -12,6 +12,7 @@ async function CompleteOrder({ onComplete, order }) {
     },
     body: JSON.stringify({
       currency: 'gbp',
+      quantity: 1,
       items: order.items.map($ => {
         return {
           type: 'sku',

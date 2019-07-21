@@ -17,6 +17,7 @@ export default ({ Id }) => {
         __typename: 'StripeItem',
         parent: Id,
         currency: 'gbp',
+        quantity: 1,
         description: 'test description',
       },
     },

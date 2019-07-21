@@ -10,7 +10,6 @@ const Content = styled.div`
   width: 100%;
   padding: 4px;
   justify-content: space-between;
-  margin: 20px 40px;
 
   > div {
     width: 100%;

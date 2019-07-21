@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { FaSnowflake } from 'react-icons/fa'
+import { FaSnowflake, Fa } from 'react-icons/fa'
 import { useQuery, useMutation } from 'react-apollo-hooks'
 
 import Header from './Header'
 import Navigation from './Navigation'
 import ShippingDetails from './ShippingDetails'
+import PaymentDetails from './PaymentDetails'
+import Summary from './Summary'
 
 import { Checkout, Content, Subtitle } from './styled'
 
@@ -17,15 +19,13 @@ export default () => {
   const { data } = useQuery(GET_ORDER)
   const [order, setOrder] = useState(data.Order)
 
-  const updateOrder = useMutation(UPDATE_ORDER, {
-    variables: {
-      toUpdate: { ...order },
-    },
-  })
+  const updateOrder = useMutation(UPDATE_ORDER)
 
-  useEffect(() => {
-    updateOrder()
-  })
+  const update = () =>
+    updateOrder({
+      variables: { toUpdate: $ },
+      refetchQueries: [{ query: GET_ORDER }],
+    })
 
   return (
     <Checkout>
@@ -38,7 +38,19 @@ export default () => {
             <div>shipping details</div>
             <div>
               <FaSnowflake onClick={() => setIsManual(!isManual)} />
-              <div onClick={() => setOrder({ ...order, shipping: null })}>
+              <div
+                onClick={() =>
+                  setOrder({
+                    shipping: {
+                      line1: '',
+                      line2: '',
+                      state: '',
+                      city: '',
+                      postal_code: '',
+                    },
+                  })
+                }
+              >
                 Clear
               </div>
             </div>
@@ -47,11 +59,15 @@ export default () => {
           <ShippingDetails
             order={data.Order}
             useManual={!!isManual}
-            update={setOrder}
+            update={update}
           />
+
           <Subtitle class="subtitle">payment details</Subtitle>
+          <PaymentDetails />
         </div>
-        <div>summary</div>
+        <div>
+          <Summary items={data.Order.items} />
+        </div>
       </Content>
     </Checkout>
   )
