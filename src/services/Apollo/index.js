@@ -28,8 +28,8 @@ if (typeof window !== 'undefined') {
 
 const defaults = {
   IsLoggedIn: false,
+  ConfirmedAddress: false,
   Order: {
-    orderid: '',
     __typename: 'Order',
     email: '',
     items: [],

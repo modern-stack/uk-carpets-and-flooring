@@ -30,7 +30,9 @@ export default ({ previousAddresses, suggestions, onSelect, error }) => {
           {suggestions.map($ => (
             <Suggestion onClick={() => onSelect($)}>
               <FaMapMarkerAlt />
-              {Object.values($).join(', ')}
+              {Object.values($)
+                .filter($ => !!$.length)
+                .join(', ')}
             </Suggestion>
           ))}
 

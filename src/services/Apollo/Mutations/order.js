@@ -12,23 +12,18 @@ const UPDATE_ORDER = gql`
   }
 `
 
-const CREATE_ORDER = gql`
-  mutation CreateOrder($Order: OrderInput!) {
-    CreateOrder(Order: $Order) {
-      id
-      items {
-        id
-      }
-    }
-  }
-`
-
 const COMPLETE_ORDER = gql`
-  mutation CompleteOrder($orderid: String!, $source: String!) {
-    CompleteOrder(orderid: $orderid, source: $source) {
+  mutation CompleteOrder($Order: OrderInput!, $source: String!) {
+    CompleteOrder(Order: $Order, source: $source) {
       id
     }
   }
 `
 
-export { UPDATE_ORDER, ADD_TO_ORDER, CREATE_ORDER, COMPLETE_ORDER }
+const TOGGLE_CONFIRMED_ADDRESS = gql`
+  mutation ToggleConfirmedAddress($status: Boolean!) {
+    ToggleConfirmedAddress(status: $status) @client
+  }
+`
+
+export { UPDATE_ORDER, ADD_TO_ORDER, COMPLETE_ORDER, TOGGLE_CONFIRMED_ADDRESS }

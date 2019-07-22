@@ -3,7 +3,6 @@ import gql from 'graphql-tag'
 export const GET_ORDER = gql`
   query GetOrder {
     Order @client {
-      orderid
       email
       items {
         parent
@@ -66,5 +65,11 @@ export const GET_ALL_ORDERS = gql`
         amount
       }
     }
+  }
+`
+
+export const GET_ADDRESS_CONFIRMED = gql`
+  query {
+    ConfirmedAddress
   }
 `

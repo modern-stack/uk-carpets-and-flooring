@@ -15,7 +15,7 @@ export default ({ items }) => {
 
   console.log(data, loading, error)
 
-  console.log('>>>>>', data, items)
+  console.log('summary >>>>>', data, loading, error)
 
   if (loading) return null
 

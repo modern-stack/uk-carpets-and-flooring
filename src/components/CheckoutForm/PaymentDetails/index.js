@@ -28,10 +28,7 @@ export default ({ onComplete }) => {
       <Payment>
         <PaymentDetails>
           <Elements>
-            <CheckoutForm
-              onComplete={onComplete}
-              orderid={data.Order.orderid}
-            />
+            <CheckoutForm onComplete={onComplete} Order={data.Order} />
           </Elements>
         </PaymentDetails>
       </Payment>

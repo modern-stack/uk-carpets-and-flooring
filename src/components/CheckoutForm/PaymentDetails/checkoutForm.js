@@ -12,44 +12,65 @@ import { COMPLETE_ORDER } from '../../../services/Apollo/Mutations/order'
 import { PaymentForm } from './styled'
 import { Primary } from '../../Button'
 
-const CheckoutForm = ({ onComplete, stripe, orderid }) => {
-  const [source, setSource] = useState(null)
+const CheckoutForm = ({ Order, stripe, onComplete }) => {
+  const complete = useMutation(COMPLETE_ORDER)
+  const [validation, setValdation] = useState({
+    number: false,
+    expiry: false,
+    cvc: false,
+  })
 
-  if (source) {
-    useMutation(COMPLETE_ORDER, {
-      variables: {
-        orderid,
-        source: source.token.id,
-      },
-      update: () => onComplete(),
-    })()
-  }
+  const { number, expiry, cvc } = validation
+
+  const isValid =
+    !!number & !!expiry & !!cvc & !!Order.postal_code && !!Order.line_1
 
   return (
     <PaymentForm>
       <div>
         <label>
           Card Number
-          <CardNumberElement />
+          <CardNumberElement
+            onChange={$ => setValdation({ ...validation, number: $.complete })}
+          />
         </label>
       </div>
 
       <div>
         <label>
           Expiry Date
-          <CardExpiryElement />
+          <CardExpiryElement
+            onChange={$ => setValdation({ ...validation, expiry: $.complete })}
+          />
         </label>
       </div>
 
       <div>
         <label>
           CVC
-          <CardCVCElement />
+          <CardCVCElement
+            onChange={$ => setValdation({ ...validation, cvc: $.complete })}
+          />
         </label>
       </div>
 
       <div>
-        <Primary onClick={() => stripe.createToken().then($ => setSource($))}>
+        <Primary
+          disabled={!isValid}
+          onClick={() =>
+            stripe.createToken().then($ => {
+              console.log('Order >>>', Order, $.token.id)
+
+              complete({
+                variables: {
+                  Order,
+                  source: $.token.id,
+                },
+                update: () => onComplete(),
+              })
+            })
+          }
+        >
           Pay Order
         </Primary>
       </div>

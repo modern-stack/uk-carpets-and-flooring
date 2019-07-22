@@ -1,11 +1,20 @@
 import React from 'react'
+import { useQuery, useMutation } from 'react-apollo-hooks'
 import { Address } from './styled'
 
 import PostCodeSearch from './PostCodeSearch'
 import ManualSearch from './ManualSearch'
+import Completed from './Completed'
+
+import { GET_ADDRESS_CONFIRMED } from '../../../services/Apollo/Queries/order'
+import { TOGGLE_CONFIRMED_ADDRESS } from '../../../services/Apollo/Mutations/order'
 
 export default ({ order, useManual, update }) => {
   const { email, shipping } = order
+  const { data } = useQuery(GET_ADDRESS_CONFIRMED)
+  const ToggleConfirmedAddress = useMutation(TOGGLE_CONFIRMED_ADDRESS)
+
+  if (data.ConfirmedAddress) return <Completed order={order} />
 
   return (
     <Address>
@@ -15,7 +24,6 @@ export default ({ order, useManual, update }) => {
         value={shipping.name}
         onChange={e =>
           update({
-            ...order,
             shipping: { ...order.shipping, name: e.target.value },
           })
         }
@@ -26,14 +34,22 @@ export default ({ order, useManual, update }) => {
         type={'text'}
         placeholder={'Please enter an Email address'}
         value={email}
-        onChange={e => update({ ...order, email: e.target.value })}
+        onChange={e => update({ email: e.target.value })}
         defaultValue={email}
       />
 
       {useManual ? (
-        <ManualSearch order={order} update={update} />
+        <ManualSearch
+          shipping={order.shipping}
+          update={update}
+          confirm={ToggleConfirmedAddress}
+        />
       ) : (
-        <PostCodeSearch order={order} update={update} />
+        <PostCodeSearch
+          shipping={order.shipping}
+          update={update}
+          confirm={ToggleConfirmedAddress}
+        />
       )}
     </Address>
   )

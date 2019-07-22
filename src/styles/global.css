@@ -8,15 +8,16 @@ body {
 }
 
 input {
-  padding: 6px;
-  min-width: 30px;
-  border-bottom: 1px solid black;
+  display: block;
+  margin: 6px 0 6px 0;
+  max-width: 500px;
+  padding: 2px 4px;
+  font-size: 0.8em;
+  font-family: 'Source Code Pro', monospace;
+  box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px,
+    rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
+  border: 0;
+  outline: 0;
+  border-radius: 4px;
+  background: white;
 }
-
-/* input[type='number']::-webkit-inner-spin-button::before {
-  top: 7px;
-}
-input[type='number']::-webkit-inner-spin-button::after {
-  bottom: 7px;
-  transform: rotate(180deg);
-} */

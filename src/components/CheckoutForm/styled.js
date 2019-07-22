@@ -3,6 +3,9 @@ import styled from 'styled-components'
 const Checkout = styled.div`
   display: flex;
   flex-direction: column;
+
+  height: 100%;
+  overflow: scroll;
 `
 
 const Content = styled.div`
@@ -14,9 +17,12 @@ const Content = styled.div`
   > div {
     width: 100%;
     margin: 0 40px;
-  }
 
-  .summary {
+    @media (max-width: 700px) {
+      :last-child {
+        display: none;
+      }
+    }
   }
 `
 

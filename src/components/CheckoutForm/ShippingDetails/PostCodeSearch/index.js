@@ -86,7 +86,7 @@ export default ({ shipping, update, confirm }) => {
                     },
                   },
                 })
-                confirm(true)
+                confirm()
               }}
             />
           }

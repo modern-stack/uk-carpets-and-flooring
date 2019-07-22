@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react'
-
+import React from 'react'
+import { Primary } from '../../../Button'
 import { ManualSearch } from './styled'
 
-export default ({ order, update }) => {
-  const [address, setAddress] = useState(order.shipping.address)
+export default ({ shipping, update, confirm }) => {
+  const { address } = shipping
 
-  useEffect(() => {
-    update({ ...order, shipping: { ...order.shipping, address } })
-  })
+  console.log('Shipping >>>', shipping)
 
   return (
     <ManualSearch>
@@ -15,42 +13,84 @@ export default ({ order, update }) => {
         type={'text'}
         placeholder={'Street Address'}
         onChange={$ => {
-          setAddress({ line1: $.target.value })
+          update({
+            shipping: {
+              ...shipping,
+              address: { ...address, line1: $.target.value },
+            },
+          })
         }}
         defaultValue={address.line1}
       />
       <input
         type={'text'}
         placeholder={'Locality'}
-        onChange={$ => setAddress({ line2: $.target.value })}
+        onChange={$ =>
+          update({
+            shipping: {
+              ...shipping,
+              address: { ...address, line2: $.target.value },
+            },
+          })
+        }
         defaultValue={address.line2}
       />
       <input
         type={'text'}
         placeholder={'Town or City'}
-        onChange={$ => setAddress({ city: $.target.value })}
+        onChange={$ =>
+          update({
+            shipping: {
+              ...shipping,
+              address: { ...address, city: $.target.value },
+            },
+          })
+        }
         defaultValue={address.city}
       />
 
       <input
         type={'text'}
         placeholder={'State'}
-        onChange={$ => setAddress({ state: $.target.value })}
+        onChange={$ =>
+          update({
+            shipping: {
+              ...shipping,
+              address: { ...address, state: $.target.value },
+            },
+          })
+        }
         defaultValue={address.state}
       />
       <input
         type={'text'}
         placeholder={'Country'}
-        onChange={$ => setAddress({ country: $.target.value })}
+        onChange={$ =>
+          update({
+            shipping: {
+              ...shipping,
+              address: { ...address, country: $.target.value },
+            },
+          })
+        }
         defaultValue={address.country}
       />
       <input
         type={'text'}
         placeholder={'Postcode'}
-        onChange={$ => setAddress({ postal_code: $.target.value })}
+        onChange={$ =>
+          update({
+            shipping: {
+              ...shipping,
+              address: { ...address, postal_code: $.target.value },
+            },
+          })
+        }
         defaultValue={address.postal_code}
       />
       <hr />
+
+      <Primary onClick={() => confirm()}>Confirm</Primary>
     </ManualSearch>
   )
 }

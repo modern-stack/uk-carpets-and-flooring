@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { FaSnowflake, Fa } from 'react-icons/fa'
+import React, { useState } from 'react'
+import { FaRandom, FaPencilAlt } from 'react-icons/fa'
 import { useQuery, useMutation } from 'react-apollo-hooks'
 
 import Header from './Header'
@@ -7,24 +7,54 @@ import Navigation from './Navigation'
 import ShippingDetails from './ShippingDetails'
 import PaymentDetails from './PaymentDetails'
 import Summary from './Summary'
+import Confirmation from './Confirmation'
 
 import { Checkout, Content, Subtitle } from './styled'
 
-import { GET_ORDER } from '../../services/Apollo/Queries/order'
-import { UPDATE_ORDER } from '../../services/Apollo/Mutations/order'
+import {
+  GET_ORDER,
+  GET_ADDRESS_CONFIRMED,
+} from '../../services/Apollo/Queries/order'
+import {
+  UPDATE_ORDER,
+  TOGGLE_CONFIRMED_ADDRESS,
+} from '../../services/Apollo/Mutations/order'
 
 export default () => {
   const [isManual, setIsManual] = useState(false)
-
+  const [confirmed, setConfirmed] = useState(false)
   const { data } = useQuery(GET_ORDER)
-  const [order, setOrder] = useState(data.Order)
 
   const updateOrder = useMutation(UPDATE_ORDER)
+  const ToggleConfirmedAddress = useMutation(TOGGLE_CONFIRMED_ADDRESS)
+  const addressConfirmed = useQuery(GET_ADDRESS_CONFIRMED)
+  const canEdit = !!addressConfirmed.data.ConfirmedAddress
 
-  const update = () =>
+  if (confirmed) return <Confirmation />
+
+  const update = $ =>
     updateOrder({
       variables: { toUpdate: $ },
       refetchQueries: [{ query: GET_ORDER }],
+    })
+
+  const resetOrder = () =>
+    update({
+      __typename: 'Order',
+      email: '',
+      shipping: {
+        __typename: 'shipping',
+        name: '',
+        address: {
+          __typename: 'address',
+          line1: '',
+          line2: '',
+          city: '',
+          state: '',
+          country: '',
+          postal_code: '',
+        },
+      },
     })
 
   return (
@@ -37,22 +67,22 @@ export default () => {
           <Subtitle>
             <div>shipping details</div>
             <div>
-              <FaSnowflake onClick={() => setIsManual(!isManual)} />
-              <div
-                onClick={() =>
-                  setOrder({
-                    shipping: {
-                      line1: '',
-                      line2: '',
-                      state: '',
-                      city: '',
-                      postal_code: '',
-                    },
-                  })
-                }
-              >
-                Clear
-              </div>
+              {canEdit ? (
+                <FaPencilAlt
+                  style={{ margin: '0 6px', cursor: 'pointer' }}
+                  onClick={() => {
+                    resetOrder()
+                    ToggleConfirmedAddress()
+                  }}
+                >
+                  Clear
+                </FaPencilAlt>
+              ) : (
+                <FaRandom
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => setIsManual(!isManual)}
+                />
+              )}
             </div>
           </Subtitle>
 
@@ -63,7 +93,12 @@ export default () => {
           />
 
           <Subtitle class="subtitle">payment details</Subtitle>
-          <PaymentDetails />
+          <PaymentDetails
+            onComplete={() => {
+              resetOrder()
+              setConfirmed(true)
+            }}
+          />
         </div>
         <div>
           <Summary items={data.Order.items} />
