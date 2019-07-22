@@ -14,4 +14,4 @@ const Carousel = styled.div`
   display: block;
 `
 
-export { Carousel, DesktopContainer, MobileContainer }
+export { Carousel, DesktopContainer }
