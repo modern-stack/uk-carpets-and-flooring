@@ -67,10 +67,8 @@ export default () => {
             }, 0)}
           </Price>
         </Total>
+        <Primary onClick={() => navigateTo('/checkout')}>{'Checkout'}</Primary>
       </Order>
-      <Primary onClick={() => navigateTo('/checkout')}>
-        {'Continue to Payment'}
-      </Primary>
     </OrderContainer>
   )
 }
