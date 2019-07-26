@@ -6,7 +6,7 @@ import { navigateTo } from 'gatsby-link'
 
 import Profile from '../Profile'
 import Cart from '../Cart'
-import { Summary, SummaryCta } from '../Order/Summary'
+import Summary from './Summary'
 
 import SignUpButton from './SignUpButton'
 
@@ -58,10 +58,6 @@ export default () => {
                 <Cart />
                 <SubMenu>
                   <Summary />
-                  <SummaryCta
-                    text={'Checkout'}
-                    onComplete={() => navigateTo('/checkout')}
-                  />
                 </SubMenu>
               </MenuItem>
               <SignUpButton />

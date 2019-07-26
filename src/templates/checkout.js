@@ -3,13 +3,6 @@ import React from 'react'
 import SEO from '../components/seo'
 import PrismicComponents from '../components/Prismic'
 
-import { FaCheckCircle, FaShoppingBasket, FaCreditCard } from 'react-icons/fa'
-
-import Steps from '../components/Steps'
-import { Summary, SummaryCta } from '../components/Order/Summary'
-import { CreateOrder, CreateOrderCta } from '../components/Order/CreateOrder'
-import CompleteOrder from '../components/Order/CompleteOrder'
-
 import CheckoutForm from '../components/CheckoutForm'
 
 import Modal from '../components/Modal'
