@@ -42,7 +42,7 @@ export default ({ products }) => {
             <h2>{product.name}</h2>
             <div class="title">{sku.name.text}</div>
 
-            <div class="price">£{sku.price.toFixed(2)}</div>
+            <div class="price">£{(sku.price || 0).toFixed(2)}</div>
             <AdditionaDetails>
               <li>{`${sku.width || 'unknown'} in. wide  x ${sku.lengths ||
                 'unknown'} in. Long x ${sku.thickness ||

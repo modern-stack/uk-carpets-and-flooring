@@ -7,6 +7,8 @@ import Section from './Section'
 export default ({ product, sku }) => {
   const { data } = sku
 
+  console.log('product >>>>', product)
+
   return (
     <Specification>
       <Title title={'Item Specifications'} />
@@ -16,19 +18,19 @@ export default ({ product, sku }) => {
           fields={[
             {
               title: 'Collection',
-              value: data.name.text,
+              value: product.product_type,
             },
             {
-              title: 'Design',
+              title: 'Range',
               value: product.name,
             },
             {
               title: 'Colour',
-              value: data.color,
+              value: data.name.text,
             },
             {
-              title: 'Look',
-              value: data.look,
+              title: 'Pile Content',
+              value: data.pile,
             },
             {
               title: 'Species',

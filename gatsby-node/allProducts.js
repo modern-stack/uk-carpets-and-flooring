@@ -15,7 +15,7 @@ module.exports = graphql =>
               thickness
               price
               color
-              look
+              pile
               species
               gloss
               edge
