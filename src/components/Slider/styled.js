@@ -29,7 +29,26 @@ const Conatainer = styled.div`
 
   @media (max-width: 700px) {
     flex-direction: row;
+    align-items: center;
   }
 `
 
-export { Conatainer, Slider }
+const IconContainer = styled.div`
+  div:first-child {
+    display: block;
+
+    @media (max-width: 700px) {
+      display: none;
+    }
+  }
+
+  div:last-child {
+    display: none;
+
+    @media (max-width: 700px) {
+      display: block;
+    }
+  }
+`
+
+export { Conatainer, Slider, IconContainer }

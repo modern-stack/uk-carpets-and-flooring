@@ -61,16 +61,6 @@ const Container = styled.div`
   }
 `
 
-const FeaturedImage = styled.div`
-  width: 100%;
-  height: 100%;
-
-  @media (max-width: 700px) {
-    width: 100%;
-    height: 100%;
-  }
-`
-
 const Skus = styled.div`
   position: relative;
   margin: 0px 0;
@@ -88,6 +78,7 @@ const Overview = styled.div`
   text-transform: uppercase;
   margin: 16px 0;
   font-size: 0.8em;
+  color: gray;
 `
 
 const Share = styled.div`
@@ -115,7 +106,6 @@ const DescriptionSection = styled.div`
 
 export {
   Header,
-  FeaturedImage,
   Product,
   Details,
   ImageContainer,

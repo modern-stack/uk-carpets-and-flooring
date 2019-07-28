@@ -4,28 +4,81 @@ import { Specification, Content } from './styled'
 import Title from '../../../components/Title'
 import Section from './Section'
 
-export default ({ sku }) => (
-  <Specification>
-    <Title title={'Item Specifications'} />
-    <Content>
-      <Section
-        title={'General'}
-        fields={['name', 'design', 'color', 'look', 'species', 'gloss', 'edge']}
-        product={sku}
-      />
-      <div />
-      <div>
+export default ({ product, sku }) => {
+  const { data } = sku
+
+  return (
+    <Specification>
+      <Title title={'Item Specifications'} />
+      <Content>
         <Section
-          title={'Dimensions'}
-          fields={['size', 'squarefeet']}
-          product={sku}
+          title={'General'}
+          fields={[
+            {
+              title: 'Collection',
+              value: data.name.text,
+            },
+            {
+              title: 'Design',
+              value: product.name,
+            },
+            {
+              title: 'Colour',
+              value: data.color,
+            },
+            {
+              title: 'Look',
+              value: data.look,
+            },
+            {
+              title: 'Species',
+              value: data.species,
+            },
+            {
+              title: 'Gloss',
+              value: data.gloss,
+            },
+            {
+              title: 'Edge',
+              value: data.edge,
+            },
+          ]}
+          product={data}
         />
-        <Section
-          title={'Warranty'}
-          fields={['size', 'squarefeet']}
-          product={sku}
-        />
-      </div>
-    </Content>
-  </Specification>
-)
+        <div />
+        <div>
+          <Section
+            title={'Dimensions'}
+            fields={[
+              {
+                title: 'Size',
+                value: `${data.width || 'unknown'} in. wide  x ${data.lengths ||
+                  'unknown'} in. Long x ${data.thickness ||
+                  'unknown'} mm thick`,
+              },
+              {
+                title: 'Square Feer per Box',
+                value: 'Christ Knows?',
+              },
+            ]}
+            product={sku}
+          />
+          <Section
+            title={'Warranty'}
+            fields={[
+              {
+                title: 'Residential Warranty',
+                value: `${data.residential_warranty} years`,
+              },
+              {
+                title: 'Commercial Warranty',
+                value: `${data.commercial_warranty} years`,
+              },
+            ]}
+            product={sku}
+          />
+        </div>
+      </Content>
+    </Specification>
+  )
+}

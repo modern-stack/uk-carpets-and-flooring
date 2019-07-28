@@ -9,22 +9,24 @@ import {
   ImageContainer,
 } from './styled'
 
-import Title from '../../../components/Title'
+import Title from '../../Title'
 
-export default ({ relatedProducts = [] }) => (
+export default ({ relatedproducts }) => (
   <RelatedProducts>
     <Title title={'Related Products'} />
 
-    {relatedProducts && relatedProducts.length && (
+    {console.log('>>>>', relatedproducts)}
+
+    {relatedproducts.items && relatedproducts.items.length && (
       <Products>
-        {relatedProducts.map($ => {
-          if (!$.product) return null
+        {relatedproducts.items.map($ => {
+          if (!$.product1) return null
           return (
             <Product>
               {$.featuredImage && (
                 <ImageContainer fluid={$.featuredImage.fluid} />
               )}
-              <Collection>{$.product.name}</Collection>
+              <Collection>{$.product1.name}</Collection>
               <SubTitle>{$.name}</SubTitle>
               <p>£{$.price}</p>
             </Product>

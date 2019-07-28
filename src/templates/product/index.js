@@ -12,14 +12,15 @@ import Review from './Review'
 import Social from '../../components/Social'
 import Specification from './Specification'
 import Reviews from './Reviews'
-import RelatedProducts from './RelatedProducts'
+import RelatedProducts from '../../components/Prismic/PrismicRelatedProducts'
 import AddToOrder from './AddToOrder'
+
+import Image from '../../components/Image'
 
 import Breadcrumb from '../../components/Breadcrumb'
 
 import {
   Header,
-  FeaturedImage,
   Product,
   Details,
   ImageContainer,
@@ -41,6 +42,8 @@ export default ({ pageContext }) => {
   const [total, setTotal] = useState(0)
 
   if (!sku) return <div>No Skus available</div>
+
+  const { featuredimage, name, price, width, length, thickness } = sku.data
 
   return (
     <Layout>
@@ -67,13 +70,9 @@ export default ({ pageContext }) => {
         <div />
         <div />
 
-        <FeaturedImage>
-          {sku.data.featuredimage && (
-            <Img
-              fluid={sku.data.featuredimage.localFile.childImageSharp.fluid}
-            />
-          )}
-        </FeaturedImage>
+        {featuredimage && featuredimage._4_3 && (
+          <Image fluid={featuredimage._4_3.localFile.childImageSharp.fluid} />
+        )}
 
         <Skus>
           <Slider>
@@ -82,7 +81,7 @@ export default ({ pageContext }) => {
                 selected={sku.id === $.id}
                 onClick={() => setSku($)}
               >
-                {$.data.featuredimage && (
+                {$.data.featuredimage && $.data.featuredimage._4_3 && (
                   <Img
                     style={{ height: '100%' }}
                     fluid={$.data.featuredimage.localFile.childImageSharp.fluid}
@@ -96,16 +95,18 @@ export default ({ pageContext }) => {
           <Container>
             <div>
               <SubTitle>{node.data.name.text}</SubTitle>
-              <Title>{sku.data.name.text}</Title>
+
+              <Title>
+                {`${name.text} - 
+                ${node.data.name}`}
+              </Title>
               <Overview>
-                {`${sku.width} inch. wide  x ${sku.length} inc. Long x ${
-                  sku.thickness
-                } mm thick`}
+                {`${width} inch. wide  x ${length} inc. Long x ${thickness} mm thick`}
               </Overview>
             </div>
             <br />
             <Review />
-            <Price>£{(sku.data.price * total).toFixed(2)}</Price>
+            <Price>£{(price * total).toFixed(2)}</Price>
             <PriceCalculator type={'metres'} setTotal={setTotal} />
             <AddToOrder Id={sku.id.split('Prismic__Sku__')[1]} />
 
@@ -128,9 +129,13 @@ export default ({ pageContext }) => {
       </Product>
       <Details>
         <Container>
-          <Specification sku={sku} />
+          <Specification product={node.data} sku={sku} />
           <Reviews />
-          <RelatedProducts relatedProducts={sku.relatedProducts} />
+
+          {sku.data.body.map($ => {
+            console.log('mapping >>>>', $)
+            return <RelatedProducts relatedproducts={{ ...$ }} />
+          })}
         </Container>
       </Details>
     </Layout>

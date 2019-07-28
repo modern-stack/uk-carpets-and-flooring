@@ -13,10 +13,6 @@ export default ({ items }) => {
     },
   })
 
-  console.log(data, loading, error)
-
-  console.log('summary >>>>>', data, loading, error)
-
   if (loading) return null
 
   return (

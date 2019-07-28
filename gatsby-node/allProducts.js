@@ -10,12 +10,34 @@ module.exports = graphql =>
                 html
                 text
               }
-              length
+              lengths
               width
               thickness
-              additional_information
               price
+              color
+              look
+              species
+              gloss
+              edge
+              residential_warranty
+              commercial_warranty
               featuredimage {
+                _4_3 {
+                  localFile {
+                    childImageSharp {
+                      fluid(quality: 100, maxHeight: 960, maxWidth: 1280) {
+                        base64
+                        tracedSVG
+                        aspectRatio
+                        src
+                        srcSet
+                        srcWebp
+                        srcSetWebp
+                        sizes
+                      }
+                    }
+                  }
+                }
                 localFile {
                   childImageSharp {
                     fluid(quality: 100, maxHeight: 960, maxWidth: 1280) {

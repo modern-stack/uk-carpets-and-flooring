@@ -5,8 +5,6 @@ import { ManualSearch } from './styled'
 export default ({ shipping, update, confirm }) => {
   const { address } = shipping
 
-  console.log('Shipping >>>', shipping)
-
   return (
     <ManualSearch>
       <input

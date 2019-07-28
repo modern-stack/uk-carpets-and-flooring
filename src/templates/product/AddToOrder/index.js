@@ -2,6 +2,8 @@ import React from 'react'
 import { Primary } from '../../../components/Button'
 import { useQuery, useMutation } from 'react-apollo-hooks'
 
+import { Container } from './styled'
+
 import { ADD_TO_ORDER } from '../../../services/Apollo/Mutations/order'
 import { GET_ORDER } from '../../../services/Apollo/Queries/order'
 
@@ -25,8 +27,10 @@ export default ({ Id }) => {
   })
 
   return (
-    <Primary onClick={() => AddToOrder()}>
-      <label>Add to Order</label>
-    </Primary>
+    <Container>
+      <Primary onClick={() => AddToOrder()}>
+        <label>Add to Order</label>
+      </Primary>
+    </Container>
   )
 }

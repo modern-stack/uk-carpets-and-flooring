@@ -59,8 +59,6 @@ const CheckoutForm = ({ Order, stripe, onComplete }) => {
           disabled={!isValid}
           onClick={() =>
             stripe.createToken().then($ => {
-              console.log('Order >>>', Order, $.token.id)
-
               complete({
                 variables: {
                   Order,

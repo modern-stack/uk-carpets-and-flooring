@@ -4,6 +4,7 @@ import PrismicCarousel from './Carousel'
 import PrismicProductHeader from './PrismicProductHeader'
 import PrismicSmallHero from './PrismicSmallHero'
 import PrismicPageFullPageCover from './PrismicPageFullPageCover'
+import PrismicRelatedProducts from './PrismicRelatedProducts'
 
 let Components = []
 
@@ -13,5 +14,6 @@ Components['image_gallery'] = PrismicCarousel
 Components['header'] = PrismicProductHeader
 Components['small_hero'] = PrismicSmallHero
 Components['full_page_cover'] = PrismicPageFullPageCover
+Components['related_products'] = PrismicRelatedProducts
 
 export default Components

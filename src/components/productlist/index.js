@@ -44,12 +44,12 @@ export default ({ products }) => {
 
             <div class="price">£{sku.price.toFixed(2)}</div>
             <AdditionaDetails>
-              <li>{`${sku.width || 'unknown'} in. wide  x ${sku.length ||
+              <li>{`${sku.width || 'unknown'} in. wide  x ${sku.lengths ||
                 'unknown'} in. Long x ${sku.thickness ||
                 'unknown'} mm thick`}</li>
-              {(sku.additional_information || '').split(',').map($ => (
-                <li>{$}</li>
-              ))}
+
+              <li>{sku.gloss}</li>
+              <li>{sku.edge}</li>
             </AdditionaDetails>
           </Product>
         )
