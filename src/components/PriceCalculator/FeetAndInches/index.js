@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { FeetAndInches, Form, Length, Width } from './styled'
 
 export default ({ setTotal }) => {
-  const [width, setWidth] = useState(13.1)
+  const [width, setWidth] = useState(4)
   const [length, setLength] = useState(0)
 
   return (
@@ -35,7 +35,7 @@ export default ({ setTotal }) => {
           }}
           placeholder={'Enter a Width'}
         >
-          {[13.1, 16.4].map(m => {
+          {[4, 5].map(m => {
             return <option selected={m === width}>{m}</option>
           })}
         </Width>

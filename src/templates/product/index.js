@@ -84,7 +84,9 @@ export default ({ pageContext }) => {
                 {$.data.featuredimage && $.data.featuredimage._4_3 && (
                   <Img
                     style={{ height: '100%' }}
-                    fluid={$.data.featuredimage.localFile.childImageSharp.fluid}
+                    fluid={
+                      $.data.featuredimage._4_3.localFile.childImageSharp.fluid
+                    }
                   />
                 )}
               </ImageContainer>
@@ -107,7 +109,7 @@ export default ({ pageContext }) => {
             <br />
             <Review />
             <Price>£{(price * total).toFixed(2)}</Price>
-            <PriceCalculator type={'metres'} setTotal={setTotal} />
+            <PriceCalculator type={'Feet and Inches'} setTotal={setTotal} />
             <AddToOrder Id={sku.id.split('Prismic__Sku__')[1]} />
 
             <DescriptionSection>
@@ -132,10 +134,12 @@ export default ({ pageContext }) => {
           <Specification product={node.data} sku={sku} />
           <Reviews />
 
-          {sku.data.body.map($ => {
-            console.log('mapping >>>>', $)
-            return <RelatedProducts relatedproducts={{ ...$ }} />
-          })}
+          {sku.data.body &&
+            sku.data.body.length &&
+            sku.data.body.map($ => {
+              console.log('mapping >>>>', $)
+              return <RelatedProducts relatedproducts={{ ...$ }} />
+            })}
         </Container>
       </Details>
     </Layout>
