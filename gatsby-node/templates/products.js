@@ -37,6 +37,7 @@ module.exports = async ({ graphql, createPage, skus, node, context }) => {
       }
     }
   }
+  
   `).then($ => $.data)
 
   return new Promise(resolve => {
@@ -48,20 +49,22 @@ module.exports = async ({ graphql, createPage, skus, node, context }) => {
           context: {
             ...context,
             ...$,
-            skus: filteredSkus,
+            skus: filteredSkus.filter(
+              $$ =>
+                $$.data.product && $$.data.product.document[0].id === $.node.id
+            ),
           },
         })
       })
+      createPage({
+        path: `${node.data.slug.text}`,
+        component: path.resolve(`./src/templates/products/index.js`),
+        context: {
+          ...context,
+          products: allPrismicProduct.edges,
+        },
+      })
     }
-
-    createPage({
-      path: `${node.data.slug.text}`,
-      component: path.resolve(`./src/templates/products/index.js`),
-      context: {
-        ...context,
-        products: allPrismicProduct.edges,
-      },
-    })
 
     return resolve()
   })

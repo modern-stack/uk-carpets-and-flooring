@@ -91,6 +91,7 @@ module.exports = graphql =>
               }
               product {
                 document {
+                  id
                   data {
                     name
                     product_type
