@@ -10,9 +10,9 @@ import ProductFilter from '../../components/ProductFilter'
 import { ProductsContainer, FilterToggle } from './styled'
 
 export default ({ pageContext }) => {
-  const { skus } = pageContext
+  const { products } = pageContext
 
-  const [showFilter, toggleShowFilter] = useState(false)
+  console.log('Products >>>>', products)
 
   return (
     <Layout>
@@ -32,7 +32,7 @@ export default ({ pageContext }) => {
           // setSelected={}
           visible={showFilter}
         /> */}
-        <ProductList products={skus} />
+        <ProductList products={products} />
 
         {/* <FilterToggle>
           <Swipeable onSwiped={() => toggleShowFilter(!showFilter)}>
