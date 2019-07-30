@@ -1,5 +1,7 @@
 import React from 'react'
+
 import { Specification, Content } from './styled'
+import { Bed } from './Icons'
 
 import Title from '../../../components/Title'
 import Section from './Section'
@@ -33,11 +35,11 @@ export default ({ product, sku }) => {
               value: data.pile,
             },
             {
-              title: 'Species',
+              title: 'Width',
               value: data.species,
             },
             {
-              title: 'Gloss',
+              title: 'Backing',
               value: data.gloss,
             },
             {
@@ -47,39 +49,26 @@ export default ({ product, sku }) => {
           ]}
           product={data}
         />
-        <div />
         <div>
-          <Section
-            title={'Dimensions'}
-            fields={[
-              {
-                title: 'Size',
-                value: `${data.width || 'unknown'} in. wide  x ${data.lengths ||
-                  'unknown'} in. Long x ${data.thickness ||
-                  'unknown'} mm thick`,
-              },
-              {
-                title: 'Square Feer per Box',
-                value: 'Christ Knows?',
-              },
-            ]}
-            product={sku}
-          />
-          <Section
-            title={'Warranty'}
-            fields={[
-              {
-                title: 'Residential Warranty',
-                value: `${data.residential_warranty} years`,
-              },
-              {
-                title: 'Commercial Warranty',
-                value: `${data.commercial_warranty} years`,
-              },
-            ]}
-            product={sku}
-          />
+          <Bed>
+            <a href="info.html">About Us</a>
+          </Bed>
         </div>
+
+        <Section
+          title={'Warranty'}
+          fields={[
+            {
+              title: 'Residential Warranty',
+              value: `${data.residential_warranty} years`,
+            },
+            {
+              title: 'Commercial Warranty',
+              value: `${data.commercial_warranty} years`,
+            },
+          ]}
+          product={sku}
+        />
       </Content>
     </Specification>
   )

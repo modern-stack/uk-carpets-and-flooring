@@ -37,7 +37,6 @@ const ImageContainer = styled.div`
   width: 60px;
   height: 60px;
   border: ${$ => ($.selected ? '2px solid red' : '')};
-  opacity: ${$ => ($.selected ? '1' : '0.6')};
 
   @media (max-width: 700px) {
     width: 60px;
