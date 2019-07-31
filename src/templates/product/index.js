@@ -137,7 +137,6 @@ export default ({ pageContext }) => {
           {sku.data.body &&
             sku.data.body.length &&
             sku.data.body.map($ => {
-              console.log('mapping >>>>', $)
               return <RelatedProducts relatedproducts={{ ...$ }} />
             })}
         </Container>

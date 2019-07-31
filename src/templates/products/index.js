@@ -12,8 +12,6 @@ import { ProductsContainer, FilterToggle } from './styled'
 export default ({ pageContext }) => {
   const { products } = pageContext
 
-  console.log('Products >>>>', products)
-
   return (
     <Layout>
       <SEO title="Products" />

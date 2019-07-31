@@ -15,8 +15,6 @@ export default ({ relatedproducts }) => (
   <RelatedProducts>
     <Title title={'Related Products'} />
 
-    {console.log('>>>>', relatedproducts)}
-
     {relatedproducts.items && relatedproducts.items.length && (
       <Products>
         {relatedproducts.items.map($ => {

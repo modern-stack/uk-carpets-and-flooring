@@ -9,8 +9,6 @@ import Section from './Section'
 export default ({ product, sku }) => {
   const { data } = sku
 
-  console.log('product >>>>', product)
-
   return (
     <Specification>
       <Title title={'Item Specifications'} />
