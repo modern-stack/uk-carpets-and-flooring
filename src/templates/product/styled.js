@@ -103,6 +103,20 @@ const DescriptionSection = styled.div`
   margin: 1em 0;
 `
 
+const Buttons = styled.div`
+  display: flex;
+  width: 50%;
+
+  > div {
+    margin: 4px;
+  }
+
+  @media (max-width: 1200px) {
+    justify-content: space-between;
+    width: 100%;
+  }
+`
+
 export {
   Header,
   Product,
@@ -117,4 +131,5 @@ export {
   Title,
   SubTitle,
   DescriptionSection,
+  Buttons,
 }

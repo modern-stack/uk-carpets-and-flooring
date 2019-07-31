@@ -1,5 +1,5 @@
 import React from 'react'
-import { Primary } from '../../../components/Button'
+import { Secondary } from '../../../components/Button'
 import { useQuery, useMutation } from 'react-apollo-hooks'
 
 import { ADD_TO_ORDER } from '../../../services/Apollo/Mutations/order'
@@ -15,7 +15,7 @@ export default ({ Id }) => {
       Order: data.Order,
       item: {
         __typename: 'StripeItem',
-        parent: Id,
+        parent: 'Sample',
         currency: 'gbp',
         quantity: 1,
         description: 'test description',
@@ -24,5 +24,5 @@ export default ({ Id }) => {
     refetchQueries: [{ query: GET_ORDER }],
   })
 
-  return <Primary onClick={() => AddToOrder()}>Add to Order</Primary>
+  return <Secondary onClick={() => AddToOrder()}>Add Samples</Secondary>
 }

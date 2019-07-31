@@ -25,6 +25,7 @@ if (typeof window !== 'undefined') {
 
 const defaults = {
   IsLoggedIn: false,
+  Samples: [],
   ConfirmedAddress: false,
   Order: {
     __typename: 'Order',
