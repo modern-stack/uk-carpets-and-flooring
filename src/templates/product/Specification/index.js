@@ -59,11 +59,11 @@ export default ({ product, sku }) => {
             fields={[
               {
                 title: 'Residential Warranty',
-                value: `${data.residential_warranty} years`,
+                value: `${data.residential_warranty || 'Unknown'} years`,
               },
               {
                 title: 'Commercial Warranty',
-                value: `${data.commercial_warranty} years`,
+                value: `${data.commercial_warranty || 'Unknown'} years`,
               },
             ]}
             product={sku}
