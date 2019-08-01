@@ -33,16 +33,16 @@ export default ({ product, sku }) => {
               value: data.pile,
             },
             {
-              title: 'Width',
-              value: data.species,
-            },
-            {
               title: 'Backing',
-              value: data.gloss,
+              value: data.backing ? data.backing.split(',').join(' & ') : null,
             },
             {
-              title: 'Edge',
-              value: data.edge,
+              title: 'Wide',
+              value: data.wide,
+            },
+            {
+              title: 'Suitability',
+              value: data.suitability,
             },
           ]}
           product={data}
