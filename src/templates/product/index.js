@@ -72,9 +72,11 @@ export default ({ pageContext }) => {
         <div />
         <div />
 
-        {featuredimage && featuredimage._4_3 && (
-          <Image fluid={featuredimage._4_3.localFile.childImageSharp.fluid} />
-        )}
+        <div>
+          {featuredimage && featuredimage._4_3 && (
+            <Image fluid={featuredimage._4_3.localFile.childImageSharp.fluid} />
+          )}
+        </div>
 
         <Skus>
           <Slider>
