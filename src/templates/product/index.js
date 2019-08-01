@@ -46,7 +46,15 @@ export default ({ pageContext }) => {
 
   if (!sku) return <div>No Skus available</div>
 
-  const { featuredimage, name, price, width, length, thickness } = sku.data
+  const {
+    description,
+    featuredimage,
+    name,
+    price,
+    width,
+    length,
+    thickness,
+  } = sku.data
 
   return (
     <Layout>
@@ -119,7 +127,7 @@ export default ({ pageContext }) => {
 
             <DescriptionSection>
               <SubTitle>Description</SubTitle>
-              <div>{sku.description}</div>
+              <div>{description || 'No description available'}</div>
             </DescriptionSection>
             <Share>
               <Link>Share</Link>
