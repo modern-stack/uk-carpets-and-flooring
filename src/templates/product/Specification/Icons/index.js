@@ -1,5 +1,5 @@
 import React from 'react'
-import { Bed, Couch, Dining, IconContainer } from './styled'
+import { Bed, Couch, Stairs, IconContainer } from './styled'
 
 let Components = []
 
@@ -19,7 +19,7 @@ const LivingRoomIcon = () => (
 
 const HallStairsIcon = () => (
   <IconContainer>
-    <Dining />
+    <Stairs />
     <label>Hall & Stairs</label>
   </IconContainer>
 )

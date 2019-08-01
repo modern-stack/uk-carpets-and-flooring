@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import { FaBed, FaCouch, FaLinkedinIn } from 'react-icons/fa'
+import { FaBed, FaCouch } from 'react-icons/fa'
+import { GiStairs } from 'react-icons/gi'
 
 const Bed = styled(FaBed)`
   display: flex;
@@ -23,7 +24,7 @@ const Couch = styled(FaCouch)`
   padding: 10px 0 30px 0;
 `
 
-const Dining = styled(FaLinkedinIn)`
+const Stairs = styled(GiStairs)`
   display: flex;
   justify-content: center;
   color: white;
@@ -51,4 +52,4 @@ const IconContainer = styled.div`
   }
 `
 
-export { Bed, Couch, Dining, IconContainer }
+export { Bed, Couch, Stairs, IconContainer }
