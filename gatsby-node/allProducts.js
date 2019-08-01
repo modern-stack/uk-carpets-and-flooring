@@ -12,6 +12,7 @@ module.exports = graphql =>
               }
               lengths
               width
+              description
               thickness
               price
               color

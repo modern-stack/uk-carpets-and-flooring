@@ -119,11 +119,7 @@ export default ({ pageContext }) => {
 
             <DescriptionSection>
               <SubTitle>Description</SubTitle>
-              <div>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              </div>
+              <div>{sku.description}</div>
             </DescriptionSection>
             <Share>
               <Link>Share</Link>
