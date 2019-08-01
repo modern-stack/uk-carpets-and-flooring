@@ -42,7 +42,7 @@ export default ({ product, sku }) => {
               value: data.backing ? data.backing.split(',').join(' & ') : null,
             },
             {
-              title: 'Wide',
+              title: 'Width',
               value: data.wide,
             },
             {
