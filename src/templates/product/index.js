@@ -100,10 +100,7 @@ export default ({ pageContext }) => {
             <div>
               <SubTitle>{node.data.name.text}</SubTitle>
 
-              <Title>
-                {`${name.text} - 
-                ${node.data.name}`}
-              </Title>
+              <Title>{`${node.data.name} -  ${name.text} `}</Title>
               <Overview>
                 {`${width} inch. wide  x ${length} inc. Long x ${thickness} mm thick`}
               </Overview>
