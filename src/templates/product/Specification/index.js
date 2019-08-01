@@ -1,7 +1,12 @@
 import React from 'react'
 
-import { Specification, Content } from './styled'
-import { Bed } from './Icons'
+import { Specification, Content, Icons } from './styled'
+import {
+  BedroomIcon,
+  LivingRoomIcon,
+  HallStairsIcon,
+  DiningRoomIcon,
+} from './Icons'
 
 import Title from '../../../components/Title'
 import Section from './Section'
@@ -49,26 +54,29 @@ export default ({ product, sku }) => {
           ]}
           product={data}
         />
+        <div />
         <div>
-          <Bed>
-            <a href="info.html">About Us</a>
-          </Bed>
+          <Section
+            title={'Warranty'}
+            fields={[
+              {
+                title: 'Residential Warranty',
+                value: `${data.residential_warranty} years`,
+              },
+              {
+                title: 'Commercial Warranty',
+                value: `${data.commercial_warranty} years`,
+              },
+            ]}
+            product={sku}
+          />
+          <Icons>
+            <BedroomIcon />
+            <LivingRoomIcon />
+            <HallStairsIcon />
+            <DiningRoomIcon />
+          </Icons>
         </div>
-
-        <Section
-          title={'Warranty'}
-          fields={[
-            {
-              title: 'Residential Warranty',
-              value: `${data.residential_warranty} years`,
-            },
-            {
-              title: 'Commercial Warranty',
-              value: `${data.commercial_warranty} years`,
-            },
-          ]}
-          product={sku}
-        />
       </Content>
     </Specification>
   )

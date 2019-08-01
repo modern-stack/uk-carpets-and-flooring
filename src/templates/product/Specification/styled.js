@@ -21,4 +21,9 @@ const Content = styled.div`
   }
 `
 
-export { Specification, Content }
+const Icons = styled.div`
+  display: flex;
+  margin: 33px 0px;
+`
+
+export { Specification, Content, Icons }

@@ -1,14 +1,32 @@
-import styled from 'styled-components'
-import { FaBed } from 'react-icons/fa'
+import React from 'react'
+import { Bed, Couch, Dining, IconContainer } from './styled'
 
-const Bed = styled(FaBed)`
-  color: white;
-  background: #c7002b;
-  padding: 10px;
+const BedroomIcon = () => (
+  <IconContainer>
+    <Bed />
+    <label>Bedroom</label>
+  </IconContainer>
+)
 
-  a {
-    display: block;
-  }
-`
+const LivingRoomIcon = () => (
+  <IconContainer>
+    <Couch />
+    <label>Living Room</label>
+  </IconContainer>
+)
 
-export { Bed }
+const HallStairsIcon = () => (
+  <IconContainer>
+    <Dining />
+    <label>Hall and Stairs</label>
+  </IconContainer>
+)
+
+const DiningRoomIcon = () => (
+  <IconContainer>
+    <Bed />
+    <label>Dining Room</label>
+  </IconContainer>
+)
+
+export { BedroomIcon, LivingRoomIcon, HallStairsIcon, DiningRoomIcon }
