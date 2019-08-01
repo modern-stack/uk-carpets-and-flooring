@@ -1,18 +1,20 @@
 import React from 'react'
 
 import { Specification, Content, Icons } from './styled'
-import {
-  BedroomIcon,
-  LivingRoomIcon,
-  HallStairsIcon,
-  DiningRoomIcon,
-} from './Icons'
+import MappedIcons from './Icons'
 
 import Title from '../../../components/Title'
 import Section from './Section'
 
 export default ({ product, sku }) => {
   const { data } = sku
+
+  const IconList = (data.icons || '')
+    .toLowerCase()
+    .replace(/ /g, '')
+    .split(',')
+
+  console.log('IconList', data.icons, IconList)
 
   return (
     <Specification>
@@ -69,10 +71,12 @@ export default ({ product, sku }) => {
             product={sku}
           />
           <Icons>
-            <BedroomIcon />
-            <LivingRoomIcon />
-            <HallStairsIcon />
-            <DiningRoomIcon />
+            {IconList.length &&
+              IconList.map($ => {
+                const Icon = MappedIcons[$]
+                console.log('Checking >>>>', Icon, $)
+                return Icon ? <Icon /> : null
+              })}
           </Icons>
         </div>
       </Content>

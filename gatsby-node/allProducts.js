@@ -24,6 +24,7 @@ module.exports = graphql =>
               wide
               backing
               suitability
+              icons
               featuredimage {
                 _4_3 {
                   localFile {

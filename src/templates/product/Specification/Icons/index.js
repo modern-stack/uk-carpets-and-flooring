@@ -1,6 +1,8 @@
 import React from 'react'
 import { Bed, Couch, Dining, IconContainer } from './styled'
 
+let Components = []
+
 const BedroomIcon = () => (
   <IconContainer>
     <Bed />
@@ -29,4 +31,9 @@ const DiningRoomIcon = () => (
   </IconContainer>
 )
 
-export { BedroomIcon, LivingRoomIcon, HallStairsIcon, DiningRoomIcon }
+Components['bedroom'] = BedroomIcon
+Components['livingroom'] = LivingRoomIcon
+Components['hallstairs'] = HallStairsIcon
+Components['diningroom'] = DiningRoomIcon
+
+export default Components

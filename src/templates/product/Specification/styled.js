@@ -24,6 +24,10 @@ const Content = styled.div`
 const Icons = styled.div`
   display: flex;
   margin: 33px 0px;
+
+  @media (min-width: 700px) {
+    width: 50%;
+  }
 `
 
 export { Specification, Content, Icons }

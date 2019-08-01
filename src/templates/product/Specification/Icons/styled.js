@@ -8,6 +8,8 @@ const Bed = styled(FaBed)`
   background: #c7002b;
   width: 100%;
   font-size: 24px;
+  font-size: 24px;
+  padding: 22px 0;
 `
 
 const Couch = styled(FaCouch)`
@@ -17,6 +19,8 @@ const Couch = styled(FaCouch)`
   background: #c7002b;
   width: 100%;
   font-size: 24px;
+  font-size: 24px;
+  padding: 22px 0;
 `
 
 const Dining = styled(FaLinkedinIn)`
@@ -26,6 +30,7 @@ const Dining = styled(FaLinkedinIn)`
   background: #c7002b;
   width: 100%;
   font-size: 24px;
+  padding: 22px 0;
 `
 
 const IconContainer = styled.div`
