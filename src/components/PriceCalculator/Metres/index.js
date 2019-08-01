@@ -20,9 +20,9 @@ export default () => {
   return (
     <React.Fragment>
       <Metres>
-        <label>Length: </label>
+        <label>Length(Metres): </label>
 
-        <label>Width: </label>
+        <label>Width(Metres): </label>
         <Counter
           min={4}
           max={5}
@@ -30,9 +30,9 @@ export default () => {
         />
       </Metres>
       <Metres>
-        <label>Length: </label>
+        <label>Length(Metres): </label>
 
-        <label>Width: </label>
+        <label>Width(Metres): </label>
         <Counter
           min={4}
           max={5}

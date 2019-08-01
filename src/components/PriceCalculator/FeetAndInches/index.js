@@ -8,9 +8,9 @@ export default ({ setTotal }) => {
 
   return (
     <FeetAndInches>
-      <label>Length: </label>
+      <label>Length (Metres) </label>
       <div />
-      <label>Width: </label>
+      <label>Width (Metres) </label>
       <Form>
         <Length
           type="number"

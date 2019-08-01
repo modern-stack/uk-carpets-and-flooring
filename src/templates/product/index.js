@@ -109,7 +109,7 @@ export default ({ pageContext }) => {
             </div>
             <br />
             <Review />
-            <Price>£{(price * total).toFixed(2)}</Price>
+            <Price>£{(price * total).toFixed(2)} m²</Price>
             <PriceCalculator type={'Feet and Inches'} setTotal={setTotal} />
             <Buttons>
               <AddToOrder Id={sku.id.split('Prismic__Sku__')[1]} />
