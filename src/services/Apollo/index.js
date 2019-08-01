@@ -4,11 +4,8 @@ import { HttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 
 import fetch from 'isomorphic-fetch'
-
 import { ApolloLink, from } from 'apollo-link'
-
 import { resolvers, typeDefs } from './Resolvers'
-
 import { persistCache } from 'apollo-cache-persist'
 
 const link = new HttpLink({
@@ -28,6 +25,7 @@ if (typeof window !== 'undefined') {
 
 const defaults = {
   IsLoggedIn: false,
+  Samples: [],
   ConfirmedAddress: false,
   Order: {
     __typename: 'Order',

@@ -21,6 +21,9 @@ module.exports = graphql =>
               edge
               residential_warranty
               commercial_warranty
+              wide
+              backing
+              suitability
               featuredimage {
                 _4_3 {
                   localFile {

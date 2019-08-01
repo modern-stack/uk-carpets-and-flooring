@@ -14,6 +14,7 @@ import Specification from './Specification'
 import Reviews from './Reviews'
 import RelatedProducts from '../../components/Prismic/PrismicRelatedProducts'
 import AddToOrder from './AddToOrder'
+import AddToSamples from './AddToSamples'
 
 import Image from '../../components/Image'
 
@@ -33,6 +34,7 @@ import {
   Title,
   SubTitle,
   DescriptionSection,
+  Buttons,
 } from './styled'
 
 export default ({ pageContext }) => {
@@ -110,7 +112,11 @@ export default ({ pageContext }) => {
             <Review />
             <Price>£{(price * total).toFixed(2)}</Price>
             <PriceCalculator type={'Feet and Inches'} setTotal={setTotal} />
-            <AddToOrder Id={sku.id.split('Prismic__Sku__')[1]} />
+            <Buttons>
+              <AddToOrder Id={sku.id.split('Prismic__Sku__')[1]} />
+              <div />
+              <AddToSamples Id={sku.id.split('Prismic__Sku__')[1]} />
+            </Buttons>
 
             <DescriptionSection>
               <SubTitle>Description</SubTitle>
@@ -137,7 +143,6 @@ export default ({ pageContext }) => {
           {sku.data.body &&
             sku.data.body.length &&
             sku.data.body.map($ => {
-              console.log('mapping >>>>', $)
               return <RelatedProducts relatedproducts={{ ...$ }} />
             })}
         </Container>
