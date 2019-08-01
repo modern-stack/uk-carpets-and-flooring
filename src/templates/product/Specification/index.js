@@ -14,8 +14,6 @@ export default ({ product, sku }) => {
     .replace(/ /g, '')
     .split(',')
 
-  console.log('IconList', data.icons, IconList)
-
   return (
     <Specification>
       <Title title={'Item Specifications'} />
@@ -74,7 +72,6 @@ export default ({ product, sku }) => {
             {IconList.length &&
               IconList.map($ => {
                 const Icon = MappedIcons[$]
-                console.log('Checking >>>>', Icon, $)
                 return Icon ? <Icon /> : null
               })}
           </Icons>
