@@ -33,6 +33,12 @@ const Product = styled.div`
   }
 `
 
+const FeaturedImage = styled.div`
+  @media (max-width: 700px) {
+    height: 250px;
+  }
+`
+
 const ImageContainer = styled.div`
   width: 60px;
   height: 60px;
@@ -132,4 +138,5 @@ export {
   SubTitle,
   DescriptionSection,
   Buttons,
+  FeaturedImage,
 }

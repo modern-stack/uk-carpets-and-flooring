@@ -35,6 +35,7 @@ import {
   SubTitle,
   DescriptionSection,
   Buttons,
+  FeaturedImage,
 } from './styled'
 
 export default ({ pageContext }) => {
@@ -71,11 +72,11 @@ export default ({ pageContext }) => {
         <div />
         <div />
         <div />
-        <div style={{ minHeight: '250px' }}>
+        <FeaturedImage>
           {featuredimage && featuredimage._4_3 && (
             <Image fluid={featuredimage._4_3.localFile.childImageSharp.fluid} />
           )}
-        </div>
+        </FeaturedImage>
 
         <Skus>
           <Slider>
