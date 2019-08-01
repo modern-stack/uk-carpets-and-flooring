@@ -9,7 +9,7 @@ const Bed = styled(FaBed)`
   width: 100%;
   font-size: 24px;
   font-size: 24px;
-  padding: 22px 0;
+  padding: 10px 0 30px 0;
 `
 
 const Couch = styled(FaCouch)`
@@ -20,7 +20,7 @@ const Couch = styled(FaCouch)`
   width: 100%;
   font-size: 24px;
   font-size: 24px;
-  padding: 22px 0;
+  padding: 10px 0 30px 0;
 `
 
 const Dining = styled(FaLinkedinIn)`
@@ -30,7 +30,7 @@ const Dining = styled(FaLinkedinIn)`
   background: #c7002b;
   width: 100%;
   font-size: 24px;
-  padding: 22px 0;
+  padding: 10px 0 30px 0;
 `
 
 const IconContainer = styled.div`
@@ -47,7 +47,7 @@ const IconContainer = styled.div`
     position: absolute;
     color: white;
     font-size: 10px;
-    bottom: 2px;
+    bottom: 8px;
   }
 `
 

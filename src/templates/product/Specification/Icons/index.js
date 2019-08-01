@@ -20,7 +20,7 @@ const LivingRoomIcon = () => (
 const HallStairsIcon = () => (
   <IconContainer>
     <Dining />
-    <label>Hall and Stairs</label>
+    <label>Hall & Stairs</label>
   </IconContainer>
 )
 
