@@ -1,7 +1,8 @@
 import React from 'react'
 import Desktop from './Desktop'
+import Mobile from './Mobile'
 
-import { Carousel, DesktopContainer } from './styled'
+import { Carousel, DesktopContainer, MobileContainer } from './styled'
 
 export default ({ items }) => (
   <Carousel>
@@ -9,8 +10,8 @@ export default ({ items }) => (
       <Desktop slides={items} />
     </DesktopContainer>
 
-    {/* <MobileContainer>
+    <MobileContainer>
       <Mobile slides={items} />
-    </MobileContainer> */}
+    </MobileContainer>
   </Carousel>
 )
