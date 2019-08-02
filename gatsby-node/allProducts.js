@@ -22,7 +22,7 @@ module.exports = graphql =>
               edge
               residential_warranty
               commercial_warranty
-              wide
+              width
               backing
               suitability
               icons
@@ -125,6 +125,7 @@ module.exports = graphql =>
       }
     }
   `).then($ => {
+    console.log('$ >>>>', $)
     const { allPrismicSku } = $.data
     let byProductType = []
 

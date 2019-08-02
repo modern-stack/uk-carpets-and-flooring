@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@loadable/component": "^5.10.2",
     "apollo-cache-inmemory": "^1.6.0",
     "apollo-cache-persist": "^0.1.1",
     "apollo-client": "^2.6.3",
@@ -44,6 +45,7 @@
     "react-dom": "^16.8.4",
     "react-helmet": "^5.2.0",
     "react-icons": "^3.3.0",
+    "react-loadable": "^5.5.0",
     "react-rating": "^1.6.2",
     "react-stripe-elements": "^2.0.3",
     "react-swipe": "^6.0.4",
