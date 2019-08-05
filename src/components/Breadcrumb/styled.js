@@ -8,6 +8,7 @@ const Breadcrumb = styled.ul`
 
   li {
     list-style: none;
+    color: black;
 
     position: relative;
     color: gray;
@@ -20,20 +21,31 @@ const Breadcrumb = styled.ul`
     float: left;
     text-align: center;
 
+    a,
+    link,
+    visited,
+    focus,
+    hover,
+    active {
+      text-decoration: none;
+      color: black;
+    }
+
     :not(:last-child):after {
       content: '';
       position: absolute;
-      width: 1vmin;
-      height: 1vmin;
+      width: 5px;
+      height: 5px;
       background: transparent;
-      border-top: 0.2em solid gray;
-      border-right: 0.2em solid gray;
-      box-shadow: 0 0 0 gray;
+      border-top: 3px solid gray;
+      border-right: 3px solid gray;
+      box-shadow: 0 0 0 grey;
+      -webkit-transition: all 200ms ease;
       transition: all 200ms ease;
       margin: 0 16px;
-
       top: 50%;
-
+      -webkit-transform: translate3d(0, -50%, 0) rotate(45deg);
+      -ms-transform: translate3d(0, -50%, 0) rotate(45deg);
       transform: translate3d(0, -50%, 0) rotate(45deg);
     }
 

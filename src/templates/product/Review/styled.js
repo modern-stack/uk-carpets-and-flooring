@@ -13,7 +13,6 @@ const Review = styled.div`
     flex-wrap: wrap;
     display: flex;
     text-align: center;
-    text-decoration: underline;
   }
 `
 

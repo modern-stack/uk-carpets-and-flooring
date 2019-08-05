@@ -11,12 +11,14 @@ export default () => (
         emptySymbol={
           <FaStar
             style={{
-              color: 'black',
+              color: 'gold',
             }}
           />
         }
         fullSymbol={<FaStar style={{ color: 'gold' }} />}
       />
+      <br />
+      <div>5.0</div>
     </div>
     <div>Write a Review</div>
     <div>Add to Wishlist</div>

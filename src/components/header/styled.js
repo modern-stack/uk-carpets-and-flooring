@@ -26,6 +26,7 @@ const CompanyName = styled.div`
 const Logo = styled.div`
   display: flex;
   padding: 0px 20px;
+  cursor: pointer;
 `
 
 const UserInfo = styled.div`

@@ -9,6 +9,8 @@ import Section from './Section'
 export default ({ product, sku }) => {
   const { data } = sku
 
+  console.log('Data >>>>', data)
+
   const IconList = (data.icons || '')
     .toLowerCase()
     .replace(/ /g, '')
@@ -43,7 +45,7 @@ export default ({ product, sku }) => {
             },
             {
               title: 'Width',
-              value: data.wide,
+              value: data.width,
             },
             {
               title: 'Suitability',

@@ -38,7 +38,7 @@ export default () => {
       `}
       render={data => (
         <Header>
-          <Logo>
+          <Logo onClick={() => navigateTo('/')}>
             <Img fixed={data.logo.childImageSharp.fixed} />
             <CompanyName>
               <div>UK Carpets & Flooring</div>
