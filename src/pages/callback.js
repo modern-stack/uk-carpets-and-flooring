@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { navigateTo } from 'gatsby-link'
 
-import Layout from '../components/layout'
-
 import { useMutation } from 'react-apollo-hooks'
 import { SUBSCRIBE_USER } from '../services/Apollo/Queries/auth'
 import { SIGNUP, TOGGLE_LOGGED_IN } from '../services/Apollo/Mutations/users'

@@ -2,7 +2,17 @@ import React, { useState } from 'react'
 import Image from 'gatsby-image'
 import ReactSwipe from 'react-swipe'
 
-import { Carousel, Slide, SlideSelection, SlideSelector } from './styled'
+import {
+  Carousel,
+  Slide,
+  SlideSelection,
+  SlideSelector,
+  Content,
+  Title,
+  SubContent,
+  Button,
+  Overlay,
+} from './styled'
 
 export default ({ slides }) => {
   let reactSwipeEl
@@ -21,10 +31,16 @@ export default ({ slides }) => {
       >
         {slides.map($ => (
           <Slide>
+            <Overlay />
             <Image
               style={{ width: '100%' }}
-              fluid={$.gallery_image.localFile.childImageSharp.fluid}
+              fluid={$.gallery_image._4_3.localFile.childImageSharp.fluid}
             />
+            <Content>
+              <Title>{$.title.text}</Title>
+              <SubContent>{$.description.text}</SubContent>
+              <Button>{'Click Here'}</Button>
+            </Content>
           </Slide>
         ))}
       </ReactSwipe>

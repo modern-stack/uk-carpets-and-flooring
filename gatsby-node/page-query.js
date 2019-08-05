@@ -27,6 +27,22 @@ module.exports = ({ graphql, id }) => {
                   text
                 }
                 gallery_image {
+                  _4_3 {
+                    localFile {
+                      childImageSharp {
+                        fluid(quality: 100, maxWidth: 900, maxHeight: 1200) {
+                          base64
+                          tracedSVG
+                          aspectRatio
+                          src
+                          srcSet
+                          srcWebp
+                          srcSetWebp
+                          sizes
+                        }
+                      }
+                    }
+                  }
                   localFile {
                     childImageSharp {
                       fluid(quality: 100, maxWidth: 1920, maxHeight: 1080) {

@@ -13,6 +13,8 @@ export default () => {
 
   const { given_name, picture } = data.CurrentUser
 
+  console.log('User >>>>', data.CurrentUser)
+
   return (
     <Profile>
       <ProfileImage src={picture} />
