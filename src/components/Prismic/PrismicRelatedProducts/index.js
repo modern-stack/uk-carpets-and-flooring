@@ -1,4 +1,5 @@
 import React from 'react'
+import { navigateTo } from 'gatsby-link'
 
 import {
   RelatedProducts,
@@ -22,7 +23,6 @@ export default ({ relatedproducts }) => {
 
         <Products>
           {relatedproducts.items.map($ => {
-            console.log('related >>>', $)
             if (!$.product) return null
 
             const { product } = $
@@ -30,7 +30,15 @@ export default ({ relatedproducts }) => {
             const { name, featuredimage, sku_product } = product.sku[0].data
 
             return (
-              <Product>
+              <Product
+                onClick={() =>
+                  navigateTo(
+                    sku_product
+                      ? `/${sku_product.document[0].data.product_type.toLowerCase()}/${sku_product.document[0].data.name.toLowerCase()}`
+                      : 'Unknown'
+                  )
+                }
+              >
                 {featuredimage && (
                   <ImageContainer
                     fluid={featuredimage._4_3.localFile.childImageSharp.fluid}

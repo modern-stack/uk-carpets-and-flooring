@@ -74,6 +74,7 @@ module.exports = graphql =>
                             document {
                               data {
                                 name
+                                product_type
                               }
                             }
                           }

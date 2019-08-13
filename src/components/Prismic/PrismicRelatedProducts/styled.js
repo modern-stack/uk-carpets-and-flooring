@@ -7,7 +7,23 @@ const RelatedProducts = styled.div`
 
 const Product = styled.div``
 
-const ImageContainer = styled(Img)``
+const ImageContainer = styled(Img)`
+  cursor: pointer;
+
+  &:hover {
+    &:after {
+      content: '';
+      display: block;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: black;
+      opacity: 0.2;
+    }
+  }
+`
 
 const Products = styled.div`
   display: grid;
@@ -17,8 +33,8 @@ const Products = styled.div`
   min-height: 800px;
 
   @media (max-width: 700px) {
-    grid-template-columns: repeat(2 auto-fit, 1fr);
-    grid-auto-flow: column;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: row;
   }
 `
 
