@@ -52,8 +52,8 @@ const ImageContainer = styled.div`
 
 const Details = styled.div`
   background: white;
-  width: 100%;
-  padding: 5px 20px;
+
+  margin: 5px 20px;
 
   @media (max-width: 700px) {
     padding: 0px;

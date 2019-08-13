@@ -59,32 +59,44 @@ module.exports = graphql =>
                 }
               }
               body {
-                slice_type
-                items {
-                  product1 {
-                    document {
-                      data {
-                        name {
-                          html
-                          text
-                        }
-                        price
-                        featuredimage {
-                          localFile {
-                            childImageSharp {
-                              fluid(
-                                quality: 100
-                                maxHeight: 960
-                                maxWidth: 1280
-                              ) {
-                                base64
-                                tracedSVG
-                                aspectRatio
-                                src
-                                srcSet
-                                srcWebp
-                                srcSetWebp
-                                sizes
+                ... on PrismicSkuBodyRelatedProducts {
+                  slice_type
+                  items {
+                    product: product1 {
+                      slug
+                      sku: document {
+                        data {
+                          name {
+                            html
+                            text
+                          }
+                          sku_product: product {
+                            document {
+                              data {
+                                name
+                              }
+                            }
+                          }
+                          price
+                          featuredimage {
+                            _4_3 {
+                              localFile {
+                                childImageSharp {
+                                  fluid(
+                                    quality: 100
+                                    maxHeight: 960
+                                    maxWidth: 1280
+                                  ) {
+                                    base64
+                                    tracedSVG
+                                    aspectRatio
+                                    src
+                                    srcSet
+                                    srcWebp
+                                    srcSetWebp
+                                    sizes
+                                  }
+                                }
                               }
                             }
                           }

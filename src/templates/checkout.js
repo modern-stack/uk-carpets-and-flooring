@@ -2,9 +2,7 @@ import React from 'react'
 
 import SEO from '../components/seo'
 import PrismicComponents from '../components/Prismic'
-
 import CheckoutForm from '../components/CheckoutForm'
-
 import Modal from '../components/Modal'
 
 export default ({ pageContext }) => {
@@ -23,12 +21,4 @@ export default ({ pageContext }) => {
       </React.Fragment>
     </React.Fragment>
   )
-}
-
-{
-  /* <Steps>
-            <Summary icon={<FaShoppingBasket />} cta={SummaryCta} />
-            <CreateOrder icon={<FaCreditCard />} cta={CreateOrderCta} />
-            <CompleteOrder icon={<FaCheckCircle />} />
-          </Steps> */
 }

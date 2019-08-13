@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FaRandom, FaPencilAlt } from 'react-icons/fa'
 import { useQuery, useMutation } from 'react-apollo-hooks'
+import useForm from 'react-hook-form'
 
 import Header from './Header'
 import Navigation from './Navigation'
@@ -21,6 +22,7 @@ import {
 } from '../../services/Apollo/Mutations/order'
 
 export default () => {
+  const { register, handleSubmit, errors } = useForm()
   const [isManual, setIsManual] = useState(false)
   const [confirmed, setConfirmed] = useState(false)
   const { data } = useQuery(GET_ORDER)
@@ -90,6 +92,7 @@ export default () => {
             order={data.Order}
             useManual={!!isManual}
             update={update}
+            register={register}
           />
 
           <Subtitle class="subtitle">payment details</Subtitle>
@@ -100,9 +103,7 @@ export default () => {
             }}
           />
         </div>
-        <div>
-          <Summary items={data.Order.items} />
-        </div>
+        <Summary items={data.Order.items} />
       </Content>
     </Checkout>
   )

@@ -5,6 +5,7 @@ import SEO from '../../components/seo'
 
 import Img from 'gatsby-image'
 import PriceCalculator from '../../components/PriceCalculator'
+import RelatedProducts from '../../components/Prismic/PrismicRelatedProducts'
 
 import Slider from '../../components/Slider'
 
@@ -12,7 +13,7 @@ import Review from './Review'
 import Social from '../../components/Social'
 import Specification from './Specification'
 import Reviews from './Reviews'
-import RelatedProducts from '../../components/Prismic/PrismicRelatedProducts'
+
 import AddToOrder from './AddToOrder'
 import AddToSamples from './AddToSamples'
 
@@ -111,9 +112,6 @@ export default ({ pageContext }) => {
               <SubTitle>{node.data.name.text}</SubTitle>
 
               <Title>{`${node.data.name} -  ${name.text} `}</Title>
-              <Overview>
-                {`${width} inch. wide  x ${length} inc. Long x ${thickness} mm thick`}
-              </Overview>
             </div>
             <br />
             <Review />
@@ -143,11 +141,9 @@ export default ({ pageContext }) => {
           <Specification product={node.data} sku={sku} />
           <Reviews />
 
-          {sku.data.body &&
-            sku.data.body.length &&
-            sku.data.body.map($ => {
-              return <RelatedProducts relatedproducts={{ ...$ }} />
-            })}
+          {sku.data.body && (
+            <RelatedProducts relatedproducts={sku.data.body[0]} />
+          )}
         </Container>
       </Details>
     </Layout>

@@ -9,7 +9,7 @@ import Completed from './Completed'
 import { GET_ADDRESS_CONFIRMED } from '../../../services/Apollo/Queries/order'
 import { TOGGLE_CONFIRMED_ADDRESS } from '../../../services/Apollo/Mutations/order'
 
-export default ({ order, useManual, update }) => {
+export default ({ order, useManual, update, register }) => {
   const { email, shipping } = order
   const { data } = useQuery(GET_ADDRESS_CONFIRMED)
   const ToggleConfirmedAddress = useMutation(TOGGLE_CONFIRMED_ADDRESS)
