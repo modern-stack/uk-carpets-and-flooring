@@ -28,7 +28,7 @@ import {
   ImageContainer,
   Price,
   Container,
-  Overview,
+  BackgroundImage,
   Share,
   Link,
   Skus,
@@ -47,15 +47,9 @@ export default ({ pageContext }) => {
 
   if (!sku) return <div>No Skus available</div>
 
-  const {
-    description,
-    featuredimage,
-    name,
-    price,
-    width,
-    length,
-    thickness,
-  } = sku.data
+  const { description, featuredimage, name, price } = sku.data
+
+  console.log('sku >>>', sku)
 
   return (
     <Layout>
@@ -63,6 +57,16 @@ export default ({ pageContext }) => {
       <Header />
 
       <Product>
+        <BackgroundImage>
+          {sku.data.product.document[0].data.featured_image && (
+            <Image
+              fluid={
+                sku.data.product.document[0].data.featured_image.localFile
+                  .childImageSharp.fluid
+              }
+            />
+          )}
+        </BackgroundImage>
         <div />
         <div>
           <Breadcrumb

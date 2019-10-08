@@ -17,6 +17,7 @@ const Product = styled.div`
   grid-row-gap: 35px;
   grid-column-gap: 35px;
   background: #f0f0f0;
+  position: relative;
 
   @media (max-width: 700px) {
     max-height: 100%;
@@ -33,7 +34,19 @@ const Product = styled.div`
   }
 `
 
+const BackgroundImage = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: black;
+  z-index: 1;
+  opacity: 0.6;
+`
+
 const FeaturedImage = styled.div`
+  z-index: 999;
   @media (max-width: 700px) {
     height: 250px;
   }
@@ -54,6 +67,7 @@ const Details = styled.div`
   background: white;
   margin: 5px 20px;
   padding: 5px 20px;
+  z-index: 999;
 
   @media (max-width: 700px) {
     padding: 0px;
@@ -71,6 +85,7 @@ const Skus = styled.div`
   position: relative;
   margin: 0px 0;
   min-height: 80px;
+  z-index: 999;
 `
 
 const Price = styled.div`
@@ -127,6 +142,7 @@ const Buttons = styled.div`
 export {
   Header,
   Product,
+  BackgroundImage,
   Details,
   ImageContainer,
   Container,
