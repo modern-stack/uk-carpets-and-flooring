@@ -20,8 +20,12 @@ module.exports = {
     //     dataLayerName: 'YOUR_DATA_LAYER_NAME',
     //   },
     // },
-
-    `gatsby-transformer-sharp`,
+    {
+      resolve: 'gatsby-plugin-netlify-cache',
+      options: {
+        cachePublic: true,
+      },
+    }`gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
       resolve: 'gatsby-source-prismic',

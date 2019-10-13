@@ -32,13 +32,10 @@ export default () => {
   const canEdit = !!addressConfirmed.data.ConfirmedAddress
 
   const { register, handleSubmit, errors } = useForm({
-    mode: 'onSubmit',
-    defaultValues: { ...data },
-    validationFields: ['name'],
-    validationSchema: {},
-    submitFocusError: true,
-    nativeValidation: false,
+    mode: 'onBlur',
   })
+
+  console.log('errors >>>', errors)
 
   if (confirmed) return <Confirmation />
 
