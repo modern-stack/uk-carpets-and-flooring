@@ -9,7 +9,7 @@ import { GET_ORDER } from '../../../services/Apollo/Queries/order'
 
 import loadStripe from './loadStripe'
 
-export default ({ onComplete }) => {
+export default ({ onComplete, errors }) => {
   const { data, loading } = useQuery(GET_ORDER)
 
   const [stripeLoaded, setStripeLoaded] = useState({})
@@ -28,7 +28,11 @@ export default ({ onComplete }) => {
       <Payment>
         <PaymentDetails>
           <Elements>
-            <CheckoutForm onComplete={onComplete} Order={data.Order} />
+            <CheckoutForm
+              onComplete={onComplete}
+              Order={data.Order}
+              errors={errors}
+            />
           </Elements>
         </PaymentDetails>
       </Payment>

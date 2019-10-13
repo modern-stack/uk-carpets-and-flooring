@@ -22,7 +22,6 @@ import {
 } from '../../services/Apollo/Mutations/order'
 
 export default () => {
-  const { register, handleSubmit, errors } = useForm()
   const [isManual, setIsManual] = useState(false)
   const [confirmed, setConfirmed] = useState(false)
   const { data } = useQuery(GET_ORDER)
@@ -32,7 +31,18 @@ export default () => {
   const addressConfirmed = useQuery(GET_ADDRESS_CONFIRMED)
   const canEdit = !!addressConfirmed.data.ConfirmedAddress
 
+  const { register, handleSubmit, errors } = useForm({
+    mode: 'onSubmit',
+    defaultValues: { ...data },
+    validationFields: ['name'],
+    validationSchema: {},
+    submitFocusError: true,
+    nativeValidation: false,
+  })
+
   if (confirmed) return <Confirmation />
+
+  console.log('errors >>>', errors)
 
   const update = $ =>
     updateOrder({
@@ -88,20 +98,23 @@ export default () => {
             </div>
           </Subtitle>
 
-          <ShippingDetails
-            order={data.Order}
-            useManual={!!isManual}
-            update={update}
-            register={register}
-          />
+          <form>
+            <ShippingDetails
+              order={data.Order}
+              useManual={!!isManual}
+              update={update}
+              register={register}
+            />
 
-          <Subtitle class="subtitle">payment details</Subtitle>
-          <PaymentDetails
-            onComplete={() => {
-              resetOrder()
-              setConfirmed(true)
-            }}
-          />
+            <Subtitle class="subtitle">payment details</Subtitle>
+            <PaymentDetails
+              onComplete={() => {
+                resetOrder()
+                setConfirmed(true)
+                errors = { errors }
+              }}
+            />
+          </form>
         </div>
         <Summary items={data.Order.items} />
       </Content>

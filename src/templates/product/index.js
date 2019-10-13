@@ -58,10 +58,10 @@ export default ({ pageContext }) => {
 
       <Product>
         <BackgroundImage>
-          {sku.data.product.document[0].data.featured_image && (
+          {sku.data.product.document[0].data.featuredimage && (
             <Image
               fluid={
-                sku.data.product.document[0].data.featured_image.localFile
+                sku.data.product.document[0].data.featuredimage.localFile
                   .childImageSharp.fluid
               }
             />

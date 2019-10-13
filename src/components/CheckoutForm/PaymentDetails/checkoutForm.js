@@ -12,51 +12,37 @@ import { COMPLETE_ORDER } from '../../../services/Apollo/Mutations/order'
 import { PaymentForm } from './styled'
 import { Primary } from '../../Button'
 
-const CheckoutForm = ({ Order, stripe, onComplete }) => {
+const CheckoutForm = ({ Order, stripe, onComplete, errors }) => {
   const complete = useMutation(COMPLETE_ORDER)
-  const [validation, setValdation] = useState({
-    number: false,
-    expiry: false,
-    cvc: false,
-  })
 
-  const { number, expiry, cvc } = validation
-
-  const isValid =
-    !!number & !!expiry & !!cvc & !!Order.postal_code && !!Order.line_1
+  console.log('errors >>>>', errors)
 
   return (
     <PaymentForm>
       <div>
         <label>
           Card Number
-          <CardNumberElement
-            onChange={$ => setValdation({ ...validation, number: $.complete })}
-          />
+          <CardNumberElement />
         </label>
       </div>
 
       <div>
         <label>
           Expiry Date
-          <CardExpiryElement
-            onChange={$ => setValdation({ ...validation, expiry: $.complete })}
-          />
+          <CardExpiryElement />
         </label>
       </div>
 
       <div>
         <label>
           CVC
-          <CardCVCElement
-            onChange={$ => setValdation({ ...validation, cvc: $.complete })}
-          />
+          <CardCVCElement />
         </label>
       </div>
 
       <div>
         <Primary
-          disabled={!isValid}
+          disabled={!errors}
           onClick={() =>
             stripe.createToken().then($ => {
               complete({

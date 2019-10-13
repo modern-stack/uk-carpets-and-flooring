@@ -20,7 +20,9 @@ export default ({ order, useManual, update, register }) => {
     <Address>
       <input
         type={'text'}
+        name={'name'}
         placeholder={'Name'}
+        ref={register({ required: true, min: 1 })}
         value={shipping.name}
         onChange={e =>
           update({
