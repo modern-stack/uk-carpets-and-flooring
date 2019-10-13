@@ -25,7 +25,8 @@ module.exports = {
       options: {
         cachePublic: true,
       },
-    }`gatsby-transformer-sharp`,
+    },
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
       resolve: 'gatsby-source-prismic',
