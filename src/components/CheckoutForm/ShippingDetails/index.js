@@ -22,7 +22,7 @@ export default ({ order, useManual, update, register }) => {
         type={'text'}
         name={'name'}
         placeholder={'Name'}
-        ref={register({ required: 'Please enter a Name', minlength: '20' })}
+        ref={register({ required: 'Please enter a Name' })}
         value={shipping.name}
         onChange={e =>
           update({
