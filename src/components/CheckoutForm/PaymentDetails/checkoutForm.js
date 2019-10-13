@@ -15,8 +15,6 @@ import { Primary } from '../../Button'
 const CheckoutForm = ({ Order, stripe, onComplete, errors }) => {
   const complete = useMutation(COMPLETE_ORDER)
 
-  console.log('errors >>>>', errors)
-
   return (
     <PaymentForm>
       <div>

@@ -17,8 +17,6 @@ export default ({ pageContext }) => {
     <LoadableComponent page={pageContext}>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
 
-      {console.log('>>>>>>', pageContext)}
-
       <React.Fragment>
         <Carousel items={pageContext.prismicPage.data.body[0].items} />
         <Banners items={pageContext.prismicPage.data.body[1].items} />

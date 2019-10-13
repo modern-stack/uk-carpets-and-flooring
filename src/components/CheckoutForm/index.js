@@ -42,8 +42,6 @@ export default () => {
 
   if (confirmed) return <Confirmation />
 
-  console.log('errors >>>', errors)
-
   const update = $ =>
     updateOrder({
       variables: { toUpdate: $ },

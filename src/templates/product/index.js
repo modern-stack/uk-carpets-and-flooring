@@ -49,8 +49,6 @@ export default ({ pageContext }) => {
 
   const { description, featuredimage, name, price } = sku.data
 
-  console.log('sku >>>', sku)
-
   return (
     <Layout>
       <SEO title="Products" />

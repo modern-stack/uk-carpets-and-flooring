@@ -9,8 +9,6 @@ import Section from './Section'
 export default ({ product, sku }) => {
   const { data } = sku
 
-  console.log('Data >>>>', data)
-
   const IconList = (data.icons || '')
     .toLowerCase()
     .replace(/ /g, '')
