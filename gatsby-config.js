@@ -9,17 +9,17 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     'gatsby-plugin-styled-components',
-    {
-      resolve: 'gatsby-plugin-google-tagmanager',
-      options: {
-        id: 'GTM-TMTRZ77',
-        includeInDevelopment: false,
-        defaultDataLayer: { platform: 'gatsby' },
-        gtmAuth: 'YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING',
-        gtmPreview: 'YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME',
-        dataLayerName: 'YOUR_DATA_LAYER_NAME',
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-google-tagmanager',
+    //   options: {
+    //     id: 'GTM-TMTRZ77',
+    //     includeInDevelopment: false,
+    //     defaultDataLayer: { platform: 'gatsby' },
+    //     gtmAuth: 'YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING',
+    //     gtmPreview: 'YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME',
+    //     dataLayerName: 'YOUR_DATA_LAYER_NAME',
+    //   },
+    // },
 
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

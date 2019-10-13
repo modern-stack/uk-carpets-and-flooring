@@ -22,8 +22,6 @@ export default ({ products }) => {
       {products.map($ => {
         const { name, product_type, featured_image } = $.node.data
 
-        console.log(name, product_type, featured_image)
-
         return (
           <Product>
             <ImageContainer
