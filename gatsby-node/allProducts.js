@@ -26,38 +26,6 @@ module.exports = graphql =>
               backing
               suitability
               icons
-              featuredimage {
-                _4_3 {
-                  localFile {
-                    childImageSharp {
-                      fluid(quality: 100, maxHeight: 1280, maxWidth: 960) {
-                        base64
-                        tracedSVG
-                        aspectRatio
-                        src
-                        srcSet
-                        srcWebp
-                        srcSetWebp
-                        sizes
-                      }
-                    }
-                  }
-                }
-                localFile {
-                  childImageSharp {
-                    fluid(quality: 100, maxHeight: 960, maxWidth: 1280) {
-                      base64
-                      tracedSVG
-                      aspectRatio
-                      src
-                      srcSet
-                      srcWebp
-                      srcSetWebp
-                      sizes
-                    }
-                  }
-                }
-              }
               body {
                 ... on PrismicSkuBodyRelatedProducts {
                   slice_type
@@ -79,29 +47,7 @@ module.exports = graphql =>
                             }
                           }
                           price
-                          featuredimage {
-                            _4_3 {
-                              localFile {
-                                childImageSharp {
-                                  fluid(
-                                    quality: 100
-                                    maxHeight: 960
-                                    maxWidth: 1280
-                                  ) {
-                                    base64
-                                    tracedSVG
-                                    aspectRatio
-                                    src
-                                    srcSet
-                                    srcWebp
-                                    srcSetWebp
-                                    sizes
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
+                          
                       }
                     }
                   }
@@ -113,23 +59,6 @@ module.exports = graphql =>
                   data {
                     name
                     product_type
-                    featured_image {
-                      localFile {
-                        childImageSharp {
-                          fluid(quality: 100, maxHeight: 700, maxWidth: 350) {
-                            base64
-                            tracedSVG
-                            aspectRatio
-                            src
-                            srcSet
-                            srcWebp
-                            srcSetWebp
-                            sizes
-                          }
-                        }
-                      }
-                    }
-                  }
                 }
               }
             }
