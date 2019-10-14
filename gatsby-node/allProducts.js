@@ -59,6 +59,7 @@ module.exports = graphql =>
                   data {
                     name
                     product_type
+                  }
                 }
               }
             }
