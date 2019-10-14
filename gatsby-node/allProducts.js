@@ -79,28 +79,6 @@ module.exports = graphql =>
                             }
                           }
                           price
-                          featuredimage {
-                            _4_3 {
-                              localFile {
-                                childImageSharp {
-                                  fluid(
-                                    quality: 100
-                                    maxHeight: 960
-                                    maxWidth: 1280
-                                  ) {
-                                    base64
-                                    tracedSVG
-                                    aspectRatio
-                                    src
-                                    srcSet
-                                    srcWebp
-                                    srcSetWebp
-                                    sizes
-                                  }
-                                }
-                              }
-                            }
-                          }
                         }
                       }
                     }
