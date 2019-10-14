@@ -1,0 +1,16 @@
+{
+  "main.js": "render-page.js",
+  "main.js.map": "render-page.js.map",
+  "static/GothamBold.ttf": "static/GothamBold-db33e70bc9dee9fa9ae9737ad83d77ba.ttf",
+  "static/GothamBoldItalic.ttf": "static/GothamBoldItalic-9b92f7fc1500a19b09dc9053fbe46b0c.ttf",
+  "static/GothamBook.ttf": "static/GothamBook-b54724f54d4dd3f6796e3c4cc422f998.ttf",
+  "static/GothamBookItalic.ttf": "static/GothamBookItalic-0281e72bd039997947cb7c2d00ae4b94.ttf",
+  "static/GothamLightItalic.ttf": "static/GothamLightItalic-0f0e43f48efb679501feff0240c3eb55.ttf",
+  "static/GothamMedium_0.ttf": "static/GothamMedium_0-77171d8f5b5283f9d47a3434704bf944.ttf",
+  "static/PlayfairDisplay-Black.ttf": "static/PlayfairDisplay-Black-7b98c94eecdab63a02cf8624e9ee4058.ttf",
+  "static/PlayfairDisplay-BlackItalic.ttf": "static/PlayfairDisplay-BlackItalic-69272a6073c0d2d28870f55938ffebd5.ttf",
+  "static/PlayfairDisplay-Bold.ttf": "static/PlayfairDisplay-Bold-f78a8c62bdf3c9c27b4fa485b8c3d279.ttf",
+  "static/PlayfairDisplay-BoldItalic.ttf": "static/PlayfairDisplay-BoldItalic-197a37cf75518b5f9547bd26b5df4690.ttf",
+  "static/PlayfairDisplay-Italic.ttf": "static/PlayfairDisplay-Italic-8bd038cd447b1bef826ebf73e1ebbdb2.ttf",
+  "static/PlayfairDisplay-Regular.ttf": "static/PlayfairDisplay-Regular-2ec4a3528bb6b0bd79edf9a1dc601fc7.ttf"
+}
