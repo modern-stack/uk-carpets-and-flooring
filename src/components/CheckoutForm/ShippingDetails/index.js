@@ -6,24 +6,29 @@ import PostCodeSearch from './PostCodeSearch'
 import ManualSearch from './ManualSearch'
 import Completed from './Completed'
 
+import { Input, ErrorMessage } from '../../../components/Form'
+
 import { GET_ADDRESS_CONFIRMED } from '../../../services/Apollo/Queries/order'
 import { TOGGLE_CONFIRMED_ADDRESS } from '../../../services/Apollo/Mutations/order'
 
-export default ({ order, useManual, update, register }) => {
+export default ({ order, useManual, update, register, errors }) => {
   const { email, shipping } = order
   const { data } = useQuery(GET_ADDRESS_CONFIRMED)
   const ToggleConfirmedAddress = useMutation(TOGGLE_CONFIRMED_ADDRESS)
 
   if (data.ConfirmedAddress) return <Completed order={order} />
 
+  console.log('errors >>>>', errors)
+  console.log('shipping.name >>>>', shipping.name)
+
   return (
     <Address>
-      <input
+      <Input
+        validationFailed={!!errors.name}
         type={'text'}
         name={'name'}
         placeholder={'Name'}
         ref={register({ required: 'Please enter a Name' })}
-        value={shipping.name}
         onChange={e =>
           update({
             shipping: { ...order.shipping, name: e.target.value },
@@ -31,20 +36,24 @@ export default ({ order, useManual, update, register }) => {
         }
         defaultValue={shipping.name}
       />
+      {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
 
-      <input
+      <Input
         type={'text'}
         placeholder={'Please enter an Email address'}
-        value={email}
+        ref={register({ required: 'Please enter a valid Email Address' })}
         onChange={e => update({ email: e.target.value })}
         defaultValue={email}
       />
+      {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
 
       {useManual ? (
         <ManualSearch
           shipping={order.shipping}
           update={update}
           confirm={ToggleConfirmedAddress}
+          register={register}
+          errors={errors}
         />
       ) : (
         <PostCodeSearch

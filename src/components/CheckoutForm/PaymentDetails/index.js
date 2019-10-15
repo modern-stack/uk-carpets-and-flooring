@@ -31,7 +31,7 @@ export default ({ onComplete, errors }) => {
             <CheckoutForm
               onComplete={onComplete}
               Order={data.Order}
-              errors={errors}
+              formErrors={errors}
             />
           </Elements>
         </PaymentDetails>

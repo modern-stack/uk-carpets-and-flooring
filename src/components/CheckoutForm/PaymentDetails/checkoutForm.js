@@ -12,35 +12,71 @@ import { COMPLETE_ORDER } from '../../../services/Apollo/Mutations/order'
 import { PaymentForm } from './styled'
 import { Primary } from '../../Button'
 
-const CheckoutForm = ({ Order, stripe, onComplete, errors }) => {
+const CheckoutForm = ({ Order, stripe, onComplete, formErrors }) => {
   const complete = useMutation(COMPLETE_ORDER)
+  const [formStarted, setFormStarted] = useState(false)
+  const [errors, setErrors] = useState({})
+
+  const _onChange = ({ elementType, error }) => {
+    if (error) setErrors({ ...errors, [elementType]: error.message })
+
+    if (error === undefined) {
+      console.log('Found error! >>>', error)
+      setErrors(
+        Object.keys(errors)
+          .filter($ => $ !== elementType)
+          .reduce(($, key) => {
+            console.log('Mapping >>>>', $, key)
+            return {
+              ...$,
+              [key]: errors[key],
+            }
+          }, {})
+      )
+    }
+  }
+
+  console.log('Errors >>>>', formErrors, errors)
 
   return (
     <PaymentForm>
       <div>
         <label>
           Card Number
-          <CardNumberElement />
+          <CardNumberElement
+            onChange={_onChange}
+            onBlur={() => setFormStarted(true)}
+          />
         </label>
       </div>
 
       <div>
         <label>
           Expiry Date
-          <CardExpiryElement />
+          <CardExpiryElement
+            onChange={_onChange}
+            onBlur={() => setFormStarted(true)}
+          />
         </label>
       </div>
 
       <div>
         <label>
           CVC
-          <CardCVCElement />
+          <CardCVCElement
+            onChange={_onChange}
+            onBlur={() => setFormStarted(true)}
+          />
         </label>
       </div>
 
       <div>
         <Primary
-          disabled={!errors}
+          disabled={
+            !formStarted ||
+            Object.values(errors).length ||
+            Object.values(formErrors).length
+          }
           onClick={() =>
             stripe.createToken().then($ => {
               complete({

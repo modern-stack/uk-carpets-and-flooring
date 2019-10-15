@@ -99,10 +99,13 @@ export default () => {
               useManual={!!isManual}
               update={update}
               register={register}
+              errors={errors}
             />
 
             <Subtitle class="subtitle">payment details</Subtitle>
             <PaymentDetails
+              register={register}
+              errors={errors}
               onComplete={() => {
                 resetOrder()
                 setConfirmed(true)

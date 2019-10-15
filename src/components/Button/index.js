@@ -26,6 +26,11 @@ const Button = styled.button`
 const Primary = styled(Button)`
   font-family: Gotham-Medium;
   background: #c7002b;
+
+  :disabled {
+    color: black;
+    background: lightgray;
+  }
 `
 
 const Secondary = styled(Button)`

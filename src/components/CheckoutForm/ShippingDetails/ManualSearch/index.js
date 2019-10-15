@@ -2,15 +2,20 @@ import React from 'react'
 import { Primary } from '../../../Button'
 import { ManualSearch } from './styled'
 
-export default ({ shipping, update, confirm }) => {
+import { Input, ErrorMessage } from '../../../Form'
+
+export default ({ shipping, update, confirm, register, errors }) => {
   const { address } = shipping
+
+  console.log('Here! >>>>', address)
 
   return (
     <ManualSearch>
-      <input
+      <Input
+        name={'line1'}
         type={'text'}
         placeholder={'Street Address'}
-        onChange={$ => {
+        onBlur={$ => {
           update({
             shipping: {
               ...shipping,
@@ -18,12 +23,14 @@ export default ({ shipping, update, confirm }) => {
             },
           })
         }}
+        ref={register({ required: 'Please enter a Line 1 address' })}
         defaultValue={address.line1}
       />
+      {errors.line1 && <ErrorMessage>{errors.line1.message}</ErrorMessage>}
       <input
         type={'text'}
         placeholder={'Locality'}
-        onChange={$ =>
+        onBlur={$ =>
           update({
             shipping: {
               ...shipping,
@@ -36,7 +43,7 @@ export default ({ shipping, update, confirm }) => {
       <input
         type={'text'}
         placeholder={'Town or City'}
-        onChange={$ =>
+        onBlur={$ =>
           update({
             shipping: {
               ...shipping,
@@ -46,11 +53,10 @@ export default ({ shipping, update, confirm }) => {
         }
         defaultValue={address.city}
       />
-
       <input
         type={'text'}
         placeholder={'State'}
-        onChange={$ =>
+        onBlur={$ =>
           update({
             shipping: {
               ...shipping,
@@ -63,7 +69,7 @@ export default ({ shipping, update, confirm }) => {
       <input
         type={'text'}
         placeholder={'Country'}
-        onChange={$ =>
+        onBlur={$ =>
           update({
             shipping: {
               ...shipping,
@@ -73,10 +79,12 @@ export default ({ shipping, update, confirm }) => {
         }
         defaultValue={address.country}
       />
-      <input
+      <Input
+        name={'postal_code'}
         type={'text'}
         placeholder={'Postcode'}
-        onChange={$ =>
+        ref={register({ required: 'Please enter a valid postcode' })}
+        onBlur={$ =>
           update({
             shipping: {
               ...shipping,
@@ -86,9 +94,29 @@ export default ({ shipping, update, confirm }) => {
         }
         defaultValue={address.postal_code}
       />
+      {errors.postcode && (
+        <ErrorMessage>{errors.postal_code.message}</ErrorMessage>
+      )}
       <hr />
 
-      <Primary onClick={() => confirm()}>Confirm</Primary>
+      {console.log(
+        'Check >>>>',
+        address.postal_code,
+        errors.postal_code,
+        address.line1,
+        errors.line1
+      )}
+      <Primary
+        disabled={
+          !address.postal_code ||
+          errors.postal_code ||
+          !address.line1 ||
+          errors.line1
+        }
+        onClick={() => confirm()}
+      >
+        Confirm
+      </Primary>
     </ManualSearch>
   )
 }

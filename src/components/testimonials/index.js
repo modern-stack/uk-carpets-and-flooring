@@ -16,6 +16,8 @@ export default () => {
 
   if (loading) return <div>Loading...</div>
 
+  if (!data.Testimonials_aggregate) return null
+
   return (
     <React.Fragment>
       <Desktop
