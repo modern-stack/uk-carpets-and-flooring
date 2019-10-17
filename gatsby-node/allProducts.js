@@ -144,7 +144,7 @@ module.exports = graphql =>
     for (let $ = 0; $ < allPrismicSku.edges.length; $++) {
       const sku = allPrismicSku.edges[$].node
 
-      if (sku.data.product) {
+      if (sku.data.product && sku.data.price) {
         if (!byProductType[sku.data.product.document[0].data.product_type]) {
           byProductType[sku.data.product.document[0].data.product_type] = []
         }

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Button = styled.button`
+const Button = styled.div`
   font-family: Gotham-Medium;
   color: white;
   display: flex;

@@ -36,6 +36,19 @@ const CheckoutForm = ({ Order, stripe, onComplete, formErrors }) => {
     }
   }
 
+  const _completeOrder = async () => {
+    const { token } = await stripe.createToken()
+
+    complete({
+      variables: {
+        Order,
+        source: token.id,
+      },
+    })
+
+    onComplete()
+  }
+
   console.log('Errors >>>>', formErrors, errors)
 
   return (
@@ -77,17 +90,7 @@ const CheckoutForm = ({ Order, stripe, onComplete, formErrors }) => {
             Object.values(errors).length ||
             Object.values(formErrors).length
           }
-          onClick={() =>
-            stripe.createToken().then($ => {
-              complete({
-                variables: {
-                  Order,
-                  source: $.token.id,
-                },
-                update: () => onComplete(),
-              })
-            })
-          }
+          onClick={() => _completeOrder()}
         >
           Pay Order
         </Primary>
