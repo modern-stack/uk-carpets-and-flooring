@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 const Counter = styled.div`
   width: 100%;
+  display: flex;
 
   .input {
     width: 1.3rem;

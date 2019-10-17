@@ -77,8 +77,12 @@ const CheckoutForm = ({ Order, stripe, onComplete, formErrors }) => {
             Object.values(errors).length ||
             Object.values(formErrors).length
           }
-          onClick={() =>
+          onClick={() => {
+            console.log('Clicking >>>>')
+            debugger
             stripe.createToken().then($ => {
+              debugger
+              console.log('>>>>', $)
               complete({
                 variables: {
                   Order,
@@ -87,7 +91,7 @@ const CheckoutForm = ({ Order, stripe, onComplete, formErrors }) => {
                 update: () => onComplete(),
               })
             })
-          }
+          }}
         >
           Pay Order
         </Primary>

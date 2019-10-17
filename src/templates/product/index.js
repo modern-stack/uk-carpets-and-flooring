@@ -118,7 +118,10 @@ export default ({ pageContext }) => {
             <br />
             <Review />
             <Price>£{(price * total).toFixed(2)} m²</Price>
-            <PriceCalculator type={'Feet and Inches'} setTotal={setTotal} />
+            <PriceCalculator
+              type={'MetresSquared'}
+              onChange={$ => setTotal($)}
+            />
             <Buttons>
               <AddToOrder Id={sku.id.split('Prismic__Sku__')[1]} />
               <div />

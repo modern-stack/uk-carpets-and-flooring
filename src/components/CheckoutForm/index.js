@@ -23,7 +23,7 @@ import {
 
 export default () => {
   const [isManual, setIsManual] = useState(false)
-  const [confirmed, setConfirmed] = useState(false)
+  const [confirmed, setConfirmed] = useState(true)
   const { data } = useQuery(GET_ORDER)
 
   const updateOrder = useMutation(UPDATE_ORDER)
@@ -109,7 +109,6 @@ export default () => {
               onComplete={() => {
                 resetOrder()
                 setConfirmed(true)
-                errors = { errors }
               }}
             />
           </form>

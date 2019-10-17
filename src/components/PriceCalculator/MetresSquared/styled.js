@@ -16,4 +16,15 @@ const Metres = styled.form`
   }
 `
 
-export { Metres }
+const Select = styled.select`
+  padding: 4px;
+
+  & > option {
+    background: white;
+    :hover: {
+      background: red;
+    }
+  }
+`
+
+export { Metres, Select }

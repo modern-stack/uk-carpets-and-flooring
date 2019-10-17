@@ -1,14 +1,14 @@
 import React from 'react'
 
 import FeetAndInches from './FeetAndInches'
-import Metres from './Metres'
+import MetresSquared from './MetresSquared'
 
 const components = {
   ['Feet and Inches']: FeetAndInches,
-  ['Width vs Length']: Metres,
+  ['MetresSquared']: MetresSquared,
 }
 
-export default ({ type, setTotal }) => {
-  const Component = components[type] || components['Feet and Inches']
-  return <Component setTotal={setTotal} />
+export default ({ type, price = 1, onChange }) => {
+  const Component = components[type] || components['MetresSquared']
+  return <Component onChange={onChange} price={price} />
 }
