@@ -36,6 +36,19 @@ const CheckoutForm = ({ Order, stripe, onComplete, formErrors }) => {
     }
   }
 
+  const _completeOrder = async () => {
+    const { token } = await stripe.createToken()
+
+    complete({
+      variables: {
+        Order,
+        source: token.id,
+      },
+    })
+
+    onComplete()
+  }
+
   console.log('Errors >>>>', formErrors, errors)
 
   return (
@@ -77,6 +90,7 @@ const CheckoutForm = ({ Order, stripe, onComplete, formErrors }) => {
             Object.values(errors).length ||
             Object.values(formErrors).length
           }
+<<<<<<< HEAD
           onClick={() => {
             console.log('Clicking >>>>')
             debugger
@@ -92,6 +106,9 @@ const CheckoutForm = ({ Order, stripe, onComplete, formErrors }) => {
               })
             })
           }}
+=======
+          onClick={() => _completeOrder()}
+>>>>>>> 702c51894aa717e0854d04783f35bbf7f9633373
         >
           Pay Order
         </Primary>
