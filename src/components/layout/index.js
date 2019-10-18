@@ -32,11 +32,16 @@ const LoadableFooter = Loadable({
   loading: () => <div>loading...</div>,
 })
 
+const LoadableStyle = Loadable({
+  loader: () => import('./globalstyle'),
+  loading: () => <div>loading...</div>,
+})
+
 export default ({ children }) => {
   return (
     <ThemeProvider theme={{ fontFamily: 'Gotham' }}>
       <Page>
-        <GlobalStyle />
+        <LoadableStyle />
         <LoadableHeader siteTitle={'unknown'} />
         <Authentication>
           <LoadableMenu />
