@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Copyright from '../copyright'
 
@@ -31,6 +31,11 @@ const LoadableFooter = Loadable({
 
 const LoadableStyle = Loadable({
   loader: () => import('./globalstyle'),
+  loading: () => <div>loading...</div>,
+})
+
+const LoadableFooter = Loadable({
+  loader: () => import('../footer'),
   loading: () => <div>loading...</div>,
 })
 
