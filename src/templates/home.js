@@ -31,7 +31,7 @@ export default ({ pageContext }) => {
       <React.Fragment>
         <LoadableCarousel items={pageContext.prismicPage.data.body[0].items} />
         <LoadableBanners items={pageContext.prismicPage.data.body[1].items} />
-        <LoadableTestimonials />
+        {/* <LoadableTestimonials /> */}
       </React.Fragment>
     </LoadableComponent>
   )
