@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
-import Header from '../header'
-import Menu from '../menu'
 import Footer from '../footer'
 import Copyright from '../copyright'
-import InstagramFeed from '../instagram'
 
 import GlobalStyle from './globalstyle'
 
@@ -25,6 +22,16 @@ const LoadableHeader = Loadable({
   loading: () => <div>loading...</div>,
 })
 
+const LoadableInstagram = Loadable({
+  loader: () => import('./instagram'),
+  loading: () => <div>loading...</div>,
+})
+
+const LoadableFooter = Loadable({
+  loader: () => import('../footer'),
+  loading: () => <div>loading...</div>,
+})
+
 export default ({ children }) => {
   return (
     <ThemeProvider theme={{ fontFamily: 'Gotham' }}>
@@ -34,8 +41,8 @@ export default ({ children }) => {
         <Authentication>
           <LoadableMenu />
           <Content>{children}</Content>
-          <InstagramFeed />
-          <Footer />
+          <LoadableInstagram />
+          <LoadableFooter />
           <Copyright />
         </Authentication>
       </Page>
