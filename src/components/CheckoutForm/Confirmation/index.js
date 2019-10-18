@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Layout from '../../layout'
 import SEO from '../../seo'
 
-import { Confirmation, Header } from './styled'
+import { Confirmation, setConfirmed } from './styled'
 
 export default () => (
   <React.Fragment>
@@ -15,7 +15,9 @@ export default () => (
       <br />
       <br />
       <div>
-        <a href="/">Go Back to Site</a>
+        <a href="/" onClick={() => setConfirmed(false)}>
+          Go Back to Site
+        </a>
       </div>
     </Confirmation>
   </React.Fragment>
