@@ -23,7 +23,7 @@ const LoadableHeader = Loadable({
 })
 
 const LoadableInstagram = Loadable({
-  loader: () => import('./instagram'),
+  loader: () => import('../instagram'),
   loading: () => <div>loading...</div>,
 })
 
