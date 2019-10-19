@@ -26,10 +26,13 @@ export default () => (
     <Content>
       <div>
         <Title>Contact Info</Title>
-        <div>69 Pinfold Drive</div>
-        <div>Eccleston</div>
-        <div>St Helens</div>
-        <div>WA10 5BT</div>
+        <div>Unit 27 </div>
+        <div>Sutton oak drive</div>
+        <div>St. Helens</div>
+        <div>WA9 3PH</div>
+        <br />
+
+        <div>01744 345382</div>
       </div>
     </Content>
     <Content>
