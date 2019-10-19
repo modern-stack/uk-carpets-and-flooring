@@ -35,7 +35,7 @@ export default () => {
     mode: 'onBlur',
   })
 
-  if (confirmed) return <Confirmation setConfirmed={setConfirmed} />
+  //if (confirmed) return <Confirmation setConfirmed={setConfirmed} />
 
   const update = $ =>
     updateOrder({

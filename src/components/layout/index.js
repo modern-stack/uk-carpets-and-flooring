@@ -34,11 +34,6 @@ const LoadableStyle = Loadable({
   loading: () => <div>loading...</div>,
 })
 
-const LoadableFooter = Loadable({
-  loader: () => import('../footer'),
-  loading: () => <div>loading...</div>,
-})
-
 export default ({ children }) => {
   return (
     <ThemeProvider theme={{ fontFamily: 'Gotham' }}>
