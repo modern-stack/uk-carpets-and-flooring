@@ -1,14 +1,19 @@
 import React from 'react'
+import { Calculator } from './styled'
 
-import FeetAndInches from './FeetAndInches'
+import SingleSelection from './SingleSelection'
 import MetresSquared from './MetresSquared'
 
 const components = {
-  ['Feet and Inches']: FeetAndInches,
-  ['MetresSquared']: MetresSquared,
+  ['Single Selection']: SingleSelection,
+  ['Metres Squared']: MetresSquared,
 }
 
 export default ({ type, price = 1, onChange }) => {
-  const Component = components[type] || components['MetresSquared']
-  return <Component onChange={onChange} price={price} />
+  const Component = components[type] || components['Metres Squared']
+  return (
+    <Calculator>
+      <Component onChange={onChange} price={price} />
+    </Calculator>
+  )
 }

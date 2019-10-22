@@ -9,6 +9,7 @@ export const GET_ORDER = gql`
         currency
         description
         quantity
+        amount
       }
       shipping {
         name

@@ -17,7 +17,8 @@ const Metres = styled.form`
 `
 
 const Select = styled.select`
-  padding: 4px;
+  padding: 10px;
+  background: #f0f0f0;
 
   & > option {
     background: white;

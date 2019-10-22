@@ -37,14 +37,14 @@ const Length = styled.input`
   }
 `
 
-const Width = styled.select`
-  height: 100%;
-  background: #ebeeef;
-  min-height: 30px;
-  margin: 0 2px;
-  border-width: 1px;
-  border-style: groove;
-  text-indent: 10px;
+const Selection = styled.input`
+  padding: 10px;
+  background: #f0f0f0;
+`
+const Label = styled.label`
+  font-weight: 800;
+  font-size: 0.9em;
+  margin: 0.4em 0;
 `
 
-export { FeetAndInches, Form, Length, Width }
+export { FeetAndInches, Form, Length, Selection, Label }

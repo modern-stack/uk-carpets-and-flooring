@@ -2,26 +2,22 @@ import React, { useState, useEffect } from 'react'
 import Counter from '../../Counter'
 import { Metres, Select } from './styled'
 
-export default ({ onChange, price, max = 10 }) => {
+export default ({ onChange, price, max = 25 }) => {
   const [length, setLength] = useState(0)
   const [width, setWidth] = useState(4)
 
   useEffect(() => {
-    console.log('>>>>>', length, width)
-    onChange((length * width * price) / 100)
+    onChange({
+      amount: (parseInt(length) * parseInt(width) * price) / 1000,
+      quantity: 1,
+      description: `${length}(L) X ${width}(W)`,
+    })
   }, [width, length])
 
   const renderList = max => {
-    return (
-      <div class="dropdown">
-        <button class="dropbtn">Dropdown</button>
-        <div class="dropdown-content">
-          {Array.from(Array(max)).map((e, i) => (
-            <a value={i + 1}>{`${i + 1}`}</a>
-          ))}
-        </div>
-      </div>
-    )
+    return Array.from(Array(max)).map((e, i) => (
+      <option value={i + 1}>{`${i + 1}`}</option>
+    ))
   }
 
   return (

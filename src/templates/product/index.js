@@ -38,16 +38,26 @@ import {
   Buttons,
   FeaturedImage,
 } from './styled'
+import { notDeepEqual } from 'assert'
 
 export default ({ pageContext }) => {
   const { node, skus } = pageContext
 
   const [sku, setSku] = useState(skus[0])
-  const [total, setTotal] = useState(0)
+  const [total, setTotal] = useState({
+    quantity: 1,
+    amount: 0,
+    description: '',
+  })
 
   if (!sku) return <div>No Skus available</div>
 
   const { description, featuredimage, name, price } = sku.data
+
+  const priceCalculatorType =
+    sku.data.product.document[0].data.product_type === 'Carpets'
+      ? 'Metres Squared'
+      : 'Single Selection'
 
   return (
     <Layout>
@@ -117,13 +127,14 @@ export default ({ pageContext }) => {
             </div>
             <br />
             <Review />
-            <Price>£{(price * total).toFixed(2)} m²</Price>
+            <Price>£{total.amount.toFixed(2)} m²</Price>
             <PriceCalculator
-              type={'MetresSquared'}
+              price={price}
+              type={priceCalculatorType}
               onChange={$ => setTotal($)}
             />
             <Buttons>
-              <AddToOrder Id={sku.id.split('Prismic__Sku__')[1]} />
+              <AddToOrder Id={sku.id.split('Prismic__Sku__')[1]} {...total} />
               <div />
               <AddToSamples Id={sku.id.split('Prismic__Sku__')[1]} />
             </Buttons>

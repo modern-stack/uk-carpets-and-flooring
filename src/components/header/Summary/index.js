@@ -31,6 +31,8 @@ export default () => {
     },
   })
 
+  console.log('Order >>>', localOrder)
+
   if (orderItems.loading) return <p>Loading pupper...</p>
 
   if (!orderItems.data || !orderItems.data.allSkus)
@@ -44,26 +46,32 @@ export default () => {
         <Title title={'Your Order'} />
 
         <SectionTitle>Summary</SectionTitle>
-        {allSkus.edges.map($ => (
-          <Sku>
-            <ImageContainer>
-              <img
-                style={{ width: '100%', height: '100%' }}
-                src={$.node.featuredimage.url}
-              />
-            </ImageContainer>
-            <div>
-              {$.node.product.name} {$.node.name.text}
-            </div>
-            <div>£{$.node.price}</div>
-          </Sku>
-        ))}
+        {localOrder.data.Order.items.map($ => {
+          const { node } = allSkus.edges.filter(
+            $$ => $$.node._meta.id === $.parent
+          )[0]
+
+          return (
+            <Sku>
+              <ImageContainer>
+                <img
+                  style={{ width: '100%', height: '100%' }}
+                  src={node.featuredimage.url}
+                />
+              </ImageContainer>
+              <div>
+                {node.product.name} {node.name.text}
+              </div>
+              <div>£{$.amount}</div>
+            </Sku>
+          )
+        })}
         <Total>
           <div>Total</div>
           <Price>
             £
-            {allSkus.edges.reduce((total, $) => {
-              return total + parseFloat($.node.price)
+            {localOrder.data.Order.items.reduce((total, $) => {
+              return total + parseFloat($.amount)
             }, 0)}
           </Price>
         </Total>
