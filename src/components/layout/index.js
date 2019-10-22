@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import Copyright from '../copyright'
+import Notice from '../Notice'
 
 import { Page, Content } from './styled'
 import { ThemeProvider } from 'styled-components'
@@ -47,6 +48,7 @@ export default ({ children }) => {
           <LoadableFooter />
           <Copyright />
         </Authentication>
+        <Notice />
       </Page>
     </ThemeProvider>
   )
