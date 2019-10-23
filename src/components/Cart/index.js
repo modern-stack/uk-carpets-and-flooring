@@ -9,6 +9,8 @@ import { Cart, Total, Icon, Navigation } from './styled'
 export default () => {
   const { loading, data, error } = useQuery(GET_ORDER)
 
+  if (error) return <div>Found an error {error}</div>
+
   if (loading || !data.Order) return <div>Loading...</div>
 
   return (
