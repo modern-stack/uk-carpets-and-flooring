@@ -1,4 +1,13 @@
 require('dotenv').config()
+const path = require('path')
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    },
+  })
+}
 
 module.exports = {
   siteMetadata: {
@@ -9,6 +18,12 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     'gatsby-plugin-styled-components',
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        root: path.join(__dirname, 'src'),
+      },
+    },
     // {
     //   resolve: 'gatsby-plugin-google-tagmanager',
     //   options: {
