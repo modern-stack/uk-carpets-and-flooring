@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Notice = styled.div`
   position: fixed;
-  bottom: 0px;
+  bottom: 0;
   left: 0;
   right: 0;
   background: black;
