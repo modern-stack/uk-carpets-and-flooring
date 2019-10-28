@@ -1,14 +1,16 @@
 import React from 'react'
 
 import Copyright from '../copyright'
-import Notice from '../Notice'
 
 import { Page, Content } from './styled'
 import { ThemeProvider } from 'styled-components'
 
-import Authentication from '../Authentication'
-
 import Loadable from 'react-loadable'
+
+const LoadableAuthentication = Loadable({
+  loader: () => import('../Authentication'),
+  loading: () => <div>loading...</div>,
+})
 
 const LoadableMenu = Loadable({
   loader: () => import('../menu'),
@@ -35,20 +37,25 @@ const LoadableStyle = Loadable({
   loading: () => <div>loading...</div>,
 })
 
+const LoadableNotice = Loadable({
+  loader: () => import('../Notice'),
+  loading: () => <div>loading...</div>,
+})
+
 export default ({ children }) => {
   return (
     <ThemeProvider theme={{ fontFamily: 'Gotham' }}>
       <Page>
         <LoadableStyle />
         <LoadableHeader siteTitle={'unknown'} />
-        <Authentication>
+        <LoadableAuthentication>
           <LoadableMenu />
           <Content>{children}</Content>
           <LoadableInstagram />
           <LoadableFooter />
           <Copyright />
-        </Authentication>
-        <Notice />
+        </LoadableAuthentication>
+        <LoadableNotice />
       </Page>
     </ThemeProvider>
   )
