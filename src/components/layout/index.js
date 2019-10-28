@@ -1,7 +1,5 @@
 import React from 'react'
 
-import Copyright from '../copyright'
-
 import { Page, Content } from './styled'
 import { ThemeProvider } from 'styled-components'
 
@@ -42,21 +40,26 @@ const LoadableNotice = Loadable({
   loading: () => <div>loading...</div>,
 })
 
+const LoadableCopyRight = Loadable({
+  loader: () => import('../copyright'),
+  loading: () => <div>loading...</div>,
+})
+
 export default ({ children }) => {
   return (
-    <ThemeProvider theme={{ fontFamily: 'Gotham' }}>
-      <Page>
-        <LoadableStyle />
-        <LoadableHeader siteTitle={'unknown'} />
-        <LoadableAuthentication>
-          <LoadableMenu />
-          <Content>{children}</Content>
-          <LoadableInstagram />
-          <LoadableFooter />
-          <Copyright />
-        </LoadableAuthentication>
-        <LoadableNotice />
-      </Page>
-    </ThemeProvider>
+    // <ThemeProvider theme={{ fontFamily: 'Gotham' }}>
+    <Page>
+      <LoadableStyle />
+      <LoadableHeader siteTitle={'unknown'} />
+      <LoadableAuthentication>
+        <LoadableMenu />
+        <Content>{children}</Content>
+        <LoadableInstagram />
+        <LoadableFooter />
+        <LoadableCopyRight />
+      </LoadableAuthentication>
+      <LoadableNotice />
+    </Page>
+    // </ThemeProvider>
   )
 }
