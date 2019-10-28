@@ -1,5 +1,5 @@
-import React from "react";
-import { Completed } from "./styled";
+import React from 'react'
+import { Completed } from './styled'
 
 export default ({ order }) => (
   <Completed>
@@ -17,4 +17,4 @@ export default ({ order }) => (
       <label>{order.shipping.address.postal_code}</label>
     </div>
   </Completed>
-);
+)

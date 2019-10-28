@@ -23,7 +23,7 @@ import {
 
 export default () => {
   const [isManual, setIsManual] = useState(false)
-  const [confirmed, setConfirmed] = useState(true)
+  const [stage, setStage] = useState(1)
   const { data } = useQuery(GET_ORDER)
 
   const updateOrder = useMutation(UPDATE_ORDER)
@@ -67,6 +67,7 @@ export default () => {
       <Header />
       <Navigation />
       <Content>
+        <Summary items={data.Order.items} />
         <div>
           <h3>Checkout</h3>
           <Subtitle>
@@ -98,6 +99,7 @@ export default () => {
               update={update}
               register={register}
               errors={errors}
+              isVisible={stage === 1}
             />
 
             <Subtitle class="subtitle">payment details</Subtitle>
@@ -106,12 +108,12 @@ export default () => {
               errors={errors}
               onComplete={() => {
                 resetOrder()
-                setConfirmed(true)
+                setStage(3)
               }}
+              isVisible={stage === 2}
             />
           </form>
         </div>
-        <Summary items={data.Order.items} />
       </Content>
     </Checkout>
   )
