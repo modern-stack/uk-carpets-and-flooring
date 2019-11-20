@@ -3,7 +3,7 @@ import Loadable from 'react-loadable'
 
 const LoadableProvider = Loadable({
   loader: () => import('./provider'),
-  loading: () => <div>loading...</div>,
+  loading: () => <div />,
 })
 
 export const wrapRootElement = ({ element }) => {

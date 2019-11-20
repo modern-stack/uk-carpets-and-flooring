@@ -45,6 +45,7 @@
     "react": "^16.8.4",
     "react-apollo": "^2.5.5",
     "react-apollo-hooks": "^0.4.5",
+    "react-content-loader": "^4.3.2",
     "react-device-detect": "^1.6.2",
     "react-dom": "^16.8.4",
     "react-helmet": "^5.2.0",
