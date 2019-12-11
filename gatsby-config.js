@@ -95,7 +95,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-offline',
       options: {
-        importScripts: [`./src/static/sw-extension.js`],
+        importScripts: [`sw-extension.js`],
       },
     },
     'gatsby-plugin-netlify',
