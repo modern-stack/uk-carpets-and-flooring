@@ -10,3 +10,5 @@ export { wrapRootElement } from './src/services/Apollo/wrap-root-element'
 // export const wrapRootElement = ({ element }) => {
 //   return <ApolloProvider client={client}>{element}</ApolloProvider>
 // }
+
+export const registerServiceWorker = () => true
