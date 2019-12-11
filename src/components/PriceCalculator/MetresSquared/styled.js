@@ -17,6 +17,9 @@ const Metres = styled.form`
 `
 
 const Select = styled.select`
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   padding: 10px;
   background: #f0f0f0;
 

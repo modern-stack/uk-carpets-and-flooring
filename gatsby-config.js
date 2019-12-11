@@ -92,7 +92,12 @@ module.exports = {
         icon: `src/images/logo.png`, // This path is relative to the root of the site.
       },
     },
-    'gatsby-plugin-offline',
+    {
+      resolve: 'gatsby-plugin-offline',
+      options: {
+        appendScript: require.resolve(`src/static/sw-extension.js`),
+      },
+    },
     'gatsby-plugin-netlify',
     'gatsby-plugin-sitemap',
     // this (optional) plugin enables Progressive Web App + Offline functionality

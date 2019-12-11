@@ -12,12 +12,11 @@ const Search = styled.div`
   width: 100%;
 
   input {
-    text-align: center;
     width: 100%;
-    text-transform: uppercase;
-    border: 0 1px 0 0;
-    border-color: gray;
-    outline: none;
+    padding: 8px;
+    background-color: #ffffff;
+    box-shadow: inset 0 1px 2px 0 rgba(201, 202, 200, 0.5);
+    border: 1px solid transparent;
   }
 
   @keyframes spinner {
