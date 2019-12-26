@@ -10,8 +10,6 @@ export default ({ Id, quantity, description = '', amount }) => {
 
   if (loading) return <div>Loading</div>
 
-  console.log('Adding order >>>>', Id, quantity, description, amount)
-
   const AddToOrder = useMutation(ADD_TO_ORDER, {
     variables: {
       Order: data.Order,

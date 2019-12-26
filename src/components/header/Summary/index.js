@@ -31,8 +31,6 @@ export default () => {
     },
   })
 
-  console.log('Order >>>', localOrder)
-
   if (orderItems.loading) return <p>Loading pupper...</p>
 
   if (!orderItems.data || !orderItems.data.allSkus)

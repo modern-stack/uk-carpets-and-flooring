@@ -104,10 +104,6 @@ const MobileOptions = styled.div`
   margin: 8px 0;
   min-height: 40px;
 
-  & > div {
-    margin: 0 0.6em;
-  }
-
   @media (max-width: 700px) {
     display: flex;
   }

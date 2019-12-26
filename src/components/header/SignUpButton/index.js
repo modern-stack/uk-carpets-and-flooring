@@ -1,31 +1,21 @@
 import React from 'react'
 import { Primary, Tertiary } from '../../Button'
+import Modal from '../../Modal'
 
-import idx from 'idx'
+import Login from './Login'
 
-import { useQuery, useMutation } from 'react-apollo-hooks'
-import { SUBSCRIBE_USER } from '../../../services/Apollo/Queries/auth'
-
-import { LOGOUT } from '../../../services/Apollo/Mutations/users'
-
-import auth from '../../../services/Auth'
+import { loading, auth } from '../../../Hooks/Firebase/useFirebase'
 
 export default () => {
-  const logoutTask = useMutation(LOGOUT, {
-    refetchQueries: [{ query: SUBSCRIBE_USER }],
-  })
+  const { currentUser } = auth || {}
 
-  const { loading, data } = useQuery(SUBSCRIBE_USER)
+  if (loading) return null
 
-  if (loading) return <div>here!</div>
+  if (currentUser) return <Tertiary>Log Out</Tertiary>
 
-  const Logout = () => logoutTask()
-
-  const isGuest = idx(data, $ => $.CurrentUser.isGuest)
-
-  return isGuest ? (
-    <Primary onClick={() => auth.login()}>Sign Up</Primary>
-  ) : (
-    <Tertiary onClick={() => Logout()}>Log Out</Tertiary>
+  return (
+    <Modal>
+      <Login />
+    </Modal>
   )
 }
