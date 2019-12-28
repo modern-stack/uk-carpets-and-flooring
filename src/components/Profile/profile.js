@@ -1,23 +1,22 @@
 import React from 'react'
+import useFirebase from '../../Hooks/Firebase/useFirebase'
 
 import ProfileImage from '../ProfileImage'
-
-import { useQuery } from 'react-apollo-hooks'
-import { SUBSCRIBE_USER } from '../../services/Apollo/Queries/auth'
-
 import { Profile } from './styled'
 
 export default () => {
-  const { loading, data } = useQuery(SUBSCRIBE_USER)
-  if (loading || !data || !data.CurrentUser) return null
+  const { loading, authUser } = useFirebase()
 
-  const { given_name, picture } = data.CurrentUser
+  console.log('authUser >>>>', loading, authUser)
+
+  if (loading) return <div>Loading...</div>
 
   return (
     <Profile>
-      <ProfileImage src={picture} />
+      <ProfileImage />
 
-      <label>Hi, {given_name}</label>
+      {!authUser && <label>Hi, Guest</label>}
+      {authUser && <label>Hi, {authUser.displayName.split(' ')[0]}</label>}
     </Profile>
   )
 }

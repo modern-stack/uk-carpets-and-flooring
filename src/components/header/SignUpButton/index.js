@@ -1,31 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Primary, Tertiary } from '../../Button'
+import Modal from '../../Modal'
 
-import idx from 'idx'
+import Login from './Login'
 
-import { useQuery, useMutation } from 'react-apollo-hooks'
-import { SUBSCRIBE_USER } from '../../../services/Apollo/Queries/auth'
-
-import { LOGOUT } from '../../../services/Apollo/Mutations/users'
-
-import auth from '../../../services/Auth'
+import useFirebase from '../../../Hooks/Firebase/useFirebase'
 
 export default () => {
-  const logoutTask = useMutation(LOGOUT, {
-    refetchQueries: [{ query: SUBSCRIBE_USER }],
-  })
+  const [isOpen, setIsOpen] = useState(false)
+  const { loading, auth, authUser } = useFirebase()
 
-  const { loading, data } = useQuery(SUBSCRIBE_USER)
+  if (loading) return null
 
-  if (loading) return <div>here!</div>
+  console.log('currentUser >>>', authUser)
 
-  const Logout = () => logoutTask()
+  return (
+    <React.Fragment>
+      {authUser && (
+        <Tertiary onClick={() => auth().signOut()}>Log Out</Tertiary>
+      )}
 
-  const isGuest = idx(data, $ => $.CurrentUser.isGuest)
+      {!authUser && (
+        <Primary onClick={() => setIsOpen(!isOpen)}>Log In</Primary>
+      )}
 
-  return isGuest ? (
-    <Primary onClick={() => auth.login()}>Sign Up</Primary>
-  ) : (
-    <Tertiary onClick={() => Logout()}>Log Out</Tertiary>
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <Login />
+      </Modal>
+    </React.Fragment>
   )
 }

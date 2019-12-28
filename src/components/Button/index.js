@@ -6,9 +6,8 @@ const Button = styled.div`
   display: flex;
   justify-content: center;
   text-transform: uppercase;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0;
   border: none;
-  width: 100%;
 
   :hover {
     cursor: pointer;
@@ -22,10 +21,17 @@ const Button = styled.div`
     transform: translateY(4px);
     border: none;
   }
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(110%);
+  }
 `
 const Primary = styled(Button)`
   font-family: Gotham-Medium;
   background: #c7002b;
+  width: ${props => props.width || '100%'};
+  border-radius: ${props => (props.rounded ? '25px' : '')};
 
   :disabled {
     color: black;

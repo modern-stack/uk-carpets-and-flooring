@@ -7,8 +7,6 @@ import { Input, ErrorMessage } from '../../../Form'
 export default ({ shipping, update, confirm, register, errors }) => {
   const { address } = shipping
 
-  console.log('Here! >>>>', address)
-
   return (
     <ManualSearch>
       <Input
@@ -99,13 +97,6 @@ export default ({ shipping, update, confirm, register, errors }) => {
       )}
       <hr />
 
-      {console.log(
-        'Check >>>>',
-        address.postal_code,
-        errors.postal_code,
-        address.line1,
-        errors.line1
-      )}
       <Primary
         disabled={
           !address.postal_code ||
