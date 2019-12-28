@@ -4,28 +4,37 @@ import SignInForm from './SignInForm'
 import Divider from '../../../Divider'
 import GoogleSignIn from './GoogleSignIn'
 
-import { Information, Login, Container } from './styled'
+import {
+  Information,
+  Login,
+  CreateAccount,
+  Title,
+  SubTitle,
+  Container,
+} from './styled'
 
 export default () => {
   return (
     <Container>
-      <Information />
+      <Information>Put something here</Information>
+
       <Login>
-        <h1>Uk Carpets</h1>
-        <h3>Welcome to Uk Carpets and Flooring</h3>
+        <div>
+          <Title>Uk Carpets</Title>
+          <SubTitle>Welcome to Uk Carpets and Flooring</SubTitle>
+        </div>
 
         <SignInForm />
 
         <Divider text={'or'} />
 
-        <div>
-          <GoogleSignIn />
-        </div>
+        <GoogleSignIn />
 
-        <div>
+        <CreateAccount>
           New to Uk Carpets? <a>Create Account</a>
-        </div>
+        </CreateAccount>
       </Login>
+      <div />
     </Container>
   )
 }

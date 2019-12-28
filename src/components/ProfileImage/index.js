@@ -1,14 +1,13 @@
 import React from 'react'
 import Image from 'gatsby-image'
-import { useQuery } from 'react-apollo-hooks'
+
 import { useStaticQuery, graphql } from 'gatsby'
 
+import useFirebase from '../../Hooks/Firebase/useFirebase'
 import { ProfileImage } from './styled'
-import { SUBSCRIBE_USER } from '../../services/Apollo/Queries/auth'
 
 export default () => {
-  const { loading, data } = useQuery(SUBSCRIBE_USER)
-  if (loading || !data || !data.CurrentUser) return null
+  const { authUser } = useFirebase()
 
   const localQuery = useStaticQuery(graphql`
     query {
@@ -22,8 +21,8 @@ export default () => {
     }
   `)
 
-  if (data.CurrentUser.picture)
-    return <ProfileImage src={data.CurrentUser.picture} />
+  if (authUser && authUser.photoURL)
+    return <ProfileImage src={authUser.photoURL} />
 
   return <Image fixed={localQuery.guestIcon.childImageSharp.fixed} />
 }

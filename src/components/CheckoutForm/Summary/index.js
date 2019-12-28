@@ -15,10 +15,6 @@ export default ({ items }) => {
 
   if (loading) return null
 
-  console.log('Items >>>>', items)
-
-  console.log('Data >>>>', data)
-
   return (
     <div>
       <br />

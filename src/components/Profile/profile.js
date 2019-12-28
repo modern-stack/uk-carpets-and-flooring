@@ -2,25 +2,21 @@ import React from 'react'
 import useFirebase from '../../Hooks/Firebase/useFirebase'
 
 import ProfileImage from '../ProfileImage'
-
 import { Profile } from './styled'
 
 export default () => {
-  const { auth, loading, authUser } = useFirebase()
+  const { loading, authUser } = useFirebase()
+
+  console.log('authUser >>>>', loading, authUser)
 
   if (loading) return <div>Loading...</div>
 
-  console.log('auth >>>>', authUser)
-
-  if (!authUser) return <div>Please sign in</div>
-
-  const { photoURL, displayName } = authUser
-
   return (
     <Profile>
-      <ProfileImage src={photoURL || ''} />
+      <ProfileImage />
 
-      <label>Hi, {displayName}</label>
+      {!authUser && <label>Hi, Guest</label>}
+      {authUser && <label>Hi, {authUser.displayName.split(' ')[0]}</label>}
     </Profile>
   )
 }

@@ -16,8 +16,10 @@ export default () => (
       <label class={'forgotten'}>Forgot Password?</label>
     </div>
 
-    <Primary width="50%" rounded>
-      Sign In
-    </Primary>
+    <div class="cta">
+      <Primary width="50%" rounded>
+        Sign In
+      </Primary>
+    </div>
   </SignInForm>
 )

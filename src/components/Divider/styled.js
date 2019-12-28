@@ -5,7 +5,6 @@ export const Divider = styled.div`
   text-align: center;
   border-bottom: 1px solid #000;
   line-height: 0.1em;
-  margin: 20px 0 20px;
 
   span {
     background: #fff;

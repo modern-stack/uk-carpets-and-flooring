@@ -1,21 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Primary, Tertiary } from '../../Button'
 import Modal from '../../Modal'
 
 import Login from './Login'
 
-import { loading, auth } from '../../../Hooks/Firebase/useFirebase'
+import useFirebase from '../../../Hooks/Firebase/useFirebase'
 
 export default () => {
-  const { currentUser } = auth || {}
+  const [isOpen, setIsOpen] = useState(false)
+  const { loading, auth, authUser } = useFirebase()
 
   if (loading) return null
 
-  if (currentUser) return <Tertiary>Log Out</Tertiary>
+  console.log('currentUser >>>', authUser)
 
   return (
-    <Modal>
-      <Login />
-    </Modal>
+    <React.Fragment>
+      {authUser && (
+        <Tertiary onClick={() => auth().signOut()}>Log Out</Tertiary>
+      )}
+
+      {!authUser && (
+        <Primary onClick={() => setIsOpen(!isOpen)}>Log In</Primary>
+      )}
+
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <Login />
+      </Modal>
+    </React.Fragment>
   )
 }

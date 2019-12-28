@@ -26,4 +26,12 @@ export const SignInForm = styled.div`
     border-right: 0px solid;
     outline: none;
   }
+
+  .cta {
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+    width: 100%;
+    justify-content: center;
+  }
 `

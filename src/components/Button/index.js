@@ -21,6 +21,11 @@ const Button = styled.div`
     transform: translateY(4px);
     border: none;
   }
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(110%);
+  }
 `
 const Primary = styled(Button)`
   font-family: Gotham-Medium;
